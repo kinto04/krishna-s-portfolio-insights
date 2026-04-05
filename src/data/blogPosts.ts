@@ -2,6 +2,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   date: string;
+  category: "Photography" | "Deep Dives" | "Essays";
   tags: string[];
   excerpt: string;
   content: string;
@@ -12,6 +13,7 @@ export const blogPosts: BlogPost[] = [
     slug: "building-ai-products-that-actually-work",
     title: "Building AI Products That Actually Work",
     date: "2025-12-15",
+    category: "Deep Dives",
     tags: ["AI", "Product"],
     excerpt: "Most AI products fail not because the model is bad, but because the product thinking is lazy. Here's what I've learned shipping AI features that users actually adopt.",
     content: `Most AI products fail not because the model is bad, but because the product thinking is lazy.
@@ -46,7 +48,8 @@ The best AI PMs I know spend more time on error states, edge cases, and fallback
     slug: "why-i-still-shoot-film",
     title: "Why I Still Shoot Film",
     date: "2025-11-03",
-    tags: ["Photography"],
+    category: "Photography",
+    tags: ["Photography", "Film"],
     excerpt: "In a world of computational photography and AI-enhanced images, there's something irreplaceable about the constraints of film.",
     content: `In a world of computational photography and AI-enhanced images, there's something irreplaceable about the constraints of film.
 
@@ -76,7 +79,8 @@ The best camera is the one that makes you see more carefully.
     slug: "the-pm-job-search-is-broken",
     title: "The PM Job Search Is Broken",
     date: "2026-01-20",
-    tags: ["Product", "Tech"],
+    category: "Essays",
+    tags: ["Product", "Career"],
     excerpt: "After months of searching for PM roles, here's what I've learned about a process that's fundamentally misaligned for everyone involved.",
     content: `After months of searching for PM roles, here's what I've learned about a process that's fundamentally misaligned for everyone involved.
 

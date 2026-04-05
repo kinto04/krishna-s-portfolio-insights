@@ -5,23 +5,21 @@ import { format } from "date-fns";
 const BlogPostCard = ({ post }: { post: BlogPost }) => {
   return (
     <Link
-      to={`/blog/${post.slug}`}
-      className="group block py-6 border-b border-border last:border-b-0"
+      to={`/stories/${post.slug}`}
+      className="group block"
     >
+      <div className="aspect-[16/10] bg-card rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+        <span className="text-muted-foreground text-sm">Cover Image</span>
+      </div>
       <div className="flex items-center gap-3 mb-2">
+        <span className="text-xs uppercase tracking-wider text-primary font-medium">
+          {post.category}
+        </span>
         <time className="text-xs text-muted-foreground">
           {format(new Date(post.date), "MMM d, yyyy")}
         </time>
-        {post.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-xs px-2 py-0.5 rounded-full bg-secondary text-muted-foreground"
-          >
-            {tag}
-          </span>
-        ))}
       </div>
-      <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors mb-2">
+      <h3 className="font-serif text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
         {post.title}
       </h3>
       <p className="text-sm text-muted-foreground leading-relaxed">{post.excerpt}</p>

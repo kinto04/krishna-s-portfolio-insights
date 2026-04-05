@@ -15,6 +15,14 @@ const Footer = () => {
             LinkedIn
           </a>
           <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            GitHub
+          </a>
+          <a
             href="mailto:hello@example.com"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
