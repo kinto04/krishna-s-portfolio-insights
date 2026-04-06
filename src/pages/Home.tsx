@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useMemo } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import BlogPostCard from "@/components/BlogPostCard";
@@ -7,6 +7,21 @@ import { caseStudies } from "@/data/caseStudies";
 import { blogPosts } from "@/data/blogPosts";
 import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+
+const heroVariants: Record<string, { heading: string; subtitle: string }> = {
+  startup: {
+    heading: "A 0-1 Product\nManager.",
+    subtitle: "I transform ideas into Market-Ready Solutions by bridging Strategy, Design, and Development to create products people love and use.",
+  },
+  product: {
+    heading: "I'm a Product\nManager",
+    subtitle: "I combine data-driven insights with user-centered design to enhance existing products and develop new features that drive retention and expansion.",
+  },
+  design: {
+    heading: "A Design-Driven\nProduct Manager.",
+    subtitle: "I facilitate design thinking processes across teams and stakeholders, creating holistic solutions while communicating the impact of good design decisions.",
+  },
+};
 
 const stackTools = [
   "Figma", "Miro", "Lovable", "Perplexity", "Google Docs", "Python", "React", "Node.js"
@@ -22,6 +37,12 @@ const ScrollSection = ({ children, className = "" }: { children: React.ReactNode
 };
 
 const Home = () => {
+  const [searchParams] = useSearchParams();
+  const variant = useMemo(() => {
+    const v = searchParams.get("v") || "startup";
+    return heroVariants[v] || heroVariants.startup;
+  }, [searchParams]);
+
   useEffect(() => {
     document.title = "Krishna Suresh — Product Manager, Builder, Writer";
   }, []);
@@ -42,14 +63,11 @@ const Home = () => {
           </div>
         </div>
         <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
-        <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2">
-          A 0-1 Product
-          <br />
-          Manager.
+        <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2 whitespace-pre-line">
+          {variant.heading}
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mb-8 animate-fade-in-up-delay-3">
-          I transform ideas into Market-Ready Solutions by bridging Strategy,
-          Design, and Development to create products people love and use.
+          {variant.subtitle}
         </p>
         <div className="flex gap-4 animate-fade-in-up-delay-4">
           <Link
