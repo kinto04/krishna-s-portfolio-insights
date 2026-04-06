@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useMemo } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import BlogPostCard from "@/components/BlogPostCard";
@@ -7,6 +7,21 @@ import { caseStudies } from "@/data/caseStudies";
 import { blogPosts } from "@/data/blogPosts";
 import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+
+const heroVariants: Record<string, { heading: string; subtitle: string }> = {
+  startup: {
+    heading: "A 0-1 Product\nManager.",
+    subtitle: "I transform ideas into Market-Ready Solutions by bridging Strategy, Design, and Development to create products people love and use.",
+  },
+  product: {
+    heading: "I'm a Product\nManager",
+    subtitle: "I combine data-driven insights with user-centered design to enhance existing products and develop new features that drive retention and expansion.",
+  },
+  design: {
+    heading: "A Design-Driven\nProduct Manager.",
+    subtitle: "I facilitate design thinking processes across teams and stakeholders, creating holistic solutions while communicating the impact of good design decisions.",
+  },
+};
 
 const stackTools = [
   "Figma", "Miro", "Lovable", "Perplexity", "Google Docs", "Python", "React", "Node.js"
