@@ -15,6 +15,8 @@ export interface CaseStudy {
   challenges: string;
   outcome: string;
   featured: boolean;
+  coverImage?: string;
+  images?: string[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -39,6 +41,7 @@ export const caseStudies: CaseStudy[] = [
     challenges: "[Placeholder — describe key challenges and how you mitigated them]",
     outcome: "[Placeholder — add impact metrics, user adoption, stakeholder feedback]",
     featured: true,
+    coverImage: "/images/ydnsfcgdfyybptikhi77i1h9ay.png",
   },
   {
     slug: "nectar-ai",
@@ -61,6 +64,15 @@ export const caseStudies: CaseStudy[] = [
     challenges: "Ensuring AI responses were accurate enough to handle nuanced product questions without frustrating customers. Balancing automation coverage with graceful handoff to human agents for edge cases.",
     outcome: "99% reduction in unanswered customer chats. +30% add-to-cart conversion improvement. +18% checkout conversion improvement.",
     featured: true,
+    coverImage: "/images/vybyrthkmzby5rgc0wcwhoacmai.webp",
+    images: [
+      "/images/ofzdqep4rmlejxcwliuca1bbego.webp",
+      "/images/u6qotkxyhcppqyywjql0qfrlnq.webp",
+      "/images/huba0n8n2agzpzuu7isyiphixw8.png",
+      "/images/lkuxpvhoouingadlo1ibstxhdne.png",
+      "/images/rylppkwxd162wow0jk1lhhnn624.png",
+      "/images/1106yljc7hayst1uqgp78trcm8.png",
+    ],
   },
   {
     slug: "jointly-travel",
@@ -83,28 +95,41 @@ export const caseStudies: CaseStudy[] = [
     challenges: "[Placeholder — describe challenges around group dynamics, AI recommendations, real-time sync]",
     outcome: "[Placeholder — add thesis results, user testing outcomes, key findings]",
     featured: true,
+    coverImage: "/images/b5e5jhjsubr4uyzipwyrnjmywp4.png",
   },
   {
     slug: "northwestern-medicine",
     title: "Northwestern Medicine",
-    subtitle: "Clinical diagnostic tool for healthcare",
-    role: "PM + Design Lead",
+    subtitle: "Leading Digital Innovation in Healthcare Research",
+    role: "Design Lead, Product Manager",
     tags: ["Healthcare", "Design", "Clinical Diagnostics"],
-    duration: "Northwestern University",
+    duration: "Northwestern Feinberg School of Medicine",
     year: "2025",
-    tools: ["Figma", "React", "Clinical APIs"],
-    overview: "Led the product and design effort for a clinical diagnostic tool at Northwestern Medicine, working closely with clinicians to translate complex medical workflows into intuitive software.",
-    goal: "Create a faster, more reliable diagnostic assessment tool that integrates seamlessly into clinical workflows.",
+    tools: ["Figma", "Miro", "Lovable", "Google Sheets"],
+    overview: "Going into an existing research project at Northwestern Feinberg School of Medicine, I was tasked with owning research and design for a new digital product aimed at supporting diagnosis and treatment of pediatric patients with disorders of gut-brain interaction.",
+    goal: "Make it easier for clinicians to diagnose and treat pediatric patients with potential Disorders of Gut-Brain Interaction (DGBI).",
     responsibilities: [
-      "Product management and roadmap for clinical diagnostic tool",
-      "Design sprints and prototyping with clinician feedback loops",
-      "Stakeholder communication across clinical and engineering teams",
+      "Stakeholder Research — Uncover needs, pains and motivation for primary stakeholders in the system",
+      "Feature Prioritization — Prioritize the most valuable features & define design requirements for the MVP",
+      "Designed initial prototypes to validate our design hypothesis and guide future iterations",
     ],
-    impact: "[Placeholder — add outcomes: clinician adoption, time saved, diagnostic accuracy improvement]",
-    process: "Embedded with the clinical team to understand workflows firsthand. Led design sprints, created prototypes, and iterated based on clinician feedback. Managed the product roadmap and stakeholder communication.",
-    challenges: "[Placeholder — describe challenges around clinical requirements, compliance, user adoption]",
-    outcome: "[Placeholder — add outcomes: clinician adoption, time saved, diagnostic accuracy improvement]",
+    impact: "A visual representation of the current system/service, with areas of friction and design interventions highlighted. Initial clinician prototypes designed based on stakeholder needs uncovered through research. Design requirements, stakeholder profiles, and Jobs to Be Done for each primary stakeholder.",
+    process: "Led design research efforts including 9 focus group participants, 1 in-context observation, and 4 user interviews. First focus group sessions with Doctors to deeply understand the current care process and uncover the most pressing frustrations. Second focus group with Nurses to understand their role, needs, priorities and motivations.",
+    challenges: "Challenge: Time and access constraints scheduling interviews and focus groups with nurses and doctors at the hospital. Mitigation: Conducted research on the fly and prepared multiple versions of research guides to adapt to available participants.\n\nChallenge: Effort required to understand clinical jargon and the healthcare system in general. Mitigation: Proactively became a subject matter expert and leveraged newcomer status to ask clarifying questions that built a strong foundation.",
+    outcome: "Learnings: When you are learning the same repeated thing from interviews, stop interviewing and start executing. If things are feeling too scattered, do a 'what we know so far' vs. 'what we need to know to move forward' data dump with the team.",
     featured: false,
+    coverImage: "/images/j6g8dxzfacf3uedeafwcupybxu.png",
+    images: [
+      "/images/36ij3vrtocmuhxqi1fna67ukzi.jpg",
+      "/images/eoqvcgeu1l8lzrf4t6e3x5xyty.png",
+      "/images/6f0ubhq1r12gvltcyab0a16h79q.png",
+      "/images/hodefwyrxmnlxsbbafqnkgdyc0m.png",
+      "/images/iokgnks4pxywjtwpoav28patfq.png",
+      "/images/qyokwxjpejxttm3j72syocwgm0u.png",
+      "/images/4abl4edssgmb0iswb3di1c3edo.png",
+      "/images/zaly0bihayvwtz8gewvujhvz1q.png",
+      "/images/xxf4nsfaetjcjpmvh050icg1xm.png",
+    ],
   },
   {
     slug: "yeti",
@@ -131,7 +156,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "southwest-airlines",
     title: "Southwest Airlines",
-    subtitle: "Operations and efficiency partnership",
+    subtitle: "Reimagining the Future of Airline Travel",
     role: "Product Manager",
     tags: ["Operations", "Efficiency", "Aviation"],
     duration: "Northwestern Partnership",
@@ -149,5 +174,6 @@ export const caseStudies: CaseStudy[] = [
     challenges: "[Placeholder — describe operational challenges encountered]",
     outcome: "[Placeholder — add impact and recommendations delivered]",
     featured: false,
+    coverImage: "/images/b5e5jhjsubr4uyzipwyrnjmywp4.png",
   },
 ];
