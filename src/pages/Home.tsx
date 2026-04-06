@@ -37,6 +37,12 @@ const ScrollSection = ({ children, className = "" }: { children: React.ReactNode
 };
 
 const Home = () => {
+  const [searchParams] = useSearchParams();
+  const variant = useMemo(() => {
+    const v = searchParams.get("v") || "startup";
+    return heroVariants[v] || heroVariants.startup;
+  }, [searchParams]);
+
   useEffect(() => {
     document.title = "Krishna Suresh — Product Manager, Builder, Writer";
   }, []);
