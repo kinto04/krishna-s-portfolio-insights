@@ -13,21 +13,23 @@ const About = () => {
 
         <div className="space-y-6 text-muted-foreground leading-relaxed mb-16">
           <p>
-            I'm Krishna Suresh — a Product Manager who codes, designs, and builds.
-            I believe the best PMs don't just write specs; they understand systems
-            deeply enough to make better decisions at every stage.
+            An <strong className="text-foreground">MS Engineering Design Innovation (EDI) student
+            at Northwestern University</strong> with a passion for storytelling and design.
           </p>
           <p>
-            I have 3+ years of experience building products in AI, healthcare,
-            e-commerce, and travel. I've worn every hat — sole engineer, PM, design
-            lead, strategy consultant — and I'm happiest when I'm building
-            end-to-end.
+            With three years of experience as a software engineer, I recognized gaps
+            in Human-Centered Innovation process both personally and in industry,
+            driving my desire to make a change. <strong className="text-foreground">I've
+            built and designed software across e-commerce, social impact, AI,</strong> and{" "}
+            <strong className="text-foreground">healthcare spaces</strong>, always focusing on
+            creating meaningful products that solve real problems.
           </p>
           <p>
-            Right now I'm finishing my MS in Engineering Design Innovation at
-            Northwestern University (3.9 GPA, Entrepreneurship minor, graduating
-            March 2026). Before that, I studied Computer Science at Purdue
-            University.
+            As a Designer and Product Manager, <strong className="text-foreground">I aim to
+            advocate for users, influence product direction, and engage business
+            stakeholders</strong>. I thrive in collaborative environments, leveraging my
+            creative problem-solving skills and analytical thinking to make a
+            significant impact.
           </p>
           <p>
             Based in New York, NY. Currently looking for PM roles in AI,

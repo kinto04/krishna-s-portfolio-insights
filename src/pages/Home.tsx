@@ -54,12 +54,12 @@ const Home = () => {
       {/* Featured Work */}
       <section className="max-w-5xl mx-auto px-6 pb-24">
         <div className="flex items-center justify-between mb-10">
-          <h2 className="font-serif text-2xl text-foreground">Featured Work</h2>
+          <h2 className="font-serif text-2xl text-foreground">Selected Projects</h2>
           <Link
             to="/work"
             className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            All projects <ArrowRight size={14} />
+            All Projects <ArrowRight size={14} />
           </Link>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
