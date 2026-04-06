@@ -1,103 +1,47 @@
 
 
-# Portfolio Update Plan — Applying Brief v3
+# Update Portfolio with Framer Site Content
 
-The uploaded brief has significant differences from the current build. Here's what changes and what stays.
+## What's changing
 
-## Key Changes
+The Framer portfolio screenshots reveal real content, copy, and metrics that should replace placeholder text in the current build. The design stays as-is (warm minimal, top nav). Only **content and copy** updates.
 
-### 1. Design System Overhaul — Warm Minimal
+## Changes
 
-The current site uses a cold black/white palette with indigo accent. The brief calls for a warm palette:
+### 1. Home Page Hero Copy (`src/pages/Home.tsx`)
+Update hero to match Framer copy:
+- Heading: "Hey, I'm Krishna." + "A 0-1 Product Manager"
+- Subtext: "I transform ideas into Market-Ready Solutions by bridging Strategy, Design, and Development to create products people love and use"
+- Add two CTA buttons: "View My Work" (link to /work) and "About Me" (link to /about)
+- Section title: "Selected Projects" instead of "Featured Work", with "All Projects" link
 
-- **Background**: `#FAF8F4` (warm off-white) instead of `#FAFAFA`
-- **Text**: `#1C1917` (warm near-black) instead of cold `#1A1A1A`
-- **Secondary text**: `#6B5E54` (warm brown-gray)
-- **Card surfaces**: `#F0EBE1` (warm cream)
-- **Accent**: Terracotta `#C1683A` instead of indigo
-- **No pure white anywhere**
+### 2. Nectar.ai Case Study Content (`src/data/caseStudies.ts`)
+Replace placeholders with real content from the Framer site:
+- **Title**: "AI Powered Customer Support for E-Commerce" (as subtitle)
+- **Role**: "Product Manager, Software Developer"
+- **Year**: "2023"
+- **Tools**: `["Python", "Node.JS", "OpenAI API", "Excel"]`
+- **Overview/Impact**: "Designed, developed, and launched Nectar.ai - an AI-powered chatbot that automated customer support from landing page to checkout. By analyzing months of historical chat data, I built conversation flows that reduced unanswered customer chats by 99% and boosted conversion rates (add-to-cart +30%, checkout +18%)."
+- Impact metrics: 99% reduction in unanswered chats, +30% add-to-cart, +18% checkout conversion
 
-### 2. Typography — Playfair Display + Inter
+### 3. About Page Bio (`src/pages/About.tsx`)
+Update bio to match Framer "About Me" content:
+- "An **MS Engineering Design Innovation (EDI) student at Northwestern University** with a passion for storytelling and design."
+- "With three years of experience as a software engineer, I recognized gaps in Human-Centered Innovation process both personally and in industry, driving my desire to make a change. **I've built and designed software across e-commerce, social impact, AI,** and **healthcare spaces**, always focusing on creating meaningful products that solve real problems."
+- "As a Designer and Product Manager, **I aim to advocate for users, influence product direction, and engage business stakeholders**. I thrive in collaborative environments, leveraging my creative problem-solving skills and analytical thinking to make a significant impact."
 
-- Add **Playfair Display** (serif) for headings — editorial, confident feel
-- Keep **Inter** for body text
-- Scale: Hero 72-96px, H1 48px, H2 32px, Body 17px/1.75, Captions 13px uppercase tracked
-- Generous spacing: section padding 96-120px vertical
-
-### 3. Navigation Changes
-
-- Links: **Work, Stories, About** (drop Resume from nav, drop Contact — it goes in About/Footer)
-- Add subtle "Available for Work" badge with muted green dot on homepage
-
-### 4. Page Restructuring
-
-| Current | Updated |
-|---------|---------|
-| `/blog` | `/stories` — renamed, with category filter tabs (Photography, Deep Dives, Essays) |
-| `/resume` | Removed as standalone page — link to PDF download from About |
-| `/contact` | Removed as standalone page — contact info moves to About + Footer |
-| No About page | `/about` — new page with bio, education, current focus, links |
-
-### 5. Homepage Updates
-
-- Hero heading in Playfair Display serif — "Product Manager. Designer. Builder."
-- Add "Available for Work" badge (muted green dot + text)
-- Stories teaser section instead of "Recent Writing"
-- Footer: add GitHub link alongside LinkedIn and Email
-
-### 6. Case Study Detail Restructure
-
-Current: Overview, Problem, Approach, Outcome
-Updated per brief:
-1. Header — project name, role, year, tools
-2. Project Goal — one bold centered statement
-3. My Role — 3 key responsibilities
-4. Impact & Deliverables
-5. Process
-6. Challenges & Mitigations
-7. Outcome
-
-Add `tools`, `year`, `goal`, `impact`, `process`, `challenges` fields to case study data.
-
-### 7. Stories (formerly Blog)
-
-- Card grid layout with cover image placeholder, title, date, category tag
-- Category filter tabs at top
-- Individual post: centered ~65ch column, support for full-bleed images
-- Update blog data: categories become Photography, Deep Dives, Essays
-- Update routes from `/blog` to `/stories`
-
-### 8. Case Study Data — Reorder
-
-Per brief, NectarCares comes first, then Nectar.ai (swapped from current order).
-
-### 9. Location Update
-
-Change "Based in Chicago" to "Based in New York, NY" per the brief.
+### 4. Meta Description (`index.html`)
+Update site tagline to: "Storyteller, Listener and Human-Centered Innovator."
 
 ## Files Modified
+- `src/pages/Home.tsx` -- hero copy, CTAs, section titles
+- `src/data/caseStudies.ts` -- Nectar.ai real content and metrics
+- `src/pages/About.tsx` -- bio from Framer site
+- `index.html` -- meta description
 
-- `src/index.css` — warm color tokens, Playfair Display font import, typography scale
-- `tailwind.config.ts` — add font family config for serif/sans
-- `src/components/Navbar.tsx` — update nav links (Work, Stories, About), remove Resume/Contact
-- `src/components/Footer.tsx` — add GitHub link
-- `src/pages/Home.tsx` — warm serif hero, "Available for Work" badge, Stories teaser, location update
-- `src/pages/Work.tsx` — minor styling updates
-- `src/pages/WorkDetail.tsx` — new section structure (Goal, Role, Impact, Process, Challenges, Outcome)
-- `src/data/caseStudies.ts` — add new fields, reorder, update NectarCares role description
-- `src/data/blogPosts.ts` — rename to stories categories, add `category` field
-- `src/components/CaseStudyCard.tsx` — warm styling
-- `src/components/BlogPostCard.tsx` — grid card layout with cover image placeholder
-- `src/App.tsx` — update routes: `/stories`, `/stories/:slug`, `/about`, remove `/resume`, `/contact`
-
-## New Files
-
-- `src/pages/About.tsx` — bio, education, current focus, resume PDF link, contact links
-- `src/pages/Stories.tsx` — replaces Blog with category filter tabs and grid layout
-- `src/pages/StoryPost.tsx` — replaces BlogPost with wider image support
-
-## Removed Pages
-
-- `src/pages/Resume.tsx` — content moves to About
-- `src/pages/Contact.tsx` — content moves to About + Footer
+## What stays the same
+- Warm minimal design system (colors, typography, spacing)
+- Top navigation layout (not switching to Framer's sidebar)
+- All other pages (Work, Stories, WorkDetail)
+- All other case studies remain with placeholder content
 
