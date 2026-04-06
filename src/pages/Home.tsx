@@ -25,16 +25,30 @@ const Home = () => {
             Available for Work
           </span>
         </div>
+        <p className="text-lg text-muted-foreground mb-2">Hey, I'm Krishna.</p>
         <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1]">
-          Product Manager.
+          A 0-1 Product
           <br />
-          Designer. Builder.
+          Manager.
         </h1>
-        <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-          I'm Krishna — a PM who codes, designs, and ships. 3+ years building
-          products in AI, healthcare, and travel. CS from Purdue, MS from
-          Northwestern. Based in New York, NY.
+        <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mb-8">
+          I transform ideas into Market-Ready Solutions by bridging Strategy,
+          Design, and Development to create products people love and use.
         </p>
+        <div className="flex gap-4">
+          <Link
+            to="/work"
+            className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-md text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            View My Work <ArrowRight size={14} />
+          </Link>
+          <Link
+            to="/about"
+            className="inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-md text-sm font-medium text-foreground hover:bg-card transition-colors"
+          >
+            About Me
+          </Link>
+        </div>
       </section>
 
       {/* Featured Work */}
