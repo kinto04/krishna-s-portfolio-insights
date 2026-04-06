@@ -8,8 +8,10 @@ const BlogPostCard = ({ post }: { post: BlogPost }) => {
       to={`/stories/${post.slug}`}
       className="group block"
     >
-      <div className="aspect-[16/10] bg-card rounded-lg mb-4 flex items-center justify-center overflow-hidden">
-        <span className="text-muted-foreground text-sm">Cover Image</span>
+      <div className="aspect-[16/10] bg-card rounded-lg mb-4 overflow-hidden">
+        <div className="w-full h-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+          <span className="text-muted-foreground text-sm">Cover Image</span>
+        </div>
       </div>
       <div className="flex items-center gap-3 mb-2">
         <span className="text-xs uppercase tracking-wider text-primary font-medium">

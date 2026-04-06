@@ -3,6 +3,16 @@ import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { caseStudies } from "@/data/caseStudies";
 import { ArrowLeft } from "lucide-react";
+import { useInView } from "@/hooks/useInView";
+
+const ScrollSection = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+  const { ref, isVisible } = useInView();
+  return (
+    <div ref={ref} className={`scroll-fade-in ${isVisible ? "is-visible" : ""} ${className}`}>
+      {children}
+    </div>
+  );
+};
 
 const WorkDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -37,7 +47,7 @@ const WorkDetail = () => {
         </Link>
 
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-12 animate-fade-in-up">
           <div className="flex flex-wrap gap-2 mb-4">
             {study.tags.map((tag) => (
               <span key={tag} className="text-xs uppercase tracking-wider text-muted-foreground">
@@ -65,48 +75,84 @@ const WorkDetail = () => {
           )}
         </div>
 
+        {/* Cover Image */}
+        {study.coverImage && (
+          <ScrollSection className="mb-16">
+            <div className="rounded-lg overflow-hidden">
+              <img src={study.coverImage} alt={study.title} className="w-full" loading="lazy" />
+            </div>
+          </ScrollSection>
+        )}
+
         {/* Goal */}
-        <section className="mb-16 text-center py-8 border-y border-border">
-          <p className="font-serif text-xl sm:text-2xl text-foreground leading-relaxed max-w-2xl mx-auto">
-            {study.goal}
-          </p>
-        </section>
+        <ScrollSection>
+          <section className="mb-16 text-center py-8 border-y border-border">
+            <p className="font-serif text-xl sm:text-2xl text-foreground leading-relaxed max-w-2xl mx-auto">
+              {study.goal}
+            </p>
+          </section>
+        </ScrollSection>
 
         {/* My Role */}
-        <section className="mb-14">
-          <h2 className="font-serif text-2xl text-foreground mb-6">My Role</h2>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {study.responsibilities.map((resp, i) => (
-              <div key={i} className="bg-card rounded-lg p-5">
-                <p className="text-sm text-muted-foreground leading-relaxed">{resp}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <ScrollSection>
+          <section className="mb-14">
+            <h2 className="font-serif text-2xl text-foreground mb-6">My Role</h2>
+            <div className="grid sm:grid-cols-3 gap-6">
+              {study.responsibilities.map((resp, i) => (
+                <div key={i} className="bg-card rounded-lg p-5">
+                  <p className="text-sm text-muted-foreground leading-relaxed">{resp}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </ScrollSection>
 
         {/* Impact */}
-        <section className="mb-14">
-          <h2 className="font-serif text-2xl text-foreground mb-4">Impact & Deliverables</h2>
-          <p className="text-muted-foreground leading-relaxed">{study.impact}</p>
-        </section>
+        <ScrollSection>
+          <section className="mb-14">
+            <h2 className="font-serif text-2xl text-foreground mb-4">Impact & Deliverables</h2>
+            <p className="text-muted-foreground leading-relaxed">{study.impact}</p>
+          </section>
+        </ScrollSection>
+
+        {/* Detail images grid */}
+        {study.images && study.images.length > 0 && (
+          <ScrollSection>
+            <section className="mb-14">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {study.images.map((img, i) => (
+                  <div key={i} className="rounded-lg overflow-hidden bg-card">
+                    <img src={img} alt={`${study.title} detail ${i + 1}`} className="w-full" loading="lazy" />
+                  </div>
+                ))}
+              </div>
+            </section>
+          </ScrollSection>
+        )}
 
         {/* Process */}
-        <section className="mb-14">
-          <h2 className="font-serif text-2xl text-foreground mb-4">Process</h2>
-          <p className="text-muted-foreground leading-relaxed">{study.process}</p>
-        </section>
+        <ScrollSection>
+          <section className="mb-14">
+            <h2 className="font-serif text-2xl text-foreground mb-4">Process</h2>
+            <p className="text-muted-foreground leading-relaxed">{study.process}</p>
+          </section>
+        </ScrollSection>
 
         {/* Challenges */}
-        <section className="mb-14">
-          <h2 className="font-serif text-2xl text-foreground mb-4">Challenges & Mitigations</h2>
-          <p className="text-muted-foreground leading-relaxed">{study.challenges}</p>
-        </section>
+        <ScrollSection>
+          <section className="mb-14">
+            <h2 className="font-serif text-2xl text-foreground mb-4">Challenges & Mitigations</h2>
+            <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{study.challenges}</p>
+          </section>
+        </ScrollSection>
 
         {/* Outcome */}
-        <section className="mb-14">
-          <h2 className="font-serif text-2xl text-foreground mb-4">Outcome</h2>
-          <p className="text-muted-foreground leading-relaxed">{study.outcome}</p>
-        </section>
+        <ScrollSection>
+          <section className="mb-14">
+            <h2 className="font-serif text-2xl text-foreground mb-4">Outcome</h2>
+            <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{study.outcome}</p>
+          </section>
+        </ScrollSection>
       </article>
     </Layout>
   );

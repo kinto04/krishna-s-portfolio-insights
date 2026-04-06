@@ -7,8 +7,19 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
       to={`/work/${study.slug}`}
       className="group block"
     >
-      <div className="aspect-[16/10] bg-card rounded-lg mb-4 flex items-center justify-center overflow-hidden">
-        <span className="text-muted-foreground text-sm">Cover Image</span>
+      <div className="aspect-[16/10] bg-card rounded-lg mb-4 overflow-hidden">
+        {study.coverImage ? (
+          <img
+            src={study.coverImage}
+            alt={study.title}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-muted-foreground text-sm">Cover Image</span>
+          </div>
+        )}
       </div>
       <h3 className="font-serif text-xl font-semibold text-foreground group-hover:text-primary transition-colors mb-1">
         {study.title}
