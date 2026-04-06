@@ -1,94 +1,41 @@
 
 
-# Bring Personality & Real Images into the Portfolio
+# Audience-Adaptive Hero with URL Query Parameters
 
-## The Problem
+## Approach
 
-The current build is clean but feels generic -- warm cream background, no images, no motion. Your Framer portfolio had a **dark theme**, real project visuals, and Framer's built-in animations that gave it life. We need to bring that energy back while keeping the architecture.
+Use URL query parameters to swap the hero copy based on who's viewing the portfolio. When you share a link like `krishnasuresh.com/?v=startup`, the hero updates to the startup-focused copy. Default (no parameter) shows the startup version.
 
-## What Changes
+Three variants triggered by `?v=` parameter:
 
-### 1. Dark Theme (Default)
+| Parameter | Heading | Subtitle |
+|-----------|---------|----------|
+| `?v=startup` (default) | A 0-1 Product Manager. | I transform ideas into Market-Ready Solutions by bridging Strategy, Design, and Development to create products people love and use. |
+| `?v=product` | I'm a Product Manager | I combine data-driven insights with user-centered design to enhance existing products and develop new features that drive retention and expansion. |
+| `?v=design` | A Design-Driven Product Manager. | I facilitate design thinking processes across teams and stakeholders, creating holistic solutions while communicating the impact of good design decisions. |
 
-Switch the entire site to a dark palette inspired by the Framer version:
+## How it works
 
-- **Background**: `#0A0A0A` (near-black)
-- **Foreground/text**: `#FAFAF9` (warm white)
-- **Muted text**: `#A8A29E` (warm gray)
-- **Card surfaces**: `#171717` (dark gray)
-- **Borders**: `#262626`
-- **Accent**: Keep Terracotta `#C1683A` -- it pops beautifully on dark
+- Read `?v=` from the URL using `useSearchParams` from React Router
+- Map the value to the correct heading + subtitle pair
+- If no parameter or unrecognized value, default to the startup version
+- The rest of the page stays identical -- only the hero text swaps
+- No visible UI for switching -- it's controlled entirely by the link you share
 
-Update CSS variables in `src/index.css`. No light/dark toggle for now -- dark is the identity.
+## Shareable links
 
-### 2. Pull in Real Images from GitHub
-
-Download project cover images and case study detail images from the Framer repo and place them in `public/images/`. Use the raw GitHub URLs as the source.
-
-**Cover images** (for cards on Home + Work pages):
-- Nectar.ai: `vybyrthkmzby5rgc0wcwhoacmai.webp`
-- Northwestern Medicine: `j6g8dxzfacf3uedeafwcupybxu.png`
-- Airy/Clinical Therapists: `ydnsfcgdfyybptikhi77i1h9ay.png`
-- Airline Travel: `b5e5jhjsubr4uyzipwyrnjmywp4.png`
-
-**Nectar.ai detail images** (6 images for the case study page):
-- Overview screenshot, research charts, prototyping flow, RAG architecture, challenges diagram
-
-**Northwestern Medicine detail images** (9 images for the case study page):
-- NM logo, impact diagram, service blueprint, prototypes, focus group photos, research artifacts
-
-Add a `coverImage` and `images` array field to the `CaseStudy` interface.
-
-### 3. Scroll Animations
-
-Add subtle fade-in-up animations that trigger as elements enter the viewport. Use Intersection Observer (no library needed):
-
-- Hero text staggers in on load
-- Project cards fade up on scroll
-- Case study sections animate in sequence
-- "My Stack" tools slide in
-
-Create a reusable `useInView` hook and apply `animate-fade-in` classes.
-
-### 4. Hover Effects on Cards
-
-- Project cards: slight scale-up + shadow lift on hover
-- Image zoom effect inside card frame on hover
-- Smooth transition (200-300ms)
-
-### 5. "My Stack" Section on Homepage
-
-The Framer site had a tools/stack section showing Figma, Lovable, Perplexity, Miro, Google Docs. Add this between "Selected Projects" and "Stories" on the homepage as a horizontal scroll or grid of small icon cards.
-
-### 6. Northwestern Medicine Case Study -- Real Content
-
-Replace placeholder text with the full content extracted from the Framer repo:
-- Goal: "Make it easier for clinicians to diagnose and treat pediatric patients with potential Disorders of Gut-Brain Interaction (DGBI)"
-- Role: Design Lead, Product Manager
-- Tools: Figma, Miro, Lovable, Google Sheets
-- Year: 2025
-- Full process details (9 focus group participants, 1 in-context observation, 4 user interviews)
-- Challenges and mitigations
-- Learnings and next steps
+You'd send different links depending on who you're targeting:
+- `yoursite.com` or `yoursite.com/?v=startup` -- early-stage companies
+- `yoursite.com/?v=product` -- established product teams
+- `yoursite.com/?v=design` -- design-focused roles
 
 ## Files Modified
 
-- `src/index.css` -- dark color tokens
-- `src/data/caseStudies.ts` -- add `coverImage`, `images` fields; update NW Medicine content
-- `src/components/CaseStudyCard.tsx` -- render cover image, hover effects
-- `src/components/BlogPostCard.tsx` -- hover effects
-- `src/pages/Home.tsx` -- scroll animations, "My Stack" section, staggered hero
-- `src/pages/WorkDetail.tsx` -- render inline images in process/challenges sections
-- `src/pages/Work.tsx` -- card animations
-
-## New Files
-
-- `src/hooks/useInView.ts` -- Intersection Observer hook for scroll animations
-- `public/images/` -- downloaded project images (covers + detail)
+- `src/pages/Home.tsx` -- add `useSearchParams`, define variant map, swap hero heading + subtitle based on query param
 
 ## Technical Notes
 
-- Images will be downloaded from `https://raw.githubusercontent.com/kinto04/Framer-Portfolio/main/images/` during implementation and placed in `public/images/`
-- Scroll animations use CSS + Intersection Observer -- no external animation library
-- Dark theme is set at the CSS variable level so all existing components automatically adapt
+- Single file change, no new dependencies
+- Query params persist through navigation if needed
+- Clean URLs still work (defaults to startup copy)
 
