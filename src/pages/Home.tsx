@@ -63,14 +63,11 @@ const Home = () => {
           </div>
         </div>
         <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
-        <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2">
-          A 0-1 Product
-          <br />
-          Manager.
+        <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2 whitespace-pre-line">
+          {variant.heading}
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mb-8 animate-fade-in-up-delay-3">
-          I transform ideas into Market-Ready Solutions by bridging Strategy,
-          Design, and Development to create products people love and use.
+          {variant.subtitle}
         </p>
         <div className="flex gap-4 animate-fade-in-up-delay-4">
           <Link
