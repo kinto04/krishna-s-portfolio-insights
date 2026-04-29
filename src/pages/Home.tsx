@@ -16,8 +16,8 @@ const heroVariants: Record<string, { heading: string; subtitle: string }> = {
     subtitle: "I combine data-driven insights with user-centered design to enhance existing products and develop new features that drive retention and expansion.",
   },
   design: {
-    heading: "A Design-Driven\nProduct Manager.",
-    subtitle: "I facilitate design thinking processes across teams and stakeholders, creating holistic solutions while communicating the impact of good design decisions.",
+    heading: "I design human\nexperiences.",
+    subtitle: "I shape end-to-end experiences across interaction, service, and product design — translating research into flows, prototypes, and systems that teams can actually ship.",
   },
 };
 
