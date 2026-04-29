@@ -2,9 +2,7 @@ import { useEffect, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
 import CaseStudyCard from "@/components/CaseStudyCard";
-import BlogPostCard from "@/components/BlogPostCard";
 import { caseStudies } from "@/data/caseStudies";
-import { blogPosts } from "@/data/blogPosts";
 import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
@@ -22,10 +20,6 @@ const heroVariants: Record<string, { heading: string; subtitle: string }> = {
     subtitle: "I facilitate design thinking processes across teams and stakeholders, creating holistic solutions while communicating the impact of good design decisions.",
   },
 };
-
-const stackTools = [
-  "Figma", "Miro", "Lovable", "Perplexity", "Google Docs", "Python", "React", "Node.js"
-];
 
 const ScrollSection = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const { ref, isVisible } = useInView();
@@ -48,7 +42,6 @@ const Home = () => {
   }, []);
 
   const featuredStudies = caseStudies.filter((s) => s.featured);
-  const recentPosts = blogPosts.slice(0, 2);
 
   return (
     <Layout>
@@ -102,45 +95,6 @@ const Home = () => {
           {featuredStudies.map((study, i) => (
             <ScrollSection key={study.slug} className={`transition-all delay-[${i * 100}ms]`}>
               <CaseStudyCard study={study} />
-            </ScrollSection>
-          ))}
-        </div>
-      </section>
-
-      {/* My Stack */}
-      <section className="max-w-5xl mx-auto px-6 pb-24">
-        <ScrollSection>
-          <h2 className="font-serif text-2xl text-foreground mb-8">My Stack</h2>
-          <div className="flex flex-wrap gap-3">
-            {stackTools.map((tool) => (
-              <span
-                key={tool}
-                className="px-4 py-2 rounded-md bg-card text-sm text-foreground border border-border hover:border-primary/50 transition-colors"
-              >
-                {tool}
-              </span>
-            ))}
-          </div>
-        </ScrollSection>
-      </section>
-
-      {/* Stories Teaser */}
-      <section className="max-w-5xl mx-auto px-6 pb-24">
-        <ScrollSection>
-          <div className="flex items-center justify-between mb-10">
-            <h2 className="font-serif text-2xl text-foreground">Stories</h2>
-            <Link
-              to="/stories"
-              className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              All stories <ArrowRight size={14} />
-            </Link>
-          </div>
-        </ScrollSection>
-        <div className="grid md:grid-cols-2 gap-8">
-          {recentPosts.map((post, i) => (
-            <ScrollSection key={post.slug} className={`transition-all delay-[${i * 100}ms]`}>
-              <BlogPostCard post={post} />
             </ScrollSection>
           ))}
         </div>
