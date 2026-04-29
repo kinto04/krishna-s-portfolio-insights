@@ -33,7 +33,7 @@ const ScrollSection = ({ children, className = "" }: { children: React.ReactNode
 const Home = () => {
   const [searchParams] = useSearchParams();
   const variant = useMemo(() => {
-    const v = searchParams.get("v") || "startup";
+    const v = searchParams.get("v") || "design";
     return heroVariants[v] || heroVariants.startup;
   }, [searchParams]);
 

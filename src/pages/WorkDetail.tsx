@@ -2,14 +2,19 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { caseStudies } from "@/data/caseStudies";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
-const ScrollSection = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+const SlideSection = ({ image, caption }: { image: string; caption?: string }) => {
   const { ref, isVisible } = useInView();
   return (
-    <div ref={ref} className={`scroll-fade-in ${isVisible ? "is-visible" : ""} ${className}`}>
-      {children}
+    <div ref={ref} className={`scroll-fade-in ${isVisible ? "is-visible" : ""} mb-4`}>
+      <div className="rounded-lg overflow-hidden bg-card">
+        <img src={image} alt={caption ?? ""} className="w-full" loading="lazy" />
+      </div>
+      {caption && (
+        <p className="text-xs text-muted-foreground mt-2 px-1 leading-relaxed">{caption}</p>
+      )}
     </div>
   );
 };
@@ -38,7 +43,8 @@ const WorkDetail = () => {
 
   return (
     <Layout>
-      <article className="max-w-3xl mx-auto px-6 pt-24 pb-24">
+      <article className="max-w-4xl mx-auto px-6 pt-20 pb-24">
+        {/* Back link */}
         <Link
           to="/work"
           className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-10"
@@ -47,7 +53,7 @@ const WorkDetail = () => {
         </Link>
 
         {/* Header */}
-        <div className="mb-12 animate-fade-in-up">
+        <div className="mb-10 animate-fade-in-up">
           <div className="flex flex-wrap gap-2 mb-4">
             {study.tags.map((tag) => (
               <span key={tag} className="text-xs uppercase tracking-wider text-muted-foreground">
@@ -59,100 +65,38 @@ const WorkDetail = () => {
             {study.title}
           </h1>
           <p className="text-lg text-muted-foreground mb-6">{study.subtitle}</p>
-          <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-muted-foreground border-b border-border pb-8">
+          <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-muted-foreground border-b border-border pb-6 mb-6">
             <span><strong className="text-foreground">Role:</strong> {study.role}</span>
             <span><strong className="text-foreground">Year:</strong> {study.year}</span>
-            <span><strong className="text-foreground">Context:</strong> {study.duration}</span>
+            <span><strong className="text-foreground">Context:</strong> {study.context}</span>
           </div>
-          {study.tools.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-4">
-              {study.tools.map((tool) => (
-                <span key={tool} className="text-xs px-2 py-1 rounded bg-card text-muted-foreground">
-                  {tool}
-                </span>
-              ))}
-            </div>
+          <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-6">
+            {study.summary}
+          </p>
+          {study.liveUrl && (
+            <a
+              href={study.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-foreground border border-border rounded-full px-4 py-2 hover:bg-card transition-colors"
+            >
+              View live <ExternalLink size={13} />
+            </a>
           )}
         </div>
 
-        {/* Cover Image */}
-        {study.coverImage && (
-          <ScrollSection className="mb-16">
-            <div className="rounded-lg overflow-hidden">
-              <img src={study.coverImage} alt={study.title} className="w-full" loading="lazy" />
-            </div>
-          </ScrollSection>
+        {/* Slides */}
+        {study.slides && study.slides.length > 0 ? (
+          <div className="mt-10">
+            {study.slides.map((slide, i) => (
+              <SlideSection key={i} image={slide.image} caption={slide.caption} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-10 rounded-lg border border-dashed border-border p-16 text-center">
+            <p className="text-muted-foreground text-sm">Case study assets coming soon.</p>
+          </div>
         )}
-
-        {/* Goal */}
-        <ScrollSection>
-          <section className="mb-16 text-center py-8 border-y border-border">
-            <p className="font-serif text-xl sm:text-2xl text-foreground leading-relaxed max-w-2xl mx-auto">
-              {study.goal}
-            </p>
-          </section>
-        </ScrollSection>
-
-        {/* My Role */}
-        <ScrollSection>
-          <section className="mb-14">
-            <h2 className="font-serif text-2xl text-foreground mb-6">My Role</h2>
-            <div className="grid sm:grid-cols-3 gap-6">
-              {study.responsibilities.map((resp, i) => (
-                <div key={i} className="bg-card rounded-lg p-5">
-                  <p className="text-sm text-muted-foreground leading-relaxed">{resp}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        </ScrollSection>
-
-        {/* Impact */}
-        <ScrollSection>
-          <section className="mb-14">
-            <h2 className="font-serif text-2xl text-foreground mb-4">Impact & Deliverables</h2>
-            <p className="text-muted-foreground leading-relaxed">{study.impact}</p>
-          </section>
-        </ScrollSection>
-
-        {/* Detail images grid */}
-        {study.images && study.images.length > 0 && (
-          <ScrollSection>
-            <section className="mb-14">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {study.images.map((img, i) => (
-                  <div key={i} className="rounded-lg overflow-hidden bg-card">
-                    <img src={img} alt={`${study.title} detail ${i + 1}`} className="w-full" loading="lazy" />
-                  </div>
-                ))}
-              </div>
-            </section>
-          </ScrollSection>
-        )}
-
-        {/* Process */}
-        <ScrollSection>
-          <section className="mb-14">
-            <h2 className="font-serif text-2xl text-foreground mb-4">Process</h2>
-            <p className="text-muted-foreground leading-relaxed">{study.process}</p>
-          </section>
-        </ScrollSection>
-
-        {/* Challenges */}
-        <ScrollSection>
-          <section className="mb-14">
-            <h2 className="font-serif text-2xl text-foreground mb-4">Challenges & Mitigations</h2>
-            <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{study.challenges}</p>
-          </section>
-        </ScrollSection>
-
-        {/* Outcome */}
-        <ScrollSection>
-          <section className="mb-14">
-            <h2 className="font-serif text-2xl text-foreground mb-4">Outcome</h2>
-            <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{study.outcome}</p>
-          </section>
-        </ScrollSection>
       </article>
     </Layout>
   );
