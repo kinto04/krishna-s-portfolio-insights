@@ -1,117 +1,106 @@
-## Case Study Audit — Jointly (and a reusable template for all 3)
+# Jointly: pull slide content into the page
 
-### What's working
-- Strong content: clear problem, real research, named archetypes, shipped product, early signal.
-- Good `sectionLabel` rhythm gives implicit chapters: Research → Users → Opportunity → Product → Early Signal.
-- Captions are concise and outcome-oriented.
+Right now slides do the talking and the page narrates around them. We'll flip that: the page becomes the narrative (typography, pull-quotes, structured blocks) and slide images become supporting visuals — used selectively, often cropped to the part that matters.
 
-### What's not working
-1. **It reads like a deck dump.** Every slide is the same width, same treatment, same vertical rhythm. There's no hierarchy — the hero image, a research chart, and a product screen all get equal visual weight.
-2. **No narrative scaffolding.** A reader has to consume all 15 slides linearly to understand the project. There's no TL;DR, no chapter index, no way to skim.
-3. **Chapters aren't real chapters.** `sectionLabel` is a tiny dot + text. It doesn't break the page or set up what's coming. Sections like "The Research" and "The Product" should feel like turning a page.
-4. **Captions are buried.** They're 12px muted text under each image, easy to miss. Often the caption is the actual insight, the image is the supporting evidence.
-5. **Header metadata gets lost.** Role / Year / Context sit in a single line above a wall of summary text. No visual anchor.
-6. **No closing.** The case study just ends on the last image. No reflection, no "what I learned", no link to the next project.
-7. **Mobile**: slides at full width on phone are tiny; UI screenshots become unreadable.
+Scope: only the Jointly case study. We'll build a small set of reusable narrative blocks so we can apply the same treatment to Nectar.ai and Airy later.
 
-### Proposed redesign — a 4-part narrative structure
+## Narrative restructure (what each chapter becomes)
 
-Rebuild `WorkDetail.tsx` around four named regions, applied to all case studies:
+**Hero / Opening**
+- Keep cover hero as-is.
+- Add an opening statement block right after the meta strip:
+  > "Group trips are supposed to bring people together. Jointly. makes sure the planning does too." (from slides 2 + 22)
+- Replaces slides 1, 2, 22 as visuals.
 
-```text
-┌─────────────────────────────────────────────┐
-│ 1. HERO         large title + cover image   │
-│                 + at-a-glance meta sidebar  │
-├─────────────────────────────────────────────┤
-│ 2. OVERVIEW     TL;DR card with: context,   │
-│                 my role, outcome, chapter   │
-│                 jump links                  │
-├─────────────────────────────────────────────┤
-│ 3. CHAPTERS     each sectionLabel becomes   │
-│                 a real chapter with         │
-│                 number, title, and intro    │
-│                 paragraph                   │
-├─────────────────────────────────────────────┤
-│ 4. CLOSING      reflection + next project   │
-└─────────────────────────────────────────────┘
+**01 The Research — "Understanding the problem"**
+- Lead paragraph: "I wanted to understand what actually happens between inspiration and booking."
+- Three-column research-method block (icon + label + one line each), built from slide 4:
+  - User interviews — deep-dives with planners, contributors, easy-going members
+  - Secondary & market research — group dynamics, travel behavior, competitive landscape
+  - Travel community — 60k+ views on a single post, unfiltered stories
+- Featured pull-quote card (Reddit-style) from slide 3:
+  > "As a planning person I stopped planning group trips years ago… I'd rather go alone than compromise." — r/travel
+- "Three frustrations, every time" — rendered as three numbered native cards (01/02/03) from slide 7 (Planner's Burden, Money as the Friendship Minefield, Death by Group Chat). Slide 7 image is dropped; we render this in HTML. Keep small inline quote: "'What do you guys want to do?' is pretty much a trap."
+
+**02 The Users — Behavioral archetypes**
+- Three-card grid built from slide 9, native typography:
+  - Patrick / The Planner — "I end up planning the whole thing, and somehow I'm still the one who gets blamed."
+  - Sam / The Supportive — "I'd love to help more but I don't want to step on anyone's toes."
+  - Emma / The Easy-going — "I'm honestly fine with anything — just tell me where to be."
+- Each card: archetype number, name, one-line role, pull-quote.
+- Slide 9 image dropped (replaced by native cards).
+
+**03 The Opportunity — Market landscape**
+- Short lead: "Every existing tool is either built for one person, or built without intelligence."
+- Keep slide 10 (the 2x2 matrix) — it's a diagram, works as image. Render it cleanly (max-width, centered, with a one-line caption pinning Jointly in the smart + group-native quadrant).
+
+**04 The Product**
+- Lead block: "Jointly. — the collaborative decision-making layer between inspiration and booking." Large serif statement.
+- "Four features that turn group chaos into a plan" — replace slide 27 (overview) with a 2x2 native feature grid (Capture Ideas / Smart Budget / Curated Itinerary / Map View), each with one-line description and a small thumbnail crop.
+- Then four feature deep-dives, each as a two-column row (screen on one side, narrative on the other):
+  1. **Trip creation** (slide 12) — "Set a destination, pick interests, indicate budget priority. Two steps."
+  2. **Capture ideas in natural language** (slide 14) — "Describe your idea. Jointly parses it and surfaces structured suggestions."
+  3. **Curated itinerary** (slide 18) — "Generated from the group's voted ideas, day by day."
+  4. **Smart budgeting** (slide 19) — "The tool handles the awkward money conversation, not the users."
+- Each row: short headline + one-sentence body pulled from slide copy. No more long captions under images.
+
+**05 Early Signal**
+- Native stat block from slide 21:
+  - Big number: **12** signups · first week · no paid acquisition
+  - Three small bullets: "Value lands immediately · Suggestions feature is a hit · Budget flexibility resonates"
+- Drop slide 21 image; keep a small thumbnail of planjointly.com or link out.
+
+**Closing**
+- Existing reflection block stays.
+
+## New / changed components
+
+- `NarrativeStatement` — large serif pull statement, used for opening and product lead.
+- `MethodGrid` — 3-col icon+label+line block (Research methods).
+- `QuoteCard` — featured pull-quote with attribution (Reddit quote).
+- `NumberedList` — 01/02/03 cards (Three frustrations).
+- `ArchetypeGrid` — 3-col archetype cards with quote.
+- `FeatureGrid` — 2x2 product overview tiles with thumb + line.
+- `FeatureRow` — image + headline + one-liner (alternating sides). Replaces the current `SlideBlock` two-col layout for product chapters.
+- `StatBlock` — big number + supporting bullets.
+
+These live in `src/components/casestudy/` so Nectar and Airy can adopt them later.
+
+## Data model change
+
+The current `Slide[]` model is too thin to express this. Add a discriminated union `Block` to `CaseStudy.blocks` (optional, additive — `slides` stays for studies we haven't migrated):
+
+```
+type Block =
+  | { kind: "statement"; text: string }
+  | { kind: "methods"; items: { label: string; line: string }[] }
+  | { kind: "quote"; text: string; source: string }
+  | { kind: "numberedList"; title?: string; items: { title: string; body: string }[] }
+  | { kind: "archetypes"; items: { name: string; role: string; line: string; quote: string }[] }
+  | { kind: "image"; src: string; caption?: string; fullWidth?: boolean }
+  | { kind: "featureGrid"; intro?: string; items: { title: string; line: string; thumb: string }[] }
+  | { kind: "featureRow"; image: string; title: string; body: string }
+  | { kind: "stat"; value: string; label: string; bullets?: string[] }
+  | { kind: "chapter"; id: string; number: string; label: string; intro?: string };
 ```
 
-#### 1. Hero (replaces current header)
-- Full-bleed cover image with subtle dark gradient overlay, title + subtitle layered on top OR (alt) split layout: title on left, cover on right.
-- Below hero: a clean meta strip — Role / Year / Context / Live link — as labeled columns, not crammed in one row.
+`WorkDetail.tsx` renders `study.blocks` if present, else falls back to today's chapter/slide rendering. Jointly gets migrated to `blocks`; Nectar and Airy stay on `slides` for now.
 
-#### 2. Overview block
-- A bordered card right after the hero containing:
-  - **Context** (1 sentence — what + where)
-  - **My role** (bulleted: 3 things I owned)
-  - **Outcome** (1 sentence — what shipped, what changed)
-  - **Jump to chapter** chips that scroll-to each section
-- This is the 30-second version. Recruiters who don't read the rest still get the story.
+## Visual rules
 
-#### 3. Chapter sections (the real upgrade)
-Group consecutive slides by `sectionLabel`. Each chapter renders as:
-- A **chapter header**: large number ("01"), serif chapter title ("The Research"), and a short intro paragraph (new optional field `intro` on the section).
-- The slides inside the chapter render in a **mixed layout** rather than uniform stack:
-  - Slides with no caption → full-width image, minimal margin (visual beat).
-  - Slides with a caption → **two-column**: image on one side (60%), caption + (optional) callout on the other (40%). Caption gets promoted from 12px muted to ~16px foreground with serif accent. Alternates side per slide for rhythm.
-  - First slide of each chapter is always full-width to establish the chapter visually.
-- Add a thin progress indicator down the left edge (sticky) showing chapter position.
+- Native blocks share the same horizontal rhythm as image rows (max-w-5xl, generous vertical spacing).
+- Pull-quotes use Playfair, large, with a thin left rule in `--accent`.
+- Numbered lists / archetypes: tabular-num serif numerals, same treatment as chapter numbers — keeps the page visually consistent.
+- Images shrink in role: most are 60% column width inside a `FeatureRow`; only the cover and the matrix (slide 10) go wide.
+- Slides 1, 2, 7, 9, 22, 27 are removed as images (their content is now native).
 
-#### 4. Closing block
-- A "What I took away" card (1-2 sentences per study, new optional `reflection` field).
-- "Next case study →" card with cover thumbnail of the next project in the array (loops).
+## Files touched
 
-### Schema additions (`caseStudies.ts`)
+- `src/data/caseStudies.ts` — add `Block` types; add `blocks` array to Jointly.
+- `src/pages/WorkDetail.tsx` — render `blocks` when present.
+- `src/components/casestudy/*` — new block components listed above.
+- `src/index.css` — minor: pull-quote rule, numbered-list numeral style if not already covered.
 
-Add optional fields, fully backward compatible:
+## Out of scope
 
-```ts
-interface CaseStudy {
-  // existing fields...
-  overview?: {
-    context: string;
-    roleDetail: string[];   // 3 bullets
-    outcome: string;
-  };
-  reflection?: string;
-}
-
-interface Slide {
-  image: string;
-  caption?: string;
-  sectionLabel?: string;
-  sectionIntro?: string;    // NEW: intro paragraph for the chapter
-  fullWidth?: boolean;      // NEW: force full-bleed treatment
-}
-```
-
-I'll populate these for **Jointly** (the audit subject) and leave the other two studies rendering with sensible defaults — you can fill them in when ready.
-
-### Mobile behavior
-- Two-column slide+caption collapses to stacked (image, then caption below) under `md`.
-- Chapter numbers shrink and move inline with the chapter title.
-- Hero overlay simplifies to a stacked title above cover.
-- Sticky chapter rail hidden under `lg`.
-
-### Files modified
-- `src/pages/WorkDetail.tsx` — full rewrite around the 4-part structure
-- `src/data/caseStudies.ts` — add optional schema fields, populate Jointly's `overview` + `reflection` + chapter `sectionIntro`s
-- `src/components/CaseStudyChapter.tsx` (NEW) — chapter renderer with mixed-layout slide grouping
-- `src/components/CaseStudyHero.tsx` (NEW) — hero + meta strip
-- `src/components/CaseStudyOverview.tsx` (NEW) — TL;DR card with chapter jumps
-- `src/components/CaseStudyClosing.tsx` (NEW) — reflection + next-project CTA
-
-### What I'm NOT doing (worth flagging)
-- Not adding a sticky in-page TOC sidebar — overkill for 4-6 chapters; jump chips in the overview are enough.
-- Not adding scroll-progress bar at top — already mentioned in earlier polish list, holding off until you say go.
-- Not changing the case study **content** (no new copy beyond the 3 new fields for Jointly, which I'll draft from existing material).
-
-### Drafted Jointly content (so you can sanity-check before I write it)
-
-- **overview.context**: "Master's thesis at Northwestern EDI. 9 months, solo founder."
-- **overview.roleDetail**: ["End-to-end product strategy and research (60+ users, 21 interviews)", "UX and visual design across 40+ screens", "Built and launched the live product at planjointly.com"]
-- **overview.outcome**: "Live in beta. 12 signups in week one with no paid acquisition."
-- **reflection**: "Group decisions aren't a planning problem — they're a social one. The most useful thing the product does is take the awkward conversations off the group's plate."
-- Chapter intros (1 sentence each) for Research, Users, Opportunity, Product, Early Signal.
-
-Approve and I'll ship it. If you want me to wait on populating Jointly's new fields and just ship the structure with placeholders, say so.
+- Nectar.ai and Airy stay on the existing slide layout. Once you're happy with Jointly, we apply the same treatment to them in a follow-up.

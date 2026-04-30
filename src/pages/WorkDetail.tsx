@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import { caseStudies, type CaseStudy, type Slide } from "@/data/caseStudies";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { RenderBlock, getChapterAnchors } from "@/components/casestudy/Blocks";
 
 const FadeIn = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const { ref, isVisible } = useInView();
@@ -157,7 +158,9 @@ const MetaCol = ({ label, value }: { label: string; value: string }) => (
   </div>
 );
 
-const Overview = ({ study, chapters }: { study: CaseStudy; chapters: Chapter[] }) => {
+type Anchor = { id: string; label: string; number?: string };
+
+const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) => {
   if (!study.overview) {
     // Fallback: show summary as overview when overview field absent
     return (
@@ -168,7 +171,7 @@ const Overview = ({ study, chapters }: { study: CaseStudy; chapters: Chapter[] }
       </FadeIn>
     );
   }
-  const labeled = chapters.filter((c) => c.label);
+  const labeled = anchors;
   return (
     <FadeIn className="mt-12">
       <div className="border border-border rounded-xl p-6 sm:p-8 bg-card/30">
@@ -202,7 +205,7 @@ const Overview = ({ study, chapters }: { study: CaseStudy; chapters: Chapter[] }
                   href={`#${c.id}`}
                   className="text-xs text-foreground border border-border/60 rounded-full px-3 py-1.5 hover:border-primary hover:text-primary transition-colors"
                 >
-                  {String(i + 1).padStart(2, "0")} · {c.label}
+                  {c.number ?? String(i + 1).padStart(2, "0")} · {c.label}
                 </a>
               ))}
             </div>
@@ -259,6 +262,18 @@ const WorkDetail = () => {
   }, [study]);
 
   const chapters = useMemo(() => (study?.slides ? groupIntoChapters(study.slides) : []), [study]);
+  const blockAnchors = useMemo<Anchor[]>(
+    () => (study?.blocks ? getChapterAnchors(study.blocks) : []),
+    [study]
+  );
+  const slideAnchors = useMemo<Anchor[]>(
+    () =>
+      chapters
+        .filter((c) => c.label)
+        .map((c, i) => ({ id: c.id, label: c.label!, number: String(i + 1).padStart(2, "0") })),
+    [chapters]
+  );
+  const anchors = study?.blocks ? blockAnchors : slideAnchors;
 
   if (!study) {
     return (
@@ -285,7 +300,7 @@ const WorkDetail = () => {
 
         <Hero study={study} />
 
-        <Overview study={study} chapters={chapters} />
+        <Overview study={study} anchors={anchors} />
 
         {/* Native metrics */}
         {study.metrics && study.metrics.length > 0 && (
@@ -302,11 +317,23 @@ const WorkDetail = () => {
           </FadeIn>
         )}
 
-        {/* Chapters */}
-        {chapters.length > 0 ? (
+        {/* Body: blocks (preferred) or chapters fallback */}
+        {study.blocks && study.blocks.length > 0 ? (
+          <div className="mt-8">
+            {study.blocks.map((block, i) => {
+              if (block.kind === "chapter") {
+                return (
+                  <section key={block.id} id={block.id} className="scroll-mt-24">
+                    <RenderBlock block={block} index={i} />
+                  </section>
+                );
+              }
+              return <RenderBlock key={i} block={block} index={i} />;
+            })}
+          </div>
+        ) : chapters.length > 0 ? (
           <div className="mt-8">
             {chapters.map((chapter, i) => {
-              // Number only labeled chapters; intro chapter (no label) gets number 0/skipped
               const labeledBefore = chapters.slice(0, i).filter((c) => c.label).length;
               const number = chapter.label ? labeledBefore + 1 : 0;
               return <ChapterBlock key={chapter.id + i} chapter={chapter} number={number} />;
