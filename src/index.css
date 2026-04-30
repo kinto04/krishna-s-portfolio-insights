@@ -127,8 +127,15 @@
     inset: 0;
     pointer-events: none;
     background:
-      radial-gradient(60% 50% at 15% 10%, hsl(var(--primary) / 0.18) 0%, transparent 60%),
-      radial-gradient(40% 40% at 85% 30%, hsl(var(--primary) / 0.06) 0%, transparent 70%);
+      radial-gradient(80% 60% at 50% 0%, hsl(0 0% 100% / 0.04) 0%, transparent 70%),
+      linear-gradient(180deg, hsl(0 0% 100% / 0.02) 0%, transparent 40%);
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .hero-noise {
