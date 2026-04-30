@@ -300,7 +300,7 @@ const WorkDetail = () => {
 
         <Hero study={study} />
 
-        <Overview study={study} chapters={chapters} />
+        <Overview study={study} anchors={anchors} />
 
         {/* Native metrics */}
         {study.metrics && study.metrics.length > 0 && (
@@ -317,11 +317,23 @@ const WorkDetail = () => {
           </FadeIn>
         )}
 
-        {/* Chapters */}
-        {chapters.length > 0 ? (
+        {/* Body: blocks (preferred) or chapters fallback */}
+        {study.blocks && study.blocks.length > 0 ? (
+          <div className="mt-8">
+            {study.blocks.map((block, i) => {
+              if (block.kind === "chapter") {
+                return (
+                  <section key={block.id} id={block.id} className="scroll-mt-24">
+                    <RenderBlock block={block} index={i} />
+                  </section>
+                );
+              }
+              return <RenderBlock key={i} block={block} index={i} />;
+            })}
+          </div>
+        ) : chapters.length > 0 ? (
           <div className="mt-8">
             {chapters.map((chapter, i) => {
-              // Number only labeled chapters; intro chapter (no label) gets number 0/skipped
               const labeledBefore = chapters.slice(0, i).filter((c) => c.label).length;
               const number = chapter.label ? labeledBefore + 1 : 0;
               return <ChapterBlock key={chapter.id + i} chapter={chapter} number={number} />;
