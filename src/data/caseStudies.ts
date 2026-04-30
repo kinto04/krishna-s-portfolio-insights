@@ -8,6 +8,14 @@ export interface Slide {
   image: string;
   caption?: string;
   sectionLabel?: string; // renders a labeled divider above this slide
+  sectionIntro?: string; // optional intro paragraph for the chapter (paired with sectionLabel)
+  fullWidth?: boolean;   // force full-bleed treatment even when caption present
+}
+
+export interface Overview {
+  context: string;
+  roleDetail: string[];
+  outcome: string;
 }
 
 export interface CaseStudy {
@@ -24,6 +32,8 @@ export interface CaseStudy {
   liveUrl?: string;
   metrics?: Metric[];
   slides?: Slide[];
+  overview?: Overview;
+  reflection?: string;
 }
 
 export const caseStudies: CaseStudy[] = [
