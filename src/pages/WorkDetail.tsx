@@ -262,6 +262,18 @@ const WorkDetail = () => {
   }, [study]);
 
   const chapters = useMemo(() => (study?.slides ? groupIntoChapters(study.slides) : []), [study]);
+  const blockAnchors = useMemo<Anchor[]>(
+    () => (study?.blocks ? getChapterAnchors(study.blocks) : []),
+    [study]
+  );
+  const slideAnchors = useMemo<Anchor[]>(
+    () =>
+      chapters
+        .filter((c) => c.label)
+        .map((c, i) => ({ id: c.id, label: c.label!, number: String(i + 1).padStart(2, "0") })),
+    [chapters]
+  );
+  const anchors = study?.blocks ? blockAnchors : slideAnchors;
 
   if (!study) {
     return (
