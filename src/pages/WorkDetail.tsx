@@ -108,9 +108,9 @@ const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number })
 
 const Hero = ({ study }: { study: CaseStudy }) => (
   <header className="relative">
-    {study.coverImage && (
+    {(study.heroImage || study.coverImage) && (
       <div className="relative aspect-[21/9] rounded-2xl overflow-hidden bg-card mb-8">
-        <img src={study.coverImage} alt={study.title} className="w-full h-full object-cover" />
+        <img src={study.heroImage || study.coverImage} alt={study.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
       </div>
     )}
@@ -175,27 +175,24 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
   return (
     <FadeIn className="mt-14">
       <div className="border-t border-border pt-10">
-        <div className="grid md:grid-cols-3 gap-10 md:gap-14 mb-10">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-12 mb-8">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-4">Context</p>
-            <p className="text-sm text-foreground/90 leading-relaxed">{study.overview.context}</p>
+            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-2.5">Context</p>
+            <p className="text-sm text-foreground/90 leading-snug">{study.overview.context}</p>
           </div>
-          <div className="md:border-l md:border-border md:pl-14">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-4">My Role</p>
-            <ul className="space-y-2.5">
+          <div className="md:border-l md:border-border md:pl-12">
+            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-2.5">My Role</p>
+            <ul className="space-y-1.5">
               {study.overview.roleDetail.map((r) => (
-                <li
-                  key={r}
-                  className="text-sm text-foreground/90 leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-1.5 before:h-px before:bg-primary/60"
-                >
+                <li key={r} className="text-sm text-foreground/90 leading-snug">
                   {r}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="md:border-l md:border-border md:pl-14">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-4">Outcome</p>
-            <p className="text-sm text-foreground/90 leading-relaxed">{study.overview.outcome}</p>
+          <div className="md:border-l md:border-border md:pl-12">
+            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-2.5">Outcome</p>
+            <p className="text-sm text-foreground/90 leading-snug">{study.overview.outcome}</p>
           </div>
         </div>
         {labeled.length > 0 && (
