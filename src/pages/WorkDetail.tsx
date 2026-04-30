@@ -111,7 +111,6 @@ const Hero = ({ study }: { study: CaseStudy }) => (
     {(study.heroImage || study.coverImage) && (
       <div className="relative aspect-[21/9] rounded-2xl overflow-hidden bg-card mb-8">
         <img src={study.heroImage || study.coverImage} alt={study.title} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
       </div>
     )}
     <div className="animate-fade-in-up max-w-3xl">
