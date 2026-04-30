@@ -164,7 +164,7 @@ export const caseStudies: CaseStudy[] = [
         sectionIntro:
           "Built, launched, and learning in public.",
         image: "/images/jointly/21.png",
-        caption: "12 early signups in the first week at planjointly.com — no paid acquisition, just the right message.",
+        caption: "40+ early signups during initial testing at planjointly.com — no paid acquisition, just the right message.",
       },
       { image: "/images/jointly/22.png", fullWidth: true },
     ],
