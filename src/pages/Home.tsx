@@ -65,19 +65,20 @@ const Home = () => {
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-8 animate-fade-in-up-delay-3">
             {variant.subtitle}
           </p>
-        <div className="flex gap-4 animate-fade-in-up-delay-4">
-          <Link
-            to="/work"
-            className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-md text-sm font-medium hover:opacity-90 transition-opacity"
-          >
-            View My Work <ArrowRight size={14} />
-          </Link>
-          <Link
-            to="/about"
-            className="inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-md text-sm font-medium text-foreground hover:bg-card transition-colors"
-          >
-            About Me
-          </Link>
+          <div className="flex gap-4 animate-fade-in-up-delay-4">
+            <Link
+              to="/work"
+              className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-md text-sm font-medium hover:opacity-90 transition-opacity"
+            >
+              View My Work <ArrowRight size={14} />
+            </Link>
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-md text-sm font-medium text-foreground hover:bg-card transition-colors"
+            >
+              About Me
+            </Link>
+          </div>
         </div>
       </section>
 
