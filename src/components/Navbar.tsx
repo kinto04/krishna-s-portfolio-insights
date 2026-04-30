@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
@@ -9,10 +9,33 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  useEffect(() => {
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 8);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled || isOpen
+          ? "bg-background/75 backdrop-blur-md border-b border-border"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="text-lg font-sans font-semibold tracking-tight text-foreground">
           Krishna Suresh
