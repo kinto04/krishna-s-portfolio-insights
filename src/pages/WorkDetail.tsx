@@ -158,7 +158,9 @@ const MetaCol = ({ label, value }: { label: string; value: string }) => (
   </div>
 );
 
-const Overview = ({ study, chapters }: { study: CaseStudy; chapters: Chapter[] }) => {
+type Anchor = { id: string; label: string; number?: string };
+
+const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) => {
   if (!study.overview) {
     // Fallback: show summary as overview when overview field absent
     return (
@@ -169,7 +171,7 @@ const Overview = ({ study, chapters }: { study: CaseStudy; chapters: Chapter[] }
       </FadeIn>
     );
   }
-  const labeled = chapters.filter((c) => c.label);
+  const labeled = anchors;
   return (
     <FadeIn className="mt-12">
       <div className="border border-border rounded-xl p-6 sm:p-8 bg-card/30">
