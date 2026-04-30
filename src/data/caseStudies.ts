@@ -201,12 +201,12 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         sectionLabel: "The Research",
-        image: "/images/nectar-ai/5.png",
+        image: "/images/nectar-ai/research.png",
         caption: "Analysis of historical chat data revealed three dominant query types: product questions, product suggestions, and policy questions.",
       },
       {
         sectionLabel: "The Process",
-        image: "/images/nectar-ai/6.png",
+        image: "/images/nectar-ai/process.png",
         caption: "The initial GPT-3 fine-tuning approach failed — invalid links, hallucinations, and inconsistent responses.",
       },
       {
@@ -225,7 +225,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         sectionLabel: "Learnings",
-        image: "/images/nectar-ai/10.png",
+        image: "/images/nectar-ai/learnings.png",
       },
     ],
   },
