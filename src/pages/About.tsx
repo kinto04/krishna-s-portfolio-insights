@@ -9,7 +9,17 @@ const About = () => {
   return (
     <Layout>
       <section className="max-w-3xl mx-auto px-6 pt-24 pb-24">
-        <h1 className="font-serif text-4xl tracking-tight text-foreground mb-8">About</h1>
+        <div className="flex flex-col sm:flex-row gap-8 items-start mb-12">
+          <img
+            src="/images/headshot.jpeg"
+            alt="Krishna Suresh"
+            className="w-32 h-32 rounded-full object-cover object-top flex-shrink-0"
+          />
+          <div>
+            <h1 className="font-serif text-4xl tracking-tight text-foreground mb-2">Krishna Suresh</h1>
+            <p className="text-muted-foreground text-sm">Product Manager · Designer · Engineer</p>
+          </div>
+        </div>
 
         <div className="space-y-6 text-muted-foreground leading-relaxed mb-16">
           <p>
