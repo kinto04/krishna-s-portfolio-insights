@@ -205,7 +205,7 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
                   href={`#${c.id}`}
                   className="text-xs text-foreground border border-border/60 rounded-full px-3 py-1.5 hover:border-primary hover:text-primary transition-colors"
                 >
-                  {String(i + 1).padStart(2, "0")} · {c.label}
+                  {c.number ?? String(i + 1).padStart(2, "0")} · {c.label}
                 </a>
               ))}
             </div>
