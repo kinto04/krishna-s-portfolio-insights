@@ -139,13 +139,13 @@ const ImageBlock = ({
   const widthClass =
     maxWidth === "md" ? "max-w-2xl mx-auto" : maxWidth === "lg" ? "max-w-4xl mx-auto" : fullWidth ? "" : "max-w-3xl mx-auto";
   return (
-    <FadeIn className="my-10">
+    <FadeIn className="mb-16">
       <div className={widthClass}>
         <div className="rounded-lg overflow-hidden bg-card border border-border/40">
           <img src={src} alt={caption ?? ""} className="w-full" loading="lazy" />
         </div>
         {caption && (
-          <p className="text-sm text-muted-foreground mt-3 max-w-2xl mx-auto text-center leading-relaxed">
+          <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
             {caption}
           </p>
         )}

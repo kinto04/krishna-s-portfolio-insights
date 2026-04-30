@@ -1,106 +1,96 @@
-# Jointly: pull slide content into the page
+# Jointly: less text, more visual
 
-Right now slides do the talking and the page narrates around them. We'll flip that: the page becomes the narrative (typography, pull-quotes, structured blocks) and slide images become supporting visuals — used selectively, often cropped to the part that matters.
+You're right — we over-corrected. The native blocks gave us editorial structure but lost the visual punch the slides had. Here are three honest options, then my recommendation.
 
-Scope: only the Jointly case study. We'll build a small set of reusable narrative blocks so we can apply the same treatment to Nectar.ai and Airy later.
+## Three options
 
-## Narrative restructure (what each chapter becomes)
+**A. Revert to slides, full-width**
+Drop the `blocks` array on Jointly. Render every slide full-bleed, one per scroll, with a one-line caption underneath. Fastest path. Looks like a deck. Loses the chapter structure and the nice overview/reflection framing.
 
-**Hero / Opening**
-- Keep cover hero as-is.
-- Add an opening statement block right after the meta strip:
-  > "Group trips are supposed to bring people together. Jointly. makes sure the planning does too." (from slides 2 + 22)
-- Replaces slides 1, 2, 22 as visuals.
+**B. Keep blocks, but lead with images** (recommended)
+Keep the chapter structure, overview, reflection, and stat block — those are working. Replace the text-heavy native blocks (numbered lists, archetype cards, methods grid, feature grid, feature rows) with the original slide images, full-bleed, with a single tight caption. Native typography stays only where it earns its place: chapter headers, the opening statement, the Reddit pull-quote, the closing stat, the reflection.
 
-**01 The Research — "Understanding the problem"**
-- Lead paragraph: "I wanted to understand what actually happens between inspiration and booking."
-- Three-column research-method block (icon + label + one line each), built from slide 4:
-  - User interviews — deep-dives with planners, contributors, easy-going members
-  - Secondary & market research — group dynamics, travel behavior, competitive landscape
-  - Travel community — 60k+ views on a single post, unfiltered stories
-- Featured pull-quote card (Reddit-style) from slide 3:
-  > "As a planning person I stopped planning group trips years ago… I'd rather go alone than compromise." — r/travel
-- "Three frustrations, every time" — rendered as three numbered native cards (01/02/03) from slide 7 (Planner's Burden, Money as the Friendship Minefield, Death by Group Chat). Slide 7 image is dropped; we render this in HTML. Keep small inline quote: "'What do you guys want to do?' is pretty much a trap."
+**C. Hybrid per-chapter**
+Some chapters native (Research, Closing), some slide-led (Users, Product). More work, more inconsistency. Not recommended right now.
 
-**02 The Users — Behavioral archetypes**
-- Three-card grid built from slide 9, native typography:
-  - Patrick / The Planner — "I end up planning the whole thing, and somehow I'm still the one who gets blamed."
-  - Sam / The Supportive — "I'd love to help more but I don't want to step on anyone's toes."
-  - Emma / The Easy-going — "I'm honestly fine with anything — just tell me where to be."
-- Each card: archetype number, name, one-line role, pull-quote.
-- Slide 9 image dropped (replaced by native cards).
+## Recommendation: Option B
 
-**03 The Opportunity — Market landscape**
-- Short lead: "Every existing tool is either built for one person, or built without intelligence."
-- Keep slide 10 (the 2x2 matrix) — it's a diagram, works as image. Render it cleanly (max-width, centered, with a one-line caption pinning Jointly in the smart + group-native quadrant).
+The slides are good. They were designed to be looked at. The job of the page is to frame them, not replace them. We trim native text down to the connective tissue between visuals.
 
-**04 The Product**
-- Lead block: "Jointly. — the collaborative decision-making layer between inspiration and booking." Large serif statement.
-- "Four features that turn group chaos into a plan" — replace slide 27 (overview) with a 2x2 native feature grid (Capture Ideas / Smart Budget / Curated Itinerary / Map View), each with one-line description and a small thumbnail crop.
-- Then four feature deep-dives, each as a two-column row (screen on one side, narrative on the other):
-  1. **Trip creation** (slide 12) — "Set a destination, pick interests, indicate budget priority. Two steps."
-  2. **Capture ideas in natural language** (slide 14) — "Describe your idea. Jointly parses it and surfaces structured suggestions."
-  3. **Curated itinerary** (slide 18) — "Generated from the group's voted ideas, day by day."
-  4. **Smart budgeting** (slide 19) — "The tool handles the awkward money conversation, not the users."
-- Each row: short headline + one-sentence body pulled from slide copy. No more long captions under images.
+### New Jointly structure
 
-**05 Early Signal**
-- Native stat block from slide 21:
-  - Big number: **12** signups · first week · no paid acquisition
-  - Three small bullets: "Value lands immediately · Suggestions feature is a hit · Budget flexibility resonates"
-- Drop slide 21 image; keep a small thumbnail of planjointly.com or link out.
+```text
+HERO (cover image + meta strip)            unchanged
+OVERVIEW (context / role / outcome + jump) unchanged
+METRICS strip                              unchanged
 
-**Closing**
-- Existing reflection block stays.
+OPENING STATEMENT (native, large serif)
+  "Group trips are supposed to bring people together.
+   Jointly. makes sure the planning does too."
 
-## New / changed components
+01 The Research
+  chapter header
+  slide 4   full-bleed   caption: "Three research tracks: 21 interviews, market scan, 60k+ Reddit views."
+  slide 3   full-bleed   caption: "One Reddit thread surfaced what people won't say to friends."
+  slide 7   full-bleed   caption: "Three frustrations showed up in every conversation."
 
-- `NarrativeStatement` — large serif pull statement, used for opening and product lead.
-- `MethodGrid` — 3-col icon+label+line block (Research methods).
-- `QuoteCard` — featured pull-quote with attribution (Reddit quote).
-- `NumberedList` — 01/02/03 cards (Three frustrations).
-- `ArchetypeGrid` — 3-col archetype cards with quote.
-- `FeatureGrid` — 2x2 product overview tiles with thumb + line.
-- `FeatureRow` — image + headline + one-liner (alternating sides). Replaces the current `SlideBlock` two-col layout for product chapters.
-- `StatBlock` — big number + supporting bullets.
+02 The Users
+  chapter header
+  slide 9   full-bleed   caption: "Three archetypes. Same trip, three different burdens."
 
-These live in `src/components/casestudy/` so Nectar and Airy can adopt them later.
+03 The Opportunity
+  chapter header
+  one-line lead: "Every existing tool is built for one person, or built without intelligence."
+  slide 10  full-bleed   caption: "Jointly sits in the smart + group-native quadrant."
 
-## Data model change
+04 The Product
+  chapter header
+  slide 27  full-bleed   caption: "Four features that turn group chaos into a plan."
+  slide 12  full-bleed   caption: "Trip creation: destination, interests, budget priority. Two steps."
+  slide 14  full-bleed   caption: "Capture ideas in natural language."
+  slide 18  full-bleed   caption: "Curated itinerary, generated from the group's voted ideas."
+  slide 19  full-bleed   caption: "Smart budgeting handles the awkward money conversation."
 
-The current `Slide[]` model is too thin to express this. Add a discriminated union `Block` to `CaseStudy.blocks` (optional, additive — `slides` stays for studies we haven't migrated):
+05 Early Signal
+  chapter header
+  STAT BLOCK (native): 12 signups · first week · no paid acquisition
+  link out to planjointly.com
 
-```
-type Block =
-  | { kind: "statement"; text: string }
-  | { kind: "methods"; items: { label: string; line: string }[] }
-  | { kind: "quote"; text: string; source: string }
-  | { kind: "numberedList"; title?: string; items: { title: string; body: string }[] }
-  | { kind: "archetypes"; items: { name: string; role: string; line: string; quote: string }[] }
-  | { kind: "image"; src: string; caption?: string; fullWidth?: boolean }
-  | { kind: "featureGrid"; intro?: string; items: { title: string; line: string; thumb: string }[] }
-  | { kind: "featureRow"; image: string; title: string; body: string }
-  | { kind: "stat"; value: string; label: string; bullets?: string[] }
-  | { kind: "chapter"; id: string; number: string; label: string; intro?: string };
+CLOSING REFLECTION (native, branded)        unchanged
+NEXT CASE STUDY                             unchanged
 ```
 
-`WorkDetail.tsx` renders `study.blocks` if present, else falls back to today's chapter/slide rendering. Jointly gets migrated to `blocks`; Nectar and Airy stay on `slides` for now.
+### Hierarchy rules
 
-## Visual rules
+- **One H2 per chapter** (the chapter header). Nothing else competes.
+- **Captions are one line, max 90 characters**, muted color, sit directly under the image. No paragraph captions.
+- **Native text only appears 4 times in the body**: opening statement, opportunity lead, stat block, reflection. Everything else is image-led.
+- **Vertical rhythm**: every slide gets the same `mb-16` gap. Chapter headers get `mt-24`. No more dense block stacking.
+- **Images**: full-bleed within the `max-w-5xl` article column, rounded, subtle border. No card padding around them.
 
-- Native blocks share the same horizontal rhythm as image rows (max-w-5xl, generous vertical spacing).
-- Pull-quotes use Playfair, large, with a thin left rule in `--accent`.
-- Numbered lists / archetypes: tabular-num serif numerals, same treatment as chapter numbers — keeps the page visually consistent.
-- Images shrink in role: most are 60% column width inside a `FeatureRow`; only the cover and the matrix (slide 10) go wide.
-- Slides 1, 2, 7, 9, 22, 27 are removed as images (their content is now native).
+### What gets removed
 
-## Files touched
+- `methods`, `numberedList`, `archetypes`, `featureGrid`, `featureRow` blocks from Jointly's data (the components stay in the file, unused, in case we want them later for Nectar/Airy or revisit).
+- The Reddit `quote` block — slide 3 already shows the quote visually. Keeping it native duplicates content.
+- Long captions on slides.
 
-- `src/data/caseStudies.ts` — add `Block` types; add `blocks` array to Jointly.
-- `src/pages/WorkDetail.tsx` — render `blocks` when present.
-- `src/components/casestudy/*` — new block components listed above.
-- `src/index.css` — minor: pull-quote rule, numbered-list numeral style if not already covered.
+### What stays native (and why)
 
-## Out of scope
+- **Opening statement** — sets tone before any image.
+- **Opportunity lead** — slide 10 needs one line of context to land.
+- **Stat block** — the "12 signups" number deserves typographic weight, not a screenshot.
+- **Reflection** — closing voice should be the writer's, not a slide.
 
-- Nectar.ai and Airy stay on the existing slide layout. Once you're happy with Jointly, we apply the same treatment to them in a follow-up.
+## Technical changes
+
+- `src/data/caseStudies.ts` — rewrite Jointly's `blocks` array to the structure above. Most blocks become `{ kind: "image", fullWidth: true, caption: "..." }`. Keep `chapter`, `statement`, `lead`, `stat`.
+- `src/components/casestudy/Blocks.tsx` — tighten the `Image` block: full-bleed by default inside the article column, `rounded-lg`, single-line caption styled as `text-xs text-muted-foreground mt-3`. Increase default vertical spacing between blocks to `mb-16`.
+- `src/pages/WorkDetail.tsx` — no logic changes; it already renders blocks. Possibly drop the metrics strip since the stat block now covers the same ground (or keep it — your call, noted as open question below).
+- No component deletions. Unused block components stay for future studies.
+
+## Open questions
+
+1. **Metrics strip vs stat block** — they say similar things. Keep both, drop the top metrics strip on Jointly, or drop the stat block? My vote: drop the top metrics strip on Jointly only; the stat block in chapter 05 has more narrative weight.
+2. **Slide 10 (the 2x2 matrix)** — keep one-line lead above it, or let the diagram speak alone? My vote: keep the lead, it's the only slide that needs context.
+
+Want me to proceed with Option B as specified, or pick a different option / tweak the structure first?
