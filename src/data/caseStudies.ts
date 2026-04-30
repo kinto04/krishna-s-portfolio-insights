@@ -76,7 +76,7 @@ export const caseStudies: CaseStudy[] = [
         "UX and visual design across 40+ screens",
         "Built and launched the live product at planjointly.com",
       ],
-      outcome: "Live in beta. 12 signups in week one with no paid acquisition.",
+      outcome: "Live in beta. 40+ signups during the initial testing period without paid acquisition.",
     },
     reflection:
       "Group decisions aren't a planning problem — they're a social one. The most useful thing the product does is take the awkward conversations off the group's plate.",
