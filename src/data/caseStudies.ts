@@ -8,6 +8,14 @@ export interface Slide {
   image: string;
   caption?: string;
   sectionLabel?: string; // renders a labeled divider above this slide
+  sectionIntro?: string; // optional intro paragraph for the chapter (paired with sectionLabel)
+  fullWidth?: boolean;   // force full-bleed treatment even when caption present
+}
+
+export interface Overview {
+  context: string;
+  roleDetail: string[];
+  outcome: string;
 }
 
 export interface CaseStudy {
@@ -24,6 +32,8 @@ export interface CaseStudy {
   liveUrl?: string;
   metrics?: Metric[];
   slides?: Slide[];
+  overview?: Overview;
+  reflection?: string;
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -40,11 +50,24 @@ export const caseStudies: CaseStudy[] = [
     featured: true,
     coverImage: "/images/jointly/11.png",
     liveUrl: "https://planjointly.com",
+    overview: {
+      context: "Master's thesis at Northwestern's EDI program. Nine months, solo founder.",
+      roleDetail: [
+        "End-to-end product strategy and research across 60+ users and 21 interviews",
+        "UX and visual design across 40+ screens",
+        "Built and launched the live product at planjointly.com",
+      ],
+      outcome: "Live in beta. 12 signups in week one with no paid acquisition.",
+    },
+    reflection:
+      "Group decisions aren't a planning problem — they're a social one. The most useful thing the product does is take the awkward conversations off the group's plate.",
     slides: [
-      { image: "/images/jointly/1.png" },
-      { image: "/images/jointly/2.png" },
+      { image: "/images/jointly/1.png", fullWidth: true },
+      { image: "/images/jointly/2.png", fullWidth: true },
       {
         sectionLabel: "The Research",
+        sectionIntro:
+          "Before designing anything, I went looking for the real friction. The signal was loud — and consistent across every source.",
         image: "/images/jointly/3.png",
         caption: "60k+ views on a single Reddit thread surfaced unfiltered user frustration with group travel planning.",
       },
@@ -52,18 +75,25 @@ export const caseStudies: CaseStudy[] = [
       { image: "/images/jointly/7.png", caption: "Three core frustrations emerged consistently across every research source." },
       {
         sectionLabel: "The Users",
+        sectionIntro:
+          "Three behavioral archetypes ran through every group I studied. Designing for all three at once was the real challenge.",
         image: "/images/jointly/9.png",
-        caption: "Three behavioral archetypes shaped every design decision: The Planner, The Support, and The Easy-Goer.",
+        caption: "The Planner, The Support, and The Easy-Goer — each with different needs, motivations, and breaking points.",
       },
       {
         sectionLabel: "The Opportunity",
+        sectionIntro:
+          "Mapping the competitive landscape made the gap obvious.",
         image: "/images/jointly/10.png",
         caption: "Every existing tool is either built for one person, or built without intelligence. No product is both group-native and smart.",
       },
       {
         sectionLabel: "The Product",
+        sectionIntro:
+          "Jointly absorbs the social friction of coordination so the group can focus on the trip, not the logistics.",
         image: "/images/jointly/11.png",
         caption: "Jointly. — the collaborative decision-making layer between inspiration and booking.",
+        fullWidth: true,
       },
       { image: "/images/jointly/27.png", caption: "Four features that turn group chaos into a plan everyone's excited about." },
       { image: "/images/jointly/12.png", caption: "Trip creation: set a destination, select interests, and indicate budget priority in two steps." },
@@ -72,10 +102,12 @@ export const caseStudies: CaseStudy[] = [
       { image: "/images/jointly/19.png", caption: "Smart budgeting prevents awkward conversations — the tool handles the social dynamics, not the users." },
       {
         sectionLabel: "Early Signal",
+        sectionIntro:
+          "Built, launched, and learning in public.",
         image: "/images/jointly/21.png",
-        caption: "Built, launched, and learning. 12 early signups in the first week at planjointly.com.",
+        caption: "12 early signups in the first week at planjointly.com — no paid acquisition, just the right message.",
       },
-      { image: "/images/jointly/22.png" },
+      { image: "/images/jointly/22.png", fullWidth: true },
     ],
   },
   {
