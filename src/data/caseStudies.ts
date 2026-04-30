@@ -44,6 +44,7 @@ export interface CaseStudy {
   summary: string;
   featured: boolean;
   coverImage?: string;
+  heroImage?: string;
   liveUrl?: string;
   metrics?: Metric[];
   slides?: Slide[];
@@ -65,6 +66,7 @@ export const caseStudies: CaseStudy[] = [
       "Group trips are supposed to bring people together — but the planning process often does real damage. Jointly. is a collaborative decision-making layer between inspiration and booking, designed to absorb the social friction of coordination. Built end-to-end as a master's thesis at Northwestern's EDI program.",
     featured: true,
     coverImage: "/images/jointly/cover.png",
+    heroImage: "/images/jointly/hero.png",
     liveUrl: "https://planjointly.com",
     overview: {
       context: "Master's thesis at Northwestern's EDI program. Nine months, solo founder.",
