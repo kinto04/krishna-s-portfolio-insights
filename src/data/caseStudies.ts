@@ -47,6 +47,7 @@ export interface CaseStudy {
   liveUrl?: string;
   metrics?: Metric[];
   slides?: Slide[];
+  blocks?: Block[];
   overview?: Overview;
   reflection?: string;
 }
