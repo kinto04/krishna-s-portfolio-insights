@@ -13,38 +13,57 @@ const About = () => {
 
         <div className="space-y-6 text-muted-foreground leading-relaxed mb-16">
           <p>
-            An <strong className="text-foreground">MS Engineering Design Innovation (EDI) student
-            at Northwestern University</strong> with a passion for storytelling and design.
+            I'm a <strong className="text-foreground">product manager and designer</strong> who builds at the intersection of research, design, and engineering. CS degree from Purdue. Just graduated with an{" "}
+            <strong className="text-foreground">MS in Engineering Design Innovation from Northwestern</strong>.
           </p>
           <p>
-            With three years of experience as a software engineer, I recognized gaps
-            in Human-Centered Innovation process both personally and in industry,
-            driving my desire to make a change. <strong className="text-foreground">I've
-            built and designed software across e-commerce, social impact, AI,</strong> and{" "}
-            <strong className="text-foreground">healthcare spaces</strong>, always focusing on
-            creating meaningful products that solve real problems.
+            Early in my career as a software engineer, I kept noticing the same pattern: teams building solutions in search of a problem. Tech first, users second. By the time we tried to ship what we'd built, we'd already lost the thread of what people actually needed.
           </p>
           <p>
-            As a Designer and Product Manager, <strong className="text-foreground">I aim to
-            advocate for users, influence product direction, and engage business
-            stakeholders</strong>. I thrive in collaborative environments, leveraging my
-            creative problem-solving skills and analytical thinking to make a
-            significant impact.
+            That observation changed how I work. I started with the user, mapped the problem space, and built tight feedback loops with real stakeholders at every stage.{" "}
+            <strong className="text-foreground">That shift led me to human-centered design — and eventually to Northwestern.</strong>
           </p>
           <p>
-            Based in New York, NY. Currently looking for PM roles in AI,
-            e-commerce, travel, and healthcare.
+            Since then I've built products across <strong className="text-foreground">AI, e-commerce, healthcare, and social impact</strong> — from a conversational AI agent that drove measurable e-commerce lifts, to a clinical diagnostic tool co-designed with 12+ healthcare professionals, to a group travel app I launched as my master's thesis.
+          </p>
+          <p className="text-sm">
+            Based in New York, NY. Looking for <strong className="text-foreground">PM and Design roles</strong> in AI, e-commerce, travel, and healthcare.
           </p>
         </div>
 
-        {/* Current Focus */}
+        {/* Experience */}
         <div className="mb-16">
-          <h2 className="font-serif text-2xl text-foreground mb-4">Current Focus</h2>
-          <ul className="space-y-3 text-muted-foreground">
-            <li>• Building Jointly Travel — an AI-powered group travel coordination app (Master's thesis)</li>
-            <li>• Street and travel photography</li>
-            <li>• Exploring the intersection of AI and product design</li>
-          </ul>
+          <h2 className="font-serif text-2xl text-foreground mb-6">Experience</h2>
+          <div className="space-y-6">
+            <div className="flex gap-4">
+              <div className="flex-1">
+                <p className="text-foreground font-medium">Product Manager & Designer · Jointly (MS Thesis)</p>
+                <p className="text-sm text-muted-foreground mb-1">Northwestern University · 2025–2026</p>
+                <p className="text-sm text-muted-foreground">End-to-end product: user research, design, and development of an AI-powered group travel coordination app. Currently in beta with 40+ users.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex-1">
+                <p className="text-foreground font-medium">Product Lead</p>
+                <p className="text-sm text-muted-foreground mb-1">Northwestern Medicine · 2025</p>
+                <p className="text-sm text-muted-foreground">Led product strategy and design for a clinical diagnostic tool for pediatric gut-brain disorders. Facilitated research across 12+ clinicians and delivered validated prototypes.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex-1">
+                <p className="text-foreground font-medium">Product Manager & Full Stack Developer</p>
+                <p className="text-sm text-muted-foreground mb-1">NectarOM · 2021–2024</p>
+                <p className="text-sm text-muted-foreground">Built Nectar.ai end-to-end using RAG architecture — drove +30% add-to-cart, +18% checkout completion, and ~99% improvement in chatbot response rates. Also shipped NectarCares, a platform connecting donors to families in need.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex-1">
+                <p className="text-foreground font-medium">Software Engineering Intern</p>
+                <p className="text-sm text-muted-foreground mb-1">Ampersand · 2020</p>
+                <p className="text-sm text-muted-foreground">Supported API access management and security during the company's transition to Okta as an Identity Provider.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Education */}
@@ -57,9 +76,19 @@ const About = () => {
             </div>
             <div>
               <p className="text-foreground font-medium">Purdue University</p>
-              <p className="text-sm text-muted-foreground">BS Computer Science</p>
+              <p className="text-sm text-muted-foreground">BS Computer Science · 2020</p>
             </div>
           </div>
+        </div>
+
+        {/* Current Focus */}
+        <div className="mb-16">
+          <h2 className="font-serif text-2xl text-foreground mb-4">Current Focus</h2>
+          <ul className="space-y-3 text-muted-foreground">
+            <li>• Building Jointly — an AI-powered group travel coordination app (in beta)</li>
+            <li>• Street and travel photography</li>
+            <li>• Exploring the intersection of AI and product design</li>
+          </ul>
         </div>
 
         {/* Links */}
@@ -67,7 +96,7 @@ const About = () => {
           <h2 className="font-serif text-2xl text-foreground mb-4">Get in Touch</h2>
           <div className="flex flex-wrap gap-6">
             <a
-              href="https://linkedin.com/in/"
+              href="https://linkedin.com/in/krishna-suresh"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
@@ -75,24 +104,10 @@ const About = () => {
               LinkedIn
             </a>
             <a
-              href="https://github.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
-            >
-              GitHub
-            </a>
-            <a
-              href="mailto:hello@example.com"
+              href="mailto:work.krishnasuresh@gmail.com"
               className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
             >
               Email
-            </a>
-            <a
-              href="#"
-              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
-            >
-              Resume (PDF)
             </a>
           </div>
         </div>
