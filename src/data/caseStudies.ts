@@ -76,7 +76,7 @@ export const caseStudies: CaseStudy[] = [
         "UX and visual design across 40+ screens",
         "Built and launched the live product at planjointly.com",
       ],
-      outcome: "Live in beta. 12 signups in week one with no paid acquisition.",
+      outcome: "Live in beta. 40+ signups during the initial testing period without paid acquisition.",
     },
     reflection:
       "Group decisions aren't a planning problem — they're a social one. The most useful thing the product does is take the awkward conversations off the group's plate.",
@@ -110,8 +110,8 @@ export const caseStudies: CaseStudy[] = [
       { kind: "chapter", id: "early-signal", number: "05", label: "Early Signal", intro: "Built, launched, and learning in public." },
       {
         kind: "stat",
-        value: "12",
-        label: "signups in the first week",
+        value: "40+",
+        label: "signups during initial testing",
         bullets: [
           "No paid acquisition — landing page only",
           "Value lands immediately: people get what it is in one read",
@@ -164,7 +164,7 @@ export const caseStudies: CaseStudy[] = [
         sectionIntro:
           "Built, launched, and learning in public.",
         image: "/images/jointly/21.png",
-        caption: "12 early signups in the first week at planjointly.com — no paid acquisition, just the right message.",
+        caption: "40+ early signups during initial testing at planjointly.com — no paid acquisition, just the right message.",
       },
       { image: "/images/jointly/22.png", fullWidth: true },
     ],
