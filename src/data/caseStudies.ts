@@ -174,7 +174,7 @@ export const caseStudies: CaseStudy[] = [
     subtitle: "AI-powered customer support for e-commerce.",
     role: "Product Manager · Software Developer",
     year: "2023",
-    context: "NectarOM",
+    context: "One of the products I lead during my time at NectarOM",
     tags: ["AI", "E-Commerce", "Conversational UI"],
     summary:
       "A small business selling wellness products needed to overhaul their underperforming customer support chatbot. I researched a year of historical support conversations, designed the conversation flows, and built a GPT-powered chatbot that guides customers from landing page through checkout.",
