@@ -95,9 +95,9 @@ const Home = () => {
             </Link>
           </div>
         </ScrollSection>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 items-stretch">
           {featuredStudies.map((study, i) => (
-            <ScrollSection key={study.slug} className={`transition-all delay-[${i * 100}ms]`}>
+            <ScrollSection key={study.slug} className={`h-full transition-all delay-[${i * 100}ms]`}>
               <CaseStudyCard study={study} />
             </ScrollSection>
           ))}
