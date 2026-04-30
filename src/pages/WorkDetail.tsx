@@ -173,39 +173,46 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
   }
   const labeled = anchors;
   return (
-    <FadeIn className="mt-12">
-      <div className="border border-border rounded-xl p-6 sm:p-8 bg-card/30">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+    <FadeIn className="mt-14">
+      <div className="border-t border-border pt-10">
+        <div className="grid md:grid-cols-3 gap-10 md:gap-12 mb-10">
           <div>
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-2">Context</p>
-            <p className="text-sm text-foreground leading-relaxed">{study.overview.context}</p>
+            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-3">Context</p>
+            <p className="text-sm text-foreground/90 leading-relaxed">{study.overview.context}</p>
           </div>
-          <div>
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-2">My Role</p>
-            <ul className="space-y-1.5">
+          <div className="md:border-l md:border-border md:pl-10">
+            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-3">My Role</p>
+            <div className="flex flex-wrap gap-1.5">
               {study.overview.roleDetail.map((r) => (
-                <li key={r} className="text-sm text-foreground leading-relaxed">
-                  — {r}
-                </li>
+                <span
+                  key={r}
+                  className="text-xs text-foreground/90 bg-card border border-border/60 rounded-full px-2.5 py-1 leading-snug"
+                >
+                  {r}
+                </span>
               ))}
-            </ul>
+            </div>
           </div>
-          <div>
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-2">Outcome</p>
-            <p className="text-sm text-foreground leading-relaxed">{study.overview.outcome}</p>
+          <div className="md:border-l md:border-border md:pl-10">
+            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-3">Outcome</p>
+            <p className="text-sm text-foreground/90 leading-relaxed">{study.overview.outcome}</p>
           </div>
         </div>
         {labeled.length > 0 && (
-          <div className="pt-6 border-t border-border">
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-3">Jump to</p>
+          <div className="pt-8 border-t border-border flex flex-col sm:flex-row sm:items-center gap-4">
+            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground shrink-0">Jump to</p>
             <div className="flex flex-wrap gap-2">
               {labeled.map((c, i) => (
                 <a
                   key={c.id}
                   href={`#${c.id}`}
-                  className="text-xs text-foreground border border-border/60 rounded-full px-3 py-1.5 hover:border-primary hover:text-primary transition-colors"
+                  className="group inline-flex items-baseline gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
                 >
-                  {c.number ?? String(i + 1).padStart(2, "0")} · {c.label}
+                  <span className="font-serif tabular-nums text-foreground/60 group-hover:text-primary transition-colors">
+                    {c.number ?? String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-foreground group-hover:text-primary transition-colors">{c.label}</span>
+                  {i < labeled.length - 1 && <span className="text-border ml-2">/</span>}
                 </a>
               ))}
             </div>
