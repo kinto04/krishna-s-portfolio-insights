@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import { caseStudies, type CaseStudy, type Slide } from "@/data/caseStudies";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { RenderBlock, getChapterAnchors } from "@/components/casestudy/Blocks";
 
 const FadeIn = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const { ref, isVisible } = useInView();
