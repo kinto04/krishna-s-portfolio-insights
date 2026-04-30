@@ -51,6 +51,7 @@ export interface CaseStudy {
   blocks?: Block[];
   overview?: Overview;
   reflection?: string;
+  toolkit?: string[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -180,6 +181,7 @@ export const caseStudies: CaseStudy[] = [
       "A small business selling wellness products needed to overhaul their underperforming customer support chatbot. I researched a year of historical support conversations, designed the conversation flows, and built a GPT-powered chatbot that guides customers from landing page through checkout.",
     featured: true,
     coverImage: "/images/u6qotkxyhcppqyywjql0qfrlnq.webp",
+    toolkit: ["Python", "Node.js", "APIs", "OpenAI", "Shopify", "Mailchimp"],
     metrics: [
       { value: "+99%", label: "Response Rate", sublabel: "% of customer chats answered" },
       { value: "+30%", label: "Add-to-Cart Rate", sublabel: "% of sessions that added to cart" },
