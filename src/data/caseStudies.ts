@@ -236,7 +236,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Airy is a digital platform designed to help clinical therapists better support their clients — with AI-powered note-taking, between-session check-ins, nudges, and progress tracking. Over 10 weeks and 21 user interviews, our team uncovered a core tension: therapy tools are built for sessions, not the 167 hours in between. I led product strategy, conducted research, designed high-fidelity prototypes, and authored the BRD.",
     featured: true,
-    coverImage: "/images/airy/2.png",
+    coverImage: "/images/airy/cover.png",
     slides: [
       { image: "/images/airy/2.png" },
       { image: "/images/airy/3.png", caption: "10 weeks of research, 3 rounds and 21 sessions of user interviews." },
