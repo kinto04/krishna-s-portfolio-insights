@@ -110,8 +110,8 @@ export const caseStudies: CaseStudy[] = [
       { kind: "chapter", id: "early-signal", number: "05", label: "Early Signal", intro: "Built, launched, and learning in public." },
       {
         kind: "stat",
-        value: "12",
-        label: "signups in the first week",
+        value: "40+",
+        label: "signups during initial testing",
         bullets: [
           "No paid acquisition — landing page only",
           "Value lands immediately: people get what it is in one read",
