@@ -5,16 +5,11 @@ import { caseStudies } from "@/data/caseStudies";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
-const SlideSection = ({ image, caption }: { image: string; caption?: string }) => {
+const FadeIn = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const { ref, isVisible } = useInView();
   return (
-    <div ref={ref} className={`scroll-fade-in ${isVisible ? "is-visible" : ""} mb-4`}>
-      <div className="rounded-lg overflow-hidden bg-card">
-        <img src={image} alt={caption ?? ""} className="w-full" loading="lazy" />
-      </div>
-      {caption && (
-        <p className="text-xs text-muted-foreground mt-2 px-1 leading-relaxed">{caption}</p>
-      )}
+    <div ref={ref} className={`scroll-fade-in ${isVisible ? "is-visible" : ""} ${className}`}>
+      {children}
     </div>
   );
 };
@@ -43,7 +38,7 @@ const WorkDetail = () => {
 
   return (
     <Layout>
-      <article className="max-w-4xl mx-auto px-6 pt-20 pb-24">
+      <article className="max-w-5xl mx-auto px-6 pt-20 pb-24">
         {/* Back link */}
         <Link
           to="/work"
@@ -53,7 +48,7 @@ const WorkDetail = () => {
         </Link>
 
         {/* Header */}
-        <div className="mb-10 animate-fade-in-up">
+        <div className="mb-10 animate-fade-in-up max-w-3xl">
           <div className="flex flex-wrap gap-2 mb-4">
             {study.tags.map((tag) => (
               <span key={tag} className="text-xs uppercase tracking-wider text-muted-foreground">
@@ -70,7 +65,7 @@ const WorkDetail = () => {
             <span><strong className="text-foreground">Year:</strong> {study.year}</span>
             <span><strong className="text-foreground">Context:</strong> {study.context}</span>
           </div>
-          <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-6">
+          <p className="text-base text-muted-foreground leading-relaxed mb-6">
             {study.summary}
           </p>
           {study.liveUrl && (
@@ -85,11 +80,46 @@ const WorkDetail = () => {
           )}
         </div>
 
+        {/* Native metrics — rendered before slides if present */}
+        {study.metrics && study.metrics.length > 0 && (
+          <FadeIn className="mb-4">
+            <div className="border-y border-border py-10 grid grid-cols-3 gap-6 text-center">
+              {study.metrics.map((m) => (
+                <div key={m.label}>
+                  <p className="font-serif text-4xl sm:text-5xl text-foreground mb-1">{m.value}</p>
+                  <p className="text-sm font-medium text-foreground mb-0.5">{m.label}</p>
+                  {m.sublabel && <p className="text-xs text-muted-foreground">{m.sublabel}</p>}
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        )}
+
         {/* Slides */}
         {study.slides && study.slides.length > 0 ? (
-          <div className="mt-10">
+          <div className="mt-6">
             {study.slides.map((slide, i) => (
-              <SlideSection key={i} image={slide.image} caption={slide.caption} />
+              <FadeIn key={i}>
+                {slide.sectionLabel && (
+                  <div className="flex items-center gap-4 mt-10 mb-4">
+                    <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">
+                      {slide.sectionLabel}
+                    </span>
+                    <div className="flex-1 h-px bg-border" />
+                  </div>
+                )}
+                <div className={`rounded-lg overflow-hidden bg-card mb-2 ${!slide.sectionLabel && i > 0 ? "mt-3" : ""}`}>
+                  <img
+                    src={slide.image}
+                    alt={slide.caption ?? slide.sectionLabel ?? ""}
+                    className="w-full"
+                    loading="lazy"
+                  />
+                </div>
+                {slide.caption && (
+                  <p className="text-xs text-muted-foreground px-1 leading-relaxed mb-1">{slide.caption}</p>
+                )}
+              </FadeIn>
             ))}
           </div>
         ) : (

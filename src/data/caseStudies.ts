@@ -1,3 +1,15 @@
+export interface Metric {
+  value: string;
+  label: string;
+  sublabel?: string;
+}
+
+export interface Slide {
+  image: string;
+  caption?: string;
+  sectionLabel?: string; // renders a labeled divider above this slide
+}
+
 export interface CaseStudy {
   slug: string;
   title: string;
@@ -10,10 +22,8 @@ export interface CaseStudy {
   featured: boolean;
   coverImage?: string;
   liveUrl?: string;
-  slides?: {
-    image: string;
-    caption?: string;
-  }[];
+  metrics?: Metric[];
+  slides?: Slide[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -33,18 +43,38 @@ export const caseStudies: CaseStudy[] = [
     slides: [
       { image: "/images/jointly/1.png" },
       { image: "/images/jointly/2.png" },
-      { image: "/images/jointly/3.png", caption: "Research: 60k+ views on a single Reddit thread surfaced unfiltered user frustration with group travel planning." },
-      { image: "/images/jointly/4.png", caption: "Research methods: user interviews, secondary research, and community listening across travel communities." },
+      {
+        sectionLabel: "The Research",
+        image: "/images/jointly/3.png",
+        caption: "60k+ views on a single Reddit thread surfaced unfiltered user frustration with group travel planning.",
+      },
+      { image: "/images/jointly/4.png", caption: "User interviews, secondary research, and community listening across travel communities." },
       { image: "/images/jointly/7.png", caption: "Three core frustrations emerged consistently across every research source." },
-      { image: "/images/jointly/9.png", caption: "Three behavioral archetypes shaped every design decision: The Planner, The Support, and The Easy-Goer." },
-      { image: "/images/jointly/10.png", caption: "Market landscape: every existing tool is either built for one person, or built without intelligence. No product is both group-native and smart." },
-      { image: "/images/jointly/11.png", caption: "Jointly. — the collaborative decision-making layer between inspiration and booking." },
+      {
+        sectionLabel: "The Users",
+        image: "/images/jointly/9.png",
+        caption: "Three behavioral archetypes shaped every design decision: The Planner, The Support, and The Easy-Goer.",
+      },
+      {
+        sectionLabel: "The Opportunity",
+        image: "/images/jointly/10.png",
+        caption: "Every existing tool is either built for one person, or built without intelligence. No product is both group-native and smart.",
+      },
+      {
+        sectionLabel: "The Product",
+        image: "/images/jointly/11.png",
+        caption: "Jointly. — the collaborative decision-making layer between inspiration and booking.",
+      },
       { image: "/images/jointly/27.png", caption: "Four features that turn group chaos into a plan everyone's excited about." },
-      { image: "/images/jointly/12.png", caption: "Trip creation: set a destination, select interests, and indicate your budget priority in two steps." },
+      { image: "/images/jointly/12.png", caption: "Trip creation: set a destination, select interests, and indicate budget priority in two steps." },
       { image: "/images/jointly/14.png", caption: "Describe your idea in natural language — Jointly makes sense of it and surfaces structured suggestions." },
       { image: "/images/jointly/18.png", caption: "Curated itinerary and map view, generated from the group's voted ideas." },
       { image: "/images/jointly/19.png", caption: "Smart budgeting prevents awkward conversations — the tool handles the social dynamics, not the users." },
-      { image: "/images/jointly/21.png", caption: "Built, launched, and learning. 12 early signups in the first week at planjointly.com." },
+      {
+        sectionLabel: "Early Signal",
+        image: "/images/jointly/21.png",
+        caption: "Built, launched, and learning. 12 early signups in the first week at planjointly.com.",
+      },
       { image: "/images/jointly/22.png" },
     ],
   },
@@ -57,16 +87,54 @@ export const caseStudies: CaseStudy[] = [
     context: "NectarOM",
     tags: ["AI", "E-Commerce", "Conversational UI"],
     summary:
-      "A small business selling wellness products needed to overhaul their underperforming customer support chatbot. I researched a year of historical support conversations, designed the conversation flows, and built a GPT-powered chatbot that guides customers from landing page through checkout — resulting in a 99% improvement in customer response rate, +30% add-to-cart, and +18% checkout conversion.",
+      "A small business selling wellness products needed to overhaul their underperforming customer support chatbot. I researched a year of historical support conversations, designed the conversation flows, and built a GPT-powered chatbot that guides customers from landing page through checkout.",
     featured: true,
     coverImage: "/images/u6qotkxyhcppqyywjql0qfrlnq.webp",
+    metrics: [
+      { value: "+99%", label: "Response Rate", sublabel: "% of customer chats answered" },
+      { value: "+30%", label: "Add-to-Cart Rate", sublabel: "% of sessions that added to cart" },
+      { value: "+18%", label: "Checkout Rate", sublabel: "% of sessions that checked out" },
+    ],
     slides: [
-      { image: "/images/u6qotkxyhcppqyywjql0qfrlnq.webp", caption: "Nectar.ai deployed live on Tranquil Wellbeing — guiding customers from landing page through checkout." },
-      { image: "/images/lkuxpvhoouingadlo1ibstxhdne.png", caption: "Research: analyzed a year of historical support conversations to categorize the three core query types." },
-      { image: "/images/ofzdqep4rmlejxcwliuca1bbego.webp", caption: "Built a 100 Q&A training dataset from historical chat logs to fine-tune the model." },
-      { image: "/images/huba0n8n2agzpzuu7isyiphixw8.png", caption: "Process: Research → Prototype → Validation (failed — hallucinations, broken links) → Pivot to RAG." },
-      { image: "/images/rylppkwxd162wow0jk1lhhnn624.png", caption: "Final architecture: GPT-3 + Google Dialogflow + Shopify, with customer context stored across sessions." },
-      { image: "/images/1106yljc7hayst1uqgp78trcm8.png", caption: "Key learnings: research paralysis, fast validation, early-mover challenges, and data-driven iteration." },
+      { image: "/images/nectar-ai/1.png" },
+      {
+        sectionLabel: "The Problem",
+        image: "/images/nectar-ai/2.png",
+        caption: "The existing chatbot couldn't handle real customer questions — flooding the owner's inbox and leaving customers without answers.",
+      },
+      { image: "/images/nectar-ai/3.png", caption: "Before: robotic pre-set responses that couldn't answer product questions, forwarding everything to email." },
+      {
+        sectionLabel: "My Role",
+        image: "/images/nectar-ai/4.png",
+      },
+      {
+        sectionLabel: "The Research",
+        image: "/images/nectar-ai/5.png",
+        caption: "Analysis of historical chat data revealed three dominant query types: product questions, product suggestions, and policy questions.",
+      },
+      {
+        sectionLabel: "The Process",
+        image: "/images/nectar-ai/6.png",
+        caption: "The initial GPT-3 fine-tuning approach failed — invalid links, hallucinations, and inconsistent responses.",
+      },
+      {
+        image: "/images/nectar-ai/7.png",
+        caption: "Fine-tuning required a massive volume of high-quality training data. OpenAI's new Embeddings API opened the door to a RAG approach instead.",
+      },
+      {
+        sectionLabel: "The Architecture",
+        image: "/images/nectar-ai/8.png",
+        caption: "Final system: GPT-3 embeddings + Google Dialogflow front-end + Shopify/MailChimp for customer data persistence.",
+      },
+      {
+        sectionLabel: "The Result",
+        image: "/images/nectar-ai/9.png",
+        caption: "The chatbot captures customer name, email, and product interests — funneling enriched data into Shopify and MailChimp for marketing.",
+      },
+      {
+        sectionLabel: "Learnings",
+        image: "/images/nectar-ai/10.png",
+      },
     ],
   },
   {
