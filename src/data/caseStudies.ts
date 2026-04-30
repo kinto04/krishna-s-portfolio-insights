@@ -77,6 +77,127 @@ export const caseStudies: CaseStudy[] = [
     },
     reflection:
       "Group decisions aren't a planning problem — they're a social one. The most useful thing the product does is take the awkward conversations off the group's plate.",
+    blocks: [
+      {
+        kind: "statement",
+        eyebrow: "The premise",
+        text: "Group trips are supposed to bring people together. Jointly. makes sure the planning does too.",
+      },
+
+      { kind: "chapter", id: "the-research", number: "01", label: "The Research", intro: "I wanted to understand what actually happens between inspiration and booking — and why the people who care most about the trip end up resenting it." },
+      {
+        kind: "methods",
+        items: [
+          { label: "User interviews", line: "Deep-dives with lead planners, contributors, and easy-going members." },
+          { label: "Secondary & market research", line: "Group dynamics, travel behavior, and the competitive landscape." },
+          { label: "Travel community listening", line: "60k+ views on a single Reddit post; unfiltered stories from r/travel." },
+        ],
+      },
+      {
+        kind: "quote",
+        text: "As a planning person I stopped planning group trips years ago. It's not worth it. Trying to accommodate everyone is annoying, people giving no opinions and then complaining are annoying… I'd rather go alone than compromise.",
+        source: "r/travel — 230 upvotes",
+      },
+      {
+        kind: "numberedList",
+        title: "Three frustrations, every time.",
+        intro: "Across interviews, secondary research, and community threads, the same three failure modes showed up.",
+        items: [
+          { title: "The Planner's Burden", body: "One person absorbs all the emotional labour and social friction that comes with coordination." },
+          { title: "Money as the Friendship Minefield", body: "Budget differences exist, but people feel awkward bringing it up with friends until it's too late." },
+          { title: "Death by Group Chat", body: "Ideas get buried in chats. Decisions stall. Nobody can find what was already agreed." },
+        ],
+      },
+
+      { kind: "chapter", id: "the-users", number: "02", label: "The Users", intro: "Three behavioral archetypes ran through every group I studied. Designing for all three at once was the real challenge." },
+      {
+        kind: "archetypes",
+        items: [
+          {
+            number: "01",
+            name: "Patrick",
+            role: "The Planner",
+            line: "Initiates everything. Absorbs all coordination cost and social risk. Most likely to burn out.",
+            quote: "I end up planning the whole thing, and somehow I'm still the one who gets blamed if something goes wrong.",
+          },
+          {
+            number: "02",
+            name: "Sam",
+            role: "The Supportive",
+            line: "Willing to contribute but has no clear role. Wants to help — there's no structure to plug into.",
+            quote: "I'd love to help more but I don't want to step on anyone's toes — I'm never sure what's been decided.",
+          },
+          {
+            number: "03",
+            name: "Emma",
+            role: "The Easy-going",
+            line: "Flexible, doesn't engage in the planning process. Can become a problem at the end.",
+            quote: "I'm honestly fine with anything — just tell me where to be and when.",
+          },
+        ],
+      },
+
+      { kind: "chapter", id: "the-opportunity", number: "03", label: "The Opportunity", intro: "Mapping the landscape made the gap obvious." },
+      { kind: "lead", text: "Every existing tool is either built for one person, or built without intelligence. No product is both group-native and smart." },
+      { kind: "image", src: "/images/jointly/10.png", caption: "Competitive matrix: ChatGPT and Notes are smart but solo. WhatsApp and Google Docs are group-native but dumb. Jointly sits in the empty quadrant.", maxWidth: "lg" },
+
+      { kind: "chapter", id: "the-product", number: "04", label: "The Product" },
+      {
+        kind: "statement",
+        text: "Jointly. — the collaborative decision-making layer between inspiration and booking.",
+      },
+      {
+        kind: "featureGrid",
+        intro: "Four features that turn group chaos into a plan everyone's excited about.",
+        items: [
+          { title: "Capture Ideas", line: "Anyone in the group can drop an idea in plain language. Jointly structures it.", thumb: "/images/jointly/14.png" },
+          { title: "Smart Budget", line: "Surfaces budget tension early — without anyone having to bring it up.", thumb: "/images/jointly/19.png" },
+          { title: "Curated Itinerary", line: "A day-by-day plan generated from what the group actually voted for.", thumb: "/images/jointly/18.png" },
+          { title: "Map View", line: "See the trip spatially. Spot redundancies, gaps, and travel time at a glance.", thumb: "/images/jointly/27.png" },
+        ],
+      },
+      {
+        kind: "featureRow",
+        image: "/images/jointly/12.png",
+        eyebrow: "Trip creation",
+        title: "Two steps to a trip.",
+        body: "Set a destination, pick interests, indicate budget priority. The group is in within a minute — no setup, no onboarding tax.",
+      },
+      {
+        kind: "featureRow",
+        image: "/images/jointly/14.png",
+        eyebrow: "Capture ideas",
+        title: "Describe it. Jointly figures out the rest.",
+        body: "\"Late night ramen in Tokyo\" returns three real, ranked options with context — not a generic search result list.",
+      },
+      {
+        kind: "featureRow",
+        image: "/images/jointly/18.png",
+        eyebrow: "Curated itinerary",
+        title: "A plan, not a pile of links.",
+        body: "Generated from the ideas the group actually voted for. Day by day, with map context and a clear why-this-works rationale.",
+      },
+      {
+        kind: "featureRow",
+        image: "/images/jointly/19.png",
+        eyebrow: "Smart budgeting",
+        title: "The awkward money conversation, handled.",
+        body: "Jointly surfaces the budget gap as a system signal, not a personal ask. The tool takes the social hit so the group doesn't have to.",
+      },
+
+      { kind: "chapter", id: "early-signal", number: "05", label: "Early Signal", intro: "Built, launched, and learning in public." },
+      {
+        kind: "stat",
+        value: "12",
+        label: "signups in the first week",
+        bullets: [
+          "No paid acquisition — landing page only",
+          "Value lands immediately: people get what it is in one read",
+          "Suggestions and budget flexibility are the most-cited reasons",
+        ],
+        href: "https://planjointly.com",
+      },
+    ],
     slides: [
       { image: "/images/jointly/1.png", fullWidth: true },
       { image: "/images/jointly/2.png", fullWidth: true },
