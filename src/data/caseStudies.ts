@@ -18,6 +18,21 @@ export interface Overview {
   outcome: string;
 }
 
+// Narrative blocks — composable units that mix native typography and selective imagery.
+// When a CaseStudy provides `blocks`, WorkDetail renders blocks instead of slides.
+export type Block =
+  | { kind: "chapter"; id: string; number: string; label: string; intro?: string }
+  | { kind: "statement"; text: string; eyebrow?: string }
+  | { kind: "lead"; text: string }
+  | { kind: "methods"; items: { label: string; line: string }[] }
+  | { kind: "quote"; text: string; source: string }
+  | { kind: "numberedList"; title?: string; intro?: string; items: { title: string; body: string }[] }
+  | { kind: "archetypes"; items: { number: string; name: string; role: string; line: string; quote: string }[] }
+  | { kind: "image"; src: string; caption?: string; fullWidth?: boolean; maxWidth?: "md" | "lg" | "full" }
+  | { kind: "featureGrid"; intro?: string; items: { title: string; line: string; thumb: string }[] }
+  | { kind: "featureRow"; image: string; eyebrow?: string; title: string; body: string }
+  | { kind: "stat"; value: string; label: string; bullets?: string[]; href?: string };
+
 export interface CaseStudy {
   slug: string;
   title: string;
