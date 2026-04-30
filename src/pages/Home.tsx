@@ -46,35 +46,39 @@ const Home = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="max-w-3xl mx-auto px-6 pt-24 pb-20 sm:pt-32 sm:pb-24">
-        <div className="animate-fade-in-up">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground bg-card px-3 py-1.5 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-available" />
-              Available for Work
-            </span>
+      <section className="relative overflow-hidden">
+        <div className="hero-glow" aria-hidden="true" />
+        <div className="hero-noise" aria-hidden="true" />
+        <div className="relative max-w-3xl mx-auto px-6 pt-16 pb-16 sm:pt-32 sm:pb-24">
+          <div className="animate-fade-in-up">
+            <div className="flex items-center gap-2 mb-6">
+              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground bg-card/80 backdrop-blur-sm border border-border/60 px-3 py-1.5 rounded-full">
+                <span className="relative w-2 h-2 rounded-full bg-available pulse-halo" />
+                Available for Work
+              </span>
+            </div>
           </div>
-        </div>
-        <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
-        <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2 whitespace-pre-line">
-          {variant.heading}
-        </h1>
-        <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mb-8 animate-fade-in-up-delay-3">
-          {variant.subtitle}
-        </p>
-        <div className="flex gap-4 animate-fade-in-up-delay-4">
-          <Link
-            to="/work"
-            className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-md text-sm font-medium hover:opacity-90 transition-opacity"
-          >
-            View My Work <ArrowRight size={14} />
-          </Link>
-          <Link
-            to="/about"
-            className="inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-md text-sm font-medium text-foreground hover:bg-card transition-colors"
-          >
-            About Me
-          </Link>
+          <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
+          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2 whitespace-pre-line">
+            {variant.heading}
+          </h1>
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-8 animate-fade-in-up-delay-3">
+            {variant.subtitle}
+          </p>
+          <div className="flex gap-4 animate-fade-in-up-delay-4">
+            <Link
+              to="/work"
+              className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-md text-sm font-medium hover:opacity-90 transition-opacity"
+            >
+              View My Work <ArrowRight size={14} />
+            </Link>
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-md text-sm font-medium text-foreground hover:bg-card transition-colors"
+            >
+              About Me
+            </Link>
+          </div>
         </div>
       </section>
 
