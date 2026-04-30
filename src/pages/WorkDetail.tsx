@@ -175,26 +175,26 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
   return (
     <FadeIn className="mt-14">
       <div className="border-t border-border pt-10">
-        <div className="grid md:grid-cols-3 gap-10 md:gap-12 mb-10">
+        <div className="grid md:grid-cols-3 gap-10 md:gap-14 mb-10">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-3">Context</p>
+            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-4">Context</p>
             <p className="text-sm text-foreground/90 leading-relaxed">{study.overview.context}</p>
           </div>
-          <div className="md:border-l md:border-border md:pl-10">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-3">My Role</p>
-            <div className="flex flex-wrap gap-1.5">
+          <div className="md:border-l md:border-border md:pl-14">
+            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-4">My Role</p>
+            <ul className="space-y-2.5">
               {study.overview.roleDetail.map((r) => (
-                <span
+                <li
                   key={r}
-                  className="text-xs text-foreground/90 bg-card border border-border/60 rounded-full px-2.5 py-1 leading-snug"
+                  className="text-sm text-foreground/90 leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-1.5 before:h-px before:bg-primary/60"
                 >
                   {r}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
-          <div className="md:border-l md:border-border md:pl-10">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-3">Outcome</p>
+          <div className="md:border-l md:border-border md:pl-14">
+            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-4">Outcome</p>
             <p className="text-sm text-foreground/90 leading-relaxed">{study.overview.outcome}</p>
           </div>
         </div>
