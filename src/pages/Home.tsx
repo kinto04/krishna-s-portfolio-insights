@@ -17,7 +17,7 @@ const heroVariants: Record<string, { heading: string; subtitle: string }> = {
   },
   design: {
     heading: "I design human\nexperiences.",
-    subtitle: "I shape end-to-end experiences across interaction, service, and product design — translating research into flows, prototypes, and systems that teams can actually ship.",
+    subtitle: "I shape end-to-end experiences across interaction, service, and product design, translating research into digital products that can actually ship.",
   },
 };
 
