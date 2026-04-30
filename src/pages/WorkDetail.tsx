@@ -148,6 +148,21 @@ const Hero = ({ study }: { study: CaseStudy }) => (
         </div>
       )}
     </div>
+    {study.toolkit && study.toolkit.length > 0 && (
+      <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2">
+        <p className="text-[10px] uppercase tracking-wider text-muted-foreground">My Toolkit</p>
+        <div className="flex flex-wrap gap-1.5">
+          {study.toolkit.map((t) => (
+            <span
+              key={t}
+              className="text-xs text-foreground/90 bg-card border border-border/60 rounded-full px-2.5 py-0.5 leading-snug"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    )}
   </header>
 );
 
