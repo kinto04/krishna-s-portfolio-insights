@@ -8,7 +8,12 @@ import { useInView } from "@/hooks/useInView";
 const FadeIn = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const { ref, isVisible } = useInView();
   return (
-    <div ref={ref} className={`scroll-fade-in ${isVisible ? "is-visible" : ""} ${className}`}>
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      } ${className}`}
+    >
       {children}
     </div>
   );
@@ -101,11 +106,11 @@ const WorkDetail = () => {
             {study.slides.map((slide, i) => (
               <FadeIn key={i}>
                 {slide.sectionLabel && (
-                  <div className="flex items-center gap-4 mt-10 mb-4">
-                    <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">
+                  <div className="flex items-center gap-3 mt-16 mb-6">
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span className="text-sm uppercase tracking-[0.2em] text-foreground font-medium">
                       {slide.sectionLabel}
                     </span>
-                    <div className="flex-1 h-px bg-border" />
                   </div>
                 )}
                 <div className={`rounded-lg overflow-hidden bg-card mb-2 ${!slide.sectionLabel && i > 0 ? "mt-3" : ""}`}>

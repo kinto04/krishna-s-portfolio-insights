@@ -13,7 +13,7 @@ const About = () => {
           <img
             src="/images/headshot.jpeg"
             alt="Krishna Suresh"
-            className="w-32 h-32 rounded-full object-cover object-top flex-shrink-0"
+            className="w-32 h-32 rounded-full object-cover object-top flex-shrink-0 ring-2 ring-primary ring-offset-4 ring-offset-background shadow-[0_0_40px_-10px_hsl(var(--primary)/0.5)]"
           />
           <div>
             <h1 className="font-serif text-4xl tracking-tight text-foreground mb-2">Krishna Suresh</h1>
@@ -44,34 +44,26 @@ const About = () => {
         {/* Experience */}
         <div className="mb-16">
           <h2 className="font-serif text-2xl text-foreground mb-6">Experience</h2>
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <p className="text-foreground font-medium">Product Manager & Designer · Jointly (MS Thesis)</p>
-                <p className="text-sm text-muted-foreground mb-1">Northwestern University · 2025–2026</p>
-                <p className="text-sm text-muted-foreground">End-to-end product: user research, design, and development of an AI-powered group travel coordination app. Currently in beta with 40+ users.</p>
-              </div>
+          <div className="space-y-5">
+            <div className="border-l-2 border-border hover:border-primary transition-colors duration-300 pl-4">
+              <p className="text-foreground font-medium">Product Manager & Designer · Jointly (MS Thesis)</p>
+              <p className="text-sm text-muted-foreground mb-1">Northwestern University · 2025–2026</p>
+              <p className="text-sm text-muted-foreground">End-to-end product: user research, design, and development of an AI-powered group travel coordination app. Currently in beta with 40+ users.</p>
             </div>
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <p className="text-foreground font-medium">Product Lead</p>
-                <p className="text-sm text-muted-foreground mb-1">Northwestern Medicine · 2025</p>
-                <p className="text-sm text-muted-foreground">Led product strategy and design for a clinical diagnostic tool for pediatric gut-brain disorders. Facilitated research across 12+ clinicians and delivered validated prototypes.</p>
-              </div>
+            <div className="border-l-2 border-border hover:border-primary transition-colors duration-300 pl-4">
+              <p className="text-foreground font-medium">Product Lead</p>
+              <p className="text-sm text-muted-foreground mb-1">Northwestern Medicine · 2025</p>
+              <p className="text-sm text-muted-foreground">Led product strategy and design for a clinical diagnostic tool for pediatric gut-brain disorders. Facilitated research across 12+ clinicians and delivered validated prototypes.</p>
             </div>
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <p className="text-foreground font-medium">Product Manager & Full Stack Developer</p>
-                <p className="text-sm text-muted-foreground mb-1">NectarOM · 2021–2024</p>
-                <p className="text-sm text-muted-foreground">Built Nectar.ai end-to-end using RAG architecture — drove +30% add-to-cart, +18% checkout completion, and ~99% improvement in chatbot response rates. Also shipped NectarCares, a platform connecting donors to families in need.</p>
-              </div>
+            <div className="border-l-2 border-border hover:border-primary transition-colors duration-300 pl-4">
+              <p className="text-foreground font-medium">Product Manager & Full Stack Developer</p>
+              <p className="text-sm text-muted-foreground mb-1">NectarOM · 2021–2024</p>
+              <p className="text-sm text-muted-foreground">Built Nectar.ai end-to-end using RAG architecture — drove +30% add-to-cart, +18% checkout completion, and ~99% improvement in chatbot response rates. Also shipped NectarCares, a platform connecting donors to families in need.</p>
             </div>
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <p className="text-foreground font-medium">Software Engineering Intern</p>
-                <p className="text-sm text-muted-foreground mb-1">Ampersand · 2020</p>
-                <p className="text-sm text-muted-foreground">Supported API access management and security during the company's transition to Okta as an Identity Provider.</p>
-              </div>
+            <div className="border-l-2 border-border hover:border-primary transition-colors duration-300 pl-4">
+              <p className="text-foreground font-medium">Software Engineering Intern</p>
+              <p className="text-sm text-muted-foreground mb-1">Ampersand · 2020</p>
+              <p className="text-sm text-muted-foreground">Supported API access management and security during the company's transition to Okta as an Identity Provider.</p>
             </div>
           </div>
         </div>
