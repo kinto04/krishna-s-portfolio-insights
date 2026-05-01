@@ -160,18 +160,46 @@ const MetaCol = ({ label, value }: { label: string; value: string }) => (
 
 type Anchor = { id: string; label: string; number?: string };
 
+const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
+  if (anchors.length === 0) return null;
+  return (
+    <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+      <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground shrink-0">Jump to</p>
+      <div className="flex flex-wrap gap-2">
+        {anchors.map((c, i) => (
+          <a
+            key={c.id}
+            href={`#${c.id}`}
+            className="group inline-flex items-baseline gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
+            <span className="font-serif tabular-nums text-foreground/60 group-hover:text-primary transition-colors">
+              {c.number ?? String(i + 1).padStart(2, "0")}
+            </span>
+            <span className="text-foreground group-hover:text-primary transition-colors">{c.label}</span>
+            {i < anchors.length - 1 && <span className="text-border ml-2">/</span>}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) => {
   if (!study.overview) {
-    // Fallback: show summary as overview when overview field absent
+    // Studies without a full overview: show summary + (if any) Jump-to strip on one section.
     return (
       <FadeIn className="mt-12">
         <div className="border border-border rounded-xl p-6 sm:p-8 bg-card/30">
           <p className="text-base text-foreground leading-relaxed">{study.summary}</p>
         </div>
+        {anchors.length > 0 && (
+          <div className="mt-8 pt-8 border-t border-border">
+            <JumpTo anchors={anchors} />
+          </div>
+        )}
       </FadeIn>
     );
   }
-  const labeled = anchors;
   return (
     <FadeIn className="mt-14">
       <div className="border-t border-border pt-10">
@@ -195,24 +223,9 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
             <p className="text-sm text-foreground/90 leading-snug">{study.overview.outcome}</p>
           </div>
         </div>
-        {labeled.length > 0 && (
-          <div className="pt-8 border-t border-border flex flex-col sm:flex-row sm:items-center gap-4">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground shrink-0">Jump to</p>
-            <div className="flex flex-wrap gap-2">
-              {labeled.map((c, i) => (
-                <a
-                  key={c.id}
-                  href={`#${c.id}`}
-                  className="group inline-flex items-baseline gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <span className="font-serif tabular-nums text-foreground/60 group-hover:text-primary transition-colors">
-                    {c.number ?? String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-foreground group-hover:text-primary transition-colors">{c.label}</span>
-                  {i < labeled.length - 1 && <span className="text-border ml-2">/</span>}
-                </a>
-              ))}
-            </div>
+        {anchors.length > 0 && (
+          <div className="pt-8 border-t border-border">
+            <JumpTo anchors={anchors} />
           </div>
         )}
       </div>
