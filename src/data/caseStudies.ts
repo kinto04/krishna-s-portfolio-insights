@@ -97,7 +97,7 @@ export const caseStudies: CaseStudy[] = [
         text: "Group trips are supposed to bring people together, but the planning process can be frustrating.",
       },
 
-      { kind: "chapter", id: "the-research", number: "01", label: "The Research", intro: "I went looking for what actually happens between inspiration and booking — and why the people who care most end up resenting it." },
+      { kind: "chapter", id: "the-research", number: "01", label: "The Research", intro: "I went looking for what actually happens between inspiration and booking, and why the people who care most end up resenting it." },
       { kind: "image", src: "/images/jointly/4.png", fullWidth: true, caption: "Three research tracks: 21 interviews, market scan, and 60k+ Reddit views." },
       { kind: "image", src: "/images/jointly/3.png", fullWidth: true, caption: "One Reddit thread surfaced what people won't say to friends." },
       { kind: "image", src: "/images/jointly/7.png", fullWidth: true, caption: "Three frustrations showed up in every conversation." },
