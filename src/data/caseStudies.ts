@@ -182,7 +182,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "airy",
     title: "Airy",
-    subtitle: "A smarter tool for clinical therapists.",
+    subtitle: "A smart tool for clinical therapists.",
     role: "Product Manager · Designer",
     year: "2025",
     context: "Interaction Design · Northwestern University",
