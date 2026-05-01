@@ -110,7 +110,7 @@ export const caseStudies: CaseStudy[] = [
       { kind: "image", src: "/images/jointly/10.png", fullWidth: true, caption: "Jointly sits in the smart + group-native quadrant." },
 
       { kind: "chapter", id: "the-product", number: "04", label: "The Product" },
-      { kind: "statement", text: "Jointly. — the collaborative decision-making layer between inspiration and booking." },
+      { kind: "statement", text: "Jointly. The collaborative decision-making layer between inspiration and booking." },
       { kind: "image", src: "/images/jointly/27.png", fullWidth: true, caption: "Four features that turn group chaos into a plan." },
       { kind: "image", src: "/images/jointly/12.png", fullWidth: true, caption: "Trip creation: destination, interests, budget priority. Two steps." },
       { kind: "image", src: "/images/jointly/14.png", fullWidth: true, caption: "Capture ideas in natural language." },
@@ -161,7 +161,7 @@ export const caseStudies: CaseStudy[] = [
         sectionIntro:
           "Jointly absorbs the social friction of coordination so the group can focus on the trip, not the logistics.",
         image: "/images/jointly/11.png",
-        caption: "Jointly. — the collaborative decision-making layer between inspiration and booking.",
+        caption: "Jointly. The collaborative decision-making layer between inspiration and booking.",
         fullWidth: true,
       },
       { image: "/images/jointly/27.png", caption: "Four features that turn group chaos into a plan everyone's excited about." },
