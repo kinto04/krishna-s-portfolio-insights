@@ -89,7 +89,7 @@ export const caseStudies: CaseStudy[] = [
       outcome: "Live in beta. 40+ signups during the initial testing period without paid acquisition.",
     },
     reflection:
-      "Group decisions aren't a planning problem — they're a social one. The most useful thing the product does is take the awkward conversations off the group's plate.",
+      "Meeting the functional needs of the group was bare minimum - but the most important piece to design for was the emotional and social needs of the group. The most useful thing the product does is take the awkward conversations off the group's plate - giving them a great starting point to take the trip forward.",
     blocks: [
       {
         kind: "statement",
