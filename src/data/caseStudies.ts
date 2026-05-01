@@ -206,7 +206,7 @@ export const caseStudies: CaseStudy[] = [
       {
         sectionLabel: "The Problem",
         sectionIntro:
-          "Therapy tools are built for sessions — but real change happens in the 167 hours between them.",
+          "Most current tools are built for sessions - but real change happens in the hours between them.",
         image: "/images/airy/43.png",
         caption: "Current tools are narrow, limiting, time-consuming, and built for a single user — not the therapist-client relationship.",
       },
