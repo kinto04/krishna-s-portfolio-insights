@@ -235,7 +235,7 @@ export const caseStudies: CaseStudy[] = [
         sectionIntro:
           "We tested with therapists and clients actively in online therapy. The value landed.",
         image: "/images/airy/59.png",
-        caption: "Real feedback from therapists and clients after testing — the value landed.",
+        caption: "Real feedback from therapists and clients after testing.",
       },
       {
         sectionLabel: "Process & Artifacts",
