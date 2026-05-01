@@ -185,7 +185,7 @@ export const caseStudies: CaseStudy[] = [
     subtitle: "A smart tool for clinical therapists.",
     role: "Designer · Product Manager",
     year: "2025",
-    context: "Interaction Design · Northwestern University",
+    context: "Interaction Design Studio Course · Northwestern University",
     tags: ["Healthcare", "Interaction Design", "Product Strategy"],
     summary:
       "Airy is a digital platform designed to help clinical therapists better support their clients — with AI-powered note-taking, between-session check-ins, nudges, and progress tracking. Over 10 weeks and 21 user interviews, our team uncovered a core tension: therapy tools are built for sessions, not the 167 hours in between. I led product strategy, conducted research, designed high-fidelity prototypes, and authored the BRD.",
