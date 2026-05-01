@@ -17,10 +17,13 @@ const FadeIn = ({ children, className = "" }: { children: React.ReactNode; class
 };
 
 export const ChapterHeader = ({ number, label, intro }: { number: string; label: string; intro?: string }) => (
-  <FadeIn className="mt-24 mb-10 first:mt-8">
+  <FadeIn className="mt-28 mb-12 first:mt-8 pt-10 border-t border-border">
+    <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-5">
+      Chapter {number}
+    </p>
     <div className="flex items-baseline gap-5">
       <span className="font-serif text-5xl text-primary/70 tabular-nums leading-none">{number}</span>
-      <h2 className="font-serif text-3xl sm:text-4xl text-foreground tracking-tight">{label}</h2>
+      <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">{label}</h2>
     </div>
     {intro && (
       <p className="text-base text-muted-foreground leading-relaxed mt-4 max-w-2xl pl-0 sm:pl-[4.5rem]">{intro}</p>

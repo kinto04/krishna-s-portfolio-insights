@@ -44,48 +44,34 @@ const groupIntoChapters = (slides: Slide[]): Chapter[] => {
   return chapters;
 };
 
-const SlideBlock = ({ slide, index, forceFullWidth }: { slide: Slide; index: number; forceFullWidth?: boolean }) => {
-  const fullWidth = forceFullWidth || slide.fullWidth || !slide.caption;
-  const reverse = index % 2 === 1;
-
-  if (fullWidth) {
-    return (
-      <FadeIn className="mb-6">
-        <div className="rounded-lg overflow-hidden bg-card">
-          <img src={slide.image} alt={slide.caption ?? ""} className="w-full" loading="lazy" />
-        </div>
-        {slide.caption && (
-          <p className="text-sm text-muted-foreground mt-3 max-w-2xl leading-relaxed">{slide.caption}</p>
-        )}
-      </FadeIn>
-    );
-  }
-
+const SlideBlock = ({ slide }: { slide: Slide; index: number; forceFullWidth?: boolean }) => {
   return (
-    <FadeIn className="mb-10">
-      <div className={`grid md:grid-cols-5 gap-6 md:gap-8 items-center`}>
-        <div className={`md:col-span-3 rounded-lg overflow-hidden bg-card ${reverse ? "md:order-2" : ""}`}>
-          <img src={slide.image} alt={slide.caption ?? ""} className="w-full" loading="lazy" />
-        </div>
-        <div className={`md:col-span-2 ${reverse ? "md:order-1" : ""}`}>
-          <p className="font-serif text-lg text-foreground leading-relaxed">{slide.caption}</p>
-        </div>
+    <FadeIn className="mb-12">
+      <div className="rounded-lg overflow-hidden bg-card border border-border/40">
+        <img src={slide.image} alt={slide.caption ?? ""} className="w-full" loading="lazy" />
       </div>
+      {slide.caption && (
+        <p className="text-xs text-muted-foreground mt-3 max-w-2xl leading-relaxed">{slide.caption}</p>
+      )}
     </FadeIn>
   );
 };
 
 const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number }) => {
+  const numStr = String(number).padStart(2, "0");
   return (
-    <section id={chapter.id} className="scroll-mt-24 mt-20 first:mt-8">
+    <section id={chapter.id} className="scroll-mt-24 mt-28 first:mt-8">
       {chapter.label && (
-        <FadeIn className="mb-10">
+        <FadeIn className="mb-12 pt-10 border-t border-border">
+          <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-5">
+            Chapter {numStr}
+          </p>
           <div className="flex items-baseline gap-5">
             <span className="font-serif text-5xl text-primary/70 tabular-nums leading-none">
-              {String(number).padStart(2, "0")}
+              {numStr}
             </span>
             <div className="flex-1">
-              <h2 className="font-serif text-3xl sm:text-4xl text-foreground tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">
                 {chapter.label}
               </h2>
             </div>
@@ -99,7 +85,7 @@ const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number })
       )}
       <div>
         {chapter.slides.map((slide, i) => (
-          <SlideBlock key={i} slide={slide} index={i} forceFullWidth={i === 0 && !!chapter.label} />
+          <SlideBlock key={i} slide={slide} index={i} />
         ))}
       </div>
     </section>
@@ -174,18 +160,46 @@ const MetaCol = ({ label, value }: { label: string; value: string }) => (
 
 type Anchor = { id: string; label: string; number?: string };
 
+const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
+  if (anchors.length === 0) return null;
+  return (
+    <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+      <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground shrink-0">Jump to</p>
+      <div className="flex flex-wrap gap-2">
+        {anchors.map((c, i) => (
+          <a
+            key={c.id}
+            href={`#${c.id}`}
+            className="group inline-flex items-baseline gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
+            <span className="font-serif tabular-nums text-foreground/60 group-hover:text-primary transition-colors">
+              {c.number ?? String(i + 1).padStart(2, "0")}
+            </span>
+            <span className="text-foreground group-hover:text-primary transition-colors">{c.label}</span>
+            {i < anchors.length - 1 && <span className="text-border ml-2">/</span>}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) => {
   if (!study.overview) {
-    // Fallback: show summary as overview when overview field absent
+    // Studies without a full overview: show summary + (if any) Jump-to strip on one section.
     return (
       <FadeIn className="mt-12">
         <div className="border border-border rounded-xl p-6 sm:p-8 bg-card/30">
           <p className="text-base text-foreground leading-relaxed">{study.summary}</p>
         </div>
+        {anchors.length > 0 && (
+          <div className="mt-8 pt-8 border-t border-border">
+            <JumpTo anchors={anchors} />
+          </div>
+        )}
       </FadeIn>
     );
   }
-  const labeled = anchors;
   return (
     <FadeIn className="mt-14">
       <div className="border-t border-border pt-10">
@@ -209,24 +223,9 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
             <p className="text-sm text-foreground/90 leading-snug">{study.overview.outcome}</p>
           </div>
         </div>
-        {labeled.length > 0 && (
-          <div className="pt-8 border-t border-border flex flex-col sm:flex-row sm:items-center gap-4">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground shrink-0">Jump to</p>
-            <div className="flex flex-wrap gap-2">
-              {labeled.map((c, i) => (
-                <a
-                  key={c.id}
-                  href={`#${c.id}`}
-                  className="group inline-flex items-baseline gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <span className="font-serif tabular-nums text-foreground/60 group-hover:text-primary transition-colors">
-                    {c.number ?? String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-foreground group-hover:text-primary transition-colors">{c.label}</span>
-                  {i < labeled.length - 1 && <span className="text-border ml-2">/</span>}
-                </a>
-              ))}
-            </div>
+        {anchors.length > 0 && (
+          <div className="pt-8 border-t border-border">
+            <JumpTo anchors={anchors} />
           </div>
         )}
       </div>

@@ -1,50 +1,56 @@
-## 1. Reorder case studies
+## Goals
 
-In `src/data/caseStudies.ts`, reorder the `caseStudies` array to: **Jointly → Airy → Nectar.ai**. This automatically updates the Work index page, Home featured grid, and the "Next case study" link cycle on each detail page.
+1. Show the "Jump to" chapter nav on **Airy** and **Nectar.ai** (currently only Jointly has it).
+2. Make the **Airy** case study flow uniform — no more small image + side-text rows. Slides become full-width with caption underneath.
+3. Strengthen the visual hierarchy so a scrolling reader can clearly tell apart primary section headers vs. slides/sub-content.
 
-## 2. Make the Airy case study cohesive
+## Why "Jump to" is missing today
 
-The Airy slides are a soft off-white canvas with lavender/lilac accents, so the current dark page chrome fights them. We'll give the Airy detail page a per-study light theme that matches the slides, while leaving Jointly and Nectar.ai untouched.
+In `WorkDetail.tsx`, `Overview` returns an early fallback (just the summary) whenever `study.overview` is absent. Airy and Nectar.ai don't have an `overview` block, so the chapter chips never render even though the anchors are computed.
 
-### Approach
+## Changes
 
-Add an optional `theme` field to the `CaseStudy` interface:
+### 1. `src/pages/WorkDetail.tsx`
 
-```ts
-theme?: {
-  background: string;   // page bg, e.g. "#F5F1EC"
-  foreground: string;   // body text
-  muted: string;        // muted text
-  border: string;       // hairlines
-  card: string;         // image frame bg
-  primary: string;      // accent (chapter numbers, links)
-};
+- **Always render the "Jump to" strip when anchors exist**, even for studies without a full `overview` object. Refactor `Overview` so the chapter nav is a separate concern that renders whenever `anchors.length > 0`.
+  - When `study.overview` is present → keep the current Context / My Role / Outcome grid + the Jump-to row beneath it (Jointly unchanged).
+  - When `study.overview` is absent → render the summary card *and* the Jump-to strip below it on the same border-top section (Airy, Nectar.ai).
+- **Force every slide-based case study to use full-width slides.** Update `SlideBlock` to always render the full-width layout (image on top, caption below). Drop the side-by-side `md:grid-cols-5` branch entirely. This removes the "small image with text beside it" pattern from Airy and Nectar.ai in one place, and matches the look the user already likes from Jointly's blocks-based renderer.
+- **Stronger primary section headers** (applies to `ChapterBlock`, the slide-path renderer):
+  - Add a top divider rule (`border-t border-border pt-10`) above each labeled chapter so primary sections visually separate from the previous section's content.
+  - Add a small uppercase eyebrow (e.g. `CHAPTER 02`) above the serif title for extra scanability.
+  - Increase top spacing (`mt-24` → `mt-28`) and keep the large serif numeral + 3xl/4xl serif title.
+  - Captions under slides become the "sub-content" tier: smaller (`text-xs`), muted, max-width constrained — visually distinct from chapter intros (`text-base`, foreground-leaning).
+- Mirror the same divider + eyebrow treatment in `ChapterHeader` inside `Blocks.tsx` so Jointly stays consistent with the new hierarchy.
+
+### 2. `src/components/casestudy/Blocks.tsx`
+
+- Update `ChapterHeader` to match the new primary-section treatment (top divider, uppercase "Chapter NN" eyebrow, same serif title + intro). Jointly already uses chapters, so it gets the upgrade for free.
+
+### 3. `src/data/caseStudies.ts`
+
+- No structural changes required. Airy and Nectar.ai already have `sectionLabel` markers on the right slides, which become the chapter anchors.
+- Optional small polish: add a one-line `sectionIntro` to a few of Airy's sections (e.g. The Problem, The Solution, The Product, Validation) so each chapter has a brief lead-in like Jointly's. I'll add concise intros that don't duplicate slide captions.
+
+## Visual hierarchy summary (after changes)
+
+```text
+══════════════════════════════════════  ← top divider
+CHAPTER 02                              ← uppercase eyebrow (muted)
+02  The Problem                         ← serif numeral + serif 3xl/4xl title
+    Short intro paragraph here.         ← base muted-foreground lead
+
+[ full-width slide image ]              ← uniform full-bleed visual
+small muted caption beneath             ← xs muted = sub-content tier
+
+[ full-width slide image ]
+small muted caption beneath
+══════════════════════════════════════  ← next chapter divider
+CHAPTER 03
+…
 ```
 
-Set Airy's theme to a warm off-white palette pulled from the slides:
-- background `#F4F0EA` (warm paper)
-- foreground `#1F1B2E` (deep ink, near-black with violet undertone)
-- muted `#6B6577`
-- border `#E2DCD2`
-- card `#ECE6DD`
-- primary `#7C6BB0` (lavender accent from slides)
+## Out of scope
 
-In `src/pages/WorkDetail.tsx`, when `study.theme` exists, wrap the article in a `<div style={{ ... CSS vars override ...}}>` that overrides the Tailwind semantic tokens (`--background`, `--foreground`, `--muted-foreground`, `--border`, `--card`, `--primary`) for that subtree only. Also set the wrapper's `background-color` so the themed surface extends edge-to-edge behind the article (negative-margin / full-bleed band, or apply via a wrapping section with `bg-[var(--background)]`).
-
-Because every existing element already uses semantic classes (`text-foreground`, `bg-card`, `border-border`, `text-primary`, etc.), no component markup needs to change — the Hero, Overview, chapter numbers, captions, metric divider, reflection quote bar, and "Next case study" card all retheme automatically.
-
-### Small refinements for Airy specifically
-
-- Hero image: keep the rounded frame but set its `bg-card` to the themed card color so letterboxing on the 21:9 crop blends in.
-- "Next case study" card at the bottom: stays themed (light) to avoid a jarring transition; the Layout's footer/nav remain the global dark theme — the themed band ends with the article.
-
-### Technical notes
-
-- CSS variables in `src/index.css` are HSL triplets (e.g. `--background: 0 0% 4%;`). The override needs to use the same HSL-triplet format so Tailwind's `hsl(var(--background))` resolves correctly. Convert each hex above to `H S% L%` and apply via inline `style` on the wrapper.
-- Scope the override to the article wrapper only so the global Navbar/Footer keep the site's dark identity.
-- No changes needed to `Blocks.tsx` or `CaseStudyCard` — Airy's card on Work/Home keeps the dark grid styling.
-
-## Files to change
-
-- `src/data/caseStudies.ts` — reorder array; add `theme` to interface; add theme object to Airy.
-- `src/pages/WorkDetail.tsx` — read `study.theme`, render a themed wrapper around the `<article>` that overrides the semantic CSS variables and paints the background.
+- Migrating Airy/Nectar.ai from `slides` to the richer `blocks` system (bigger rewrite; not needed to solve the stated problems).
+- Changing the Jointly case study's content.
