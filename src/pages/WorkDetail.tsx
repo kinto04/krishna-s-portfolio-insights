@@ -44,48 +44,34 @@ const groupIntoChapters = (slides: Slide[]): Chapter[] => {
   return chapters;
 };
 
-const SlideBlock = ({ slide, index, forceFullWidth }: { slide: Slide; index: number; forceFullWidth?: boolean }) => {
-  const fullWidth = forceFullWidth || slide.fullWidth || !slide.caption;
-  const reverse = index % 2 === 1;
-
-  if (fullWidth) {
-    return (
-      <FadeIn className="mb-6">
-        <div className="rounded-lg overflow-hidden bg-card">
-          <img src={slide.image} alt={slide.caption ?? ""} className="w-full" loading="lazy" />
-        </div>
-        {slide.caption && (
-          <p className="text-sm text-muted-foreground mt-3 max-w-2xl leading-relaxed">{slide.caption}</p>
-        )}
-      </FadeIn>
-    );
-  }
-
+const SlideBlock = ({ slide }: { slide: Slide; index: number; forceFullWidth?: boolean }) => {
   return (
-    <FadeIn className="mb-10">
-      <div className={`grid md:grid-cols-5 gap-6 md:gap-8 items-center`}>
-        <div className={`md:col-span-3 rounded-lg overflow-hidden bg-card ${reverse ? "md:order-2" : ""}`}>
-          <img src={slide.image} alt={slide.caption ?? ""} className="w-full" loading="lazy" />
-        </div>
-        <div className={`md:col-span-2 ${reverse ? "md:order-1" : ""}`}>
-          <p className="font-serif text-lg text-foreground leading-relaxed">{slide.caption}</p>
-        </div>
+    <FadeIn className="mb-12">
+      <div className="rounded-lg overflow-hidden bg-card border border-border/40">
+        <img src={slide.image} alt={slide.caption ?? ""} className="w-full" loading="lazy" />
       </div>
+      {slide.caption && (
+        <p className="text-xs text-muted-foreground mt-3 max-w-2xl leading-relaxed">{slide.caption}</p>
+      )}
     </FadeIn>
   );
 };
 
 const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number }) => {
+  const numStr = String(number).padStart(2, "0");
   return (
-    <section id={chapter.id} className="scroll-mt-24 mt-20 first:mt-8">
+    <section id={chapter.id} className="scroll-mt-24 mt-28 first:mt-8">
       {chapter.label && (
-        <FadeIn className="mb-10">
+        <FadeIn className="mb-12 pt-10 border-t border-border">
+          <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-5">
+            Chapter {numStr}
+          </p>
           <div className="flex items-baseline gap-5">
             <span className="font-serif text-5xl text-primary/70 tabular-nums leading-none">
-              {String(number).padStart(2, "0")}
+              {numStr}
             </span>
             <div className="flex-1">
-              <h2 className="font-serif text-3xl sm:text-4xl text-foreground tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">
                 {chapter.label}
               </h2>
             </div>
@@ -99,7 +85,7 @@ const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number })
       )}
       <div>
         {chapter.slides.map((slide, i) => (
-          <SlideBlock key={i} slide={slide} index={i} forceFullWidth={i === 0 && !!chapter.label} />
+          <SlideBlock key={i} slide={slide} index={i} />
         ))}
       </div>
     </section>
