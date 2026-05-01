@@ -306,65 +306,81 @@ const WorkDetail = () => {
     );
   }
 
+  const themed = !!study.theme;
+  const themeStyle = study.theme
+    ? ({
+        ["--background" as any]: study.theme.background,
+        ["--foreground" as any]: study.theme.foreground,
+        ["--muted-foreground" as any]: study.theme.mutedForeground,
+        ["--border" as any]: study.theme.border,
+        ["--card" as any]: study.theme.card,
+        ["--primary" as any]: study.theme.primary,
+        backgroundColor: `hsl(${study.theme.background})`,
+        color: `hsl(${study.theme.foreground})`,
+      } as React.CSSProperties)
+    : undefined;
+
   return (
     <Layout>
-      <article className="max-w-5xl mx-auto px-6 pt-10 pb-24">
-        <Link
-          to="/work"
-          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
-        >
-          <ArrowLeft size={14} /> All projects
-        </Link>
+      <div style={themeStyle} className={themed ? "w-full" : undefined}>
+        <article className="max-w-5xl mx-auto px-6 pt-10 pb-24">
+          <Link
+            to="/work"
+            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+          >
+            <ArrowLeft size={14} /> All projects
+          </Link>
 
-        <Hero study={study} />
+          <Hero study={study} />
 
-        <Overview study={study} anchors={anchors} />
+          <Overview study={study} anchors={anchors} />
 
-        {/* Native metrics */}
-        {study.metrics && study.metrics.length > 0 && (
-          <FadeIn className="mt-12">
-            <div className="border-y border-border py-10 grid grid-cols-3 gap-6 text-center">
-              {study.metrics.map((m) => (
-                <div key={m.label}>
-                  <p className="font-serif text-4xl sm:text-5xl text-foreground mb-1">{m.value}</p>
-                  <p className="text-sm font-medium text-foreground mb-0.5">{m.label}</p>
-                  {m.sublabel && <p className="text-xs text-muted-foreground">{m.sublabel}</p>}
-                </div>
-              ))}
+          {/* Native metrics */}
+          {study.metrics && study.metrics.length > 0 && (
+            <FadeIn className="mt-12">
+              <div className="border-y border-border py-10 grid grid-cols-3 gap-6 text-center">
+                {study.metrics.map((m) => (
+                  <div key={m.label}>
+                    <p className="font-serif text-4xl sm:text-5xl text-foreground mb-1">{m.value}</p>
+                    <p className="text-sm font-medium text-foreground mb-0.5">{m.label}</p>
+                    {m.sublabel && <p className="text-xs text-muted-foreground">{m.sublabel}</p>}
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          )}
+
+          {/* Body: blocks (preferred) or chapters fallback */}
+          {study.blocks && study.blocks.length > 0 ? (
+            <div className="mt-8">
+              {study.blocks.map((block, i) => {
+                if (block.kind === "chapter") {
+                  return (
+                    <section key={block.id} id={block.id} className="scroll-mt-24">
+                      <RenderBlock block={block} index={i} />
+                    </section>
+                  );
+                }
+                return <RenderBlock key={i} block={block} index={i} />;
+              })}
             </div>
-          </FadeIn>
-        )}
+          ) : chapters.length > 0 ? (
+            <div className="mt-8">
+              {chapters.map((chapter, i) => {
+                const labeledBefore = chapters.slice(0, i).filter((c) => c.label).length;
+                const number = chapter.label ? labeledBefore + 1 : 0;
+                return <ChapterBlock key={chapter.id + i} chapter={chapter} number={number} />;
+              })}
+            </div>
+          ) : (
+            <div className="mt-10 rounded-lg border border-dashed border-border p-16 text-center">
+              <p className="text-muted-foreground text-sm">Case study assets coming soon.</p>
+            </div>
+          )}
 
-        {/* Body: blocks (preferred) or chapters fallback */}
-        {study.blocks && study.blocks.length > 0 ? (
-          <div className="mt-8">
-            {study.blocks.map((block, i) => {
-              if (block.kind === "chapter") {
-                return (
-                  <section key={block.id} id={block.id} className="scroll-mt-24">
-                    <RenderBlock block={block} index={i} />
-                  </section>
-                );
-              }
-              return <RenderBlock key={i} block={block} index={i} />;
-            })}
-          </div>
-        ) : chapters.length > 0 ? (
-          <div className="mt-8">
-            {chapters.map((chapter, i) => {
-              const labeledBefore = chapters.slice(0, i).filter((c) => c.label).length;
-              const number = chapter.label ? labeledBefore + 1 : 0;
-              return <ChapterBlock key={chapter.id + i} chapter={chapter} number={number} />;
-            })}
-          </div>
-        ) : (
-          <div className="mt-10 rounded-lg border border-dashed border-border p-16 text-center">
-            <p className="text-muted-foreground text-sm">Case study assets coming soon.</p>
-          </div>
-        )}
-
-        <Closing study={study} />
-      </article>
+          <Closing study={study} />
+        </article>
+      </div>
     </Layout>
   );
 };
