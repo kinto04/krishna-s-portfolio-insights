@@ -123,7 +123,7 @@ export const caseStudies: CaseStudy[] = [
         value: "40+",
         label: "signups during initial testing",
         bullets: [
-          "No paid acquisition — landing page only",
+          "No paid acquisition",
           "Value lands immediately: people get what it is in one read",
           "Suggestions and budget flexibility are the most-cited reasons",
         ],
