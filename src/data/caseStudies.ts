@@ -201,7 +201,6 @@ export const caseStudies: CaseStudy[] = [
       primary: "255 30% 55%",
     },
     slides: [
-      { image: "/images/airy/2.png" },
       { image: "/images/airy/40.png", caption: "10 weeks of research, 3 rounds and 21 sessions of user interviews." },
       { image: "/images/airy/41.png", caption: "52.9M Americans are in therapy — and 55% moved online post-pandemic. The market is growing fast, but the tools haven't kept up." },
       {
