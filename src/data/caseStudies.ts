@@ -94,7 +94,7 @@ export const caseStudies: CaseStudy[] = [
       {
         kind: "statement",
         eyebrow: "The premise",
-        text: "Group trips are supposed to bring people together. Jointly. makes sure the planning does too.",
+        text: "Group trips are supposed to bring people together, but the planning process can be frustrating.",
       },
 
       { kind: "chapter", id: "the-research", number: "01", label: "The Research", intro: "I went looking for what actually happens between inspiration and booking — and why the people who care most end up resenting it." },
