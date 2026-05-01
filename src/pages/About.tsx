@@ -57,7 +57,7 @@ const About = () => {
             </div>
             <div className="border-l-2 border-border hover:border-primary transition-colors duration-300 pl-4">
               <p className="text-foreground font-medium">Product Manager & Full Stack Developer</p>
-              <p className="text-sm text-muted-foreground mb-1">NectarOM · 2021–2024</p>
+              <p className="text-sm text-muted-foreground mb-1">NectarOM · 2021–2025</p>
               <p className="text-sm text-muted-foreground">Built Nectar.ai end-to-end using RAG architecture — drove +30% add-to-cart, +18% checkout completion, and ~99% improvement in chatbot response rates. Also shipped NectarCares, a platform connecting donors to families in need.</p>
             </div>
             <div className="border-l-2 border-border hover:border-primary transition-colors duration-300 pl-4">
