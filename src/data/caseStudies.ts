@@ -161,7 +161,7 @@ export const caseStudies: CaseStudy[] = [
         sectionIntro:
           "Jointly absorbs the social friction of coordination so the group can focus on the trip, not the logistics.",
         image: "/images/jointly/11.png",
-        caption: "Jointly. — the collaborative decision-making layer between inspiration and booking.",
+        caption: "Jointly. The collaborative decision-making layer between inspiration and booking.",
         fullWidth: true,
       },
       { image: "/images/jointly/27.png", caption: "Four features that turn group chaos into a plan everyone's excited about." },
