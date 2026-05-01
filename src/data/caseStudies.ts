@@ -205,17 +205,23 @@ export const caseStudies: CaseStudy[] = [
       { image: "/images/airy/41.png", caption: "52.9M Americans are in therapy — and 55% moved online post-pandemic. The market is growing fast, but the tools haven't kept up." },
       {
         sectionLabel: "The Problem",
+        sectionIntro:
+          "Therapy tools are built for sessions — but real change happens in the 167 hours between them.",
         image: "/images/airy/43.png",
         caption: "Current tools are narrow, limiting, time-consuming, and built for a single user — not the therapist-client relationship.",
       },
       { image: "/images/airy/44.png", caption: "Therapists drown in manual notes and can't track progress. Clients feel therapy ends when the session does." },
       {
         sectionLabel: "The Solution",
+        sectionIntro:
+          "One platform that supports the therapist's workflow and keeps the client engaged between sessions.",
         image: "/images/airy/46.png",
         caption: "Airy: a unified platform built around Notes & Trends, Client Engagement, and Trust & Security.",
       },
       {
         sectionLabel: "The Product",
+        sectionIntro:
+          "What we built: a therapist dashboard, AI-assisted notes, client check-ins, nudges, and shared progress tracking.",
         image: "/images/airy/47.png",
         caption: "The therapist dashboard — a daily overview of client schedule, alerts, and pending tasks in one place.",
       },
@@ -226,11 +232,15 @@ export const caseStudies: CaseStudy[] = [
       { image: "/images/airy/57.png", caption: "Progress tracking: therapist and client views of the same data, with AI highlight summaries sent directly to clients." },
       {
         sectionLabel: "Validation",
+        sectionIntro:
+          "We tested with therapists and clients actively in online therapy. The value landed.",
         image: "/images/airy/59.png",
         caption: "Real feedback from therapists and clients after testing — the value landed.",
       },
       {
         sectionLabel: "Process & Artifacts",
+        sectionIntro:
+          "How we got here: research, usability testing, and a full design handoff.",
         image: "/images/airy/53.png",
         caption: "Usability testing through Dscout with 4 participants actively in online therapy — real-world feedback, not assumptions.",
       },
