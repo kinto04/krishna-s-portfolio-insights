@@ -225,7 +225,7 @@ export const caseStudies: CaseStudy[] = [
         image: "/images/airy/47.png",
         caption: "The therapist dashboard — a daily overview of client schedule, alerts, and pending tasks in one place.",
       },
-      { image: "/images/airy/48.png", caption: "AI-generated SOAP notes cut documentation time. One note takes 30 minutes — across 20 clients a week, that adds up fast." },
+      { image: "/images/airy/48.png", caption: "AI-generated SOAP notes cut documentation time. One note takes 30 minutes -this adds up fast across 20 clients every week." },
       { image: "/images/airy/49.png", caption: "AI Notes: all-session summaries, pattern detection, and treatment plan tracking — without the manual review." },
       { image: "/images/airy/51.png", caption: "Check-ins surface client journal entries between sessions, with AI-detected emotional themes flagged for the therapist." },
       { image: "/images/airy/54.png", caption: "The client Nudges view: daily affirmations, journal prompts, and mini-sessions that keep progress alive between appointments." },
