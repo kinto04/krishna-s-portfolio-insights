@@ -183,7 +183,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "airy",
     title: "Airy",
     subtitle: "A smart tool for clinical therapists.",
-    role: "Product Manager · Designer",
+    role: "Designer · Product Manager",
     year: "2025",
     context: "Interaction Design · Northwestern University",
     tags: ["Healthcare", "Interaction Design", "Product Strategy"],
