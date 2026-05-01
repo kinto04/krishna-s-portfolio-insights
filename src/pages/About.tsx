@@ -9,7 +9,7 @@ const About = () => {
   return (
     <Layout>
       <section className="max-w-3xl mx-auto px-6 pt-24 pb-24">
-        <div className="flex flex-col sm:flex-row gap-8 items-start mb-12">
+        <div className="flex flex-col sm:flex-row gap-8 items-center mb-12">
           <img
             src="/images/headshot.jpeg"
             alt="Krishna Suresh"
