@@ -52,6 +52,16 @@ export interface CaseStudy {
   overview?: Overview;
   reflection?: string;
   toolkit?: string[];
+  /** Optional per-study color theme. Values are HSL triplets ("H S% L%") that override
+   *  semantic Tailwind tokens (--background, --foreground, etc.) for the detail page only. */
+  theme?: {
+    background: string;
+    foreground: string;
+    mutedForeground: string;
+    border: string;
+    card: string;
+    primary: string;
+  };
 }
 
 export const caseStudies: CaseStudy[] = [
