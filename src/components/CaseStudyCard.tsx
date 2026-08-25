@@ -7,14 +7,14 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
   return (
     <Link
       to={`/work/${study.slug}`}
-      className="group flex flex-col h-full rounded-xl border border-border/60 p-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-border hover:shadow-[0_20px_40px_-20px_hsl(var(--primary)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="group flex flex-col h-full rounded-xl border border-border/60 p-3 lift-hover hover:border-border hover:shadow-[0_24px_48px_-24px_hsl(var(--primary)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <div className="aspect-[16/10] bg-card rounded-lg mb-4 overflow-hidden">
         {study.coverImage ? (
           <img
             src={study.coverImage}
             alt={study.title}
-            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+            className="w-full h-full object-cover transition-transform duration-[900ms] [transition-timing-function:var(--ease-out-expo)] group-hover:scale-[1.05]"
             loading="lazy"
           />
         ) : (
@@ -38,7 +38,7 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
               </Pill>
             ))}
           </div>
-          <div className="mt-3 flex items-center gap-1.5 text-xs text-primary opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+          <div className="mt-3 flex items-center gap-1.5 text-xs text-primary opacity-0 -translate-x-1.5 transition-all duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:opacity-100 group-hover:translate-x-0">
             View case study <ArrowRight size={12} />
           </div>
         </div>

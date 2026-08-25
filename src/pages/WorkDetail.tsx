@@ -114,49 +114,82 @@ const Hero = ({ study }: { study: CaseStudy }) => (
         {study.title}
       </h1>
       <p className="text-lg sm:text-xl text-muted-foreground">{study.subtitle}</p>
-    </div>
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-10 pt-8 border-t border-border">
-      <MetaCol label="Role" value={study.role} />
-      <MetaCol label="Year" value={study.year} />
-      <MetaCol label="Context" value={study.context} />
       {study.liveUrl && (
-        <div>
-          <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Live</p>
-          <a
-            href={study.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-foreground hover:text-primary transition-colors"
-          >
-            View live <ExternalLink size={12} />
-          </a>
-        </div>
+        <a
+          href={study.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-sm text-foreground hover:text-primary transition-colors mt-5"
+        >
+          View live <ExternalLink size={12} />
+        </a>
       )}
     </div>
-    {study.toolkit && study.toolkit.length > 0 && (
-      <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2">
-        <p className="text-[10px] uppercase tracking-wider text-muted-foreground">My Toolkit</p>
-        <div className="flex flex-wrap gap-1.5">
-          {study.toolkit.map((t) => (
-            <span
-              key={t}
-              className="text-xs text-foreground/90 bg-card border border-border/60 rounded-full px-2.5 py-0.5 leading-snug"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-      </div>
-    )}
   </header>
 );
 
-const MetaCol = ({ label, value }: { label: string; value: string }) => (
-  <div>
-    <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">{label}</p>
-    <p className="text-sm text-foreground leading-snug">{value}</p>
+const FactCell = ({ label, value, note }: { label: string; value: string; note?: string }) => (
+  <div className="min-w-0">
+    <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground mb-2">{label}</p>
+    <p className="text-[15px] sm:text-base text-foreground leading-snug">{value}</p>
+    {note && <p className="text-xs text-muted-foreground mt-1 leading-snug">{note}</p>}
   </div>
 );
+
+const AtAGlance = ({ study }: { study: CaseStudy }) => {
+  const facts = study.facts;
+  if (!facts) return null;
+  const cells = [
+    { label: "Timeline", value: facts.timeline, note: facts.timelineNote },
+    { label: "Team", value: facts.team },
+    { label: "My Role", value: facts.role },
+    { label: "Setting", value: facts.setting },
+  ];
+  const chips = study.toolkit ?? [];
+  return (
+    <FadeIn className="mt-10">
+      <div className="border-y border-border py-8">
+        <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-6">At a glance</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-7 stagger-children">
+          {cells.map((c, i) => (
+            <div
+              key={c.label}
+              className={i > 0 ? "md:border-l md:border-border/70 md:pl-8" : undefined}
+            >
+              <FactCell {...c} />
+            </div>
+          ))}
+        </div>
+        {(chips.length > 0 || facts.platform) && (
+          <div className="mt-7 pt-6 border-t border-border/60 flex flex-col sm:flex-row sm:items-center gap-x-10 gap-y-4">
+            {chips.length > 0 && (
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Tools</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {chips.map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs text-foreground/90 bg-card border border-border/60 rounded-full px-2.5 py-0.5 leading-snug transition-colors hover:border-primary/60 hover:text-primary"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            {facts.platform && (
+              <div className="flex items-center gap-3">
+                <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Platform</p>
+                <p className="text-xs text-foreground/90">{facts.platform}</p>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </FadeIn>
+  );
+};
+
 
 type Anchor = { id: string; label: string; number?: string };
 
@@ -332,7 +365,10 @@ const WorkDetail = () => {
 
           <Hero study={study} />
 
+          <AtAGlance study={study} />
+
           <Overview study={study} anchors={anchors} />
+
 
           {/* Native metrics */}
           {study.metrics && study.metrics.length > 0 && (

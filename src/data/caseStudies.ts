@@ -18,6 +18,17 @@ export interface Overview {
   outcome: string;
 }
 
+/** Scannable project facts rendered as the "At a glance" band on the detail page. */
+export interface Facts {
+  timeline: string;
+  timelineNote?: string;
+  team: string;
+  role: string;
+  setting: string;
+  platform?: string;
+}
+
+
 // Narrative blocks — composable units that mix native typography and selective imagery.
 // When a CaseStudy provides `blocks`, WorkDetail renders blocks instead of slides.
 export type Block =
@@ -50,6 +61,8 @@ export interface CaseStudy {
   slides?: Slide[];
   blocks?: Block[];
   overview?: Overview;
+  facts?: Facts;
+
   reflection?: string;
   toolkit?: string[];
   /** Optional per-study color theme. Values are HSL triplets ("H S% L%") that override
@@ -79,8 +92,17 @@ export const caseStudies: CaseStudy[] = [
     coverImage: "/images/jointly/cover.png",
     heroImage: "/images/jointly/hero.png",
     liveUrl: "https://planjointly.com",
+    facts: {
+      timeline: "9 months",
+      timelineNote: "2025–2026",
+      team: "Solo founder",
+      role: "Research, product strategy, UX, build",
+      setting: "Master's thesis · Northwestern EDI",
+      platform: "Mobile + Web",
+    },
     overview: {
-      context: "Master's thesis at Northwestern's EDI program. Nine months, solo founder.",
+      context: "Designed, built and launched end to end — from first interview to live beta.",
+
       roleDetail: [
         "End-to-end product strategy and research across 60+ users and 21 interviews",
         "UX and visual design across 40+ screens",
@@ -187,8 +209,18 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     context: "Interaction Design Studio Course · Northwestern University",
     tags: ["Healthcare", "Interaction Design", "Product Strategy"],
+    facts: {
+      timeline: "10 weeks",
+      timelineNote: "2025",
+      team: "Team of 6",
+      role: "Product strategy, research, hi-fi prototyping, BRD",
+      setting: "Interaction Design Studio · Northwestern",
+      platform: "Web + Mobile",
+    },
+    toolkit: ["Figma", "Dscout"],
     summary:
-      "Airy is a digital platform designed to help clinical therapists better support their clients - with AI-powered note-taking, between-session check-ins, nudges, and progress tracking. Over 10 weeks and 21 user interviews, our team uncovered a core tension: therapy tools are built for sessions, not the 167 hours in between. I led product strategy, conducted research, designed high-fidelity prototypes, and authored the BRD.",
+      "Airy is a digital platform designed to help clinical therapists better support their clients - with AI-powered note-taking, between-session check-ins, nudges, and progress tracking. Our research surfaced a core tension: therapy tools are built for sessions, not the 167 hours in between. I led product strategy, conducted research, designed high-fidelity prototypes, and authored the BRD.",
+
     featured: true,
     coverImage: "/images/airy/cover.png",
     heroImage: "/images/airy/hero.png",
@@ -259,7 +291,16 @@ export const caseStudies: CaseStudy[] = [
       "A small business selling wellness products needed to overhaul their underperforming customer support chatbot. I researched a year of historical support conversations, designed the conversation flows, and built a GPT-powered chatbot that guides customers from landing page through checkout.",
     featured: true,
     coverImage: "/images/u6qotkxyhcppqyywjql0qfrlnq.webp",
+    facts: {
+      timeline: "~3 months",
+      timelineNote: "2023, alongside other client work",
+      team: "Sole designer and developer, with the CEO and clients",
+      role: "Product management and development",
+      setting: "NectarOM · Client product",
+      platform: "Web · Shopify storefront",
+    },
     toolkit: ["Python", "Node.js", "APIs", "OpenAI", "Shopify", "Mailchimp"],
+
     metrics: [
       { value: "+99%", label: "Response Rate", sublabel: "% of customer chats answered" },
       { value: "+30%", label: "Add-to-Cart Rate", sublabel: "% of sessions that added to cart" },
