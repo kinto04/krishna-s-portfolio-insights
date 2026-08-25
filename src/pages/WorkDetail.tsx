@@ -365,7 +365,10 @@ const WorkDetail = () => {
 
           <Hero study={study} />
 
+          <AtAGlance study={study} />
+
           <Overview study={study} anchors={anchors} />
+
 
           {/* Native metrics */}
           {study.metrics && study.metrics.length > 0 && (
