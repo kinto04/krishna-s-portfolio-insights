@@ -17,7 +17,7 @@ const BlogPost = () => {
   if (!post) {
     return (
       <Layout>
-        <div className="max-w-3xl mx-auto px-6 pt-24 pb-20">
+        <div className="max-w-3xl mx-auto px-6 section-y">
           <p className="text-muted-foreground">Post not found.</p>
           <Link to="/blog" className="text-sm text-foreground underline mt-4 inline-block">
             ← Back to blog
@@ -72,10 +72,10 @@ const BlogPost = () => {
 
   return (
     <Layout>
-      <article className="max-w-3xl mx-auto px-6 pt-24 pb-20">
+      <article className="max-w-3xl mx-auto px-6 section-y">
         <Link
           to="/blog"
-          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground t-base mb-8"
         >
           <ArrowLeft size={14} /> All posts
         </Link>
@@ -85,7 +85,7 @@ const BlogPost = () => {
             {format(new Date(post.date), "MMMM d, yyyy")}
           </time>
           {post.tags.map((tag) => (
-            <span key={tag} className="text-xs px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">
+            <span key={tag} className="text-xs px-2.5 py-1 rounded-full bg-card/60 border border-border text-muted-foreground">
               {tag}
             </span>
           ))}

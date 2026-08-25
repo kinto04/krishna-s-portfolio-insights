@@ -17,7 +17,7 @@ const StoryPost = () => {
   if (!post) {
     return (
       <Layout>
-        <div className="max-w-3xl mx-auto px-6 pt-24 pb-20">
+        <div className="max-w-3xl mx-auto px-6 section-y">
           <p className="text-muted-foreground">Story not found.</p>
           <Link to="/stories" className="text-sm text-foreground underline mt-4 inline-block">
             ← Back to stories
@@ -71,16 +71,16 @@ const StoryPost = () => {
 
   return (
     <Layout>
-      <article className="max-w-[65ch] mx-auto px-6 pt-24 pb-24">
+      <article className="max-w-3xl mx-auto px-6 section-y">
         <Link
           to="/stories"
-          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-10"
+          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground t-base mb-10"
         >
           <ArrowLeft size={14} /> All stories
         </Link>
 
         <div className="flex items-center gap-3 mb-4">
-          <span className="text-xs uppercase tracking-wider text-primary font-medium">
+          <span className="label-eyebrow text-primary font-medium">
             {post.category}
           </span>
           <time className="text-sm text-muted-foreground">

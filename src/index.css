@@ -6,49 +6,54 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 40 6% 97%;
+    /* Neutrals carry a violet bias so accent and surface read as one family. */
+    --background: 252 12% 6%;
+    --foreground: 250 12% 97%;
 
-    --card: 0 0% 9%;
-    --card-foreground: 40 6% 97%;
+    --card: 252 10% 10%;
+    --card-foreground: 250 12% 97%;
 
-    --popover: 0 0% 9%;
-    --popover-foreground: 40 6% 97%;
+    --popover: 252 10% 10%;
+    --popover-foreground: 250 12% 97%;
 
-    --primary: 221 83% 60%;
-    --primary-foreground: 0 0% 100%;
-    --primary-hover: 221 83% 65%;
+    /* Iris violet — magenta-biased, deliberately not Tailwind violet. */
+    --primary: 258 88% 68%;
+    --primary-foreground: 252 30% 8%;
+    --primary-hover: 258 88% 74%;
+    --primary-deep: 256 62% 52%;
+    --primary-soft: 258 40% 16%;
 
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 40 6% 97%;
+    --secondary: 252 8% 15%;
+    --secondary-foreground: 250 12% 97%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 30 6% 63%;
+    --muted: 252 8% 15%;
+    --muted-foreground: 252 6% 64%;
 
-    --accent: 221 83% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 258 88% 68%;
+    --accent-foreground: 252 30% 8%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 358 72% 58%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 221 83% 60%;
+    --border: 252 8% 17%;
+    --input: 252 8% 17%;
+    --ring: 258 88% 68%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 40 6% 97%;
-    --sidebar-primary: 40 6% 97%;
-    --sidebar-primary-foreground: 0 0% 4%;
-    --sidebar-accent: 0 0% 15%;
-    --sidebar-accent-foreground: 40 6% 97%;
-    --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 221 83% 60%;
+    --sidebar-background: 252 12% 6%;
+    --sidebar-foreground: 250 12% 97%;
+    --sidebar-primary: 250 12% 97%;
+    --sidebar-primary-foreground: 252 12% 6%;
+    --sidebar-accent: 252 8% 15%;
+    --sidebar-accent-foreground: 250 12% 97%;
+    --sidebar-border: 252 8% 17%;
+    --sidebar-ring: 258 88% 68%;
 
-    --available: 152 60% 45%;
+    --available: 160 55% 48%;
   }
 }
+
 
 @layer base {
   * {
@@ -85,6 +90,49 @@
 }
 
 @layer utilities {
+  /* ---- One system: shared primitives -------------------------------- */
+
+  /* The single micro-label style. Used for every eyebrow on the site. */
+  .label-eyebrow {
+    font-size: 10px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Vertical page rhythm — one value, every page. */
+  .section-y {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  @media (min-width: 640px) {
+    .section-y {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  /* Card / panel surface. */
+  .surface {
+    background-color: hsl(var(--card) / 0.4);
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+  }
+
+  /* Ambient depth uses primary-deep, never primary. */
+  .accent-shadow {
+    box-shadow: 0 24px 48px -28px hsl(var(--primary-deep) / 0.45);
+  }
+
+  /* Every colour/opacity transition on the site runs on these. */
+  .t-base {
+    transition-property: color, background-color, border-color, opacity, box-shadow;
+    transition-duration: 0.35s;
+    transition-timing-function: var(--ease-out-quint);
+  }
+
+
   .animate-fade-in-up {
     animation: fadeInUp 0.85s var(--ease-out-expo) both;
   }
@@ -200,11 +248,11 @@
     background:
       radial-gradient(
         38rem 26rem at var(--mx) var(--my),
-        hsl(var(--primary) / 0.1) 0%,
-        hsl(var(--primary) / 0.035) 38%,
+        hsl(var(--primary-deep) / 0.16) 0%,
+        hsl(var(--primary-deep) / 0.05) 38%,
         transparent 72%
       ),
-      radial-gradient(80% 60% at 50% 0%, hsl(0 0% 100% / 0.04) 0%, transparent 70%),
+      radial-gradient(80% 60% at 50% 0%, hsl(0 0% 100% / 0.035) 0%, transparent 70%),
       linear-gradient(180deg, hsl(0 0% 100% / 0.02) 0%, transparent 40%);
     transition: background-position 0.2s linear;
   }
@@ -215,12 +263,13 @@
     inset: 0;
     background: radial-gradient(
       14rem 14rem at var(--mx) var(--my),
-      hsl(var(--primary) / 0.07) 0%,
+      hsl(var(--primary-deep) / 0.1) 0%,
       transparent 70%
     );
     opacity: 0;
     transition: opacity 0.6s var(--ease-out-quint);
   }
+
   .hero-glow[data-active="true"]::after {
     opacity: 1;
   }

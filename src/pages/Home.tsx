@@ -4,9 +4,10 @@ import Layout from "@/components/Layout";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { caseStudies } from "@/data/caseStudies";
 import { ArrowRight } from "lucide-react";
-import { useInView } from "@/hooks/useInView";
+import Reveal from "@/components/Reveal";
 import { usePointerGlow } from "@/hooks/usePointerGlow";
 import { Pill } from "@/components/ui/pill";
+
 
 const heroVariants: Record<string, { heading: string; subtitle: string }> = {
   startup: {
@@ -23,14 +24,8 @@ const heroVariants: Record<string, { heading: string; subtitle: string }> = {
   },
 };
 
-const ScrollSection = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
-  const { ref, isVisible } = useInView();
-  return (
-    <div ref={ref} className={`scroll-fade-in ${isVisible ? "is-visible" : ""} ${className}`}>
-      {children}
-    </div>
-  );
-};
+
+
 
 const Home = () => {
   const [searchParams] = useSearchParams();
@@ -55,19 +50,16 @@ const Home = () => {
         <div className="relative max-w-3xl mx-auto px-6 pt-16 pb-16 sm:pt-32 sm:pb-24">
           <div className="animate-fade-in-up">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground bg-card/80 backdrop-blur-sm border border-border/60 px-3 py-1.5 rounded-full">
-                <span className="relative w-2 h-2 rounded-full bg-available pulse-halo" />
+              <Pill variant="subtle" size="sm" uppercase dot="available" chevron={false} className="self-start whitespace-nowrap backdrop-blur-sm">
                 Available for Work
-              </span>
+              </Pill>
               <div className="flex flex-col gap-2 sm:text-right">
-                <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                  Expertise in
-                </span>
+                <span className="label-eyebrow">Expertise in</span>
                 <div className="flex flex-wrap sm:justify-end gap-2">
-                  <Pill variant="outline" size="sm" uppercase>AI Product Design</Pill>
-                  <Pill variant="outline" size="sm" uppercase>0→1 Product</Pill>
-                  <Pill variant="outline" size="sm" uppercase>Experience Design</Pill>
-                  <Pill variant="outline" size="sm" uppercase>Interaction Design</Pill>
+                  <Pill variant="outline" size="sm" uppercase chevron={false}>AI Product Design</Pill>
+                  <Pill variant="outline" size="sm" uppercase chevron={false}>0→1 Product</Pill>
+                  <Pill variant="outline" size="sm" uppercase chevron={false}>Experience Design</Pill>
+                  <Pill variant="outline" size="sm" uppercase chevron={false}>Interaction Design</Pill>
                 </div>
               </div>
             </div>
@@ -82,7 +74,7 @@ const Home = () => {
           <div className="flex gap-4 animate-fade-in-up-delay-4">
             <Link
               to="/work"
-              className="group inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-md text-sm font-medium lift-hover hover:opacity-95"
+              className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-md text-sm font-medium lift-hover t-base hover:bg-primary-hover"
             >
               View My Work
               <ArrowRight
@@ -92,7 +84,7 @@ const Home = () => {
             </Link>
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-md text-sm font-medium text-foreground lift-hover hover:border-primary/60 hover:bg-card"
+              className="inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-md text-sm font-medium text-foreground lift-hover t-base hover:border-primary/60 hover:bg-card"
             >
               About Me
             </Link>
@@ -101,20 +93,20 @@ const Home = () => {
       </section>
 
       {/* Featured Work */}
-      <section className="max-w-5xl mx-auto px-6 pb-24">
-        <ScrollSection>
-          <div className="mb-10">
-            <h2 className="font-serif text-2xl text-foreground">Selected Projects</h2>
-          </div>
-        </ScrollSection>
+      <section className="max-w-5xl mx-auto px-6 pb-16 sm:pb-24">
+        <Reveal className="mb-10">
+          <p className="label-eyebrow mb-3">Selected work</p>
+          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground">Selected Projects</h2>
+        </Reveal>
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
           {featuredStudies.map((study, i) => (
-            <ScrollSection key={study.slug} className={`h-full transition-all delay-[${i * 100}ms]`}>
+            <Reveal key={study.slug} index={i} className="h-full">
               <CaseStudyCard study={study} />
-            </ScrollSection>
+            </Reveal>
           ))}
         </div>
       </section>
+
     </Layout>
   );
 };

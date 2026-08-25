@@ -8,15 +8,15 @@ const About = () => {
 
   return (
     <Layout>
-      <section className="max-w-3xl mx-auto px-6 pt-24 pb-24">
+      <section className="max-w-3xl mx-auto px-6 section-y">
         <div className="flex flex-col sm:flex-row gap-8 items-center mb-12">
           <img
             src="/images/headshot.jpeg"
             alt="Krishna Suresh"
-            className="w-32 h-32 rounded-full object-cover object-top flex-shrink-0 ring-2 ring-primary ring-offset-4 ring-offset-background shadow-[0_0_40px_-10px_hsl(var(--primary)/0.5)]"
+            className="w-32 h-32 rounded-full object-cover object-top flex-shrink-0 border border-border"
           />
           <div>
-            <h1 className="font-serif text-4xl tracking-tight text-foreground mb-2">Krishna Suresh</h1>
+            <h1 className="font-serif text-4xl sm:text-5xl tracking-tight text-foreground mb-2">Krishna Suresh<span className="text-primary">.</span></h1>
             <p className="text-muted-foreground text-sm">Product Manager · Designer · Engineer</p>
           </div>
         </div>
@@ -43,24 +43,25 @@ const About = () => {
 
         {/* Experience */}
         <div className="mb-16">
-          <h2 className="font-serif text-2xl text-foreground mb-6">Experience</h2>
+          <p className="label-eyebrow mb-3">Where I've worked</p>
+          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground mb-6">Experience</h2>
           <div className="space-y-5">
-            <div className="border-l-2 border-border hover:border-primary transition-colors duration-300 pl-4">
+            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
               <p className="text-foreground font-medium">Product Manager & Designer · Jointly (MS Thesis)</p>
               <p className="text-sm text-muted-foreground mb-1">Northwestern University · 2025–2026</p>
               <p className="text-sm text-muted-foreground">End-to-end product: user research, design, and development of an AI-powered group travel coordination app. Currently in beta with 40+ users.</p>
             </div>
-            <div className="border-l-2 border-border hover:border-primary transition-colors duration-300 pl-4">
+            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
               <p className="text-foreground font-medium">Product Lead</p>
               <p className="text-sm text-muted-foreground mb-1">Northwestern Medicine · 2025</p>
               <p className="text-sm text-muted-foreground">Led product strategy and design for a clinical diagnostic tool for pediatric gut-brain disorders. Facilitated research across 12+ clinicians and delivered validated prototypes.</p>
             </div>
-            <div className="border-l-2 border-border hover:border-primary transition-colors duration-300 pl-4">
+            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
               <p className="text-foreground font-medium">Product Manager & Full Stack Developer</p>
               <p className="text-sm text-muted-foreground mb-1">NectarOM · 2021–2025</p>
               <p className="text-sm text-muted-foreground">Built Nectar.ai end-to-end using RAG architecture — drove +30% add-to-cart, +18% checkout completion, and ~99% improvement in chatbot response rates. Also shipped NectarCares, a platform connecting donors to families in need.</p>
             </div>
-            <div className="border-l-2 border-border hover:border-primary transition-colors duration-300 pl-4">
+            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
               <p className="text-foreground font-medium">Software Engineering Intern</p>
               <p className="text-sm text-muted-foreground mb-1">Ampersand · 2020</p>
               <p className="text-sm text-muted-foreground">Supported API access management and security during the company's transition to Okta as an Identity Provider.</p>
@@ -70,7 +71,8 @@ const About = () => {
 
         {/* Education */}
         <div className="mb-16">
-          <h2 className="font-serif text-2xl text-foreground mb-4">Education</h2>
+          <p className="label-eyebrow mb-3">Background</p>
+          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground mb-4">Education</h2>
           <div className="space-y-4">
             <div>
               <p className="text-foreground font-medium">Northwestern University</p>
@@ -85,29 +87,31 @@ const About = () => {
 
         {/* Current Focus */}
         <div className="mb-16">
-          <h2 className="font-serif text-2xl text-foreground mb-4">Current Focus</h2>
+          <p className="label-eyebrow mb-3">Right now</p>
+          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground mb-4">Current Focus</h2>
           <ul className="space-y-3 text-muted-foreground">
-            <li>• Building Jointly — an AI-powered group travel coordination app (in beta)</li>
-            <li>• Street and travel photography</li>
-            <li>• Exploring the intersection of AI and product design</li>
+            <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Building Jointly — an AI-powered group travel coordination app (in beta)</li>
+            <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Street and travel photography</li>
+            <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Exploring the intersection of AI and product design</li>
           </ul>
         </div>
 
         {/* Links */}
         <div className="border-t border-border pt-10">
-          <h2 className="font-serif text-2xl text-foreground mb-4">Get in Touch</h2>
+          <p className="label-eyebrow mb-3">Contact</p>
+          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground mb-4">Get in Touch</h2>
           <div className="flex flex-wrap gap-6">
             <a
               href="https://linkedin.com/in/krishna-suresh"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
+              className="text-foreground underline underline-offset-4 hover:text-primary t-base"
             >
               LinkedIn
             </a>
             <a
               href="mailto:work.krishnasuresh@gmail.com"
-              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
+              className="text-foreground underline underline-offset-4 hover:text-primary t-base"
             >
               Email
             </a>

@@ -3,22 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { caseStudies, type CaseStudy, type Slide } from "@/data/caseStudies";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
-import { useInView } from "@/hooks/useInView";
+import Reveal from "@/components/Reveal";
+import { Pill } from "@/components/ui/pill";
 import { RenderBlock, getChapterAnchors } from "@/components/casestudy/Blocks";
-
-const FadeIn = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
-  const { ref, isVisible } = useInView();
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      } ${className}`}
-    >
-      {children}
-    </div>
-  );
-};
 
 // Group consecutive slides by sectionLabel into chapters.
 // Slides before the first sectionLabel become an unlabeled intro chapter.
@@ -46,14 +33,14 @@ const groupIntoChapters = (slides: Slide[]): Chapter[] => {
 
 const SlideBlock = ({ slide }: { slide: Slide; index: number; forceFullWidth?: boolean }) => {
   return (
-    <FadeIn className="mb-12">
-      <div className="rounded-lg overflow-hidden bg-card border border-border/40">
+    <Reveal className="mb-12">
+      <div className="rounded-lg overflow-hidden bg-card border border-border">
         <img src={slide.image} alt={slide.caption ?? ""} className="w-full" loading="lazy" />
       </div>
       {slide.caption && (
         <p className="text-xs text-muted-foreground mt-3 max-w-2xl leading-relaxed">{slide.caption}</p>
       )}
-    </FadeIn>
+    </Reveal>
   );
 };
 
@@ -62,8 +49,8 @@ const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number })
   return (
     <section id={chapter.id} className="scroll-mt-24 mt-28 first:mt-8">
       {chapter.label && (
-        <FadeIn className="mb-12 pt-10 border-t border-border">
-          <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-5">
+        <Reveal className="mb-12 pt-10 border-t border-border">
+          <p className="label-eyebrow mb-5">
             Chapter {numStr}
           </p>
           <div className="flex items-baseline gap-5">
@@ -81,7 +68,7 @@ const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number })
               {chapter.intro}
             </p>
           )}
-        </FadeIn>
+        </Reveal>
       )}
       <div>
         {chapter.slides.map((slide, i) => (
@@ -95,19 +82,16 @@ const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number })
 const Hero = ({ study }: { study: CaseStudy }) => (
   <header className="relative">
     {(study.heroImage || study.coverImage) && (
-      <div className="relative aspect-[21/9] rounded-2xl overflow-hidden bg-card mb-8">
+      <div className="relative aspect-[21/9] rounded-lg overflow-hidden bg-card mb-8">
         <img src={study.heroImage || study.coverImage} alt={study.title} className="w-full h-full object-cover" />
       </div>
     )}
     <div className="animate-fade-in-up max-w-3xl">
       <div className="flex flex-wrap gap-2 mb-4">
         {study.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-[10px] uppercase tracking-wider text-muted-foreground border border-border/60 rounded-full px-2 py-0.5"
-          >
+          <Pill key={tag} variant="subtle" size="sm" uppercase>
             {tag}
-          </span>
+          </Pill>
         ))}
       </div>
       <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-foreground mb-3 leading-[1.05]">
@@ -119,7 +103,7 @@ const Hero = ({ study }: { study: CaseStudy }) => (
           href={study.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm text-foreground hover:text-primary transition-colors mt-5"
+          className="inline-flex items-center gap-1.5 text-sm text-foreground hover:text-primary t-base mt-5"
         >
           View live <ExternalLink size={12} />
         </a>
@@ -130,7 +114,7 @@ const Hero = ({ study }: { study: CaseStudy }) => (
 
 const FactCell = ({ label, value, note }: { label: string; value: string; note?: string }) => (
   <div className="min-w-0">
-    <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground mb-2">{label}</p>
+    <p className="label-eyebrow mb-2">{label}</p>
     <p className="text-[15px] sm:text-base text-foreground leading-snug">{value}</p>
     {note && <p className="text-xs text-muted-foreground mt-1 leading-snug">{note}</p>}
   </div>
@@ -147,46 +131,43 @@ const AtAGlance = ({ study }: { study: CaseStudy }) => {
   ];
   const chips = study.toolkit ?? [];
   return (
-    <FadeIn className="mt-10">
-      <div className="border-y border-border py-8">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-6">At a glance</p>
+    <Reveal className="mt-10">
+      <div className="border-t border-border pt-8">
+        <p className="label-eyebrow mb-6">At a glance</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-7 stagger-children">
           {cells.map((c, i) => (
             <div
               key={c.label}
-              className={i > 0 ? "md:border-l md:border-border/70 md:pl-8" : undefined}
+              className={i > 0 ? "md:border-l md:border-border md:pl-8" : undefined}
             >
               <FactCell {...c} />
             </div>
           ))}
         </div>
         {(chips.length > 0 || facts.platform) && (
-          <div className="mt-7 pt-6 border-t border-border/60 flex flex-col sm:flex-row sm:items-center gap-x-10 gap-y-4">
+          <div className="mt-7 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center gap-x-10 gap-y-4">
             {chips.length > 0 && (
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Tools</p>
+                <p className="label-eyebrow">Tools</p>
                 <div className="flex flex-wrap gap-1.5">
                   {chips.map((t) => (
-                    <span
-                      key={t}
-                      className="text-xs text-foreground/90 bg-card border border-border/60 rounded-full px-2.5 py-0.5 leading-snug transition-colors hover:border-primary/60 hover:text-primary"
-                    >
+                    <Pill key={t} variant="subtle" size="sm">
                       {t}
-                    </span>
+                    </Pill>
                   ))}
                 </div>
               </div>
             )}
             {facts.platform && (
               <div className="flex items-center gap-3">
-                <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Platform</p>
+                <p className="label-eyebrow">Platform</p>
                 <p className="text-xs text-foreground/90">{facts.platform}</p>
               </div>
             )}
           </div>
         )}
       </div>
-    </FadeIn>
+    </Reveal>
   );
 };
 
@@ -197,18 +178,18 @@ const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
   if (anchors.length === 0) return null;
   return (
     <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-      <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground shrink-0">Jump to</p>
+      <p className="label-eyebrow shrink-0">Jump to</p>
       <div className="flex flex-wrap gap-2">
         {anchors.map((c, i) => (
           <a
             key={c.id}
             href={`#${c.id}`}
-            className="group inline-flex items-baseline gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
+            className="group inline-flex items-baseline gap-2 text-xs text-muted-foreground hover:text-primary t-base"
           >
-            <span className="font-serif tabular-nums text-foreground/60 group-hover:text-primary transition-colors">
+            <span className="font-serif tabular-nums text-foreground/60 group-hover:text-primary t-base">
               {c.number ?? String(i + 1).padStart(2, "0")}
             </span>
-            <span className="text-foreground group-hover:text-primary transition-colors">{c.label}</span>
+            <span className="text-foreground group-hover:text-primary t-base">{c.label}</span>
             {i < anchors.length - 1 && <span className="text-border ml-2">/</span>}
           </a>
         ))}
@@ -221,8 +202,8 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
   if (!study.overview) {
     // Studies without a full overview: show summary + (if any) Jump-to strip on one section.
     return (
-      <FadeIn className="mt-12">
-        <div className="border border-border rounded-xl p-6 sm:p-8 bg-card/30">
+      <Reveal className="mt-12">
+        <div className="border border-border rounded-lg p-6 sm:p-8 bg-card/30">
           <p className="text-base text-foreground leading-relaxed">{study.summary}</p>
         </div>
         {anchors.length > 0 && (
@@ -230,19 +211,19 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
             <JumpTo anchors={anchors} />
           </div>
         )}
-      </FadeIn>
+      </Reveal>
     );
   }
   return (
-    <FadeIn className="mt-14">
+    <Reveal className="mt-14">
       <div className="border-t border-border pt-10">
         <div className="grid md:grid-cols-3 gap-8 md:gap-12 mb-8">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-2.5">Context</p>
+            <p className="label-eyebrow mb-2.5">Context</p>
             <p className="text-sm text-foreground/90 leading-snug">{study.overview.context}</p>
           </div>
           <div className="md:border-l md:border-border md:pl-12">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-2.5">My Role</p>
+            <p className="label-eyebrow mb-2.5">My Role</p>
             <ul className="space-y-1.5">
               {study.overview.roleDetail.map((r) => (
                 <li key={r} className="text-sm text-foreground/90 leading-snug">
@@ -252,7 +233,7 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
             </ul>
           </div>
           <div className="md:border-l md:border-border md:pl-12">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-2.5">Outcome</p>
+            <p className="label-eyebrow mb-2.5">Outcome</p>
             <p className="text-sm text-foreground/90 leading-snug">{study.overview.outcome}</p>
           </div>
         </div>
@@ -262,7 +243,7 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
           </div>
         )}
       </div>
-    </FadeIn>
+    </Reveal>
   );
 };
 
@@ -272,23 +253,23 @@ const Closing = ({ study }: { study: CaseStudy }) => {
   return (
     <div className="mt-24 space-y-12">
       {study.reflection && (
-        <FadeIn>
-          <div className="border-l-2 border-primary pl-6 max-w-2xl">
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-3">What I took away</p>
+        <Reveal>
+          <div className="border-l-2 border-primary/70 pl-6 max-w-2xl">
+            <p className="label-eyebrow mb-3">What I took away</p>
             <p className="font-serif text-xl text-foreground leading-relaxed">{study.reflection}</p>
           </div>
-        </FadeIn>
+        </Reveal>
       )}
       {next && next.slug !== study.slug && (
-        <FadeIn>
+        <Reveal>
           <Link
             to={`/work/${next.slug}`}
-            className="group block border border-border rounded-xl p-6 sm:p-8 hover:border-primary transition-colors"
+            className="group block border border-border rounded-lg p-6 sm:p-8 hover:border-primary t-base"
           >
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-3">Next case study</p>
+            <p className="label-eyebrow mb-3">Next case study</p>
             <div className="flex items-center justify-between gap-6">
               <div>
-                <h3 className="font-serif text-2xl sm:text-3xl text-foreground group-hover:text-primary transition-colors mb-1">
+                <h3 className="font-serif text-2xl sm:text-3xl text-foreground group-hover:text-primary t-base mb-1">
                   {next.title}
                 </h3>
                 <p className="text-sm text-muted-foreground">{next.subtitle}</p>
@@ -296,7 +277,7 @@ const Closing = ({ study }: { study: CaseStudy }) => {
               <ArrowRight className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" size={24} />
             </div>
           </Link>
-        </FadeIn>
+        </Reveal>
       )}
     </div>
   );
@@ -328,7 +309,7 @@ const WorkDetail = () => {
   if (!study) {
     return (
       <Layout>
-        <div className="max-w-3xl mx-auto px-6 pt-24 pb-20">
+        <div className="max-w-3xl mx-auto px-6 section-y">
           <p className="text-muted-foreground">Case study not found.</p>
           <Link to="/work" className="text-sm text-foreground underline mt-4 inline-block">
             ← Back to work
@@ -355,10 +336,10 @@ const WorkDetail = () => {
   return (
     <Layout>
       <div style={themeStyle} className={themed ? "w-full" : undefined}>
-        <article className="max-w-5xl mx-auto px-6 pt-10 pb-24">
+        <article className="max-w-5xl mx-auto px-6 pt-10 pb-16 sm:pb-24">
           <Link
             to="/work"
-            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground t-base mb-8"
           >
             <ArrowLeft size={14} /> All projects
           </Link>
@@ -372,7 +353,7 @@ const WorkDetail = () => {
 
           {/* Native metrics */}
           {study.metrics && study.metrics.length > 0 && (
-            <FadeIn className="mt-12">
+            <Reveal className="mt-12">
               <div className="border-y border-border py-10 grid grid-cols-3 gap-6 text-center">
                 {study.metrics.map((m) => (
                   <div key={m.label}>
@@ -382,7 +363,7 @@ const WorkDetail = () => {
                   </div>
                 ))}
               </div>
-            </FadeIn>
+            </Reveal>
           )}
 
           {/* Body: blocks (preferred) or chapters fallback */}
