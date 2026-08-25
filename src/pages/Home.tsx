@@ -5,6 +5,7 @@ import CaseStudyCard from "@/components/CaseStudyCard";
 import { caseStudies } from "@/data/caseStudies";
 import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { Pill } from "@/components/ui/pill";
 
 const heroVariants: Record<string, { heading: string; subtitle: string }> = {
   startup: {
@@ -51,11 +52,22 @@ const Home = () => {
         <div className="hero-noise" aria-hidden="true" />
         <div className="relative max-w-3xl mx-auto px-6 pt-16 pb-16 sm:pt-32 sm:pb-24">
           <div className="animate-fade-in-up">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
               <span className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground bg-card/80 backdrop-blur-sm border border-border/60 px-3 py-1.5 rounded-full">
                 <span className="relative w-2 h-2 rounded-full bg-available pulse-halo" />
                 Available for Work
               </span>
+              <div className="flex flex-col gap-2 sm:text-right">
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                  Expertise in
+                </span>
+                <div className="flex flex-wrap sm:justify-end gap-2">
+                  <Pill variant="outline" size="sm" uppercase>AI Product Design</Pill>
+                  <Pill variant="outline" size="sm" uppercase>0→1 Product</Pill>
+                  <Pill variant="outline" size="sm" uppercase>Experience Design</Pill>
+                  <Pill variant="outline" size="sm" uppercase>Interaction Design</Pill>
+                </div>
+              </div>
             </div>
           </div>
           <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>

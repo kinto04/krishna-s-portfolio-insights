@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { CaseStudy } from "@/data/caseStudies";
+import { Pill } from "@/components/ui/pill";
 
 const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
   return (
@@ -32,12 +33,9 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
         <div className="mt-auto">
           <div className="flex flex-wrap items-center gap-1.5">
             {study.tags.slice(0, 3).map((tag) => (
-              <span
-                key={tag}
-                className="text-[10px] uppercase tracking-wider text-muted-foreground border border-border/60 rounded-full px-2 py-0.5"
-              >
+              <Pill key={tag} variant="filled" size="sm" uppercase>
                 {tag}
-              </span>
+              </Pill>
             ))}
           </div>
           <div className="mt-3 flex items-center gap-1.5 text-xs text-primary opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
