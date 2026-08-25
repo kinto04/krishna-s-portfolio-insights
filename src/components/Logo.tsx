@@ -16,18 +16,18 @@ export function Logo({ className, size = 36 }: LogoProps) {
       className={cn("text-primary", className)}
       aria-label="Krishna Suresh"
     >
-      {/* Geometric "KS" monogram */}
+      {/* Geometric "KS" monogram — bold sans strokes, roughly square */}
       <path
-        d="M8 30V10M8 10L18 20M8 20L18 30"
+        d="M8 31V9M8 9L18 20M8 20L18 31"
         stroke="currentColor"
-        strokeWidth="5"
+        strokeWidth="5.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M22 13.5C22 13.5 25 11 28.5 13.5C32 16 32 19 28.5 21C25 23 22 21 22 21C22 21 25 19 28.5 21C32 23 32 26 28.5 28.5C25 31 22 28.5 22 28.5"
+        d="M22 12c4-2.5 9-1 9 3.5s-6 5-6 5 6 0.5 6 5-5 5.5-9 3"
         stroke="currentColor"
-        strokeWidth="5"
+        strokeWidth="5.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
