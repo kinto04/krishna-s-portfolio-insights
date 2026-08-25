@@ -18,6 +18,17 @@ export interface Overview {
   outcome: string;
 }
 
+/** Scannable project facts rendered as the "At a glance" band on the detail page. */
+export interface Facts {
+  timeline: string;
+  timelineNote?: string;
+  team: string;
+  role: string;
+  setting: string;
+  platform?: string;
+}
+
+
 // Narrative blocks — composable units that mix native typography and selective imagery.
 // When a CaseStudy provides `blocks`, WorkDetail renders blocks instead of slides.
 export type Block =
@@ -50,6 +61,8 @@ export interface CaseStudy {
   slides?: Slide[];
   blocks?: Block[];
   overview?: Overview;
+  facts?: Facts;
+
   reflection?: string;
   toolkit?: string[];
   /** Optional per-study color theme. Values are HSL triplets ("H S% L%") that override
