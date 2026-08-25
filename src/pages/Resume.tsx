@@ -10,9 +10,9 @@ const Resume = () => {
 
   return (
     <Layout>
-      <section className="max-w-3xl mx-auto px-6 pt-24 pb-20">
+      <section className="max-w-3xl mx-auto px-6 section-y">
         <div className="flex items-center justify-between mb-12">
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">Resume</h1>
+          <h1 className="font-serif text-4xl sm:text-5xl tracking-tight text-foreground">Resume</h1>
           <Button variant="outline" size="sm" asChild>
             <a href="#" download>
               <Download size={14} />
@@ -23,7 +23,7 @@ const Resume = () => {
 
         {/* Experience */}
         <section className="mb-12">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-6">
+          <h2 className="label-eyebrow mb-6">
             Experience
           </h2>
 
@@ -82,7 +82,7 @@ const Resume = () => {
 
         {/* Education */}
         <section className="mb-12">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-6">
+          <h2 className="label-eyebrow mb-6">
             Education
           </h2>
 
@@ -108,7 +108,7 @@ const Resume = () => {
 
         {/* Interests */}
         <section>
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-6">
+          <h2 className="label-eyebrow mb-6">
             Interests
           </h2>
           <p className="text-sm text-muted-foreground leading-relaxed">

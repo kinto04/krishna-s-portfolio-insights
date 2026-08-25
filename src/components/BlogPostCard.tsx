@@ -14,14 +14,14 @@ const BlogPostCard = ({ post }: { post: BlogPost }) => {
         </div>
       </div>
       <div className="flex items-center gap-3 mb-2">
-        <span className="text-xs uppercase tracking-wider text-primary font-medium">
+        <span className="label-eyebrow text-primary font-medium">
           {post.category}
         </span>
         <time className="text-xs text-muted-foreground">
           {format(new Date(post.date), "MMM d, yyyy")}
         </time>
       </div>
-      <h3 className="font-serif text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
+      <h3 className="font-serif text-lg font-semibold text-foreground group-hover:text-primary t-base mb-2">
         {post.title}
       </h3>
       <p className="text-sm text-muted-foreground leading-relaxed">{post.excerpt}</p>

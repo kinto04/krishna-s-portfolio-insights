@@ -1,24 +1,10 @@
 import { ExternalLink, Quote } from "lucide-react";
-import { useInView } from "@/hooks/useInView";
+import Reveal from "@/components/Reveal";
 import type { Block } from "@/data/caseStudies";
 
-const FadeIn = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
-  const { ref, isVisible } = useInView();
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      } ${className}`}
-    >
-      {children}
-    </div>
-  );
-};
-
 export const ChapterHeader = ({ number, label, intro }: { number: string; label: string; intro?: string }) => (
-  <FadeIn className="mt-28 mb-12 first:mt-8 pt-10 border-t border-border">
-    <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-5">
+  <Reveal className="mt-28 mb-12 first:mt-8 pt-10 border-t border-border">
+    <p className="label-eyebrow mb-5">
       Chapter {number}
     </p>
     <div className="flex items-baseline gap-5">
@@ -28,32 +14,32 @@ export const ChapterHeader = ({ number, label, intro }: { number: string; label:
     {intro && (
       <p className="text-base text-muted-foreground leading-relaxed mt-4 max-w-2xl pl-0 sm:pl-[4.5rem]">{intro}</p>
     )}
-  </FadeIn>
+  </Reveal>
 );
 
 const Statement = ({ text, eyebrow }: { text: string; eyebrow?: string }) => (
-  <FadeIn className="my-16 max-w-3xl">
+  <Reveal className="my-16 max-w-3xl">
     {eyebrow && (
-      <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-4">{eyebrow}</p>
+      <p className="label-eyebrow mb-4">{eyebrow}</p>
     )}
     <p className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.15] tracking-tight">
       {text}
     </p>
-  </FadeIn>
+  </Reveal>
 );
 
 const Lead = ({ text }: { text: string }) => (
-  <FadeIn className="my-8 max-w-2xl">
+  <Reveal className="my-8 max-w-2xl">
     <p className="text-lg text-foreground leading-relaxed">{text}</p>
-  </FadeIn>
+  </Reveal>
 );
 
 const Methods = ({ items }: { items: { label: string; line: string }[] }) => (
-  <FadeIn className="my-12">
+  <Reveal className="my-12">
     <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
       {items.map((item, i) => (
         <div key={item.label} className="border-t border-border pt-5">
-          <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-2 tabular-nums">
+          <p className="label-eyebrow mb-2 tabular-nums">
             {String(i + 1).padStart(2, "0")}
           </p>
           <p className="font-serif text-xl text-foreground mb-2 leading-snug">{item.label}</p>
@@ -61,19 +47,19 @@ const Methods = ({ items }: { items: { label: string; line: string }[] }) => (
         </div>
       ))}
     </div>
-  </FadeIn>
+  </Reveal>
 );
 
 const QuoteBlock = ({ text, source }: { text: string; source: string }) => (
-  <FadeIn className="my-14 max-w-3xl">
+  <Reveal className="my-14 max-w-3xl">
     <div className="border-l-2 border-primary pl-6 sm:pl-8 relative">
       <Quote className="absolute -top-2 -left-3 text-primary/20 bg-background" size={24} />
       <p className="font-serif italic text-xl sm:text-2xl text-foreground leading-relaxed mb-4">
         "{text}"
       </p>
-      <p className="text-xs uppercase tracking-wider text-muted-foreground">{source}</p>
+      <p className="label-eyebrow">{source}</p>
     </div>
-  </FadeIn>
+  </Reveal>
 );
 
 const NumberedList = ({
@@ -85,14 +71,14 @@ const NumberedList = ({
   intro?: string;
   items: { title: string; body: string }[];
 }) => (
-  <FadeIn className="my-14">
+  <Reveal className="my-14">
     {title && (
       <h3 className="font-serif text-2xl sm:text-3xl text-foreground tracking-tight mb-3 max-w-2xl">{title}</h3>
     )}
     {intro && <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-2xl">{intro}</p>}
     <div className="grid md:grid-cols-3 gap-6">
       {items.map((item, i) => (
-        <div key={item.title} className="border border-border rounded-xl p-6 bg-card/30">
+        <div key={item.title} className="border border-border rounded-lg p-6 bg-card/40">
           <p className="font-serif text-3xl text-primary/70 tabular-nums leading-none mb-4">
             {String(i + 1).padStart(2, "0")}
           </p>
@@ -101,7 +87,7 @@ const NumberedList = ({
         </div>
       ))}
     </div>
-  </FadeIn>
+  </Reveal>
 );
 
 const Archetypes = ({
@@ -109,15 +95,15 @@ const Archetypes = ({
 }: {
   items: { number: string; name: string; role: string; line: string; quote: string }[];
 }) => (
-  <FadeIn className="my-12">
+  <Reveal className="my-12">
     <div className="grid md:grid-cols-3 gap-5">
       {items.map((a) => (
-        <div key={a.name} className="border border-border rounded-xl p-6 bg-card/30 flex flex-col">
-          <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-3 tabular-nums">
+        <div key={a.name} className="border border-border rounded-lg p-6 bg-card/40 flex flex-col">
+          <p className="label-eyebrow mb-3 tabular-nums">
             Archetype {a.number}
           </p>
           <p className="font-serif text-2xl text-foreground leading-tight mb-1">{a.name}</p>
-          <p className="text-xs uppercase tracking-wider text-primary mb-4">{a.role}</p>
+          <p className="label-eyebrow text-primary mb-4">{a.role}</p>
           <p className="text-sm text-muted-foreground leading-relaxed mb-5">{a.line}</p>
           <p className="font-serif italic text-base text-foreground leading-relaxed border-l-2 border-primary/40 pl-4 mt-auto">
             "{a.quote}"
@@ -125,7 +111,7 @@ const Archetypes = ({
         </div>
       ))}
     </div>
-  </FadeIn>
+  </Reveal>
 );
 
 const ImageBlock = ({
@@ -142,9 +128,9 @@ const ImageBlock = ({
   const widthClass =
     maxWidth === "md" ? "max-w-2xl mx-auto" : maxWidth === "lg" ? "max-w-4xl mx-auto" : fullWidth ? "" : "max-w-3xl mx-auto";
   return (
-    <FadeIn className="mb-16">
+    <Reveal className="mb-16">
       <div className={widthClass}>
-        <div className="rounded-lg overflow-hidden bg-card border border-border/40">
+        <div className="rounded-lg overflow-hidden bg-card border border-border">
           <img src={src} alt={caption ?? ""} className="w-full" loading="lazy" />
         </div>
         {caption && (
@@ -153,7 +139,7 @@ const ImageBlock = ({
           </p>
         )}
       </div>
-    </FadeIn>
+    </Reveal>
   );
 };
 
@@ -164,11 +150,11 @@ const FeatureGrid = ({
   intro?: string;
   items: { title: string; line: string; thumb: string }[];
 }) => (
-  <FadeIn className="my-14">
+  <Reveal className="my-14">
     {intro && <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-2xl">{intro}</p>}
     <div className="grid sm:grid-cols-2 gap-5">
       {items.map((f, i) => (
-        <div key={f.title} className="border border-border rounded-xl overflow-hidden bg-card/30 group">
+        <div key={f.title} className="border border-border rounded-lg overflow-hidden bg-card/40 group">
           <div className="aspect-[16/10] overflow-hidden bg-card">
             <img
               src={f.thumb}
@@ -178,7 +164,7 @@ const FeatureGrid = ({
             />
           </div>
           <div className="p-5">
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1 tabular-nums">
+            <p className="label-eyebrow mb-1 tabular-nums">
               {String(i + 1).padStart(2, "0")}
             </p>
             <p className="font-serif text-xl text-foreground mb-1.5 leading-snug">{f.title}</p>
@@ -187,7 +173,7 @@ const FeatureGrid = ({
         </div>
       ))}
     </div>
-  </FadeIn>
+  </Reveal>
 );
 
 const FeatureRow = ({
@@ -205,14 +191,14 @@ const FeatureRow = ({
 }) => {
   const reverse = index % 2 === 1;
   return (
-    <FadeIn className="my-16">
+    <Reveal className="my-16">
       <div className="grid md:grid-cols-12 gap-6 md:gap-10 items-center">
-        <div className={`md:col-span-7 rounded-lg overflow-hidden bg-card border border-border/40 ${reverse ? "md:order-2" : ""}`}>
+        <div className={`md:col-span-7 rounded-lg overflow-hidden bg-card border border-border ${reverse ? "md:order-2" : ""}`}>
           <img src={image} alt={title} loading="lazy" className="w-full" />
         </div>
         <div className={`md:col-span-5 ${reverse ? "md:order-1" : ""}`}>
           {eyebrow && (
-            <p className="text-[10px] uppercase tracking-wider text-primary mb-3">{eyebrow}</p>
+            <p className="label-eyebrow text-primary mb-3">{eyebrow}</p>
           )}
           <h3 className="font-serif text-2xl sm:text-3xl text-foreground leading-tight tracking-tight mb-3">
             {title}
@@ -220,7 +206,7 @@ const FeatureRow = ({
           <p className="text-base text-muted-foreground leading-relaxed">{body}</p>
         </div>
       </div>
-    </FadeIn>
+    </Reveal>
   );
 };
 
@@ -235,7 +221,7 @@ const StatBlock = ({
   bullets?: string[];
   href?: string;
 }) => (
-  <FadeIn className="my-14">
+  <Reveal className="my-14">
     <div className="border-y border-border py-12 grid md:grid-cols-12 gap-8 items-center">
       <div className="md:col-span-5">
         <p className="font-serif text-7xl sm:text-8xl text-foreground leading-none mb-3 tracking-tight">
@@ -247,7 +233,7 @@ const StatBlock = ({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-foreground hover:text-primary transition-colors mt-4"
+            className="inline-flex items-center gap-1.5 text-sm text-foreground hover:text-primary t-base mt-4"
           >
             planjointly.com <ExternalLink size={12} />
           </a>
@@ -264,7 +250,7 @@ const StatBlock = ({
         </ul>
       )}
     </div>
-  </FadeIn>
+  </Reveal>
 );
 
 export const RenderBlock = ({ block, index }: { block: Block; index: number }) => {

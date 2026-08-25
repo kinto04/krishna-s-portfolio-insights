@@ -17,8 +17,8 @@ const Stories = () => {
 
   return (
     <Layout>
-      <section className="max-w-5xl mx-auto px-6 pt-24 pb-24">
-        <h1 className="font-serif text-4xl tracking-tight text-foreground mb-3">Stories</h1>
+      <section className="max-w-5xl mx-auto px-6 section-y">
+        <h1 className="font-serif text-4xl sm:text-5xl tracking-tight text-foreground mb-3">Stories</h1>
         <p className="text-muted-foreground mb-10 max-w-xl">
           Photography, deep dives, essays, and everything else worth sharing.
         </p>
@@ -29,7 +29,7 @@ const Stories = () => {
             <button
               key={cat}
               onClick={() => setActive(cat)}
-              className={`pb-3 text-sm font-sans tracking-wide transition-colors border-b-2 -mb-px ${
+              className={`pb-3 text-sm font-sans tracking-wide t-base border-b-2 -mb-px ${
                 active === cat
                   ? "border-foreground text-foreground"
                   : "border-transparent text-muted-foreground hover:text-foreground"

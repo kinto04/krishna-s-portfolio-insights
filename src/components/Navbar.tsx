@@ -39,15 +39,16 @@ const Navbar = () => {
     >
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center" aria-label="Krishna Suresh">
-          <Logo size={36} />
+          <Logo />
         </Link>
+
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className={`text-sm font-sans tracking-wide transition-colors hover:text-foreground ${
+              className={`text-sm font-sans tracking-wide t-base hover:text-foreground ${
                 location.pathname.startsWith(link.to)
                   ? "text-foreground font-medium"
                   : "text-muted-foreground"
@@ -75,7 +76,7 @@ const Navbar = () => {
                 key={link.to}
                 to={link.to}
                 onClick={() => setIsOpen(false)}
-                className={`text-sm font-sans transition-colors ${
+                className={`text-sm font-sans t-base ${
                   location.pathname.startsWith(link.to)
                     ? "text-foreground font-medium"
                     : "text-muted-foreground"

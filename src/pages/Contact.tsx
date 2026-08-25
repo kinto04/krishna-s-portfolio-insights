@@ -30,8 +30,8 @@ const Contact = () => {
 
   return (
     <Layout>
-      <section className="max-w-3xl mx-auto px-6 pt-24 pb-20">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground mb-2">Get in Touch</h1>
+      <section className="max-w-3xl mx-auto px-6 section-y">
+        <h1 className="font-serif text-4xl sm:text-5xl tracking-tight text-foreground mb-2">Get in Touch</h1>
         <p className="text-muted-foreground mb-10 max-w-lg">
           I'm actively looking for PM roles. If you're hiring, want to collaborate, or just want to say hi — reach out.
         </p>
@@ -39,7 +39,7 @@ const Contact = () => {
         <div className="flex flex-wrap gap-4 mb-12">
           <a
             href="mailto:hello@example.com"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border text-sm text-foreground hover:bg-secondary transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border text-sm text-foreground hover:bg-secondary t-base"
           >
             <Mail size={16} /> hello@example.com
           </a>
@@ -47,7 +47,7 @@ const Contact = () => {
             href="https://linkedin.com/in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border text-sm text-foreground hover:bg-secondary transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border text-sm text-foreground hover:bg-secondary t-base"
           >
             <Linkedin size={16} /> LinkedIn
           </a>

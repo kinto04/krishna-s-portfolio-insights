@@ -2,36 +2,29 @@ import { cn } from "@/lib/utils";
 
 interface LogoProps {
   className?: string;
-  size?: number;
 }
 
-export function Logo({ className, size = 36 }: LogoProps) {
+/**
+ * Name wordmark — no monogram, no container shape.
+ * The accent appears exactly once, as the terminal period.
+ */
+export function Logo({ className }: LogoProps) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn("text-primary", className)}
-      aria-label="Krishna Suresh"
+    <span
+      className={cn(
+        "group/logo inline-flex items-baseline font-serif text-[17px] sm:text-lg leading-none tracking-[-0.015em] text-foreground",
+        className
+      )}
     >
-      {/* Geometric "KS" monogram — bold sans strokes, roughly square */}
-      <path
-        d="M8 31V9M8 9L18 20M8 20L18 31"
-        stroke="currentColor"
-        strokeWidth="5.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+      Krishna
+      <span className="ml-[0.28em] text-muted-foreground group-hover/logo:text-foreground transition-colors duration-500 [transition-timing-function:var(--ease-out-quint)]">
+        Suresh
+      </span>
+      <span
+        aria-hidden="true"
+        className="ml-[0.09em] inline-block h-[0.24em] w-[0.24em] rounded-full bg-primary origin-center transition-transform duration-500 [transition-timing-function:var(--ease-spring)] group-hover/logo:scale-[1.6]"
       />
-      <path
-        d="M22 12c4-2.5 9-1 9 3.5s-6 5-6 5 6 0.5 6 5-5 5.5-9 3"
-        stroke="currentColor"
-        strokeWidth="5.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    </span>
   );
 }
 
