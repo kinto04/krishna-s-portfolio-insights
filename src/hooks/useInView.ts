@@ -8,6 +8,14 @@ export function useInView(options?: IntersectionObserverInit) {
     const el = ref.current;
     if (!el) return;
 
+    // Reduced motion: show content immediately, never animate.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setIsVisible(true);
+      return;
+    }
+
+
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
