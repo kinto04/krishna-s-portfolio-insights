@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { CaseStudy } from "@/data/caseStudies";
+import { Pill } from "@/components/ui/pill";
 
 const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
   return (

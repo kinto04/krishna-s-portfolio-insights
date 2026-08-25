@@ -5,6 +5,7 @@ import CaseStudyCard from "@/components/CaseStudyCard";
 import { caseStudies } from "@/data/caseStudies";
 import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { Pill } from "@/components/ui/pill";
 
 const heroVariants: Record<string, { heading: string; subtitle: string }> = {
   startup: {
