@@ -1,56 +1,32 @@
-## Goals
+# Color System: Terracotta to Confident Blue
 
-1. Show the "Jump to" chapter nav on **Airy** and **Nectar.ai** (currently only Jointly has it).
-2. Make the **Airy** case study flow uniform — no more small image + side-text rows. Slides become full-width with caption underneath.
-3. Strengthen the visual hierarchy so a scrolling reader can clearly tell apart primary section headers vs. slides/sub-content.
+Token-only pass. No layout or component structure changes.
 
-## Why "Jump to" is missing today
+## What changes
 
-In `WorkDetail.tsx`, `Overview` returns an early fallback (just the summary) whenever `study.overview` is absent. Airy and Nectar.ai don't have an `overview` block, so the chapter chips never render even though the anchors are computed.
+**`src/index.css`**
+- `--primary`, `--accent`, `--ring`, `--sidebar-ring`: `20 55% 49%` becomes `221 83% 60%`
+- New token `--primary-hover: 221 83% 65%` for hover/glow states
+- `--available` (the "available for work" dot): shift from `140 25% 38%` to a brighter, cleaner green (`152 60% 45%`) so it reads as a distinct status signal next to the blue rather than a muted olive
+- Background (`0 0% 4%`), foreground, card, border, muted stay untouched
 
-## Changes
+**`tailwind.config.ts`**
+- Add `primary.hover` mapped to `hsl(var(--primary-hover))` so components can use `hover:bg-primary-hover` in later passes
 
-### 1. `src/pages/WorkDetail.tsx`
+## Hardcoded color audit
 
-- **Always render the "Jump to" strip when anchors exist**, even for studies without a full `overview` object. Refactor `Overview` so the chapter nav is a separate concern that renders whenever `anchors.length > 0`.
-  - When `study.overview` is present → keep the current Context / My Role / Outcome grid + the Jump-to row beneath it (Jointly unchanged).
-  - When `study.overview` is absent → render the summary card *and* the Jump-to strip below it on the same border-top section (Airy, Nectar.ai).
-- **Force every slide-based case study to use full-width slides.** Update `SlideBlock` to always render the full-width layout (image on top, caption below). Drop the side-by-side `md:grid-cols-5` branch entirely. This removes the "small image with text beside it" pattern from Airy and Nectar.ai in one place, and matches the look the user already likes from Jointly's blocks-based renderer.
-- **Stronger primary section headers** (applies to `ChapterBlock`, the slide-path renderer):
-  - Add a top divider rule (`border-t border-border pt-10`) above each labeled chapter so primary sections visually separate from the previous section's content.
-  - Add a small uppercase eyebrow (e.g. `CHAPTER 02`) above the serif title for extra scanability.
-  - Increase top spacing (`mt-24` → `mt-28`) and keep the large serif numeral + 3xl/4xl serif title.
-  - Captions under slides become the "sub-content" tier: smaller (`text-xs`), muted, max-width constrained — visually distinct from chapter intros (`text-base`, foreground-leaning).
-- Mirror the same divider + eyebrow treatment in `ChapterHeader` inside `Blocks.tsx` so Jointly stays consistent with the new hierarchy.
+Scanned all of `src/` outside `src/components/ui/`. Findings:
 
-### 2. `src/components/casestudy/Blocks.tsx`
+- No terracotta hex or hsl literals exist in `Home.tsx`, `CaseStudyCard.tsx`, or `About.tsx` — every accent reference already goes through `text-primary`, `border-primary`, or `hsl(var(--primary)/...)`, so those files pick up the blue automatically.
+- `src/pages/Index.tsx` has one hardcoded `backgroundColor: '#fcfbf8'`. This is a leftover template splash page not reachable from the router's real routes; I'll swap it to the `bg-background` token for consistency.
+- `src/data/caseStudies.ts` defines a per-study `theme` for the Airy case study (off-white page, lavender accent) applied via scoped CSS-variable overrides in `WorkDetail.tsx`. That is intentional and stays as-is — it matches Airy's slide artwork, not the site accent.
 
-- Update `ChapterHeader` to match the new primary-section treatment (top divider, uppercase "Chapter NN" eyebrow, same serif title + intro). Jointly already uses chapters, so it gets the upgrade for free.
+## Files touched
 
-### 3. `src/data/caseStudies.ts`
+- `src/index.css`
+- `tailwind.config.ts`
+- `src/pages/Index.tsx` (single hardcoded hex removed)
 
-- No structural changes required. Airy and Nectar.ai already have `sectionLabel` markers on the right slides, which become the chapter anchors.
-- Optional small polish: add a one-line `sectionIntro` to a few of Airy's sections (e.g. The Problem, The Solution, The Product, Validation) so each chapter has a brief lead-in like Jointly's. I'll add concise intros that don't duplicate slide captions.
+## Note
 
-## Visual hierarchy summary (after changes)
-
-```text
-══════════════════════════════════════  ← top divider
-CHAPTER 02                              ← uppercase eyebrow (muted)
-02  The Problem                         ← serif numeral + serif 3xl/4xl title
-    Short intro paragraph here.         ← base muted-foreground lead
-
-[ full-width slide image ]              ← uniform full-bleed visual
-small muted caption beneath             ← xs muted = sub-content tier
-
-[ full-width slide image ]
-small muted caption beneath
-══════════════════════════════════════  ← next chapter divider
-CHAPTER 03
-…
-```
-
-## Out of scope
-
-- Migrating Airy/Nectar.ai from `slides` to the richer `blocks` system (bigger rewrite; not needed to solve the stated problems).
-- Changing the Jointly case study's content.
+`--available` was not in your list, but leaving it at the current muted olive would make the status dot look dull beside a saturated blue. Brightening it keeps the two signals clearly separate.
