@@ -92,14 +92,13 @@ export const caseStudies: CaseStudy[] = [
     coverImage: "/images/jointly/cover.png",
     heroImage: "/images/jointly/hero.png",
     liveUrl: "https://planjointly.com",
-    toolkit: ["Figma", "Framer", "Lovable", "Supabase", "OpenAI"],
     facts: {
       timeline: "9 months",
       timelineNote: "2025–2026",
       team: "Solo founder",
       role: "Research, product strategy, UX, build",
       setting: "Master's thesis · Northwestern EDI",
-      platform: "iOS + Web",
+      platform: "Mobile + Web",
     },
     overview: {
       context: "Designed, built and launched end to end — from first interview to live beta.",
@@ -218,7 +217,7 @@ export const caseStudies: CaseStudy[] = [
       setting: "Interaction Design Studio · Northwestern",
       platform: "Web + Mobile",
     },
-    toolkit: ["Figma", "Dscout", "Miro", "Notion"],
+    toolkit: ["Figma", "Dscout"],
     summary:
       "Airy is a digital platform designed to help clinical therapists better support their clients - with AI-powered note-taking, between-session check-ins, nudges, and progress tracking. Our research surfaced a core tension: therapy tools are built for sessions, not the 167 hours in between. I led product strategy, conducted research, designed high-fidelity prototypes, and authored the BRD.",
 
