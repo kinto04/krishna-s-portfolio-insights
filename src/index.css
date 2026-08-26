@@ -374,8 +374,6 @@
     display: none;
   }
 
-  .hero-glow::after {
-    display: none;
-  }
+
 }
 
