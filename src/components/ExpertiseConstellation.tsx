@@ -348,7 +348,7 @@ const ExpertiseConstellation = () => {
                     fontSize={fontSize}
                     className={active === n.tag ? "fill-primary" : n.text}
                   >
-                    {n.label ?? n.tag}
+                    {n.tag}
                   </text>
                   {active === n.tag && (
                     <text
