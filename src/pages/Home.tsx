@@ -29,7 +29,7 @@ const Home = () => {
       <section ref={heroRef} className="relative overflow-hidden">
         <div ref={glowRef} className="hero-glow" aria-hidden="true" data-active="false" />
         <div className="hero-noise" aria-hidden="true" />
-        <div className="relative max-w-3xl mx-auto px-6 pt-16 pb-16 sm:pt-32 sm:pb-24">
+        <div className="relative max-w-3xl mx-auto px-6 section-y">
 
           <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2 whitespace-pre-line">
