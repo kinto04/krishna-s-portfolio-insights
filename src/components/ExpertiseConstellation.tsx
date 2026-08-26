@@ -235,12 +235,12 @@ const ExpertiseConstellation = () => {
   const go = (tag: string) => navigate(`/work?tag=${encodeURIComponent(tag)}`);
 
   return (
-    <section className="relative overflow-hidden section-y">
+    <section className="relative overflow-hidden section-y-tight">
       <div className="hero-noise" aria-hidden="true" />
       <div className="relative max-w-5xl mx-auto px-6">
         <Reveal className="mb-6">
           <p className="label-eyebrow mb-3">Skills and domains</p>
-          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground">
+          <h2 className="font-serif t-section-title tracking-tight text-foreground">
             What I design and build
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
