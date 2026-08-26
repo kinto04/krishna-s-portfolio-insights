@@ -10,7 +10,7 @@ import ExpertiseConstellation from "@/components/ExpertiseConstellation";
 
 
 const heroVariant = {
-  heading: "I design products that start with people,\nand ship with AI.",
+  heading: "I design AI products that solve human problems.",
   subtitle:
     "I'm an engineer and designer who's built consumer AI products across e-commerce, healthcare, and travel.",
 };
