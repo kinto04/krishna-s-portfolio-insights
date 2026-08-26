@@ -49,10 +49,7 @@ const Home = () => {
         <div className="hero-noise" aria-hidden="true" />
         <div className="relative max-w-3xl mx-auto px-6 pt-16 pb-16 sm:pt-32 sm:pb-24">
           <div className="animate-fade-in-up">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-              <Pill variant="subtle" size="sm" uppercase dot="available" chevron={false} className="self-start whitespace-nowrap backdrop-blur-sm">
-                Available for Work
-              </Pill>
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-end gap-4 mb-6">
               <div className="flex flex-col gap-2 sm:text-right">
                 <span className="label-eyebrow">Expertise in</span>
                 <div className="flex flex-wrap sm:justify-end gap-2">
