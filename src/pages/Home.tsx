@@ -6,7 +6,7 @@ import { caseStudies } from "@/data/caseStudies";
 import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { usePointerGlow } from "@/hooks/usePointerGlow";
-import { Pill } from "@/components/ui/pill";
+import ExpertiseConstellation from "@/components/ExpertiseConstellation";
 
 
 const heroVariants: Record<string, { heading: string; subtitle: string }> = {
