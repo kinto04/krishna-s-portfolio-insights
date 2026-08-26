@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { caseStudies } from "@/data/caseStudies";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, GraduationCap } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { usePointerGlow } from "@/hooks/usePointerGlow";
 import ExpertiseConstellation from "@/components/ExpertiseConstellation";
@@ -12,7 +12,7 @@ import ExpertiseConstellation from "@/components/ExpertiseConstellation";
 const heroVariant = {
   heading: "I design products that start with people,\nand ship with AI.",
   subtitle:
-    "Engineer and designer. I've designed and built consumer AI products across e-commerce, healthcare, and travel.",
+    "I'm an engineer and designer who's built consumer AI products across e-commerce, healthcare, and travel.",
 };
 
 const Home = () => {
