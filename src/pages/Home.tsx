@@ -1,5 +1,5 @@
-import { useEffect, useMemo } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { caseStudies } from "@/data/caseStudies";
@@ -9,33 +9,15 @@ import { usePointerGlow } from "@/hooks/usePointerGlow";
 import ExpertiseConstellation from "@/components/ExpertiseConstellation";
 
 
-const heroVariants: Record<string, { heading: string; subtitle: string }> = {
-  startup: {
-    heading: "A 0-1 Product\nManager.",
-    subtitle: "I transform ideas into Market-Ready Solutions by bridging Strategy, Design, and Development to create products people love and use.",
-  },
-  product: {
-    heading: "I'm a Product\nManager",
-    subtitle: "I combine data-driven insights with user-centered design to enhance existing products and develop new features that drive retention and expansion.",
-  },
-  design: {
-    heading: "I design human\nexperiences.",
-    subtitle: "I shape end-to-end experiences across interaction, service, and product design, translating research into digital products that can actually ship.",
-  },
+const heroVariant = {
+  heading: "I design with AI,\nnot just for it.",
+  subtitle:
+    "AI-forward product designer shaping end-to-end experiences across interaction, service, and product design — and prototyping fast with AI tools to turn research into products that ship.",
 };
 
-
-
-
 const Home = () => {
-  const [searchParams] = useSearchParams();
-  const variant = useMemo(() => {
-    const v = searchParams.get("v") || "design";
-    return heroVariants[v] || heroVariants.startup;
-  }, [searchParams]);
-
   useEffect(() => {
-    document.title = "Krishna Suresh — Product Manager, Builder, Writer";
+    document.title = "Krishna Suresh — AI-Forward Product & Experience Designer";
   }, []);
 
   const featuredStudies = caseStudies.filter((s) => s.featured);
@@ -51,10 +33,10 @@ const Home = () => {
 
           <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2 whitespace-pre-line">
-            {variant.heading}
+            {heroVariant.heading}
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-8 animate-fade-in-up-delay-3">
-            {variant.subtitle}
+            {heroVariant.subtitle}
           </p>
           <div className="flex gap-4 animate-fade-in-up-delay-4">
             <Link
@@ -85,7 +67,7 @@ const Home = () => {
       <section className="max-w-5xl mx-auto px-6 pb-16 sm:pb-24">
         <Reveal className="mb-10">
           <p className="label-eyebrow mb-3">Selected work</p>
-          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground">Selected Projects</h2>
+          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground">Case studies</h2>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
           {featuredStudies.map((study, i) => (
