@@ -32,8 +32,8 @@ const DESKTOP_NODES: SkillNode[] = [
 
 const MOBILE_NODES: SkillNode[] = [
   { id: "xd", label: "Experience Design", x: 190, y: 52, weight: 1, anchor: "middle", dy: -16 },
-  { id: "ixd", label: "Interaction Design", x: 62, y: 190, weight: 1, anchor: "start", dy: -14 },
-  { id: "strategy", label: "Product Strategy", x: 320, y: 186, weight: 1, anchor: "end", dy: -14 },
+  { id: "ixd", label: "Interaction Design", x: 56, y: 158, weight: 1, anchor: "start", dy: -14 },
+  { id: "strategy", label: "Product Strategy", x: 326, y: 158, weight: 1, anchor: "end", dy: -14 },
   { id: "service", label: "Service Design", x: 104, y: 348, weight: 1, anchor: "middle", dy: 24 },
   { id: "ai", label: "AI", x: 292, y: 342, weight: 1, anchor: "middle", dy: 24 },
 ];
