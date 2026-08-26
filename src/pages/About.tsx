@@ -8,20 +8,20 @@ const About = () => {
 
   return (
     <Layout>
-      <section className="max-w-3xl mx-auto px-6 section-y">
-        <div className="flex flex-col sm:flex-row gap-8 items-center mb-12">
+      <section className="max-w-3xl mx-auto px-6 section-y stack-lg">
+        <div className="flex flex-col sm:flex-row gap-8 items-center">
           <img
             src="/images/headshot.jpeg"
             alt="Krishna Suresh"
             className="w-32 h-32 rounded-full object-cover object-top flex-shrink-0 border border-border"
           />
           <div>
-            <h1 className="font-serif text-4xl sm:text-5xl tracking-tight text-foreground mb-2">Krishna Suresh<span className="text-primary">.</span></h1>
+            <h1 className="font-serif t-page-title tracking-tight text-foreground mb-2">Krishna Suresh<span className="text-primary">.</span></h1>
             <p className="text-muted-foreground text-sm">Product Manager · Designer · Engineer</p>
           </div>
         </div>
 
-        <div className="space-y-6 text-muted-foreground leading-relaxed mb-16">
+        <div className="space-y-6 text-muted-foreground leading-relaxed">
           <p>
             I'm a <strong className="text-foreground">product manager and designer</strong> who builds at the intersection of research, design, and engineering. CS degree from Purdue. Just graduated with an{" "}
             <strong className="text-foreground">MS in Engineering Design Innovation from Northwestern</strong>.
@@ -42,9 +42,9 @@ const About = () => {
         </div>
 
         {/* Experience */}
-        <div className="mb-16">
+        <div>
           <p className="label-eyebrow mb-3">Where I've worked</p>
-          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground mb-6">Experience</h2>
+          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-6">Experience</h2>
           <div className="space-y-5">
             <div className="border-l-2 border-border hover:border-primary t-base pl-4">
               <p className="text-foreground font-medium">Product Manager & Designer · Jointly (MS Thesis)</p>
@@ -70,9 +70,9 @@ const About = () => {
         </div>
 
         {/* Education */}
-        <div className="mb-16">
+        <div>
           <p className="label-eyebrow mb-3">Background</p>
-          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground mb-4">Education</h2>
+          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Education</h2>
           <div className="space-y-4">
             <div>
               <p className="text-foreground font-medium">Northwestern University</p>
@@ -86,9 +86,9 @@ const About = () => {
         </div>
 
         {/* Current Focus */}
-        <div className="mb-16">
+        <div>
           <p className="label-eyebrow mb-3">Right now</p>
-          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground mb-4">Current Focus</h2>
+          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Current Focus</h2>
           <ul className="space-y-3 text-muted-foreground">
             <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Building Jointly — an AI-powered group travel coordination app (in beta)</li>
             <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Street and travel photography</li>
@@ -99,7 +99,7 @@ const About = () => {
         {/* Links */}
         <div className="border-t border-border pt-10">
           <p className="label-eyebrow mb-3">Contact</p>
-          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground mb-4">Get in Touch</h2>
+          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Get in Touch</h2>
           <div className="flex flex-wrap gap-6">
             <a
               href="https://linkedin.com/in/krishna-suresh"

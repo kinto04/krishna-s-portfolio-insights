@@ -58,7 +58,7 @@ const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number })
               {numStr}
             </span>
             <div className="flex-1">
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">
+              <h2 className="font-serif t-section-title sm:text-4xl text-foreground tracking-tight">
                 {chapter.label}
               </h2>
             </div>
@@ -336,7 +336,7 @@ const WorkDetail = () => {
   return (
     <Layout>
       <div style={themeStyle} className={themed ? "w-full" : undefined}>
-        <article className="max-w-5xl mx-auto px-6 pt-10 pb-16 sm:pb-24">
+        <article className="max-w-5xl mx-auto px-6 pt-10 section-y-tight">
           <Link
             to="/work"
             className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground t-base mb-8"
