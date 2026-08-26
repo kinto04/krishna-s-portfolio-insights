@@ -218,12 +218,12 @@ const ExpertiseConstellation = () => {
       <div className="hero-noise" aria-hidden="true" />
       <div className="relative max-w-5xl mx-auto px-6">
         <Reveal className="mb-6">
-          <p className="label-eyebrow mb-3">Design + AI capabilities</p>
+          <p className="label-eyebrow mb-3">Skills and domains</p>
           <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground">
-            Where design thinking meets AI fluency
+            What I design and build
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Pick a discipline or domain to see the work behind it.
+            Click any node to see those projects.
           </p>
         </Reveal>
 
