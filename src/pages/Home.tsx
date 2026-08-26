@@ -12,7 +12,7 @@ import ExpertiseConstellation from "@/components/ExpertiseConstellation";
 const heroVariant = {
   heading: "I design products that start with people,\nand ship with AI.",
   subtitle:
-    "Product designer with an engineer's toolkit. I've shipped an AI commerce agent that lifted add-to-cart 30%, co-designed a clinical diagnostic tool with 12+ clinicians, and built my thesis app — research, design, and code — with AI doing the heavy lifting.",
+    "Engineer and designer. I've designed and built consumer AI products across e-commerce, healthcare, and travel.",
 };
 
 const Home = () => {
