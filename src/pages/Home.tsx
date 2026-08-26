@@ -5,7 +5,8 @@ import CaseStudyCard from "@/components/CaseStudyCard";
 import { caseStudies } from "@/data/caseStudies";
 import { ArrowRight, GraduationCap } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import { usePointerGlow } from "@/hooks/usePointerGlow";
+import { useMagnetic } from "@/hooks/useMagnetic";
+import HeroSparks from "@/components/HeroSparks";
 import ExpertiseConstellation from "@/components/ExpertiseConstellation";
 
 
@@ -21,21 +22,22 @@ const Home = () => {
   }, []);
 
   const featuredStudies = caseStudies.filter((s) => s.featured);
-  const { containerRef: heroRef, glowRef } = usePointerGlow<HTMLElement>();
+  const heroRef = useMagnetic<HTMLElement>(9);
 
   return (
     <Layout>
       {/* Hero */}
       <section ref={heroRef} className="relative overflow-hidden">
-        <div ref={glowRef} className="hero-glow" aria-hidden="true" data-active="false" />
+        <div className="hero-ambient" aria-hidden="true" />
+        <HeroSparks />
         <div className="hero-noise" aria-hidden="true" />
         <div className="relative max-w-3xl mx-auto px-6 section-y">
 
-          <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2 whitespace-pre-line">
+          <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1" data-magnetic="0.35">Hey, I'm Krishna.</p>
+          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2 whitespace-pre-line" data-magnetic="1">
             {heroVariant.heading}
           </h1>
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-4 animate-fade-in-up-delay-3">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-4 animate-fade-in-up-delay-3" data-magnetic="0.5">
             {heroVariant.subtitle}
           </p>
           <div className="flex items-center gap-2 text-sm text-muted-foreground/70 max-w-xl mb-8 animate-fade-in-up-delay-3">
