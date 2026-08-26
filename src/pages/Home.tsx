@@ -6,7 +6,7 @@ import { caseStudies } from "@/data/caseStudies";
 import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { usePointerGlow } from "@/hooks/usePointerGlow";
-import { Pill } from "@/components/ui/pill";
+import ExpertiseConstellation from "@/components/ExpertiseConstellation";
 
 
 const heroVariants: Record<string, { heading: string; subtitle: string }> = {
@@ -48,19 +48,7 @@ const Home = () => {
         <div ref={glowRef} className="hero-glow" aria-hidden="true" data-active="false" />
         <div className="hero-noise" aria-hidden="true" />
         <div className="relative max-w-3xl mx-auto px-6 pt-16 pb-16 sm:pt-32 sm:pb-24">
-          <div className="animate-fade-in-up">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-end gap-4 mb-6">
-              <div className="flex flex-col gap-2 sm:text-right">
-                <span className="label-eyebrow">Expertise in</span>
-                <div className="flex flex-wrap sm:justify-end gap-2">
-                  <Pill variant="outline" size="sm" uppercase chevron={false}>AI Product Design</Pill>
-                  <Pill variant="outline" size="sm" uppercase chevron={false}>0→1 Product</Pill>
-                  <Pill variant="outline" size="sm" uppercase chevron={false}>Experience Design</Pill>
-                  <Pill variant="outline" size="sm" uppercase chevron={false}>Interaction Design</Pill>
-                </div>
-              </div>
-            </div>
-          </div>
+
           <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2 whitespace-pre-line">
             {variant.heading}
@@ -88,6 +76,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <ExpertiseConstellation />
+
+
 
       {/* Featured Work */}
       <section className="max-w-5xl mx-auto px-6 pb-16 sm:pb-24">
