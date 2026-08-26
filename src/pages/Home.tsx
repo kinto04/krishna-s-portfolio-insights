@@ -77,6 +77,10 @@ const Home = () => {
         </div>
       </section>
 
+      <ExpertiseConstellation />
+
+
+
       {/* Featured Work */}
       <section className="max-w-5xl mx-auto px-6 pb-16 sm:pb-24">
         <Reveal className="mb-10">
