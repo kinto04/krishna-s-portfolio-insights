@@ -113,6 +113,54 @@
     }
   }
 
+  /* For sections stacked on a shared background: keeps real top air,
+     lighter bottom so the pair doesn't double up. */
+  .section-y-tight {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  @media (min-width: 640px) {
+    .section-y-tight {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  /* Gap between major blocks inside a page. */
+  .stack-lg > * + * {
+    margin-top: 4rem;
+  }
+  @media (min-width: 640px) {
+    .stack-lg > * + * {
+      margin-top: 5rem;
+    }
+  }
+
+  /* One heading scale. */
+  .t-page-title {
+    font-family: var(--font-serif, ui-serif, Georgia, serif);
+    font-size: 2.25rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 640px) {
+    .t-page-title {
+      font-size: 3rem;
+    }
+  }
+
+  .t-section-title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 640px) {
+    .t-section-title {
+      font-size: 1.875rem;
+    }
+  }
+
+
   /* Card / panel surface. */
   .surface {
     background-color: hsl(var(--card) / 0.4);
