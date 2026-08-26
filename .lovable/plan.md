@@ -25,6 +25,3 @@ This leads with his actual differentiator: he's not a designer who talks about A
 - Every claim traceable to the LinkedIn profile (30% add-to-cart, 12+ clinicians, thesis app).
 - First-person, direct, conversational.
 
-## Optional alternate headlines (will ask before finalizing)
-- "Design that starts with people. Products that ship with AI."
-- "I turn AI capability into products people actually use."
