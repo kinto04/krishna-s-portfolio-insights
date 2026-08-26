@@ -17,7 +17,7 @@ const heroVariant = {
 
 const Home = () => {
   useEffect(() => {
-    document.title = "Krishna Suresh — AI-Forward Product & Experience Designer";
+    document.title = "Krishna Suresh — Product Designer Who Builds with AI";
   }, []);
 
   const featuredStudies = caseStudies.filter((s) => s.featured);
