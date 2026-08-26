@@ -35,8 +35,11 @@ const Home = () => {
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2 whitespace-pre-line">
             {heroVariant.heading}
           </h1>
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-8 animate-fade-in-up-delay-3">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-4 animate-fade-in-up-delay-3">
             {heroVariant.subtitle}
+          </p>
+          <p className="text-sm text-muted-foreground/70 max-w-xl mb-8 animate-fade-in-up-delay-3">
+            MS Engineering Design Innovation, Northwestern · BS Computer Science, Purdue
           </p>
           <div className="flex gap-4 animate-fade-in-up-delay-4">
             <Link
