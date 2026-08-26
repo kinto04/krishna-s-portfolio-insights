@@ -11,47 +11,66 @@ type NodeDef = {
   /** must match a tag in src/data/caseStudies.ts */
   tag: string;
   tier: Tier;
-  /** for sub-skills: the tag this node hangs off instead of the centre */
-  parent?: string;
   x: number;
   y: number;
   anchor: Anchor;
   dy: number;
 };
 
-/* Positions are hand-placed so the map reads as an organic network rather than
-   a symmetric starburst. Core disciplines sit on a tight inner ring, domains
-   further out, sub-skills hang off their parent node. */
+/* No centre node: the map is a mesh of related disciplines and domains.
+   Positions are hand-placed so it reads organic rather than symmetric. */
 const DESKTOP_NODES: NodeDef[] = [
-  { tag: "Experience Design", tier: "core", x: 345, y: 160, anchor: "end", dy: 5 },
-  { tag: "Interaction Design", tier: "core", x: 345, y: 370, anchor: "end", dy: 5 },
-  { tag: "Service Design", tier: "core", x: 520, y: 432, anchor: "middle", dy: 28 },
-  { tag: "Product Strategy", tier: "core", x: 655, y: 160, anchor: "start", dy: 5 },
-  { tag: "AI", tier: "domain", x: 800, y: 250, anchor: "start", dy: 5 },
-  { tag: "E-Commerce", tier: "domain", x: 772, y: 420, anchor: "start", dy: 5 },
-  { tag: "Healthcare", tier: "domain", x: 212, y: 452, anchor: "middle", dy: 26 },
-  { tag: "Mobile", tier: "sub", parent: "Experience Design", x: 258, y: 68, anchor: "middle", dy: -16 },
-  { tag: "Conversational UI", tier: "sub", parent: "AI", x: 884, y: 352, anchor: "end", dy: 22 },
+  { tag: "Experience Design", tier: "core", x: 300, y: 172, anchor: "end", dy: 5 },
+  { tag: "Interaction Design", tier: "core", x: 470, y: 300, anchor: "middle", dy: 26 },
+  { tag: "Product Strategy", tier: "core", x: 655, y: 168, anchor: "start", dy: 5 },
+  { tag: "Service Design", tier: "core", x: 372, y: 424, anchor: "middle", dy: 26 },
+  { tag: "AI", tier: "domain", x: 780, y: 320, anchor: "start", dy: 5 },
+  { tag: "E-Commerce", tier: "domain", x: 662, y: 438, anchor: "middle", dy: 26 },
+  { tag: "Healthcare", tier: "domain", x: 196, y: 330, anchor: "end", dy: 5 },
+  { tag: "Mobile", tier: "sub", x: 258, y: 74, anchor: "middle", dy: -16 },
+  { tag: "RAG", tier: "sub", x: 892, y: 214, anchor: "start", dy: 5 },
+  { tag: "Conversational UI", tier: "sub", x: 858, y: 432, anchor: "end", dy: 24 },
 ];
 
 const MOBILE_NODES: NodeDef[] = [
-  { tag: "Experience Design", tier: "core", x: 190, y: 58, anchor: "middle", dy: -16 },
-  { tag: "Interaction Design", tier: "core", x: 60, y: 150, anchor: "start", dy: -14 },
-  { tag: "Product Strategy", tier: "core", x: 320, y: 150, anchor: "end", dy: -14 },
-  { tag: "Service Design", tier: "core", x: 110, y: 300, anchor: "middle", dy: 24 },
-  { tag: "AI", tier: "domain", x: 270, y: 300, anchor: "middle", dy: 24 },
-  { tag: "E-Commerce", tier: "domain", x: 330, y: 236, anchor: "end", dy: -12 },
-  { tag: "Healthcare", tier: "domain", x: 190, y: 392, anchor: "middle", dy: 24 },
+  { tag: "Experience Design", tier: "core", x: 186, y: 60, anchor: "middle", dy: -16 },
+  { tag: "Interaction Design", tier: "core", x: 96, y: 168, anchor: "start", dy: -14 },
+  { tag: "Product Strategy", tier: "core", x: 292, y: 152, anchor: "end", dy: -14 },
+  { tag: "Service Design", tier: "core", x: 92, y: 300, anchor: "middle", dy: 24 },
+  { tag: "AI", tier: "domain", x: 258, y: 254, anchor: "start", dy: 5 },
+  { tag: "RAG", tier: "sub", x: 322, y: 332, anchor: "end", dy: 22 },
+  { tag: "E-Commerce", tier: "domain", x: 236, y: 392, anchor: "middle", dy: 24 },
+  { tag: "Healthcare", tier: "domain", x: 100, y: 396, anchor: "middle", dy: 24 },
+];
+
+/** Relationships between tags — drawn as the network's edges. */
+const EDGES: [string, string][] = [
+  ["Experience Design", "Interaction Design"],
+  ["Experience Design", "Service Design"],
+  ["Experience Design", "Mobile"],
+  ["Interaction Design", "Product Strategy"],
+  ["Interaction Design", "Service Design"],
+  ["Interaction Design", "AI"],
+  ["Interaction Design", "Healthcare"],
+  ["Service Design", "Healthcare"],
+  ["Product Strategy", "AI"],
+  ["Product Strategy", "E-Commerce"],
+  ["AI", "RAG"],
+  ["AI", "Conversational UI"],
+  ["AI", "E-Commerce"],
+  ["RAG", "Conversational UI"],
+  ["Conversational UI", "E-Commerce"],
+  ["Service Design", "E-Commerce"],
 ];
 
 const tierStyle = (tier: Tier) => {
   switch (tier) {
     case "core":
-      return { r: 5.5, spoke: 1.1, spokeOpacity: 0.32, fill: "hsl(var(--primary))", text: "fill-foreground" };
+      return { r: 5.5, fill: "hsl(var(--primary))", text: "fill-foreground" };
     case "domain":
-      return { r: 4, spoke: 0.9, spokeOpacity: 0.2, fill: "hsl(var(--primary-deep))", text: "fill-muted-foreground" };
+      return { r: 4.2, fill: "hsl(var(--primary))", text: "fill-muted-foreground" };
     default:
-      return { r: 3, spoke: 0.7, spokeOpacity: 0.14, fill: "hsl(var(--primary-deep))", text: "fill-muted-foreground" };
+      return { r: 3.2, fill: "hsl(var(--primary-deep))", text: "fill-muted-foreground" };
   }
 };
 
@@ -59,9 +78,7 @@ const ExpertiseConstellation = () => {
   const isMobile = useIsMobile();
   const defs = isMobile ? MOBILE_NODES : DESKTOP_NODES;
   const width = isMobile ? 380 : 1000;
-  const height = isMobile ? 440 : 520;
-  const cx = width / 2;
-  const cy = isMobile ? 200 : 264;
+  const height = isMobile ? 460 : 520;
 
   const counts = useMemo(() => {
     const map: Record<string, number> = {};
@@ -74,25 +91,26 @@ const ExpertiseConstellation = () => {
       defs.map((n) => {
         const count = counts[n.tag] || 0;
         const base = tierStyle(n.tier);
-        return { ...n, count, ...base, r: base.r + Math.min(count - 1, 2) * 0.9 };
+        return { ...n, count, ...base, r: base.r + Math.min(Math.max(count - 1, 0), 2) * 0.9 };
       }),
     [defs, counts]
+  );
+
+  const present = useMemo(() => new Set(nodes.map((n) => n.tag)), [nodes]);
+  const edges = useMemo(
+    () => EDGES.filter(([a, b]) => present.has(a) && present.has(b)),
+    [present]
   );
 
   const navigate = useNavigate();
   const svgRef = useRef<SVGSVGElement>(null);
   const nodeRefs = useRef<Record<string, SVGGElement | null>>({});
-  const spokeRefs = useRef<Record<string, SVGLineElement | null>>({});
+  const edgeRefs = useRef<Record<string, SVGLineElement | null>>({});
   const pulseRefs = useRef<Record<string, SVGCircleElement | null>>({});
-  const coreRingRef = useRef<SVGCircleElement>(null);
+  const haloRefs = useRef<Record<string, SVGCircleElement | null>>({});
   const pointer = useRef<{ x: number; y: number; active: boolean }>({ x: 0, y: 0, active: false });
   const hoveredRef = useRef<string | null>(null);
   const [active, setActive] = useState<string | null>(null);
-
-  const anchorOf = (tag: string) => {
-    const n = nodes.find((x) => x.tag === tag);
-    return n ? { x: n.x, y: n.y } : { x: cx, y: cy };
-  };
 
   useEffect(() => {
     hoveredRef.current = active;
@@ -106,13 +124,14 @@ const ExpertiseConstellation = () => {
     let frame = 0;
     let running = false;
 
-    const stagger = 0.95;
-    const duration = 1.7;
-    const cycle = Math.max(nodes.length * stagger, duration + 0.4);
+    const stagger = 1.15;
+    const duration = 1.6;
+    const cycle = Math.max(edges.length * stagger, duration + 0.6);
 
     const tick = (time: number) => {
       const t = time / 1000;
-      let coreFlash = 0;
+      const pos: Record<string, { x: number; y: number }> = {};
+      const arrival: Record<string, number> = {};
 
       nodes.forEach((n, i) => {
         const drift = n.tier === "core" ? 6 : 4;
@@ -131,42 +150,44 @@ const ExpertiseConstellation = () => {
           }
         }
 
+        pos[n.tag] = { x, y };
         const g = nodeRefs.current[n.tag];
         if (g) g.setAttribute("transform", `translate(${x - n.x} ${y - n.y})`);
+      });
 
-        const origin = n.parent ? anchorOf(n.parent) : { x: cx, y: cy };
-        const spoke = spokeRefs.current[n.tag];
-        if (spoke) {
-          spoke.setAttribute("x1", String(origin.x));
-          spoke.setAttribute("y1", String(origin.y));
-          spoke.setAttribute("x2", String(x));
-          spoke.setAttribute("y2", String(y));
+      edges.forEach(([a, b], i) => {
+        const key = `${a}|${b}`;
+        const pa = pos[a];
+        const pb = pos[b];
+        const line = edgeRefs.current[key];
+        if (line) {
+          line.setAttribute("x1", String(pa.x));
+          line.setAttribute("y1", String(pa.y));
+          line.setAttribute("x2", String(pb.x));
+          line.setAttribute("y2", String(pb.y));
         }
 
-        // One deliberate, staggered pulse per spoke.
-        const pulse = pulseRefs.current[n.tag];
+        const pulse = pulseRefs.current[key];
         if (!pulse) return;
-        const isHovered = hoveredRef.current === n.tag;
         const local = (((t - i * stagger) % cycle) + cycle) % cycle;
-        const p = isHovered ? ((t * 0.9) % 1) : local < duration ? local / duration : -1;
-
+        const p = local < duration ? local / duration : -1;
         if (p < 0) {
           pulse.setAttribute("opacity", "0");
           return;
         }
-        // travels inward normally, outward from the centre while hovered
-        const q = isHovered ? 1 - p : p;
-        pulse.setAttribute("cx", String(x + (origin.x - x) * q));
-        pulse.setAttribute("cy", String(y + (origin.y - y) * q));
-        pulse.setAttribute("opacity", String(Math.sin(p * Math.PI) * (isHovered ? 0.95 : 0.75)));
-
-        if (!isHovered && !n.parent && p > 0.85) coreFlash = Math.max(coreFlash, (p - 0.85) / 0.15);
+        pulse.setAttribute("cx", String(pa.x + (pb.x - pa.x) * p));
+        pulse.setAttribute("cy", String(pa.y + (pb.y - pa.y) * p));
+        pulse.setAttribute("opacity", String(Math.sin(p * Math.PI) * 0.8));
+        if (p > 0.85) arrival[b] = Math.max(arrival[b] || 0, (p - 0.85) / 0.15);
       });
 
-      if (coreRingRef.current) {
-        coreRingRef.current.setAttribute("opacity", String(0.3 + coreFlash * 0.6));
-        coreRingRef.current.setAttribute("r", String(15 + coreFlash * 5));
-      }
+      nodes.forEach((n) => {
+        const halo = haloRefs.current[n.tag];
+        if (!halo) return;
+        const a = arrival[n.tag] || 0;
+        halo.setAttribute("opacity", String(a * 0.5));
+        halo.setAttribute("r", String(n.r + 4 + a * 6));
+      });
 
       frame = requestAnimationFrame(tick);
     };
@@ -209,7 +230,7 @@ const ExpertiseConstellation = () => {
       svg.removeEventListener("pointerleave", handleLeave);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nodes, cx, cy, width, height, isMobile]);
+  }, [nodes, edges, width, height, isMobile]);
 
   const go = (tag: string) => navigate(`/work?tag=${encodeURIComponent(tag)}`);
 
@@ -235,68 +256,37 @@ const ExpertiseConstellation = () => {
             aria-hidden="true"
             focusable="false"
           >
-            <defs>
-              <radialGradient id="ec-core">
-                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.35" />
-                <stop offset="60%" stopColor="hsl(var(--primary-deep))" stopOpacity="0.12" />
-                <stop offset="100%" stopColor="hsl(var(--primary-deep))" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-
-            <circle cx={cx} cy={cy} r={isMobile ? 110 : 170} fill="url(#ec-core)" />
-
-            {/* Spokes: core/domain into the centre, sub-skills into their parent */}
-            {nodes.map((n) => {
-              const origin = n.parent ? anchorOf(n.parent) : { x: cx, y: cy };
+            {/* Edges */}
+            {edges.map(([a, b]) => {
+              const na = nodes.find((n) => n.tag === a)!;
+              const nb = nodes.find((n) => n.tag === b)!;
+              const related = active === a || active === b;
               return (
                 <line
-                  key={`spoke-${n.tag}`}
-                  ref={(el) => (spokeRefs.current[n.tag] = el)}
-                  x1={origin.x}
-                  y1={origin.y}
-                  x2={n.x}
-                  y2={n.y}
+                  key={`edge-${a}|${b}`}
+                  ref={(el) => (edgeRefs.current[`${a}|${b}`] = el)}
+                  x1={na.x}
+                  y1={na.y}
+                  x2={nb.x}
+                  y2={nb.y}
                   stroke="hsl(var(--primary))"
-                  strokeWidth={n.spoke}
-                  strokeOpacity={active === null ? n.spokeOpacity : active === n.tag ? 0.75 : 0.07}
+                  strokeWidth={na.tier === "core" && nb.tier === "core" ? 1.1 : 0.8}
+                  strokeOpacity={active === null ? 0.2 : related ? 0.7 : 0.06}
                   style={{ transition: "stroke-opacity 0.35s var(--ease-out-quint)" }}
                 />
               );
             })}
 
             {/* Travelling signals */}
-            {nodes.map((n) => (
+            {edges.map(([a, b]) => (
               <circle
-                key={`pulse-${n.tag}`}
-                ref={(el) => (pulseRefs.current[n.tag] = el)}
-                r={n.tier === "core" ? 2.4 : 1.9}
+                key={`pulse-${a}|${b}`}
+                ref={(el) => (pulseRefs.current[`${a}|${b}`] = el)}
+                r={2.1}
                 fill="hsl(var(--primary))"
                 opacity="0"
               />
             ))}
-
-            {/* Centre node */}
-            <g>
-              <circle cx={cx} cy={cy} r="7" fill="hsl(var(--primary))" />
-              <circle
-                ref={coreRingRef}
-                cx={cx}
-                cy={cy}
-                r="15"
-                fill="none"
-                stroke="hsl(var(--primary))"
-                opacity="0.3"
-              />
-              <text
-                x={cx}
-                y={cy + 38}
-                textAnchor="middle"
-                className="fill-foreground font-serif"
-                fontSize={isMobile ? 16 : 20}
-              >
-                Krishna
-              </text>
-            </g>
 
             {/* Skill nodes */}
             {nodes.map((n) => {
@@ -322,7 +312,7 @@ const ExpertiseConstellation = () => {
                     }
                   }}
                   style={{
-                    opacity: dim ? 0.3 : 1,
+                    opacity: dim ? 0.32 : 1,
                     transition: "opacity 0.35s var(--ease-out-quint)",
                     cursor: "pointer",
                     outline: "none",
@@ -330,6 +320,15 @@ const ExpertiseConstellation = () => {
                 >
                   {/* generous, invisible tap/hit target */}
                   <circle cx={n.x} cy={n.y} r={isMobile ? 26 : 22} fill="transparent" />
+                  <circle
+                    ref={(el) => (haloRefs.current[n.tag] = el)}
+                    cx={n.x}
+                    cy={n.y}
+                    r={n.r + 4}
+                    fill="none"
+                    stroke="hsl(var(--primary))"
+                    opacity="0"
+                  />
                   <circle cx={n.x} cy={n.y} r={n.r} fill={n.fill} />
                   {active === n.tag && (
                     <circle
