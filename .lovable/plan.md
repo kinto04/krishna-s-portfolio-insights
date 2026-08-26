@@ -7,8 +7,8 @@ Replace the current hero copy, which reads as generic AI-generated ("I design wi
 
 **Eyebrow (unchanged):** "Hey, I'm Krishna."
 
-**Headline (option, final pick below):**
-> I design products that start with people, and ship with AI.
+**Headline (chosen by user):**
+> I design products that start with people,\nand ship with AI.
 
 **Subtitle:**
 > Product designer with an engineer's toolkit. I've shipped an AI commerce agent that lifted add-to-cart 30%, co-designed a clinical diagnostic tool with 12+ clinicians, and built my thesis app — research, design, and code — with AI doing the heavy lifting. Now I help teams close the gap between what they build and what people need.
@@ -25,6 +25,3 @@ This leads with his actual differentiator: he's not a designer who talks about A
 - Every claim traceable to the LinkedIn profile (30% add-to-cart, 12+ clinicians, thesis app).
 - First-person, direct, conversational.
 
-## Optional alternate headlines (will ask before finalizing)
-- "Design that starts with people. Products that ship with AI."
-- "I turn AI capability into products people actually use."
