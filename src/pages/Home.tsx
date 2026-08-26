@@ -70,11 +70,12 @@ const Home = () => {
 
 
       {/* Featured Work */}
-      <section className="max-w-5xl mx-auto px-6 pb-16 sm:pb-24">
+      <section className="max-w-5xl mx-auto px-6 section-y">
         <Reveal className="mb-10">
           <p className="label-eyebrow mb-3">Selected work</p>
-          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground">Case studies</h2>
+          <h2 className="font-serif t-section-title tracking-tight text-foreground">Case studies</h2>
         </Reveal>
+
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
           {featuredStudies.map((study, i) => (
             <Reveal key={study.slug} index={i} className="h-full">
