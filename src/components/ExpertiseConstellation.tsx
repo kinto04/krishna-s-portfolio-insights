@@ -19,15 +19,15 @@ type SkillNode = {
 /* Positions are hand-placed rather than generated so the map reads as an
    organic network instead of a symmetric starburst. */
 const DESKTOP_NODES: SkillNode[] = [
-  { id: "xd", label: "Experience Design", x: 185, y: 132, weight: 1, anchor: "end", dy: 5 },
-  { id: "ixd", label: "Interaction Design", x: 128, y: 292, weight: 1, anchor: "end", dy: 5 },
-  { id: "service", label: "Service Design", x: 232, y: 424, weight: 1, anchor: "end", dy: 5 },
-  { id: "ai", label: "AI", x: 828, y: 118, weight: 1, anchor: "start", dy: 5 },
-  { id: "strategy", label: "Product Strategy", x: 872, y: 272, weight: 1, anchor: "start", dy: 5 },
-  { id: "convo", label: "Conversational UI", x: 796, y: 412, weight: 2, anchor: "start", dy: 5 },
-  { id: "mobile", label: "Mobile", x: 418, y: 62, weight: 2, anchor: "middle", dy: -18 },
-  { id: "commerce", label: "E-Commerce", x: 694, y: 58, weight: 2, anchor: "middle", dy: -18 },
-  { id: "health", label: "Healthcare", x: 612, y: 466, weight: 2, anchor: "middle", dy: 26 },
+  { id: "xd", label: "Experience Design", x: 268, y: 122, weight: 1, anchor: "end", dy: 5 },
+  { id: "ixd", label: "Interaction Design", x: 240, y: 300, weight: 1, anchor: "end", dy: 5 },
+  { id: "service", label: "Service Design", x: 306, y: 430, weight: 1, anchor: "end", dy: 5 },
+  { id: "ai", label: "AI", x: 806, y: 116, weight: 1, anchor: "start", dy: 5 },
+  { id: "strategy", label: "Product Strategy", x: 782, y: 278, weight: 1, anchor: "start", dy: 5 },
+  { id: "convo", label: "Conversational UI", x: 742, y: 424, weight: 2, anchor: "start", dy: 5 },
+  { id: "mobile", label: "Mobile", x: 452, y: 56, weight: 2, anchor: "middle", dy: -18 },
+  { id: "commerce", label: "E-Commerce", x: 668, y: 54, weight: 2, anchor: "middle", dy: -18 },
+  { id: "health", label: "Healthcare", x: 560, y: 470, weight: 2, anchor: "middle", dy: 26 },
 ];
 
 const MOBILE_NODES: SkillNode[] = [
