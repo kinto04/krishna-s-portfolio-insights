@@ -10,9 +10,9 @@ import ExpertiseConstellation from "@/components/ExpertiseConstellation";
 
 
 const heroVariant = {
-  heading: "I design with AI,\nnot just for it.",
+  heading: "I design products that start with people,\nand ship with AI.",
   subtitle:
-    "AI-forward product designer shaping end-to-end experiences across interaction, service, and product design — and prototyping fast with AI tools to turn research into products that ship.",
+    "Product designer with an engineer's toolkit. I've shipped an AI commerce agent that lifted add-to-cart 30%, co-designed a clinical diagnostic tool with 12+ clinicians, and built my thesis app — research, design, and code — with AI doing the heavy lifting.",
 };
 
 const Home = () => {
