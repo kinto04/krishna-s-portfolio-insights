@@ -336,7 +336,7 @@ const WorkDetail = () => {
   return (
     <Layout>
       <div style={themeStyle} className={themed ? "w-full" : undefined}>
-        <article className="max-w-5xl mx-auto px-6 pt-10 section-y-tight">
+        <article className="max-w-5xl mx-auto px-6 section-y-tight">
           <Link
             to="/work"
             className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground t-base mb-8"
