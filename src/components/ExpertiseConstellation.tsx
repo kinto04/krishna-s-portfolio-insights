@@ -102,6 +102,18 @@ const ExpertiseConstellation = () => {
     [present]
   );
 
+  /** tag -> case studies carrying that tag */
+  const studiesByTag = useMemo(() => {
+    const map: Record<string, typeof caseStudies> = {};
+    caseStudies.forEach((s) =>
+      s.tags.forEach((t) => {
+        (map[t] ||= []).push(s);
+      })
+    );
+    return map;
+  }, []);
+
+
   const navigate = useNavigate();
   const svgRef = useRef<SVGSVGElement>(null);
   const nodeRefs = useRef<Record<string, SVGGElement | null>>({});
