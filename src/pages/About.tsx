@@ -47,19 +47,29 @@ const About = () => {
           <h2 className="font-serif t-section-title tracking-tight text-foreground mb-6">Experience</h2>
           <div className="space-y-5">
             <div className="border-l-2 border-border hover:border-primary t-base pl-4">
-              <p className="text-foreground font-medium">Product Manager & Designer · Jointly (MS Thesis)</p>
+              <p className="text-foreground font-medium">Founding UX Designer & AI Engineer</p>
+              <p className="text-sm text-muted-foreground mb-1">Huelo · 2026–Present</p>
+              <p className="text-sm text-muted-foreground">Designing and building an AI-powered interior design and shopping platform for urban renters — 1,000+ users since launch, with Gemini-powered recommendations, evals for output quality, and research-driven roadmap decisions that grew activation 20% and engagement 21%.</p>
+            </div>
+            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
+              <p className="text-foreground font-medium">Founder, Product Manager & Engineer · Jointly Travel (MS Thesis)</p>
               <p className="text-sm text-muted-foreground mb-1">Northwestern University · 2025–2026</p>
-              <p className="text-sm text-muted-foreground">End-to-end product: user research, design, and development of an AI-powered group travel coordination app. Currently in beta with 40+ users.</p>
+              <p className="text-sm text-muted-foreground">End-to-end product: user research, design, and development of an AI travel app for friend groups. Shipped to 40+ beta users with journey maps, archetypes, and a weekly automated behavioral insights pipeline.</p>
             </div>
             <div className="border-l-2 border-border hover:border-primary t-base pl-4">
-              <p className="text-foreground font-medium">Product Lead</p>
+              <p className="text-foreground font-medium">Design Researcher</p>
               <p className="text-sm text-muted-foreground mb-1">Northwestern Medicine · 2025</p>
-              <p className="text-sm text-muted-foreground">Led product strategy and design for a clinical diagnostic tool for pediatric gut-brain disorders. Facilitated research across 12+ clinicians and delivered validated prototypes.</p>
+              <p className="text-sm text-muted-foreground">Led design research for a digital health tool for pediatric GI patients. Ran focus groups and 12+ clinician interviews, built journey maps, and delivered validated prototypes; research supported a paper submitted to JMIR.</p>
             </div>
             <div className="border-l-2 border-border hover:border-primary t-base pl-4">
-              <p className="text-foreground font-medium">Product Manager & Full Stack Developer</p>
-              <p className="text-sm text-muted-foreground mb-1">NectarOM · 2021–2025</p>
-              <p className="text-sm text-muted-foreground">Built Nectar.ai end-to-end using RAG architecture — drove +30% add-to-cart, +18% checkout completion, and ~99% improvement in chatbot response rates. Also shipped NectarCares, a platform connecting donors to families in need.</p>
+              <p className="text-foreground font-medium">Product & Experience Designer · Southwest Airlines</p>
+              <p className="text-sm text-muted-foreground mb-1">Northwestern Sponsored Project · 2025</p>
+              <p className="text-sm text-muted-foreground">Designed "Relaxed Rebooking" after airport field research during irregular operations — projecting a 225,000-hour annual efficiency gain and a 40% improvement in prototype confidence.</p>
+            </div>
+            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
+              <p className="text-foreground font-medium">UX Engineer & PM</p>
+              <p className="text-sm text-muted-foreground mb-1">NectarOM · 2021–2024</p>
+              <p className="text-sm text-muted-foreground">Built Nectar.ai end-to-end — drove +30% add-to-cart, +18% checkout completion, and ~99% improvement in chatbot response rates. Also shipped NectarCares, a platform connecting donors to families in need.</p>
             </div>
             <div className="border-l-2 border-border hover:border-primary t-base pl-4">
               <p className="text-foreground font-medium">Software Engineering Intern</p>
@@ -67,6 +77,7 @@ const About = () => {
               <p className="text-sm text-muted-foreground">Supported API access management and security during the company's transition to Okta as an Identity Provider.</p>
             </div>
           </div>
+
         </div>
 
         {/* Education */}
