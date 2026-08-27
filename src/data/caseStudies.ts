@@ -82,7 +82,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "jointly-travel",
     title: "Jointly.",
     subtitle: "Group travel planning, made easy.",
-    role: "Founder · Product Designer · PM",
+    role: "Founder and designer",
     year: "2025–2026",
     context: "Master's Thesis · Northwestern University",
     tags: ["Experience Design", "Mobile", "AI", "Service Design"],
