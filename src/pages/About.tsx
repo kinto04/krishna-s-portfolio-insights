@@ -23,7 +23,7 @@ const About = () => {
 
         <div className="space-y-6 text-muted-foreground leading-relaxed">
           <p>
-            I'm a <strong className="text-foreground">product manager and designer</strong> who builds at the intersection of research, design, and engineering. CS degree from Purdue. Just graduated with an{" "}
+            I'm a <strong className="text-foreground">Designer and UX Engineer</strong> who builds at the intersection of research, design, and engineering. CS degree from Purdue. Just graduated with an{" "}
             <strong className="text-foreground">MS in Engineering Design Innovation from Northwestern</strong>.
           </p>
           <p>
