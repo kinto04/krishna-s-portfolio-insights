@@ -219,6 +219,22 @@
     will-change: auto;
   }
 
+  /* Graph node hover preview — fades in without touching its positioning transform. */
+  .node-preview {
+    animation: nodePreviewIn 0.22s var(--ease-out-quint) both;
+  }
+
+  @keyframes nodePreviewIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+
+
   /* Children cascade in sequence once the parent is revealed. */
   .stagger-children > * {
     animation: riseIn 0.75s var(--ease-out-expo) both;
