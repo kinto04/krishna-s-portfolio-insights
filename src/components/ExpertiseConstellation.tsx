@@ -259,7 +259,7 @@ const ExpertiseConstellation = () => {
           </p>
         </Reveal>
 
-        <Reveal index={1}>
+        <Reveal index={1} className="relative">
           <svg
             ref={svgRef}
             viewBox={`0 0 ${width} ${height}`}
