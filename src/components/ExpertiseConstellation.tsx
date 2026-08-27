@@ -248,7 +248,7 @@ const ExpertiseConstellation = () => {
   const flipY = activeNode ? activeNode.y / height > 0.62 : false;
 
   return (
-    <section className="relative overflow-hidden section-y-tight">
+    <section className="relative overflow-hidden section-y-tight section-band">
       <div className="hero-noise" aria-hidden="true" />
       <div className="relative max-w-5xl mx-auto px-6">
         <Reveal className="mb-6">

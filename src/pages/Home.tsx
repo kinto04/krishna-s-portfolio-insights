@@ -72,7 +72,7 @@ const Home = () => {
 
 
       {/* Featured Work */}
-      <section className="max-w-5xl mx-auto px-6 section-y">
+      <section className="max-w-5xl mx-auto px-6 section-y section-band">
         <Reveal className="mb-10">
           <p className="label-eyebrow mb-3">Selected work</p>
           <h2 className="font-serif t-section-title tracking-tight text-foreground">Case studies</h2>
