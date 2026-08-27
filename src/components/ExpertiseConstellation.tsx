@@ -28,7 +28,6 @@ const DESKTOP_NODES: NodeDef[] = [
   { tag: "E-Commerce", tier: "domain", x: 662, y: 438, anchor: "middle", dy: 26 },
   { tag: "Healthcare", tier: "domain", x: 196, y: 330, anchor: "end", dy: 5 },
   { tag: "Mobile", tier: "sub", x: 258, y: 74, anchor: "middle", dy: -16 },
-  { tag: "RAG", tier: "sub", x: 892, y: 214, anchor: "start", dy: 5 },
   { tag: "Conversational UI", tier: "sub", x: 858, y: 432, anchor: "end", dy: 24 },
 ];
 
@@ -38,7 +37,6 @@ const MOBILE_NODES: NodeDef[] = [
   { tag: "Product Strategy", tier: "core", x: 292, y: 152, anchor: "end", dy: -14 },
   { tag: "Service Design", tier: "core", x: 92, y: 300, anchor: "middle", dy: 24 },
   { tag: "AI", tier: "domain", x: 258, y: 254, anchor: "start", dy: 5 },
-  { tag: "RAG", tier: "sub", x: 322, y: 332, anchor: "end", dy: 22 },
   { tag: "E-Commerce", tier: "domain", x: 236, y: 392, anchor: "middle", dy: 24 },
   { tag: "Healthcare", tier: "domain", x: 100, y: 396, anchor: "middle", dy: 24 },
 ];
@@ -55,10 +53,8 @@ const EDGES: [string, string][] = [
   ["Service Design", "Healthcare"],
   ["Product Strategy", "AI"],
   ["Product Strategy", "E-Commerce"],
-  ["AI", "RAG"],
   ["AI", "Conversational UI"],
   ["AI", "E-Commerce"],
-  ["RAG", "Conversational UI"],
   ["Conversational UI", "E-Commerce"],
   ["Service Design", "E-Commerce"],
 ];
