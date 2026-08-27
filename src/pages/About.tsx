@@ -17,7 +17,7 @@ const About = () => {
           />
           <div>
             <h1 className="font-serif t-page-title tracking-tight text-foreground mb-2">Krishna Suresh<span className="text-primary">.</span></h1>
-            <p className="text-muted-foreground text-sm">Product Manager · Designer · Engineer</p>
+            <p className="text-muted-foreground text-sm">Designer · Engineer · Product Manager</p>
           </div>
         </div>
 
