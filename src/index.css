@@ -167,6 +167,14 @@
     border-radius: var(--radius);
   }
 
+  /* Full-width band that separates major landing-page sections. */
+  .section-band {
+    border-top: 1px solid hsl(var(--border) / 0.45);
+    background:
+      radial-gradient(80% 60% at 50% 0%, hsl(var(--primary-deep) / 0.04) 0%, transparent 70%),
+      linear-gradient(180deg, hsl(var(--card) / 0.18) 0%, transparent 60%);
+  }
+
   /* Ambient depth uses primary-deep, never primary. */
   .accent-shadow {
     box-shadow: 0 24px 48px -28px hsl(var(--primary-deep) / 0.45);
