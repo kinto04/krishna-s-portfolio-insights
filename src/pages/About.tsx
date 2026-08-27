@@ -37,7 +37,7 @@ const About = () => {
             Since then I've built products across <strong className="text-foreground">AI, e-commerce, healthcare, and social impact</strong> — from a conversational AI agent that drove measurable e-commerce lifts, to a clinical diagnostic tool co-designed with 12+ healthcare professionals, to a group travel app I launched as my master's thesis.
           </p>
           <p className="text-sm">
-            Based in New York, NY. Looking for <strong className="text-foreground">PM and Design roles</strong> in AI, e-commerce, travel, and healthcare.
+            Based in New York, NY. Looking for <strong className="text-foreground">Design roles</strong> in AI, e-commerce, travel, and healthcare.
           </p>
         </div>
 
