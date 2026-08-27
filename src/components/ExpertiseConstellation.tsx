@@ -375,7 +375,47 @@ const ExpertiseConstellation = () => {
               );
             })}
           </svg>
+
+          {/* Hover / focus preview of the projects behind a node (desktop only) */}
+          {!isMobile && activeNode && activeStudies.length > 0 && (
+            <div
+              className="absolute z-10 w-64 rounded-lg border border-border/60 bg-card/90 backdrop-blur-md p-2 shadow-lg pointer-events-auto node-preview"
+              style={{
+                left: `${(activeNode.x / width) * 100}%`,
+                top: `${(activeNode.y / height) * 100}%`,
+                transform: `translate(${flipX ? "calc(-100% - 18px)" : "18px"}, ${
+                  flipY ? "calc(-100% - 14px)" : "14px"
+                })`,
+              }}
+              onPointerEnter={() => setActive(activeNode.tag)}
+              onPointerLeave={() => setActive(null)}
+            >
+              {activeStudies.slice(0, 3).map((s) => (
+                <Link
+                  key={s.slug}
+                  to={`/work/${s.slug}`}
+                  className="flex items-center gap-3 rounded-md p-2 transition-colors hover:bg-primary/10"
+                >
+                  {s.coverImage && (
+                    <img
+                      src={s.coverImage}
+                      alt=""
+                      loading="lazy"
+                      className="h-10 w-14 shrink-0 rounded-md object-cover"
+                    />
+                  )}
+                  <span className="min-w-0">
+                    <span className="block text-sm text-foreground truncate">{s.title}</span>
+                    <span className="block text-xs text-muted-foreground truncate">
+                      {s.summary}
+                    </span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
         </Reveal>
+
 
         {/* Accessible / crawlable equivalent of the map */}
         <ul className="sr-only">
