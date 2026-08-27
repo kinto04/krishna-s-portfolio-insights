@@ -52,7 +52,7 @@ const About = () => {
               <p className="text-sm text-muted-foreground">Designing and building an AI-powered interior design and shopping platform for urban renters — 1,000+ users since launch, with Gemini-powered recommendations, evals for output quality, and research-driven roadmap decisions that grew activation 20% and engagement 21%.</p>
             </div>
             <div className="border-l-2 border-border hover:border-primary t-base pl-4">
-              <p className="text-foreground font-medium">Founder, Product Manager & Engineer · Jointly Travel (MS Thesis)</p>
+              <p className="text-foreground font-medium">Founder and Designer · Jointly Travel (MS Thesis)</p>
               <p className="text-sm text-muted-foreground mb-1">Northwestern University · 2025–2026</p>
               <p className="text-sm text-muted-foreground">End-to-end product: user research, design, and development of an AI travel app for friend groups. Shipped to 40+ beta users with journey maps, archetypes, and a weekly automated behavioral insights pipeline.</p>
             </div>
