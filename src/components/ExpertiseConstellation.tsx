@@ -239,7 +239,6 @@ const ExpertiseConstellation = () => {
       <div className="hero-noise" aria-hidden="true" />
       <div className="relative max-w-5xl mx-auto px-6">
         <Reveal className="mb-6">
-          <p className="label-eyebrow mb-3">Skills and domains</p>
           <h2 className="font-serif t-section-title tracking-tight text-foreground">
             What I design and build
           </h2>
