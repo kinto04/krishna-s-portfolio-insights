@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="max-w-5xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div>
           <p className="font-serif text-base text-foreground mb-1">
-            Designing with AI, building for humans — from New York<span className="text-primary">.</span>
+            Designing with AI, building for humans<span className="text-primary">.</span>
           </p>
           <p className="label-eyebrow">
             © {new Date().getFullYear()} Krishna Suresh
