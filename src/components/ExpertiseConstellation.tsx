@@ -246,6 +246,11 @@ const ExpertiseConstellation = () => {
 
   const go = (tag: string) => navigate(`/work?tag=${encodeURIComponent(tag)}`);
 
+  const activeNode = active ? nodes.find((n) => n.tag === active) ?? null : null;
+  const activeStudies = active ? studiesByTag[active] ?? [] : [];
+  const flipX = activeNode ? activeNode.x / width > 0.62 : false;
+  const flipY = activeNode ? activeNode.y / height > 0.62 : false;
+
   return (
     <section className="relative overflow-hidden section-y-tight">
       <div className="hero-noise" aria-hidden="true" />
