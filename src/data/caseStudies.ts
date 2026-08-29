@@ -280,6 +280,178 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    slug: "northwestern-medicine",
+    title: "Leading Digital Innovation in Healthcare Research",
+    subtitle: "Research and design for a pediatric gut-brain diagnosis tool.",
+    role: "Design Lead · Product Manager",
+    year: "2025",
+    context: "Northwestern Feinberg School of Medicine",
+    tags: ["Experience Design", "Research", "Service Design", "Healthcare"],
+    summary:
+      "Going into an existing research project at Northwestern Feinberg School of Medicine, I was tasked with owning research and design for a new digital product aimed at supporting diagnosis and treatment of pediatric patients with disorders of gut-brain interaction.",
+    featured: false,
+    coverImage: "/images/northwestern-medicine/cover.jpg",
+    facts: {
+      timeline: "2025",
+      team: "Sole designer and PM inside an existing research project",
+      role: "Stakeholder research, feature prioritization, design prototyping",
+      setting: "Northwestern Feinberg School of Medicine",
+      platform: "Clinician-facing web tool",
+    },
+    toolkit: ["Figma", "Miro", "Lovable", "Google Sheets"],
+    overview: {
+      context:
+        "An existing clinical research effort needed a product direction — and someone to own the research and design behind it.",
+      roleDetail: [
+        "Stakeholder research with doctors, nurses and clinic staff",
+        "Feature prioritization and design requirements for the MVP",
+        "Initial prototypes to validate the design hypothesis",
+      ],
+      outcome:
+        "A validated problem space, a service blueprint of the current care process, and clinician-tested prototypes guiding future iterations.",
+    },
+    metrics: [
+      { value: "9", label: "Focus Group Participants", sublabel: "Across 2 sessions" },
+      { value: "1", label: "In-Context Observation", sublabel: "In clinic" },
+      { value: "4", label: "User Interviews", sublabel: "With clinicians" },
+    ],
+    blocks: [
+      {
+        kind: "chapter",
+        id: "goal",
+        number: "01",
+        label: "Project goal",
+      },
+      {
+        kind: "statement",
+        eyebrow: "The goal",
+        text:
+          "Make it easier for clinicians to diagnose and treat pediatric patients with potential Disorders of Gut-Brain Interaction (DGBI).",
+      },
+      {
+        kind: "chapter",
+        id: "my-role",
+        number: "02",
+        label: "My role",
+        intro: "Three responsibilities I owned end to end inside the research team.",
+      },
+      {
+        kind: "methods",
+        items: [
+          {
+            label: "Stakeholder Research",
+            line: "Uncover needs, pains and motivations for primary stakeholders in the system.",
+          },
+          {
+            label: "Feature Prioritization",
+            line: "Prioritize the most valuable features and define design requirements for the MVP.",
+          },
+          {
+            label: "Design Prototyping",
+            line: "Design initial prototypes to validate our design hypothesis and guide future iterations.",
+          },
+        ],
+      },
+      {
+        kind: "chapter",
+        id: "approach",
+        number: "03",
+        label: "Approach",
+        intro: "A five-step ladder from raw user needs to a solution that was desirable, viable and feasible.",
+      },
+      {
+        kind: "numberedList",
+        items: [
+          {
+            title: "User Research",
+            body: "Conducting interviews and journey mapping to understand user needs.",
+          },
+          {
+            title: "Need Validation",
+            body: "Identifying and validating true user needs, removing assumptions.",
+          },
+          {
+            title: "Concept Wireframes",
+            body: "Creating wireframes to test hypotheses on user needs.",
+          },
+          {
+            title: "Prototype Development",
+            body: "Developing data-informed prototypes and iterating based on feedback.",
+          },
+          {
+            title: "Desirability-Viability-Feasibility",
+            body: "Applying the framework to ensure the solution is right and feasible.",
+          },
+        ],
+      },
+      {
+        kind: "chapter",
+        id: "design-process",
+        number: "04",
+        label: "Design process",
+        intro: "Over the course of the internship, I led design research efforts in the following ways.",
+      },
+      {
+        kind: "lead",
+        text:
+          "Our first focus group was with doctors. The goal was to deeply understand the current care process, and uncover the most pressing frustrations and needs for doctors in the pediatric GI space.",
+      },
+      {
+        kind: "lead",
+        text:
+          "Our second focus group was with nurses — understanding their role in the process, their needs, priorities and motivations.",
+      },
+      {
+        kind: "chapter",
+        id: "deliverables",
+        number: "05",
+        label: "Deliverables",
+      },
+      {
+        kind: "numberedList",
+        items: [
+          {
+            title: "Service Blueprint",
+            body: "A visual representation of the current system and service, with areas of friction and design interventions highlighted.",
+          },
+          {
+            title: "Research Prototypes",
+            body: "Initial clinician prototypes designed based on stakeholder needs uncovered through research.",
+          },
+          {
+            title: "Other Design Artifacts",
+            body: "Design requirements, stakeholder profiles, and Jobs to Be Done for each primary stakeholder.",
+          },
+        ],
+      },
+      {
+        kind: "chapter",
+        id: "challenges",
+        number: "06",
+        label: "Challenges and mitigation",
+      },
+      {
+        kind: "numberedList",
+        items: [
+          {
+            title: "Access to clinicians",
+            body: "Time and access constraints scheduling interviews and focus groups with nurses and doctors at the hospital. Solution: conducted research on the fly and prepared multiple versions of research guides to adapt to whoever was available.",
+          },
+          {
+            title: "Time and budget constraints",
+            body: "Academic research in healthcare with strict funding and a small team (sole designer and PM). Solution: maximized research opportunities and operated within policy guidelines from both healthcare and funding perspectives.",
+          },
+          {
+            title: "A new problem space",
+            body: "Effort required to understand clinical jargon and the healthcare system in general. Solution: proactively became a subject matter expert and leveraged newcomer status to ask clarifying questions that built a strong foundation.",
+          },
+        ],
+      },
+    ],
+    reflection:
+      "Research in a clinical setting runs on other people's calendars. The skill wasn't running the perfect study — it was staying prepared enough to learn something real from whatever fifteen minutes I could get, and turning newcomer questions into a shared understanding of the problem.",
+  },
+  {
     slug: "nectar-ai",
     title: "Nectar.ai",
     subtitle: "AI-powered customer support for e-commerce.",
