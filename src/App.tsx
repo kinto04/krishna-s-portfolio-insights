@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import Work from "./pages/Work";
 import WorkDetail from "./pages/WorkDetail";
 import About from "./pages/About";
+import Stories from "./pages/Stories";
+import StoryPost from "./pages/StoryPost";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +24,8 @@ const App = () => (
           <Route path="/work" element={<Work />} />
           <Route path="/work/:slug" element={<WorkDetail />} />
           <Route path="/about" element={<About />} />
+          <Route path="/stories" element={<Stories />} />
+          <Route path="/stories/:slug" element={<StoryPost />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
