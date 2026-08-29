@@ -143,9 +143,15 @@ const StoryPost = () => {
           </time>
         </div>
 
-        <h1 className="font-serif text-3xl sm:text-5xl tracking-tight text-foreground mb-12">
+<h1 className="font-serif text-3xl sm:text-5xl tracking-tight text-foreground mb-4">
           {post.title}
         </h1>
+
+        {post.subtitle && (
+          <p className="text-lg text-muted-foreground leading-relaxed mb-12 max-w-2xl">
+            {post.subtitle}
+          </p>
+        )}
 
         <div>{post.blocks.map(renderBlock)}</div>
       </article>
