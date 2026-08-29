@@ -30,9 +30,9 @@ export const blogPosts: BlogPost[] = [
     cover: "/images/varanasi/cover.jpg",
     coverAlt: "A woman in a red sari sitting on a stone ledge in a narrow street in Varanasi",
     blocks: [
-      {
+{
         type: "video",
-        youtubeId: "",
+        youtubeId: "dttAlyMmKaI",
         caption: "Scenes from Varanasi — a short film I shot and edited on the trip.",
       },
       {
