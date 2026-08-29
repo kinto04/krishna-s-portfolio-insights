@@ -21,8 +21,9 @@ slug: string;
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "scenes-from-varanasi",
+slug: "scenes-from-varanasi",
     title: "Scenes from Varanasi",
+    subtitle: "A photo and movie journal from my visit to one of the world's oldest living cities.",
     date: "2024-06-10",
     category: "Photography",
     tags: ["Photography", "Travel", "Film"],
