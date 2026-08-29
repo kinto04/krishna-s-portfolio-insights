@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { blogPosts } from "@/data/blogPosts";
-import { ArrowLeft } from "lucide-react";
+import Reveal from "@/components/Reveal";
+import { blogPosts, StoryBlock } from "@/data/blogPosts";
+import { ArrowLeft, Play } from "lucide-react";
 import { format } from "date-fns";
 
 const StoryPost = () => {
@@ -27,46 +28,102 @@ const StoryPost = () => {
     );
   }
 
-  const renderContent = (content: string) => {
-    return content.split("\n\n").map((block, i) => {
-      if (block.startsWith("## ")) {
+  const renderBlock = (block: StoryBlock, i: number) => {
+    switch (block.type) {
+      case "video":
         return (
-          <h2 key={i} className="font-serif text-2xl text-foreground mt-10 mb-4">
-            {block.replace("## ", "")}
-          </h2>
+          <Reveal key={i}>
+            <figure className="mb-12">
+              <div className="aspect-video rounded-lg overflow-hidden border border-border bg-card">
+                {block.youtubeId ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${block.youtubeId}`}
+                    title={block.caption ?? post.title}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center gap-3 text-muted-foreground">
+                    <span className="w-14 h-14 rounded-full border border-border flex items-center justify-center">
+                      <Play size={20} className="text-primary" />
+                    </span>
+                    <span className="text-sm">Short film coming soon</span>
+                  </div>
+                )}
+              </div>
+              {block.caption && (
+                <figcaption className="text-sm text-muted-foreground mt-3 text-center">
+                  {block.caption}
+                </figcaption>
+              )}
+            </figure>
+          </Reveal>
         );
-      }
-      if (block.startsWith("---")) {
-        return <hr key={i} className="my-10 border-border" />;
-      }
-      if (block.startsWith("1. ") || block.startsWith("2. ") || block.startsWith("3. ")) {
-        const items = block.split("\n").filter(Boolean);
+      case "lead":
         return (
-          <ol key={i} className="list-decimal list-inside space-y-2 text-muted-foreground leading-relaxed mb-6">
-            {items.map((item, j) => {
-              const text = item.replace(/^\d+\.\s/, "");
-              return <li key={j} dangerouslySetInnerHTML={{ __html: text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>') }} />;
-            })}
-          </ol>
+          <Reveal key={i}>
+            <p className="font-serif text-xl sm:text-2xl leading-relaxed text-foreground mb-10">
+              {block.text}
+            </p>
+          </Reveal>
         );
-      }
-      if (block.startsWith("*") && block.endsWith("*") && !block.startsWith("**")) {
+      case "paragraph":
         return (
-          <p key={i} className="text-sm text-muted-foreground italic mb-6">
-            {block.replace(/^\*|\*$/g, "")}
-          </p>
+          <Reveal key={i}>
+            <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">{block.text}</p>
+          </Reveal>
         );
-      }
-      return (
-        <p
-          key={i}
-          className="text-muted-foreground leading-relaxed mb-6"
-          dangerouslySetInnerHTML={{
-            __html: block.replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>'),
-          }}
-        />
-      );
-    });
+      case "heading":
+        return (
+          <Reveal key={i}>
+            <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground mt-14 mb-6">
+              {block.text}
+            </h2>
+          </Reveal>
+        );
+      case "photo":
+        return (
+          <Reveal key={i}>
+            <figure className="my-12">
+              <img
+                src={block.src}
+                alt={block.alt}
+                loading="lazy"
+                className="w-full rounded-lg border border-border"
+              />
+              <figcaption className="mt-4 max-w-2xl">
+                {block.title && (
+                  <span className="label-eyebrow text-primary font-medium block mb-2">
+                    {block.title}
+                  </span>
+                )}
+                {block.caption && (
+                  <span className="text-sm text-muted-foreground leading-relaxed">
+                    {block.caption}
+                  </span>
+                )}
+              </figcaption>
+            </figure>
+          </Reveal>
+        );
+      case "photoGrid":
+        return (
+          <Reveal key={i}>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 my-12">
+              {block.photos.map((photo, j) => (
+                <img
+                  key={j}
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                  className="w-full aspect-[3/2] object-cover rounded-lg border border-border"
+                />
+              ))}
+            </div>
+          </Reveal>
+        );
+    }
   };
 
   return (
@@ -80,19 +137,17 @@ const StoryPost = () => {
         </Link>
 
         <div className="flex items-center gap-3 mb-4">
-          <span className="label-eyebrow text-primary font-medium">
-            {post.category}
-          </span>
+          <span className="label-eyebrow text-primary font-medium">{post.category}</span>
           <time className="text-sm text-muted-foreground">
             {format(new Date(post.date), "MMMM d, yyyy")}
           </time>
         </div>
 
-        <h1 className="font-serif text-3xl sm:text-4xl tracking-tight text-foreground mb-10">
+        <h1 className="font-serif text-3xl sm:text-5xl tracking-tight text-foreground mb-12">
           {post.title}
         </h1>
 
-        <div className="border-t border-border pt-10">{renderContent(post.content)}</div>
+        <div>{post.blocks.map(renderBlock)}</div>
       </article>
     </Layout>
   );
