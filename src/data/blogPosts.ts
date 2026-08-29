@@ -7,8 +7,9 @@ export type StoryBlock =
   | { type: "video"; youtubeId: string; caption?: string };
 
 export interface BlogPost {
-  slug: string;
+slug: string;
   title: string;
+  subtitle?: string;
   date: string;
   category: "Photography" | "Deep Dives" | "Essays";
   tags: string[];
