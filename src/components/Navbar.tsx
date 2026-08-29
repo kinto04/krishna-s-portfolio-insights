@@ -5,6 +5,7 @@ import Logo from "./Logo";
 
 const navLinks = [
   { to: "/work", label: "Work" },
+  { to: "/stories", label: "Stories" },
   { to: "/about", label: "About" },
 ];
 
