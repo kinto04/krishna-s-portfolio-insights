@@ -1,19 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Layout from "@/components/Layout";
 import BlogPostCard from "@/components/BlogPostCard";
-import { blogPosts, BlogPost } from "@/data/blogPosts";
-
-const categories = ["All", "Photography", "Deep Dives", "Essays"] as const;
+import { blogPosts } from "@/data/blogPosts";
 
 const Stories = () => {
-  const [active, setActive] = useState<string>("All");
-
   useEffect(() => {
     document.title = "Stories — Krishna Suresh";
   }, []);
-
-  const filtered: BlogPost[] =
-    active === "All" ? blogPosts : blogPosts.filter((p) => p.category === active);
 
   return (
     <Layout>
