@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import { usePointerGlow } from "@/hooks/usePointerGlow";
+import coffeePopup from "@/assets/coffee-popup.jpeg.asset.json";
+import soccerTeam from "@/assets/soccer-team.png.asset.json";
+
 
 const experience = [
   {
@@ -115,11 +118,8 @@ const About = () => {
 
         {/* Beyond work */}
         <Reveal>
-          <p className="label-eyebrow mb-3">Beyond work</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-3">Off the clock</h2>
-          <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-            Outside of work I'm usually chasing curiosity — whether that's through a camera, a coffee cup, or a pickup game.
-          </p>
+          <p className="label-eyebrow mb-6">Beyond work</p>
+
 
           <div className="grid sm:grid-cols-3 gap-4">
             {/* Photography */}
@@ -136,7 +136,7 @@ const About = () => {
               </figure>
               <p className="text-foreground font-medium mb-1">Photography &amp; film</p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                My explorations of street photography and filmmaking. I enjoy slowing down and observing people, food, and culture.
+                Street photography and filmmaking.
               </p>
               <Link
                 to="/stories/scenes-from-varanasi"
@@ -150,8 +150,8 @@ const About = () => {
             <div className="surface p-4 flex flex-col">
               <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
                 <img
-                  src="/images/about/coffee.png"
-                  alt="Minimal illustration of a pour-over coffee setup"
+                  src={coffeePopup.url}
+                  alt="Making coffee at a pop-up I hosted"
                   loading="lazy"
                   width={800}
                   height={600}
@@ -160,7 +160,7 @@ const About = () => {
               </figure>
               <p className="text-foreground font-medium mb-1">Specialty coffee</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                I'm deep into specialty coffee. I love exploring roasts, learning how origin and process show up in the cup, and treating brewing like a small daily ritual.
+                Pourover, or a cortado. Hosted a coffee pop-up.
               </p>
             </div>
 
@@ -168,8 +168,8 @@ const About = () => {
             <div className="surface p-4 flex flex-col">
               <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
                 <img
-                  src="/images/about/sports.png"
-                  alt="Minimal illustration of a soccer ball on a field at dusk"
+                  src={soccerTeam.url}
+                  alt="My indoor soccer team on the field"
                   loading="lazy"
                   width={800}
                   height={600}
@@ -178,9 +178,10 @@ const About = () => {
               </figure>
               <p className="text-foreground font-medium mb-1">Team sports</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                I'm a big believer in team sports — there's nothing like the energy of people working toward the same goal. I led an intramural soccer team in undergrad and still love any chance to get on the field with friends.
+                Soccer. Led an intramural team in undergrad.
               </p>
             </div>
+
           </div>
         </Reveal>
 
@@ -226,7 +227,8 @@ const About = () => {
         {/* Current Focus */}
         <Reveal>
           <p className="label-eyebrow mb-3">Right now</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Current Focus</h2>
+          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">What I'm working on</h2>
+
           <ul className="space-y-3 text-muted-foreground">
             <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Building Huelo - AI-powered interior design and shopping for urban renters</li>
             <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Building AI tools that help other designers design and build with AI</li>
