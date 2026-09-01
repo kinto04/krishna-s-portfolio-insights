@@ -220,9 +220,11 @@ const RequestDeck = ({ email }: { email: string }) => {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(email);
+      console.log("copied email, setting state");
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch {
+    } catch (err) {
+      console.error("copy failed", err);
       window.location.href = `mailto:${email}`;
     }
   };
