@@ -140,7 +140,7 @@ const About = () => {
         <Reveal>
           <p className="label-eyebrow mb-3">Photography</p>
           <h2 className="font-serif t-section-title tracking-tight text-foreground mb-3">Off the clock</h2>
-          <p className="text-muted-foreground leading-relaxed mb-6 max-w-xl">
+          <p className="text-muted-foreground leading-relaxed mb-6">
              My explorations of street photography and filmmaking. I enjoy slowing down & observing people, food and culture.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
