@@ -27,7 +27,7 @@ const Work = () => {
         <div className="animate-fade-in-up">
           <p className="label-eyebrow mb-3">Case studies</p>
           <h1 className="font-serif t-page-title tracking-tight text-foreground mb-3">Work</h1>
-          <p className="text-muted-foreground mb-6 max-w-xl">
+          <p className="text-muted-foreground mb-6">
             A selection of products I've built, designed, and managed — from AI chatbots to clinical tools.
           </p>
 
