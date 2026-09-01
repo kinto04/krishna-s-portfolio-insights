@@ -7,6 +7,9 @@ import coffeePopup from "@/assets/coffee-popup.jpeg.asset.json";
 import soccerTeam from "@/assets/soccer-team.png.asset.json";
 import outdoorPines from "@/assets/outdoor-pines.jpg.asset.json";
 import dogSwimming from "@/assets/dog-swimming.jpg.asset.json";
+import marathonFinish from "@/assets/marathon-finish.jpeg.asset.json";
+import bouldering from "@/assets/bouldering.png.asset.json";
+import zionHike from "@/assets/zion-hike.jpeg.asset.json";
 
 
 const experience = [
@@ -122,16 +125,19 @@ const About = () => {
         <Reveal>
           <p className="label-eyebrow mb-3">Beyond work</p>
           <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-            Street photography and film, specialty coffee, and team sports — the things that keep me curious outside of work.
+            Street photography and film, specialty coffee, and sport — soccer, running, climbing, trails.
           </p>
 
           <div className="columns-2 md:columns-3 gap-4 [&>figure]:mb-4">
             {[
               { src: "/images/varanasi/flower-market.jpg", alt: "A woman selling flowers at a market in Varanasi", ratio: "aspect-[4/5]" },
+              { src: marathonFinish.url, alt: "Finishing the San Francisco half marathon", ratio: "aspect-[3/4]" },
               { src: "/images/varanasi/alley-bike.jpg", alt: "A man on a bicycle carrying goods through a narrow Varanasi alley", ratio: "aspect-[3/2]" },
               { src: coffeePopup.url, alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
+              { src: bouldering.url, alt: "Bouldering across an overhang at a climbing gym", ratio: "aspect-[3/4]" },
               { src: dogSwimming.url, alt: "A dog swimming through turquoise water", ratio: "aspect-[3/2]" },
               { src: soccerTeam.url, alt: "My intramural soccer team on the field", ratio: "aspect-[4/3]" },
+              { src: zionHike.url, alt: "Hiking with friends at a trailhead in Zion", ratio: "aspect-[3/4]" },
               { src: outdoorPines.url, alt: "Snowy mountains framed by pine trees", ratio: "aspect-[3/4]" },
               { src: "/images/varanasi/quiet-afternoon.jpg", alt: "A quiet afternoon scene in Varanasi", ratio: "aspect-[3/2]" },
             ].map((img) => (
