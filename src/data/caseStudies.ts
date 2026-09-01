@@ -206,6 +206,146 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    slug: "huelo",
+    title: "Huelo",
+    subtitle: "AI-powered interior design and shopping for urban renters.",
+    role: "Founding UX Designer & AI Engineer",
+    year: "2026",
+    context: "Ongoing",
+    tags: ["AI", "Experience Design", "Product Design"],
+    summary:
+      "Huelo is an AI-powered interior-design and shopping platform that turns inspiration and budget constraints into a shoppable room plan. As a founding designer and AI engineer, I'm shaping the product experience, the design-to-purchase flow, and the agent architecture that makes a custom design feel effortless.",
+    featured: false,
+    coverImage: "/images/huelo/cover.png",
+    heroImage: "/images/huelo/hero.png",
+    liveUrl: "https://huelo.co/",
+    inProgress: true,
+    deckEmail: "work.krishnasuresh@gmail.com",
+    facts: {
+      timeline: "Ongoing",
+      team: "Founding team",
+      role: "Founding UX Designer & AI Engineer",
+      setting: "New York",
+      platform: "Web",
+    },
+    toolkit: ["Figma", "Lovable", "OpenAI", "Shopify"],
+    overview: {
+      context:
+        "Urban renters want designed spaces but can't renovate, can't visualize changes, and get stuck between inspiration and purchase. Huelo uses AI to generate shoppable room plans from a photo, a few preferences, and a real budget.",
+      roleDetail: [
+        "End-to-end product design and UX for the design-to-purchase experience",
+        "AI agent architecture: prompts, parsing, retrieval, and evaluation pipelines",
+        "Front-end build and iteration on the live product",
+      ],
+      outcome:
+        "Live landing page at huelo.co. Full product case study is in progress — deck available on request.",
+    },
+    blocks: [
+      {
+        kind: "chapter",
+        id: "challenge",
+        number: "01",
+        label: "The Challenge",
+        intro: "Renters want great spaces, but the path from inspiration to reality is full of friction.",
+      },
+      {
+        kind: "numberedList",
+        items: [
+          {
+            title: "Can't renovate",
+            body: "Walls, floors, and fixtures are fixed. The design has to work within constraints renters don't control.",
+          },
+          {
+            title: "Hard to visualize",
+            body: "It's difficult to imagine how a piece, a color, or a layout will look in an actual room.",
+          },
+          {
+            title: "Decision paralysis",
+            body: "Endless options across retailers make it hard to commit to a cohesive look.",
+          },
+          {
+            title: "Inspiration to purchase gap",
+            body: "A saved photo doesn't translate into a shopping list that fits a real floor plan and budget.",
+          },
+        ],
+      },
+      {
+        kind: "chapter",
+        id: "design-approach",
+        number: "02",
+        label: "Design Approach",
+        intro: "The experience is built around one goal: turn a few inputs into a design the user can trust and buy.",
+      },
+      {
+        kind: "numberedList",
+        items: [
+          {
+            title: "Start with the room",
+            body: "Upload a photo, answer a few questions, and let the system handle sizing, sourcing, and styling.",
+          },
+          {
+            title: "Blend existing and new",
+            body: "Users can keep pieces they already own and see how new items complete the look.",
+          },
+          {
+            title: "Budget as a filter",
+            body: "Every recommendation is anchored to a real budget, so the design stays shoppable.",
+          },
+          {
+            title: "One place for decisions",
+            body: "A unified board saves furniture, compares options, and tracks price drops.",
+          },
+        ],
+      },
+      {
+        kind: "chapter",
+        id: "ai-experience",
+        number: "03",
+        label: "Where AI Powers the Design Experience",
+        intro: "AI isn't the feature — it's the infrastructure that makes personalized design scalable.",
+      },
+      {
+        kind: "numberedList",
+        items: [
+          {
+            title: "Vision + language understanding",
+            body: "The agent reads room photos, inspiration images, and natural-language preferences together.",
+          },
+          {
+            title: "Structured product retrieval",
+            body: "Recommendations are pulled from a curated catalog and matched to dimensions, style, and price.",
+          },
+          {
+            title: "Spatial preview",
+            body: "Generated previews help users see the design in their actual space before buying.",
+          },
+          {
+            title: "Continuous evaluation",
+            body: "We run evals on output quality, relevance, and coherence to keep the AI honest as the catalog grows.",
+          },
+        ],
+      },
+      {
+        kind: "image",
+        src: "/images/huelo/hero.png",
+        caption: "The Huelo landing page at huelo.co — an AI interior designer built for real rooms, real budgets, and real life.",
+        fullWidth: true,
+      },
+      {
+        kind: "chapter",
+        id: "reflection",
+        number: "04",
+        label: "Reflection",
+      },
+      {
+        kind: "statement",
+        text: "Building an AI-native design tool has sharpened my thesis: the best AI products don't replace the designer — they remove the tedious parts so humans can make confident decisions.",
+      },
+    ],
+    reflection:
+      "Huelo sits at the intersection of two things I care about: design craft and AI systems. The hard problem isn't generating a pretty room — it's generating one the user believes will work in their actual home, with their actual constraints, and then helping them buy it without second-guessing every choice.",
+  },
+  {
     slug: "airy",
     title: "Airy",
     subtitle: "A smart tool for clinical therapists.",
