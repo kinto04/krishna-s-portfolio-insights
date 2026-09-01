@@ -132,7 +132,7 @@ const About = () => {
               { src: dogSwimming.url, alt: "A dog swimming through turquoise water", ratio: "aspect-[3/2]" },
               { src: soccerTeam.url, alt: "My intramural soccer team on the field", ratio: "aspect-[4/3]" },
               { src: outdoorPines.url, alt: "Snowy mountains framed by pine trees", ratio: "aspect-[3/4]" },
-              { src: "/images/varanasi/ghat-boats.jpg", alt: "Boats along the ghats of Varanasi", ratio: "aspect-[3/2]" },
+              { src: "/images/varanasi/quiet-afternoon.jpg", alt: "A quiet afternoon scene in Varanasi", ratio: "aspect-[3/2]" },
             ].map((img) => (
               <figure
                 key={img.src}
