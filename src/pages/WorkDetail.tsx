@@ -230,7 +230,7 @@ const RequestDeck = ({ email }: { email: string }) => {
   };
 
   return (
-    <Reveal className="mt-12">
+    <div className="mt-12">
       <div className="rounded-xl border border-border bg-card/40 p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
           <div className="flex-1">
@@ -257,7 +257,7 @@ const RequestDeck = ({ email }: { email: string }) => {
           <span>{email}</span>
         </div>
       </div>
-    </Reveal>
+    </div>
   );
 };
 
