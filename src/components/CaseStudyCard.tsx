@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { CaseStudy } from "@/data/caseStudies";
-import { Pill } from "@/components/ui/pill";
+import { tagColor } from "@/lib/tagColors";
 
 const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
   return (
@@ -35,9 +35,17 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
         <div className="mt-auto">
           <div className="flex flex-wrap items-center gap-1.5">
             {study.tags.slice(0, 3).map((tag) => (
-              <Pill key={tag} variant="filled" size="sm" uppercase>
+              <span
+                key={tag}
+                className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-secondary/40 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-muted-foreground"
+              >
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ backgroundColor: tagColor(tag) }}
+                  aria-hidden="true"
+                />
                 {tag}
-              </Pill>
+              </span>
             ))}
           </div>
           <div className="mt-3 flex items-center gap-1.5 text-xs text-primary opacity-0 -translate-x-1.5 transition-all duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:opacity-100 group-hover:translate-x-0">

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Reveal from "@/components/Reveal";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { caseStudies } from "@/data/caseStudies";
+import { tagColor } from "@/lib/tagColors";
 
 type Anchor = "start" | "end" | "middle";
 type Tier = "core" | "domain" | "sub";
@@ -18,55 +19,47 @@ type NodeDef = {
 };
 
 /* No centre node: the map is a mesh of related disciplines and domains.
-   Positions are hand-placed so it reads organic rather than symmetric. */
+   Positions are hand-placed so it reads organic rather than symmetric.
+   Node colors come from the shared tag palette in src/lib/tagColors.ts. */
 const DESKTOP_NODES: NodeDef[] = [
-  { tag: "Experience Design", tier: "core", x: 300, y: 172, anchor: "end", dy: 5 },
-  { tag: "Interaction Design", tier: "core", x: 470, y: 300, anchor: "middle", dy: 26 },
-  { tag: "Product Strategy", tier: "core", x: 655, y: 168, anchor: "start", dy: 5 },
-  { tag: "Service Design", tier: "core", x: 372, y: 424, anchor: "middle", dy: 26 },
-  { tag: "AI", tier: "domain", x: 780, y: 320, anchor: "start", dy: 5 },
-  { tag: "E-Commerce", tier: "domain", x: 662, y: 438, anchor: "middle", dy: 26 },
-  { tag: "Healthcare", tier: "domain", x: 196, y: 330, anchor: "end", dy: 5 },
-  { tag: "Mobile", tier: "sub", x: 258, y: 74, anchor: "middle", dy: -16 },
-  { tag: "Conversational UI", tier: "sub", x: 858, y: 432, anchor: "end", dy: 24 },
+  { tag: "Experience Design", tier: "core", x: 430, y: 150, anchor: "middle", dy: -16 },
+  { tag: "Interaction Design", tier: "core", x: 250, y: 310, anchor: "end", dy: 5 },
+  { tag: "AI", tier: "core", x: 620, y: 310, anchor: "start", dy: 5 },
+  { tag: "Conversational UI", tier: "domain", x: 830, y: 200, anchor: "start", dy: 5 },
+  { tag: "Research", tier: "domain", x: 430, y: 440, anchor: "middle", dy: 26 },
+  { tag: "Healthcare", tier: "domain", x: 130, y: 150, anchor: "end", dy: 5 },
 ];
 
 const MOBILE_NODES: NodeDef[] = [
-  { tag: "Experience Design", tier: "core", x: 186, y: 60, anchor: "middle", dy: -16 },
-  { tag: "Interaction Design", tier: "core", x: 96, y: 168, anchor: "start", dy: -14 },
-  { tag: "Product Strategy", tier: "core", x: 292, y: 152, anchor: "end", dy: -14 },
-  { tag: "Service Design", tier: "core", x: 92, y: 300, anchor: "middle", dy: 24 },
-  { tag: "AI", tier: "domain", x: 258, y: 254, anchor: "start", dy: 5 },
-  { tag: "E-Commerce", tier: "domain", x: 236, y: 392, anchor: "middle", dy: 24 },
-  { tag: "Healthcare", tier: "domain", x: 100, y: 396, anchor: "middle", dy: 24 },
+  { tag: "Experience Design", tier: "core", x: 190, y: 70, anchor: "middle", dy: -16 },
+  { tag: "AI", tier: "core", x: 272, y: 200, anchor: "start", dy: 5 },
+  { tag: "Interaction Design", tier: "core", x: 100, y: 196, anchor: "start", dy: -14 },
+  { tag: "Conversational UI", tier: "domain", x: 268, y: 330, anchor: "middle", dy: 24 },
+  { tag: "Research", tier: "domain", x: 108, y: 330, anchor: "middle", dy: 24 },
+  { tag: "Healthcare", tier: "domain", x: 190, y: 424, anchor: "middle", dy: 24 },
 ];
 
 /** Relationships between tags — drawn as the network's edges. */
 const EDGES: [string, string][] = [
   ["Experience Design", "Interaction Design"],
-  ["Experience Design", "Service Design"],
-  ["Experience Design", "Mobile"],
-  ["Interaction Design", "Product Strategy"],
-  ["Interaction Design", "Service Design"],
+  ["Experience Design", "AI"],
+  ["Experience Design", "Research"],
+  ["Experience Design", "Healthcare"],
   ["Interaction Design", "AI"],
+  ["Interaction Design", "Research"],
   ["Interaction Design", "Healthcare"],
-  ["Service Design", "Healthcare"],
-  ["Product Strategy", "AI"],
-  ["Product Strategy", "E-Commerce"],
   ["AI", "Conversational UI"],
-  ["AI", "E-Commerce"],
-  ["Conversational UI", "E-Commerce"],
-  ["Service Design", "E-Commerce"],
+  ["Research", "Healthcare"],
 ];
 
 const tierStyle = (tier: Tier) => {
   switch (tier) {
     case "core":
-      return { r: 5.5, fill: "hsl(var(--primary))", text: "fill-foreground" };
+      return { r: 5.5, text: "fill-foreground" };
     case "domain":
-      return { r: 4.2, fill: "hsl(var(--primary))", text: "fill-muted-foreground" };
+      return { r: 4.2, text: "fill-muted-foreground" };
     default:
-      return { r: 3.2, fill: "hsl(var(--primary-deep))", text: "fill-muted-foreground" };
+      return { r: 3.2, text: "fill-muted-foreground" };
   }
 };
 
@@ -338,17 +331,17 @@ const ExpertiseConstellation = () => {
                     cy={n.y}
                     r={n.r + 4}
                     fill="none"
-                    stroke="hsl(var(--primary))"
+                    stroke={tagColor(n.tag)}
                     opacity="0"
                   />
-                  <circle cx={n.x} cy={n.y} r={n.r} fill={n.fill} />
+                  <circle cx={n.x} cy={n.y} r={n.r} fill={tagColor(n.tag)} />
                   {active === n.tag && (
                     <circle
                       cx={n.x}
                       cy={n.y}
                       r={n.r + 6}
                       fill="none"
-                      stroke="hsl(var(--primary))"
+                      stroke={tagColor(n.tag)}
                       strokeOpacity="0.55"
                     />
                   )}
@@ -357,7 +350,8 @@ const ExpertiseConstellation = () => {
                     y={n.y + n.dy}
                     textAnchor={n.anchor}
                     fontSize={fontSize}
-                    className={active === n.tag ? "fill-primary" : n.text}
+                    className={n.text}
+                    style={active === n.tag ? { fill: tagColor(n.tag) } : undefined}
                   >
                     {n.tag}
                   </text>
