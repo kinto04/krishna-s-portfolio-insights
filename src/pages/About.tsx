@@ -4,29 +4,6 @@ import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import { usePointerGlow } from "@/hooks/usePointerGlow";
 
-const photos = [
-  {
-    src: "/images/varanasi/flower-market.jpg",
-    alt: "A woman selling flowers at a market in Varanasi",
-    caption: "Flower market, Varanasi",
-  },
-  {
-    src: "/images/varanasi/alley-evening.jpg",
-    alt: "A narrow alley in Varanasi lit by evening light",
-    caption: "Alley at dusk, Varanasi",
-  },
-  {
-    src: "/images/varanasi/quiet-afternoon.jpg",
-    alt: "A quiet afternoon scene by the ghats of Varanasi",
-    caption: "Quiet afternoon, Varanasi",
-  },
-  {
-    src: "/images/varanasi/sugarcane.jpg",
-    alt: "Fresh sugarcane juice being pressed on the street in Varanasi",
-    caption: "Sugarcane juice, Varanasi",
-  },
-];
-
 const experience = [
   {
     period: "2026 —",
@@ -136,38 +113,75 @@ const About = () => {
           </p>
         </Reveal>
 
-        {/* Photography */}
+        {/* Beyond work */}
         <Reveal>
-          <p className="label-eyebrow mb-3">Photography</p>
+          <p className="label-eyebrow mb-3">Beyond work</p>
           <h2 className="font-serif t-section-title tracking-tight text-foreground mb-3">Off the clock</h2>
-          <p className="text-muted-foreground leading-relaxed mb-6">
-             My explorations of street photography and filmmaking. I enjoy slowing down & observing people, food and culture.
+          <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+            Outside of work I'm usually chasing curiosity — whether that's through a camera, a coffee cup, or a pickup game.
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {photos.map((photo, i) => (
-              <figure
-                key={photo.src}
-                className="group relative overflow-hidden rounded-lg border border-border"
-                style={{ transitionDelay: `${i * 90}ms` }}
-              >
+
+          <div className="grid sm:grid-cols-3 gap-4">
+            {/* Photography */}
+            <div className="surface p-4 flex flex-col">
+              <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
                 <img
-                  src={photo.src}
-                  alt={photo.alt}
+                  src="/images/varanasi/flower-market.jpg"
+                  alt="A woman selling flowers at a market in Varanasi"
                   loading="lazy"
-                  className="aspect-[3/4] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  width={600}
+                  height={450}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent px-3 pb-2 pt-8 text-xs text-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  {photo.caption}
-                </figcaption>
               </figure>
-            ))}
+              <p className="text-foreground font-medium mb-1">Photography &amp; film</p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                My explorations of street photography and filmmaking. I enjoy slowing down and observing people, food, and culture.
+              </p>
+              <Link
+                to="/stories/scenes-from-varanasi"
+                className="mt-auto inline-flex items-center gap-1 text-sm text-foreground underline underline-offset-4 hover:text-primary t-base"
+              >
+                Scenes from Varanasi →
+              </Link>
+            </div>
+
+            {/* Coffee */}
+            <div className="surface p-4 flex flex-col">
+              <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
+                <img
+                  src="/images/about/coffee.png"
+                  alt="Minimal illustration of a pour-over coffee setup"
+                  loading="lazy"
+                  width={800}
+                  height={600}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </figure>
+              <p className="text-foreground font-medium mb-1">Specialty coffee</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                I'm deep into specialty coffee. I love exploring roasts, learning how origin and process show up in the cup, and treating brewing like a small daily ritual.
+              </p>
+            </div>
+
+            {/* Sports */}
+            <div className="surface p-4 flex flex-col">
+              <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
+                <img
+                  src="/images/about/sports.png"
+                  alt="Minimal illustration of a soccer ball on a field at dusk"
+                  loading="lazy"
+                  width={800}
+                  height={600}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </figure>
+              <p className="text-foreground font-medium mb-1">Team sports</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                I'm a big believer in team sports — there's nothing like the energy of people working toward the same goal. I led an intramural soccer team in undergrad and still love any chance to get on the field with friends.
+              </p>
+            </div>
           </div>
-          <Link
-            to="/stories/scenes-from-varanasi"
-            className="mt-4 inline-flex items-center gap-1 text-sm text-foreground underline underline-offset-4 hover:text-primary t-base"
-          >
-            More in Scenes from Varanasi →
-          </Link>
         </Reveal>
 
         {/* Experience */}
