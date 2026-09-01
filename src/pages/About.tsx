@@ -5,6 +5,8 @@ import Reveal from "@/components/Reveal";
 import { usePointerGlow } from "@/hooks/usePointerGlow";
 import coffeePopup from "@/assets/coffee-popup.jpeg.asset.json";
 import soccerTeam from "@/assets/soccer-team.png.asset.json";
+import outdoorPines from "@/assets/outdoor-pines.jpg.asset.json";
+import dogSwimming from "@/assets/dog-swimming.jpg.asset.json";
 
 
 const experience = [
@@ -120,8 +122,7 @@ const About = () => {
         <Reveal>
           <p className="label-eyebrow mb-6">Beyond work</p>
 
-
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Photography */}
             <div className="surface p-4 flex flex-col">
               <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
@@ -182,6 +183,41 @@ const About = () => {
               </p>
             </div>
 
+            {/* Outdoors */}
+            <div className="surface p-4 flex flex-col">
+              <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
+                <img
+                  src={outdoorPines.url}
+                  alt="Snowy mountains framed by pine trees"
+                  loading="lazy"
+                  width={800}
+                  height={600}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </figure>
+              <p className="text-foreground font-medium mb-1">Outdoors</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Hiking and chasing good light.
+              </p>
+            </div>
+
+            {/* Dog */}
+            <div className="surface p-4 flex flex-col">
+              <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
+                <img
+                  src={dogSwimming.url}
+                  alt="My dog swimming in clear water"
+                  loading="lazy"
+                  width={800}
+                  height={600}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </figure>
+              <p className="text-foreground font-medium mb-1">Dog person</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Weekends with my dog, ideally by the water.
+              </p>
+            </div>
           </div>
         </Reveal>
 
