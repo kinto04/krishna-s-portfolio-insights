@@ -141,7 +141,7 @@ const About = () => {
           <p className="label-eyebrow mb-3">Photography</p>
           <h2 className="font-serif t-section-title tracking-tight text-foreground mb-3">Off the clock</h2>
           <p className="text-muted-foreground leading-relaxed mb-6 max-w-xl">
-            I shoot street and travel photography — it's the same muscle as design research: slowing down, watching people, noticing what everyone else walks past.
+             My explorations of street photography and filmmaking. I enjoy slowing down & observing people, food and culture.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {photos.map((photo, i) => (
