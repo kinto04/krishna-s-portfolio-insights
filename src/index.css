@@ -51,6 +51,14 @@
     --sidebar-ring: 258 88% 68%;
 
     --available: 160 55% 48%;
+
+    /* Tag colors — one hue per discipline, shared by cards and the expertise graph. */
+    --tag-ai: 258 88% 68%;
+    --tag-experience: 174 60% 55%;
+    --tag-interaction: 32 92% 62%;
+    --tag-conversational: 330 70% 66%;
+    --tag-research: 140 48% 56%;
+    --tag-healthcare: 205 85% 64%;
   }
 }
 
