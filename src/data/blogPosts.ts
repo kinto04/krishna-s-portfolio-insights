@@ -83,6 +83,13 @@ slug: "scenes-from-varanasi",
         title: "A Summer Quencher",
         caption: "Vendors making sugarcane juice using a manual wheel.",
       },
+      {
+        type: "photo",
+        src: "/images/varanasi/alley-bike.jpg",
+        alt: "A man on a bicycle carrying goods through a narrow Varanasi alley",
+        title: "Evening Errands",
+        caption: "Daily life moves fast in the old city's winding alleys.",
+      },
       { type: "heading", text: "A Feast for the Senses" },
       {
         type: "paragraph",
