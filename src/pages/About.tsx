@@ -120,105 +120,40 @@ const About = () => {
 
         {/* Beyond work */}
         <Reveal>
-          <p className="label-eyebrow mb-6">Beyond work</p>
+          <p className="label-eyebrow mb-3">Beyond work</p>
+          <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+            Street photography and film, specialty coffee, and team sports — the things that keep me curious outside of work.
+          </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {/* Photography */}
-            <div className="surface p-4 flex flex-col">
-              <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
-                <img
-                  src="/images/varanasi/flower-market.jpg"
-                  alt="A woman selling flowers at a market in Varanasi"
-                  loading="lazy"
-                  width={600}
-                  height={450}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-              </figure>
-              <p className="text-foreground font-medium mb-1">Photography &amp; film</p>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                Street photography and filmmaking.
-              </p>
-              <Link
-                to="/stories/scenes-from-varanasi"
-                className="mt-auto inline-flex items-center gap-1 text-sm text-foreground underline underline-offset-4 hover:text-primary t-base"
+          <div className="columns-2 md:columns-3 gap-4 [&>figure]:mb-4">
+            {[
+              { src: "/images/varanasi/flower-market.jpg", alt: "A woman selling flowers at a market in Varanasi", ratio: "aspect-[4/5]" },
+              { src: coffeePopup.url, alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
+              { src: dogSwimming.url, alt: "A dog swimming through turquoise water", ratio: "aspect-[3/2]" },
+              { src: soccerTeam.url, alt: "My intramural soccer team on the field", ratio: "aspect-[4/3]" },
+              { src: outdoorPines.url, alt: "Snowy mountains framed by pine trees", ratio: "aspect-[3/4]" },
+              { src: "/images/varanasi/ghat-boats.jpg", alt: "Boats along the ghats of Varanasi", ratio: "aspect-[3/2]" },
+            ].map((img) => (
+              <figure
+                key={img.src}
+                className="group relative overflow-hidden rounded-lg border border-border break-inside-avoid"
               >
-                Scenes from Varanasi →
-              </Link>
-            </div>
-
-            {/* Coffee */}
-            <div className="surface p-4 flex flex-col">
-              <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
                 <img
-                  src={coffeePopup.url}
-                  alt="Making coffee at a pop-up I hosted"
+                  src={img.src}
+                  alt={img.alt}
                   loading="lazy"
-                  width={800}
-                  height={600}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className={`${img.ratio} w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105`}
                 />
               </figure>
-              <p className="text-foreground font-medium mb-1">Specialty coffee</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Pourover, or a cortado. Hosted a coffee pop-up.
-              </p>
-            </div>
-
-            {/* Sports */}
-            <div className="surface p-4 flex flex-col">
-              <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
-                <img
-                  src={soccerTeam.url}
-                  alt="My indoor soccer team on the field"
-                  loading="lazy"
-                  width={800}
-                  height={600}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-              </figure>
-              <p className="text-foreground font-medium mb-1">Team sports</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Soccer. Led an intramural team in undergrad.
-              </p>
-            </div>
-
-            {/* Outdoors */}
-            <div className="surface p-4 flex flex-col">
-              <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
-                <img
-                  src={outdoorPines.url}
-                  alt="Snowy mountains framed by pine trees"
-                  loading="lazy"
-                  width={800}
-                  height={600}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-              </figure>
-              <p className="text-foreground font-medium mb-1">Outdoors</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Hiking and chasing good light.
-              </p>
-            </div>
-
-            {/* Dog */}
-            <div className="surface p-4 flex flex-col">
-              <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
-                <img
-                  src={dogSwimming.url}
-                  alt="My dog swimming in clear water"
-                  loading="lazy"
-                  width={800}
-                  height={600}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-              </figure>
-              <p className="text-foreground font-medium mb-1">Dog person</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Weekends with my dog, ideally by the water.
-              </p>
-            </div>
+            ))}
           </div>
+
+          <Link
+            to="/stories/scenes-from-varanasi"
+            className="mt-6 inline-flex items-center gap-1 text-sm text-foreground underline underline-offset-4 hover:text-primary t-base"
+          >
+            More photography — Scenes from Varanasi →
+          </Link>
         </Reveal>
 
         {/* Experience */}
