@@ -42,11 +42,7 @@ const HeroHeadline = () => {
       {SEGMENTS.map((segment, si) => (
         <span
           key={si}
-          className={
-            segment.color
-              ? segment.color
-              : "text-muted-foreground"
-          }
+          className={segment.color ?? "text-foreground"}
         >
           {segment.text.split(" ").map((word, wi) => {
             const globalIndex =
