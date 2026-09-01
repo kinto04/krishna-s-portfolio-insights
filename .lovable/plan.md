@@ -1,29 +1,30 @@
-# Humanize the About Page Copy
+# About Page: Real Photos, Simpler Copy
 
 ## Goal
-Replace the AI-tinged section titles and interest descriptions on the About page with simpler, more direct language that sounds like the actual person behind the portfolio.
+Make the "Beyond work" section feel real — swap the AI-generated illustrations for the actual photos, and cut the copy down to almost nothing.
 
-## What we'll change
+## Changes
 
-### 1. Simplify section titles in `src/pages/About.tsx`
-- **"Off the clock"** heading → remove the heading and rely on the existing eyebrow label **"Beyond work"**, or replace it with the simpler **"Outside work"**.
-- **"Current Focus"** heading → replace with **"Right now"** to match its eyebrow and feel conversational.
+### 1. Use the uploaded photos
+- Coffee card → the pop-up photo (making coffee at the pop-up I hosted).
+- Sports card → the indoor soccer team photo.
+- Photography card → keep the existing Varanasi shot.
+- Photos get added as project assets and replace `/images/about/coffee.png` and `/images/about/sports.png` (the generated illustrations get deleted).
+- Note: the latte/Araku photo is held in reserve — one photo per card keeps the grid clean. Say the word if you'd rather use that one for coffee.
 
-### 2. Rewrite the "Beyond work" intro
-Replace the flowy "chasing curiosity" line with a direct, plainspoken opening:
-> "When I'm not designing, I'm usually taking photos, brewing coffee, or playing soccer."
+### 2. Simplify the headings
+- "Off the clock" → drop the heading; keep only the eyebrow **"Beyond work"**.
+- "Current Focus" → **"Right now"** (matching its eyebrow, which is removed to avoid repeating).
 
-### 3. Rewrite the coffee card copy
-Make it specific and grounded without the generic "small daily ritual" framing:
-> "I geek out on specialty coffee—exploring different roasts, tasting how origin and process show up in the cup, and experimenting with brewing methods."
-
-### 4. Rewrite the team sports card copy
-Keep it casual and concrete:
-> "I love team sports. I led an intramural soccer team in undergrad and still play pickup games with friends whenever I can."
+### 3. Cut the copy to one line per card
+- Remove the "chasing curiosity" intro paragraph entirely.
+- Photography & film — "Street photography and filmmaking." + existing "Scenes from Varanasi →" link.
+- Specialty coffee — "Pourover, or a cortado. Hosted a coffee pop-up."
+- Team sports — "Soccer. Led an intramural team in undergrad."
 
 ## Files to change
-- `src/pages/About.tsx` — update headings and three short paragraphs; no layout or visual changes.
+- `src/pages/About.tsx` — image sources, headings, and card copy.
+- Add the two uploaded photos as assets; remove the two generated illustration files.
 
 ## Out of scope
-- No new sections, images, or routes.
-- No changes to the bio, experience, education, or contact blocks.
+No layout, grid, or section-order changes. No edits to bio, experience, education, or contact.
