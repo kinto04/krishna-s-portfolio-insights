@@ -1,27 +1,122 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import Reveal from "@/components/Reveal";
+import { usePointerGlow } from "@/hooks/usePointerGlow";
+
+const photos = [
+  {
+    src: "/images/varanasi/flower-market.jpg",
+    alt: "A woman selling flowers at a market in Varanasi",
+    caption: "Flower market, Varanasi",
+  },
+  {
+    src: "/images/varanasi/alley-evening.jpg",
+    alt: "A narrow alley in Varanasi lit by evening light",
+    caption: "Alley at dusk, Varanasi",
+  },
+  {
+    src: "/images/varanasi/quiet-afternoon.jpg",
+    alt: "A quiet afternoon scene by the ghats of Varanasi",
+    caption: "Quiet afternoon, Varanasi",
+  },
+  {
+    src: "/images/varanasi/sugarcane.jpg",
+    alt: "Fresh sugarcane juice being pressed on the street in Varanasi",
+    caption: "Sugarcane juice, Varanasi",
+  },
+];
+
+const experience = [
+  {
+    period: "2026 —",
+    role: "Founding UX Designer & AI Engineer",
+    org: "Huelo · 2026–Present",
+    blurb:
+      "Designing and building an AI-powered interior design and shopping platform for urban renters — 1,000+ users since launch, with Gemini-powered recommendations, evals for output quality, and research-driven roadmap decisions that grew activation 20% and engagement 21%.",
+  },
+  {
+    period: "2025–26",
+    role: "Founder and Designer · Jointly Travel (MS Thesis)",
+    org: "Northwestern University · 2025–2026",
+    blurb:
+      "End-to-end product: user research, design, and development of an AI travel app for friend groups. Shipped to 40+ beta users with journey maps, archetypes, and a weekly automated behavioral insights pipeline.",
+  },
+  {
+    period: "2025",
+    role: "Design Researcher",
+    org: "Northwestern Medicine · 2025",
+    blurb:
+      "Led design research for a digital health tool for pediatric GI patients. Ran focus groups and 12+ clinician interviews, built journey maps, and delivered validated prototypes; research supported a paper submitted to JMIR.",
+  },
+  {
+    period: "2025",
+    role: "Product & Experience Designer · Southwest Airlines",
+    org: "Northwestern Sponsored Project · 2025",
+    blurb:
+      "Designed \"Relaxed Rebooking\" after airport field research during irregular operations — projecting a 225,000-hour annual efficiency gain and a 40% improvement in prototype confidence.",
+  },
+  {
+    period: "2021–24",
+    role: "UX Engineer & PM",
+    org: "NectarOM · 2021–2024",
+    blurb:
+      "Built Nectar.ai end-to-end — drove +30% add-to-cart, +18% checkout completion, and ~99% improvement in chatbot response rates. Also shipped NectarCares, a platform connecting donors to families in need.",
+  },
+  {
+    period: "2020",
+    role: "Software Engineering Intern",
+    org: "Ampersand · 2020",
+    blurb:
+      "Supported API access management and security during the company's transition to Okta as an Identity Provider.",
+  },
+];
 
 const About = () => {
+  const { containerRef, glowRef } = usePointerGlow<HTMLDivElement>();
+
   useEffect(() => {
     document.title = "About — Krishna Suresh";
   }, []);
 
   return (
     <Layout>
-      <section className="max-w-3xl mx-auto px-6 section-y stack-lg">
-        <div className="flex flex-col sm:flex-row gap-8 items-center">
-          <img
-            src="/images/headshot.jpeg"
-            alt="Krishna Suresh"
-            className="w-32 h-32 rounded-full object-cover object-top flex-shrink-0 border border-border"
-          />
-          <div>
-            <h1 className="font-serif t-page-title tracking-tight text-foreground mb-2">Krishna Suresh<span className="text-primary">.</span></h1>
-            <p className="text-muted-foreground text-sm">Designer · Engineer</p>
-          </div>
-        </div>
+      <div
+        ref={containerRef}
+        className="relative max-w-3xl mx-auto px-6 section-y stack-lg overflow-visible"
+      >
+        {/* cursor-reactive glow behind the hero */}
+        <div
+          ref={glowRef}
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 -left-24 h-[28rem] w-[28rem] rounded-full opacity-0 transition-opacity duration-700 data-[active=true]:opacity-100"
+          style={{
+            background:
+              "radial-gradient(circle at var(--mx, 50%) var(--my, 50%), hsl(var(--primary) / 0.14), transparent 65%)",
+          }}
+        />
 
-        <div className="space-y-6 text-muted-foreground leading-relaxed">
+        {/* Hero */}
+        <Reveal className="relative flex flex-col sm:flex-row gap-8 items-center">
+          <div className="group relative shrink-0">
+            <img
+              src="/images/headshot.jpeg"
+              alt="Portrait of Krishna Suresh"
+              className="w-40 h-40 rounded-2xl object-cover object-top border border-border ring-1 ring-primary/20 shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.35)] rotate-[-2deg] transition-transform duration-500 ease-out group-hover:rotate-0"
+            />
+          </div>
+          <div>
+            <h1 className="font-serif t-page-title tracking-tight text-foreground mb-2">
+              Krishna Suresh<span className="text-primary">.</span>
+            </h1>
+            <p className="text-muted-foreground text-sm">
+              Designer · Engineer · Photographer — New York
+            </p>
+          </div>
+        </Reveal>
+
+        {/* Bio */}
+        <Reveal className="space-y-6 text-muted-foreground leading-relaxed">
           <p>
             I'm a <strong className="text-foreground">Designer and UX Engineer</strong> who builds at the intersection of research, design, and engineering. CS degree from Purdue. Just graduated with an{" "}
             <strong className="text-foreground">MS in Engineering Design Innovation from Northwestern</strong>.
@@ -39,49 +134,67 @@ const About = () => {
           <p className="text-sm">
             Based in New York, NY. Looking for <strong className="text-foreground">Design roles</strong> in AI, e-commerce, travel, and healthcare.
           </p>
-        </div>
+        </Reveal>
+
+        {/* Photography */}
+        <Reveal>
+          <p className="label-eyebrow mb-3">Photography</p>
+          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-3">Off the clock</h2>
+          <p className="text-muted-foreground leading-relaxed mb-6 max-w-xl">
+            I shoot street and travel photography — it's the same muscle as design research: slowing down, watching people, noticing what everyone else walks past.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {photos.map((photo, i) => (
+              <figure
+                key={photo.src}
+                className="group relative overflow-hidden rounded-lg border border-border"
+                style={{ transitionDelay: `${i * 90}ms` }}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                  className="aspect-[3/4] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent px-3 pb-2 pt-8 text-xs text-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  {photo.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <Link
+            to="/stories/scenes-from-varanasi"
+            className="mt-4 inline-flex items-center gap-1 text-sm text-foreground underline underline-offset-4 hover:text-primary t-base"
+          >
+            More in Scenes from Varanasi →
+          </Link>
+        </Reveal>
 
         {/* Experience */}
-        <div>
+        <Reveal>
           <p className="label-eyebrow mb-3">Where I've worked</p>
           <h2 className="font-serif t-section-title tracking-tight text-foreground mb-6">Experience</h2>
           <div className="space-y-5">
-            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
-              <p className="text-foreground font-medium">Founding UX Designer & AI Engineer</p>
-              <p className="text-sm text-muted-foreground mb-1">Huelo · 2026–Present</p>
-              <p className="text-sm text-muted-foreground">Designing and building an AI-powered interior design and shopping platform for urban renters — 1,000+ users since launch, with Gemini-powered recommendations, evals for output quality, and research-driven roadmap decisions that grew activation 20% and engagement 21%.</p>
-            </div>
-            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
-              <p className="text-foreground font-medium">Founder and Designer · Jointly Travel (MS Thesis)</p>
-              <p className="text-sm text-muted-foreground mb-1">Northwestern University · 2025–2026</p>
-              <p className="text-sm text-muted-foreground">End-to-end product: user research, design, and development of an AI travel app for friend groups. Shipped to 40+ beta users with journey maps, archetypes, and a weekly automated behavioral insights pipeline.</p>
-            </div>
-            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
-              <p className="text-foreground font-medium">Design Researcher</p>
-              <p className="text-sm text-muted-foreground mb-1">Northwestern Medicine · 2025</p>
-              <p className="text-sm text-muted-foreground">Led design research for a digital health tool for pediatric GI patients. Ran focus groups and 12+ clinician interviews, built journey maps, and delivered validated prototypes; research supported a paper submitted to JMIR.</p>
-            </div>
-            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
-              <p className="text-foreground font-medium">Product & Experience Designer · Southwest Airlines</p>
-              <p className="text-sm text-muted-foreground mb-1">Northwestern Sponsored Project · 2025</p>
-              <p className="text-sm text-muted-foreground">Designed "Relaxed Rebooking" after airport field research during irregular operations — projecting a 225,000-hour annual efficiency gain and a 40% improvement in prototype confidence.</p>
-            </div>
-            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
-              <p className="text-foreground font-medium">UX Engineer & PM</p>
-              <p className="text-sm text-muted-foreground mb-1">NectarOM · 2021–2024</p>
-              <p className="text-sm text-muted-foreground">Built Nectar.ai end-to-end — drove +30% add-to-cart, +18% checkout completion, and ~99% improvement in chatbot response rates. Also shipped NectarCares, a platform connecting donors to families in need.</p>
-            </div>
-            <div className="border-l-2 border-border hover:border-primary t-base pl-4">
-              <p className="text-foreground font-medium">Software Engineering Intern</p>
-              <p className="text-sm text-muted-foreground mb-1">Ampersand · 2020</p>
-              <p className="text-sm text-muted-foreground">Supported API access management and security during the company's transition to Okta as an Identity Provider.</p>
-            </div>
+            {experience.map((job) => (
+              <div
+                key={job.role}
+                className="group border-l-2 border-border hover:border-primary t-base pl-4 flex gap-4"
+              >
+                <span className="hidden sm:block w-16 shrink-0 pt-0.5 text-xs font-mono text-muted-foreground/80 group-hover:text-primary t-base">
+                  {job.period}
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">{job.role}</p>
+                  <p className="text-sm text-muted-foreground mb-1">{job.org}</p>
+                  <p className="text-sm text-muted-foreground">{job.blurb}</p>
+                </div>
+              </div>
+            ))}
           </div>
-
-        </div>
+        </Reveal>
 
         {/* Education */}
-        <div>
+        <Reveal>
           <p className="label-eyebrow mb-3">Background</p>
           <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Education</h2>
           <div className="space-y-4">
@@ -94,10 +207,10 @@ const About = () => {
               <p className="text-sm text-muted-foreground">BS Computer Science · 2020</p>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Current Focus */}
-        <div>
+        <Reveal>
           <p className="label-eyebrow mb-3">Right now</p>
           <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Current Focus</h2>
           <ul className="space-y-3 text-muted-foreground">
@@ -105,12 +218,31 @@ const About = () => {
             <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Building AI tools that help other designers design and build with AI</li>
             <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Learning how to evaluate &amp; improve LLM output quality</li>
             <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Street and travel photography</li>
-
           </ul>
-        </div>
+        </Reveal>
+
+        {/* A few more things */}
+        <Reveal>
+          <p className="label-eyebrow mb-3">The small print</p>
+          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">A few more things</h2>
+          <div className="grid sm:grid-cols-3 gap-4 text-sm">
+            <div className="rounded-lg border border-border p-4">
+              <p className="text-foreground font-medium mb-1">Based in</p>
+              <p className="text-muted-foreground">New York, NY</p>
+            </div>
+            <div className="rounded-lg border border-border p-4">
+              <p className="text-foreground font-medium mb-1">Usually doing</p>
+              <p className="text-muted-foreground">Wandering a city with a camera, or tinkering with an AI side project</p>
+            </div>
+            <div className="rounded-lg border border-border p-4">
+              <p className="text-foreground font-medium mb-1">Favorite trip</p>
+              <p className="text-muted-foreground">Varanasi — the photos above say why</p>
+            </div>
+          </div>
+        </Reveal>
 
         {/* Links */}
-        <div className="border-t border-border pt-10">
+        <Reveal className="border-t border-border pt-10">
           <p className="label-eyebrow mb-3">Contact</p>
           <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Get in Touch</h2>
           <div className="flex flex-wrap gap-6">
@@ -129,8 +261,8 @@ const About = () => {
               Email
             </a>
           </div>
-        </div>
-      </section>
+        </Reveal>
+      </div>
     </Layout>
   );
 };
