@@ -36,6 +36,8 @@ const Home = () => {
             <HeroHeadline />
           </div>
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-4 animate-fade-in-up-delay-3">
+            {heroVariant.subtitle}
+          </p>
           <div className="flex items-center gap-2 text-sm text-muted-foreground/70 max-w-xl mb-8 animate-fade-in-up-delay-3">
             <GraduationCap size={14} className="shrink-0" aria-hidden="true" />
             <span>MS Engineering Design Innovation, Northwestern</span>
