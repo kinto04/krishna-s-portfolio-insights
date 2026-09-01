@@ -239,7 +239,7 @@ const About = () => {
         <Reveal>
           <p className="label-eyebrow mb-3">The small print</p>
           <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">A few more things</h2>
-          <div className="grid sm:grid-cols-3 gap-4 text-sm">
+          <div className="grid sm:grid-cols-2 gap-4 text-sm">
             <div className="rounded-lg border border-border p-4">
               <p className="text-foreground font-medium mb-1">Based in</p>
               <p className="text-muted-foreground">New York, NY</p>
@@ -247,10 +247,6 @@ const About = () => {
             <div className="rounded-lg border border-border p-4">
               <p className="text-foreground font-medium mb-1">Usually doing</p>
               <p className="text-muted-foreground">Wandering a city with a camera, trying new cuisines, vibe coding solutions to my problems</p>
-            </div>
-            <div className="rounded-lg border border-border p-4">
-              <p className="text-foreground font-medium mb-1">Favorite trip</p>
-              <p className="text-muted-foreground">Varanasi — the photos above say why</p>
             </div>
           </div>
         </Reveal>
