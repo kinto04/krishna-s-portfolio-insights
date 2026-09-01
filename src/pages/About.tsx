@@ -133,7 +133,7 @@ const About = () => {
               </figure>
               <p className="text-foreground font-medium mb-1">Photography &amp; film</p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                My explorations of street photography and filmmaking. I enjoy slowing down and observing people, food, and culture.
+                Street photography and filmmaking.
               </p>
               <Link
                 to="/stories/scenes-from-varanasi"
@@ -147,8 +147,8 @@ const About = () => {
             <div className="surface p-4 flex flex-col">
               <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
                 <img
-                  src="/images/about/coffee.png"
-                  alt="Minimal illustration of a pour-over coffee setup"
+                  src={coffeePopup.url}
+                  alt="Making coffee at a pop-up I hosted"
                   loading="lazy"
                   width={800}
                   height={600}
@@ -157,7 +157,7 @@ const About = () => {
               </figure>
               <p className="text-foreground font-medium mb-1">Specialty coffee</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                I'm deep into specialty coffee. I love exploring roasts, learning how origin and process show up in the cup, and treating brewing like a small daily ritual.
+                Pourover, or a cortado. Hosted a coffee pop-up.
               </p>
             </div>
 
@@ -165,8 +165,8 @@ const About = () => {
             <div className="surface p-4 flex flex-col">
               <figure className="group relative overflow-hidden rounded-lg border border-border mb-4">
                 <img
-                  src="/images/about/sports.png"
-                  alt="Minimal illustration of a soccer ball on a field at dusk"
+                  src={soccerTeam.url}
+                  alt="My indoor soccer team on the field"
                   loading="lazy"
                   width={800}
                   height={600}
@@ -175,9 +175,10 @@ const About = () => {
               </figure>
               <p className="text-foreground font-medium mb-1">Team sports</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                I'm a big believer in team sports — there's nothing like the energy of people working toward the same goal. I led an intramural soccer team in undergrad and still love any chance to get on the field with friends.
+                Soccer. Led an intramural team in undergrad.
               </p>
             </div>
+
           </div>
         </Reveal>
 
