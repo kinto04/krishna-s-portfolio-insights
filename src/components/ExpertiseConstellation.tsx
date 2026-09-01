@@ -246,7 +246,7 @@ const ExpertiseConstellation = () => {
       <div className="relative max-w-5xl mx-auto px-6">
         <Reveal className="mb-6">
           <h2 className="font-serif t-section-title tracking-tight text-foreground">
-            What I design and build
+            A representation of my work
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
             Click any node to see those projects.
