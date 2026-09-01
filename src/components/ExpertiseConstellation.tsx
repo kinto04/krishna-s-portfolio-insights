@@ -331,7 +331,7 @@ const ExpertiseConstellation = () => {
                     cy={n.y}
                     r={n.r + 4}
                     fill="none"
-                    stroke="hsl(var(--primary))"
+                    stroke={tagColor(n.tag)}
                     opacity="0"
                   />
                   <circle cx={n.x} cy={n.y} r={n.r} fill={tagColor(n.tag)} />
@@ -350,7 +350,8 @@ const ExpertiseConstellation = () => {
                     y={n.y + n.dy}
                     textAnchor={n.anchor}
                     fontSize={fontSize}
-                    className={active === n.tag ? "fill-primary" : n.text}
+                    className={n.text}
+                    style={active === n.tag ? { fill: tagColor(n.tag) } : undefined}
                   >
                     {n.tag}
                   </text>
