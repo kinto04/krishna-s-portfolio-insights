@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { CaseStudy } from "@/data/caseStudies";
 import { tagColor } from "@/lib/tagColors";
+import { Pill } from "@/components/ui/pill";
 
 const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
   return (
@@ -25,9 +26,17 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
         )}
       </div>
       <div className="px-1 pb-1 flex flex-col flex-1">
-        <h3 className="font-serif text-xl sm:text-[1.4rem] font-semibold tracking-tight text-foreground group-hover:text-primary t-base mb-1.5 leading-snug line-clamp-2 min-h-[3.5rem]">
-
-          {study.title}
+        <h3 className="font-serif text-xl sm:text-[1.4rem] font-semibold tracking-tight text-foreground group-hover:text-primary t-base mb-1.5 leading-snug line-clamp-2 min-h-[3.5rem] flex items-start gap-2">
+          <span className="flex-1">{study.title}</span>
+          {study.inProgress && (
+            <Pill
+              variant="filled"
+              size="sm"
+              className="shrink-0 !bg-amber-500/10 !text-amber-500 border-amber-500/20 hover:!bg-amber-500/15"
+            >
+              In progress
+            </Pill>
+          )}
         </h3>
         <p className="text-sm text-muted-foreground/80 mb-3 leading-relaxed line-clamp-2 min-h-[2.6rem]">
           {study.subtitle}
