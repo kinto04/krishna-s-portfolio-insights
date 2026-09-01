@@ -232,7 +232,7 @@ const About = () => {
             </div>
             <div className="rounded-lg border border-border p-4">
               <p className="text-foreground font-medium mb-1">Usually doing</p>
-              <p className="text-muted-foreground">Wandering a city with a camera, or tinkering with an AI side project</p>
+              <p className="text-muted-foreground">Wandering a city with a camera, trying new cuisines, vibe coding solutions to my problems</p>
             </div>
             <div className="rounded-lg border border-border p-4">
               <p className="text-foreground font-medium mb-1">Favorite trip</p>
