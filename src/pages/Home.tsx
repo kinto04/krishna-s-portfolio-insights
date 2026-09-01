@@ -5,13 +5,12 @@ import CaseStudyCard from "@/components/CaseStudyCard";
 import { caseStudies } from "@/data/caseStudies";
 import { ArrowRight, GraduationCap } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import { useMagnetic } from "@/hooks/useMagnetic";
-import HeroSparks from "@/components/HeroSparks";
+import HeroNetwork from "@/components/HeroNetwork";
+import HeroHeadline from "@/components/HeroHeadline";
 import ExpertiseConstellation from "@/components/ExpertiseConstellation";
 
 
 const heroVariant = {
-  heading: "I design AI products that solve human problems.",
   subtitle:
     "I'm a designer and engineer who's built consumer AI products across e-commerce, healthcare, and travel.",
 };
@@ -22,24 +21,21 @@ const Home = () => {
   }, []);
 
   const featuredStudies = caseStudies.filter((s) => s.featured);
-  const heroRef = useMagnetic<HTMLElement>(9);
 
   return (
     <Layout>
       {/* Hero */}
-      <section ref={heroRef} className="relative overflow-hidden">
+      <section className="relative overflow-hidden">
         <div className="hero-ambient" aria-hidden="true" />
-        <HeroSparks />
+        <HeroNetwork />
         <div className="hero-noise" aria-hidden="true" />
         <div className="relative max-w-3xl mx-auto px-6 section-y">
 
-          <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1" data-magnetic="0.35">Hey, I'm Krishna.</p>
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-6 leading-[1.1] animate-fade-in-up-delay-2 whitespace-pre-line" data-magnetic="1">
-            {heroVariant.heading}
-          </h1>
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-4 animate-fade-in-up-delay-3" data-magnetic="0.5">
-            {heroVariant.subtitle}
-          </p>
+          <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
+          <div className="mb-6" data-magnetic="1">
+            <HeroHeadline />
+          </div>
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-4 animate-fade-in-up-delay-3">
           <div className="flex items-center gap-2 text-sm text-muted-foreground/70 max-w-xl mb-8 animate-fade-in-up-delay-3">
             <GraduationCap size={14} className="shrink-0" aria-hidden="true" />
             <span>MS Engineering Design Innovation, Northwestern</span>
