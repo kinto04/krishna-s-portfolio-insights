@@ -115,11 +115,8 @@ const About = () => {
 
         {/* Beyond work */}
         <Reveal>
-          <p className="label-eyebrow mb-3">Beyond work</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-3">Off the clock</h2>
-          <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-            Outside of work I'm usually chasing curiosity — whether that's through a camera, a coffee cup, or a pickup game.
-          </p>
+          <p className="label-eyebrow mb-6">Beyond work</p>
+
 
           <div className="grid sm:grid-cols-3 gap-4">
             {/* Photography */}
