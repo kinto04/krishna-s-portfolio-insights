@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Reveal from "@/components/Reveal";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { caseStudies } from "@/data/caseStudies";
+import { tagColor } from "@/lib/tagColors";
 
 type Anchor = "start" | "end" | "middle";
 type Tier = "core" | "domain" | "sub";
@@ -333,14 +334,14 @@ const ExpertiseConstellation = () => {
                     stroke="hsl(var(--primary))"
                     opacity="0"
                   />
-                  <circle cx={n.x} cy={n.y} r={n.r} fill={n.fill} />
+                  <circle cx={n.x} cy={n.y} r={n.r} fill={tagColor(n.tag)} />
                   {active === n.tag && (
                     <circle
                       cx={n.x}
                       cy={n.y}
                       r={n.r + 6}
                       fill="none"
-                      stroke="hsl(var(--primary))"
+                      stroke={tagColor(n.tag)}
                       strokeOpacity="0.55"
                     />
                   )}
