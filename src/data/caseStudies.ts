@@ -75,6 +75,10 @@ export interface CaseStudy {
     card: string;
     primary: string;
   };
+  /** Marks a study that is still in progress and not fully public. */
+  inProgress?: boolean;
+  /** Email address visitors can copy to request the full deck. */
+  deckEmail?: string;
 }
 
 export const caseStudies: CaseStudy[] = [
