@@ -227,7 +227,8 @@ const About = () => {
         {/* Current Focus */}
         <Reveal>
           <p className="label-eyebrow mb-3">Right now</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Current Focus</h2>
+          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">What I'm working on</h2>
+
           <ul className="space-y-3 text-muted-foreground">
             <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Building Huelo - AI-powered interior design and shopping for urban renters</li>
             <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Building AI tools that help other designers design and build with AI</li>
