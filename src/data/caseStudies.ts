@@ -85,7 +85,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Founder and designer",
     year: "2025–2026",
     context: "Master's Thesis · Northwestern University",
-    tags: ["Experience Design", "Mobile", "AI", "Service Design"],
+    tags: ["AI", "Experience Design", "Interaction Design"],
     summary:
       "Group trips are supposed to bring people together — but the planning process often does real damage. Jointly. is a collaborative decision-making layer between inspiration and booking, designed to absorb the social friction of coordination. Built end-to-end as a master's thesis at Northwestern's EDI program.",
     featured: true,
@@ -208,7 +208,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Designer · Product Manager",
     year: "2025",
     context: "Interaction Design Studio Course · Northwestern University",
-    tags: ["Healthcare", "Interaction Design", "Product Strategy"],
+    tags: ["AI", "Experience Design", "Interaction Design"],
     facts: {
       timeline: "10 weeks",
       timelineNote: "2025",
@@ -286,7 +286,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Design Lead · Product Manager",
     year: "2025",
     context: "Northwestern Feinberg School of Medicine",
-    tags: ["Experience Design", "Research", "Service Design", "Healthcare"],
+    tags: ["Experience Design", "Research", "Healthcare"],
     summary:
       "Going into an existing research project at Northwestern Feinberg School of Medicine, I was tasked with owning research and design for a new digital product aimed at supporting diagnosis and treatment of pediatric patients with disorders of gut-brain interaction.",
     featured: false,
@@ -458,7 +458,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Manager · Software Developer",
     year: "2023",
     context: "One of the products I lead during my time at NectarOM",
-    tags: ["AI", "E-Commerce", "Conversational UI"],
+    tags: ["AI", "Experience Design", "Conversational UI"],
     summary:
       "A small business selling wellness products needed to overhaul their underperforming customer support chatbot. I researched a year of historical support conversations, designed the conversation flows, and built a GPT-powered chatbot that guides customers from landing page through checkout.",
     featured: true,
