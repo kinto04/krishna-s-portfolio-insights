@@ -244,6 +244,7 @@ const RequestDeck = ({ email }: { email: string }) => {
             onClick={handleCopy}
             className="shrink-0 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-md text-sm font-medium hover:bg-primary-hover transition-colors t-base"
             aria-label={copied ? "Email copied" : "Copy email address"}
+            data-copied={copied}
           >
             {copied ? <Check size={16} /> : <Copy size={16} />}
             {copied ? "Copied" : "Copy email"}
