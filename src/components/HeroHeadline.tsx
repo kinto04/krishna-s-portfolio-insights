@@ -22,14 +22,15 @@ const SEGMENTS: Segment[] = [
 const HeroHeadline = () => {
   const ref = useRef<HTMLHeadingElement>(null);
   const [ready, setReady] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setReducedMotion(reduced);
     if (reduced) {
       setReady(true);
       return;
     }
-    // small delay so the animation is visible on page load
     const id = window.setTimeout(() => setReady(true), 180);
     return () => window.clearTimeout(id);
   }, []);
@@ -47,17 +48,19 @@ const HeroHeadline = () => {
           {segment.text.split(" ").map((word, wi) => {
             const globalIndex =
               SEGMENTS.slice(0, si).reduce((acc, s) => acc + s.text.split(" ").length, 0) + wi;
+            const staticStyle = reducedMotion
+              ? { opacity: 1, transform: "translateY(0)", filter: "blur(0)" }
+              : undefined;
+            const animatedStyle = ready
+              ? {
+                  animation: `heroWordIn 0.75s var(--ease-out-expo) ${0.22 + globalIndex * 0.07}s both`,
+                }
+              : { opacity: 0, transform: "translateY(18px)", filter: "blur(5px)" };
             return (
               <span key={`${si}-${wi}`} className="inline-block overflow-hidden align-bottom">
                 <span
                   className="inline-block will-change-transform"
-                  style={
-                    ready
-                      ? {
-                          animation: `heroWordIn 0.75s var(--ease-out-expo) ${0.22 + globalIndex * 0.07}s both`,
-                        }
-                      : { opacity: 0, transform: "translateY(18px)", filter: "blur(5px)" }
-                  }
+                  style={staticStyle ?? animatedStyle}
                 >
                   {word}
                 </span>
