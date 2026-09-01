@@ -128,6 +128,7 @@ const About = () => {
           <div className="columns-2 md:columns-3 gap-4 [&>figure]:mb-4">
             {[
               { src: "/images/varanasi/flower-market.jpg", alt: "A woman selling flowers at a market in Varanasi", ratio: "aspect-[4/5]" },
+              { src: "/images/varanasi/alley-bike.jpg", alt: "A man on a bicycle carrying goods through a narrow Varanasi alley", ratio: "aspect-[3/2]" },
               { src: coffeePopup.url, alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
               { src: dogSwimming.url, alt: "A dog swimming through turquoise water", ratio: "aspect-[3/2]" },
               { src: soccerTeam.url, alt: "My intramural soccer team on the field", ratio: "aspect-[4/3]" },
