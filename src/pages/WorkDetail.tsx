@@ -216,15 +216,15 @@ const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
 
 const RequestDeck = ({ email }: { email: string }) => {
   const [copied, setCopied] = useState(false);
-  console.log("RequestDeck render, copied=", copied);
 
-  const handleCopy = () => {
-    console.log("handleCopy clicked");
-    setCopied(true);
-    setTimeout(() => {
-      console.log("resetting copied");
-      setCopied(false);
-    }, 2000);
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      window.location.href = `mailto:${email}`;
+    }
   };
 
   return (
