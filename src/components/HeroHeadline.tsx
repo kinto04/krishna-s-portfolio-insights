@@ -9,8 +9,7 @@ type Segment = {
 const SEGMENTS: Segment[] = [
   { text: "I design " },
   { text: "AI products", color: "text-primary" },
-  { text: " that solve " },
-  { text: "human problems.", color: "text-foreground" },
+  { text: " that solve human problems." },
 ];
 
 /**
