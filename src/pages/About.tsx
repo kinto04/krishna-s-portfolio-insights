@@ -4,29 +4,6 @@ import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import { usePointerGlow } from "@/hooks/usePointerGlow";
 
-const photos = [
-  {
-    src: "/images/varanasi/flower-market.jpg",
-    alt: "A woman selling flowers at a market in Varanasi",
-    caption: "Flower market, Varanasi",
-  },
-  {
-    src: "/images/varanasi/alley-evening.jpg",
-    alt: "A narrow alley in Varanasi lit by evening light",
-    caption: "Alley at dusk, Varanasi",
-  },
-  {
-    src: "/images/varanasi/quiet-afternoon.jpg",
-    alt: "A quiet afternoon scene by the ghats of Varanasi",
-    caption: "Quiet afternoon, Varanasi",
-  },
-  {
-    src: "/images/varanasi/sugarcane.jpg",
-    alt: "Fresh sugarcane juice being pressed on the street in Varanasi",
-    caption: "Sugarcane juice, Varanasi",
-  },
-];
-
 const experience = [
   {
     period: "2026 —",
