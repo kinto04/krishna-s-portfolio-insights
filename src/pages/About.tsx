@@ -110,7 +110,7 @@ const About = () => {
               Krishna Suresh<span className="text-primary">.</span>
             </h1>
             <p className="text-muted-foreground text-sm">
-              Designer · Engineer · Photographer — New York
+              Designer · Engineer
             </p>
           </div>
         </Reveal>
