@@ -228,7 +228,7 @@ const RequestDeck = ({ email }: { email: string }) => {
   };
 
   return (
-    <div className="mt-12">
+    <Reveal className="mt-12">
       <div className="rounded-xl border border-border bg-card/40 p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
           <div className="flex-1">
@@ -244,7 +244,6 @@ const RequestDeck = ({ email }: { email: string }) => {
             onClick={handleCopy}
             className="shrink-0 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-md text-sm font-medium hover:bg-primary-hover transition-colors t-base"
             aria-label={copied ? "Email copied" : "Copy email address"}
-            data-copied={copied}
           >
             {copied ? <Check size={16} /> : <Copy size={16} />}
             {copied ? "Copied" : "Copy email"}
@@ -255,7 +254,7 @@ const RequestDeck = ({ email }: { email: string }) => {
           <span>{email}</span>
         </div>
       </div>
-    </div>
+    </Reveal>
   );
 };
 
