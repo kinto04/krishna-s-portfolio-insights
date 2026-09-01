@@ -1,8 +1,8 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { caseStudies, type CaseStudy, type Slide } from "@/data/caseStudies";
-import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Copy, Check, Mail } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { Pill } from "@/components/ui/pill";
 import { RenderBlock, getChapterAnchors } from "@/components/casestudy/Blocks";
@@ -78,6 +78,23 @@ const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number })
     </section>
   );
 };
+
+const InProgressBanner = () => (
+  <Reveal>
+    <div className="mb-8 rounded-lg border border-amber-500/20 bg-amber-500/10 px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+      <div className="flex items-center gap-2 text-amber-500">
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
+        </span>
+        <span className="text-sm font-medium">In progress</span>
+      </div>
+      <p className="text-sm text-foreground/80">
+        This case study is still being written. A more detailed deck is available on request.
+      </p>
+    </div>
+  </Reveal>
+);
 
 const Hero = ({ study }: { study: CaseStudy }) => (
   <header className="relative">
@@ -171,7 +188,6 @@ const AtAGlance = ({ study }: { study: CaseStudy }) => {
   );
 };
 
-
 type Anchor = { id: string; label: string; number?: string };
 
 const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
@@ -195,6 +211,50 @@ const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
         ))}
       </div>
     </div>
+  );
+};
+
+const RequestDeck = ({ email }: { email: string }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${email}`;
+    }
+  };
+
+  return (
+    <Reveal className="mt-12">
+      <div className="rounded-xl border border-border bg-card/40 p-6 sm:p-8">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
+          <div className="flex-1">
+            <p className="label-eyebrow mb-2">Full deck available</p>
+            <h3 className="font-serif text-2xl text-foreground tracking-tight mb-2">
+              Want the detailed case study?
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              I'm happy to share the full deck, process artifacts, and additional details. Drop me an email and I'll send it over.
+            </p>
+          </div>
+          <button
+            onClick={handleCopy}
+            className="shrink-0 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-md text-sm font-medium hover:bg-primary-hover transition-colors t-base"
+            aria-label={copied ? "Email copied" : "Copy email address"}
+          >
+            {copied ? <Check size={16} /> : <Copy size={16} />}
+            {copied ? "Copied" : "Copy email"}
+          </button>
+        </div>
+        <div className="mt-5 pt-5 border-t border-border flex items-center gap-2 text-sm text-muted-foreground">
+          <Mail size={14} aria-hidden="true" />
+          <span>{email}</span>
+        </div>
+      </div>
+    </Reveal>
   );
 };
 
@@ -344,12 +404,13 @@ const WorkDetail = () => {
             <ArrowLeft size={14} /> All projects
           </Link>
 
+          {study.inProgress && <InProgressBanner />}
+
           <Hero study={study} />
 
           <AtAGlance study={study} />
 
           <Overview study={study} anchors={anchors} />
-
 
           {/* Native metrics */}
           {study.metrics && study.metrics.length > 0 && (
@@ -393,6 +454,8 @@ const WorkDetail = () => {
               <p className="text-muted-foreground text-sm">Case study assets coming soon.</p>
             </div>
           )}
+
+          {study.deckEmail && <RequestDeck email={study.deckEmail} />}
 
           <Closing study={study} />
         </article>
