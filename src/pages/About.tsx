@@ -7,6 +7,9 @@ import coffeePopup from "@/assets/coffee-popup.jpeg.asset.json";
 import soccerTeam from "@/assets/soccer-team.png.asset.json";
 import outdoorPines from "@/assets/outdoor-pines.jpg.asset.json";
 import dogSwimming from "@/assets/dog-swimming.jpg.asset.json";
+import marathonFinish from "@/assets/marathon-finish.jpeg.asset.json";
+import bouldering from "@/assets/bouldering.png.asset.json";
+import zionHike from "@/assets/zion-hike.jpeg.asset.json";
 
 
 const experience = [
