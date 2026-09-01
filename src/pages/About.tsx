@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import { usePointerGlow } from "@/hooks/usePointerGlow";
+import coffeePopup from "@/assets/coffee-popup.jpeg.asset.json";
+import soccerTeam from "@/assets/soccer-team.png.asset.json";
+
 
 const experience = [
   {
