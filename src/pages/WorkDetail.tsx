@@ -158,34 +158,29 @@ const AtAGlance = ({ study }: { study: CaseStudy }) => {
           {cells.map((c, i) => (
             <div
               key={c.label}
-              className={i > 0 ? "md:border-l md:border-border md:pl-8" : undefined}
+              className={
+                i > 0
+                  ? "md:border-l md:border-border md:pl-8 md:[&:nth-child(4n+1)]:border-l-0 md:[&:nth-child(4n+1)]:pl-0"
+                  : undefined
+              }
             >
               <FactCell {...c} />
             </div>
           ))}
         </div>
-        {(chips.length > 0 || facts.platform) && (
-          <div className="mt-7 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center gap-x-10 gap-y-4">
-            {chips.length > 0 && (
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                <p className="label-eyebrow">Tools</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {chips.map((t) => (
-                    <Pill key={t} variant="subtle" size="sm">
-                      {t}
-                    </Pill>
-                  ))}
-                </div>
-              </div>
-            )}
-            {facts.platform && (
-              <div className="flex items-center gap-3">
-                <p className="label-eyebrow">Platform</p>
-                <p className="text-xs text-foreground/90">{facts.platform}</p>
-              </div>
-            )}
+        {chips.length > 0 && (
+          <div className="mt-7 pt-6 border-t border-border flex flex-wrap items-center gap-x-3 gap-y-2">
+            <p className="label-eyebrow">Tools</p>
+            <div className="flex flex-wrap gap-1.5">
+              {chips.map((t) => (
+                <Pill key={t} variant="subtle" size="sm">
+                  {t}
+                </Pill>
+              ))}
+            </div>
           </div>
         )}
+
       </div>
     </Reveal>
   );
