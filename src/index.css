@@ -51,6 +51,9 @@
     --sidebar-ring: 258 88% 68%;
 
     --available: 160 55% 48%;
+    /* Status: work still in flight. The one warm hue in the system. */
+    --status-progress: 38 92% 60%;
+
 
     /* Tag colors — one hue per discipline, shared by cards and the expertise graph. */
     --tag-ai: 258 88% 68%;
