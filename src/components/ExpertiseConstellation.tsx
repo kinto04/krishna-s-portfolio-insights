@@ -22,12 +22,12 @@ type NodeDef = {
    Positions are hand-placed so it reads organic rather than symmetric.
    Node colors come from the shared tag palette in src/lib/tagColors.ts. */
 const DESKTOP_NODES: NodeDef[] = [
-  { tag: "Experience Design", tier: "core", x: 430, y: 150, anchor: "middle", dy: -16 },
-  { tag: "Interaction Design", tier: "core", x: 250, y: 310, anchor: "end", dy: 5 },
-  { tag: "AI", tier: "core", x: 620, y: 310, anchor: "start", dy: 5 },
-  { tag: "Conversational UI", tier: "domain", x: 830, y: 200, anchor: "start", dy: 5 },
-  { tag: "Research", tier: "domain", x: 430, y: 440, anchor: "middle", dy: 26 },
-  { tag: "Healthcare", tier: "domain", x: 130, y: 150, anchor: "end", dy: 5 },
+  { tag: "Experience Design", tier: "core", x: 430, y: 90, anchor: "middle", dy: -16 },
+  { tag: "Interaction Design", tier: "core", x: 250, y: 250, anchor: "end", dy: 5 },
+  { tag: "AI", tier: "core", x: 620, y: 250, anchor: "start", dy: 5 },
+  { tag: "Conversational UI", tier: "domain", x: 830, y: 140, anchor: "start", dy: 5 },
+  { tag: "Research", tier: "domain", x: 430, y: 380, anchor: "middle", dy: 26 },
+  { tag: "Healthcare", tier: "domain", x: 130, y: 90, anchor: "end", dy: 5 },
 ];
 
 const MOBILE_NODES: NodeDef[] = [
@@ -67,7 +67,7 @@ const ExpertiseConstellation = () => {
   const isMobile = useIsMobile();
   const defs = isMobile ? MOBILE_NODES : DESKTOP_NODES;
   const width = isMobile ? 380 : 1000;
-  const height = isMobile ? 460 : 520;
+  const height = isMobile ? 460 : 430;
 
   const counts = useMemo(() => {
     const map: Record<string, number> = {};
