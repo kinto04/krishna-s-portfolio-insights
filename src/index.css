@@ -112,7 +112,23 @@
     color: hsl(var(--muted-foreground));
   }
 
+  /* One page container — every page shares the same left edge as the nav. */
+  .container-page {
+    width: 100%;
+    max-width: 64rem; /* max-w-5xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Reading measure inside the page container (left-aligned, not centered). */
+  .measure {
+    max-width: 48rem; /* max-w-3xl */
+  }
+
   /* Vertical page rhythm — one value, every page. */
+
   .section-y {
     padding-top: 4rem;
     padding-bottom: 4rem;
