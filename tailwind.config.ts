@@ -24,6 +24,7 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         available: "hsl(var(--available))",
+        "status-progress": "hsl(var(--status-progress))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

@@ -81,11 +81,11 @@ const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number })
 
 const InProgressBanner = () => (
   <Reveal>
-    <div className="mb-8 rounded-lg border border-amber-500/20 bg-amber-500/10 px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-      <div className="flex items-center gap-2 text-amber-500">
+    <div className="mb-8 rounded-lg border border-status-progress/20 bg-status-progress/10 px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+      <div className="flex items-center gap-2 text-status-progress">
         <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-progress opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-status-progress" />
         </span>
         <span className="text-sm font-medium">In progress</span>
       </div>
@@ -229,7 +229,7 @@ const RequestDeck = ({ email }: { email: string }) => {
 
   return (
     <Reveal className="mt-12">
-      <div className="rounded-xl border border-border bg-card/40 p-6 sm:p-8">
+      <div className="surface p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
           <div className="flex-1">
             <p className="label-eyebrow mb-2">Full deck available</p>
@@ -242,7 +242,7 @@ const RequestDeck = ({ email }: { email: string }) => {
           </div>
           <button
             onClick={handleCopy}
-            className="shrink-0 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-md text-sm font-medium hover:bg-primary-hover transition-colors t-base"
+            className="shrink-0 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-md text-sm font-medium hover:bg-primary-hover t-base press focus-ring"
             aria-label={copied ? "Email copied" : "Copy email address"}
           >
             {copied ? <Check size={16} /> : <Copy size={16} />}
@@ -334,7 +334,7 @@ const Closing = ({ study }: { study: CaseStudy }) => {
                 </h3>
                 <p className="text-sm text-muted-foreground">{next.subtitle}</p>
               </div>
-              <ArrowRight className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" size={24} />
+              <ArrowRight className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 t-base transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] flex-shrink-0" size={24} />
             </div>
           </Link>
         </Reveal>

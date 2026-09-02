@@ -87,7 +87,7 @@ const About = () => {
             <img
               src="/images/headshot.jpeg"
               alt="Portrait of Krishna Suresh"
-              className="w-40 h-40 rounded-2xl object-cover object-top border border-border ring-1 ring-primary/20 shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.35)] rotate-[-2deg] transition-transform duration-500 ease-out group-hover:rotate-0"
+              className="w-40 h-40 rounded-lg object-cover object-top border border-border ring-1 ring-primary/20 shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.35)] rotate-[-2deg] transition-transform duration-500 ease-out group-hover:rotate-0"
             />
           </div>
           <div>

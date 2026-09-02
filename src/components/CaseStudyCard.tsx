@@ -32,7 +32,7 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
             <Pill
               variant="filled"
               size="sm"
-              className="shrink-0 !bg-amber-500/10 !text-amber-500 border-amber-500/20 hover:!bg-amber-500/15"
+              className="shrink-0 !bg-status-progress/10 !text-status-progress border-status-progress/20 hover:!bg-status-progress/15"
             >
               In progress
             </Pill>
