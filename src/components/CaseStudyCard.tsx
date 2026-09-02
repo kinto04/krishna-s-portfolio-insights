@@ -57,7 +57,7 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
               </span>
             ))}
           </div>
-          <div className="mt-3 flex items-center gap-1.5 text-xs text-primary opacity-0 -translate-x-1.5 transition-all duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:opacity-100 group-hover:translate-x-0">
+          <div className="mt-3 flex items-center gap-1.5 text-xs text-primary opacity-0 -translate-x-1.5 transition-[opacity,transform] duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:opacity-100 group-hover:translate-x-0">
             View case study <ArrowRight size={12} />
           </div>
         </div>

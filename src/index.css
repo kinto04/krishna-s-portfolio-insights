@@ -112,7 +112,33 @@
     color: hsl(var(--muted-foreground));
   }
 
+  /* One page container — every page shares the same left edge as the nav. */
+  .container-page {
+    width: 100%;
+    max-width: 64rem; /* max-w-5xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Reading measure inside the page container (left-aligned, not centered). */
+  .measure {
+    max-width: 48rem; /* max-w-3xl */
+  }
+
+  /* Applied to the container itself: container keeps the shared left edge,
+     its direct children get the reading measure. */
+  .container-page.measure {
+    max-width: 64rem;
+  }
+  .container-page.measure > * {
+    max-width: 48rem;
+  }
+
+
   /* Vertical page rhythm — one value, every page. */
+
   .section-y {
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -178,13 +204,26 @@
     border-radius: var(--radius);
   }
 
-  /* Full-width band that separates major landing-page sections. */
+  /* Full-width band that separates major landing-page sections.
+     Painted edge-to-edge behind a max-width container. */
   .section-band {
+    position: relative;
+    isolation: isolate;
+  }
+  .section-band::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    z-index: -1;
     border-top: 1px solid hsl(var(--border) / 0.45);
     background:
       radial-gradient(80% 60% at 50% 0%, hsl(var(--primary-deep) / 0.04) 0%, transparent 70%),
       linear-gradient(180deg, hsl(var(--card) / 0.18) 0%, transparent 60%);
   }
+
 
   /* Ambient depth uses primary-deep, never primary. */
   .accent-shadow {

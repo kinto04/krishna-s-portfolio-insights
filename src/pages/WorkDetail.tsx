@@ -140,13 +140,16 @@ const FactCell = ({ label, value, note }: { label: string; value: string; note?:
 const AtAGlance = ({ study }: { study: CaseStudy }) => {
   const facts = study.facts;
   if (!facts) return null;
+  // Role lives in the Overview when a detailed role breakdown exists — don't print it twice.
   const cells = [
     { label: "Timeline", value: facts.timeline, note: facts.timelineNote },
     { label: "Team", value: facts.team },
-    { label: "My Role", value: facts.role },
+    ...(study.overview?.roleDetail?.length ? [] : [{ label: "My Role", value: facts.role }]),
     { label: "Setting", value: facts.setting },
+    ...(facts.platform ? [{ label: "Platform", value: facts.platform }] : []),
   ];
   const chips = study.toolkit ?? [];
+
   return (
     <Reveal className="mt-10">
       <div className="border-t border-border pt-8">
@@ -155,34 +158,29 @@ const AtAGlance = ({ study }: { study: CaseStudy }) => {
           {cells.map((c, i) => (
             <div
               key={c.label}
-              className={i > 0 ? "md:border-l md:border-border md:pl-8" : undefined}
+              className={
+                i > 0
+                  ? "md:border-l md:border-border md:pl-8 md:[&:nth-child(4n+1)]:border-l-0 md:[&:nth-child(4n+1)]:pl-0"
+                  : undefined
+              }
             >
               <FactCell {...c} />
             </div>
           ))}
         </div>
-        {(chips.length > 0 || facts.platform) && (
-          <div className="mt-7 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center gap-x-10 gap-y-4">
-            {chips.length > 0 && (
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                <p className="label-eyebrow">Tools</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {chips.map((t) => (
-                    <Pill key={t} variant="subtle" size="sm">
-                      {t}
-                    </Pill>
-                  ))}
-                </div>
-              </div>
-            )}
-            {facts.platform && (
-              <div className="flex items-center gap-3">
-                <p className="label-eyebrow">Platform</p>
-                <p className="text-xs text-foreground/90">{facts.platform}</p>
-              </div>
-            )}
+        {chips.length > 0 && (
+          <div className="mt-7 pt-6 border-t border-border flex flex-wrap items-center gap-x-3 gap-y-2">
+            <p className="label-eyebrow">Tools</p>
+            <div className="flex flex-wrap gap-1.5">
+              {chips.map((t) => (
+                <Pill key={t} variant="subtle" size="sm">
+                  {t}
+                </Pill>
+              ))}
+            </div>
           </div>
         )}
+
       </div>
     </Reveal>
   );
@@ -369,7 +367,7 @@ const WorkDetail = () => {
   if (!study) {
     return (
       <Layout>
-        <div className="max-w-3xl mx-auto px-6 section-y">
+        <div className="container-page section-y measure">
           <p className="text-muted-foreground">Case study not found.</p>
           <Link to="/work" className="text-sm text-foreground underline mt-4 inline-block">
             ← Back to work
@@ -396,7 +394,7 @@ const WorkDetail = () => {
   return (
     <Layout>
       <div style={themeStyle} className={themed ? "w-full" : undefined}>
-        <article className="max-w-5xl mx-auto px-6 section-y-tight">
+        <article className="container-page section-y-tight">
           <Link
             to="/work"
             className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground t-base mb-8"

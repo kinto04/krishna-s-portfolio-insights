@@ -29,7 +29,7 @@ const Home = () => {
         <div className="hero-ambient" aria-hidden="true" />
         <HeroNetwork />
         <div className="hero-noise" aria-hidden="true" />
-        <div className="relative max-w-3xl mx-auto px-6 section-y">
+        <div className="relative container-page section-y measure">
 
           <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
           <div className="mb-6" data-magnetic="1">
@@ -70,7 +70,7 @@ const Home = () => {
 
 
       {/* Featured Work */}
-      <section className="max-w-5xl mx-auto px-6 section-y section-band">
+      <section className="container-page section-y section-band">
         <Reveal className="mb-10">
           <p className="label-eyebrow mb-3">Selected work</p>
           <h2 className="font-serif t-section-title tracking-tight text-foreground">Case studies</h2>

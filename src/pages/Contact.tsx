@@ -30,7 +30,7 @@ const Contact = () => {
 
   return (
     <Layout>
-      <section className="max-w-3xl mx-auto px-6 section-y">
+      <section className="container-page section-y"><div className="measure">
         <h1 className="font-serif text-4xl sm:text-5xl tracking-tight text-foreground mb-2">Get in Touch</h1>
         <p className="text-muted-foreground mb-10 max-w-lg">
           I'm actively looking for PM roles. If you're hiring, want to collaborate, or just want to say hi — reach out.
@@ -91,6 +91,7 @@ const Contact = () => {
           </div>
           <Button type="submit">Send Message</Button>
         </form>
+      </div>
       </section>
     </Layout>
   );
