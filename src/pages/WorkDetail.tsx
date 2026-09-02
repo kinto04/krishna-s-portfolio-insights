@@ -140,13 +140,16 @@ const FactCell = ({ label, value, note }: { label: string; value: string; note?:
 const AtAGlance = ({ study }: { study: CaseStudy }) => {
   const facts = study.facts;
   if (!facts) return null;
+  // Role lives in the Overview when a detailed role breakdown exists — don't print it twice.
   const cells = [
     { label: "Timeline", value: facts.timeline, note: facts.timelineNote },
     { label: "Team", value: facts.team },
-    { label: "My Role", value: facts.role },
+    ...(study.overview?.roleDetail?.length ? [] : [{ label: "My Role", value: facts.role }]),
     { label: "Setting", value: facts.setting },
+    ...(facts.platform ? [{ label: "Platform", value: facts.platform }] : []),
   ];
   const chips = study.toolkit ?? [];
+
   return (
     <Reveal className="mt-10">
       <div className="border-t border-border pt-8">
