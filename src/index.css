@@ -432,7 +432,8 @@
   }
 
   .lift-hover:hover,
-  .lift-hover:active {
+  .lift-hover:active,
+  .press:active {
     transform: none;
   }
 
