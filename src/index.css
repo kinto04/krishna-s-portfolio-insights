@@ -198,6 +198,24 @@
     transition-timing-function: var(--ease-out-quint);
   }
 
+  /* Press feedback: every custom control answers the pointer. */
+  .press {
+    transition: transform 0.16s var(--ease-out-quint);
+  }
+  .press:active {
+    transform: scale(0.97);
+  }
+
+  /* The single focus treatment for custom controls. */
+  .focus-ring:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px hsl(var(--background)),
+      0 0 0 4px hsl(var(--ring));
+  }
+
+
+
 
   .animate-fade-in-up {
     animation: fadeInUp 0.85s var(--ease-out-expo) both;
