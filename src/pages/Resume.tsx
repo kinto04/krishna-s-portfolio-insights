@@ -115,6 +115,7 @@ const Resume = () => {
             AI · E-commerce · Travel · Healthcare · Photography · Writing
           </p>
         </section>
+      </div>
       </section>
     </Layout>
   );

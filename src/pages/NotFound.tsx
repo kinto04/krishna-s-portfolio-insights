@@ -35,6 +35,7 @@ const NotFound = () => {
             View work
           </Link>
         </div>
+      </div>
       </section>
     </Layout>
   );

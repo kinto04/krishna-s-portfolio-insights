@@ -91,6 +91,7 @@ const Contact = () => {
           </div>
           <Button type="submit">Send Message</Button>
         </form>
+      </div>
       </section>
     </Layout>
   );
