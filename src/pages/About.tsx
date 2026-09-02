@@ -68,7 +68,7 @@ const About = () => {
     <Layout>
       <div
         ref={containerRef}
-        className="relative max-w-3xl mx-auto px-6 section-y stack-lg overflow-visible"
+        className="relative container-page section-y stack-lg overflow-visible measure"
       >
         {/* cursor-reactive glow behind the hero */}
         <div
