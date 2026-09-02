@@ -127,6 +127,16 @@
     max-width: 48rem; /* max-w-3xl */
   }
 
+  /* Applied to the container itself: container keeps the shared left edge,
+     its direct children get the reading measure. */
+  .container-page.measure {
+    max-width: 64rem;
+  }
+  .container-page.measure > * {
+    max-width: 48rem;
+  }
+
+
   /* Vertical page rhythm — one value, every page. */
 
   .section-y {
