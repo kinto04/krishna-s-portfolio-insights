@@ -29,7 +29,7 @@ const Home = () => {
         <div className="hero-ambient" aria-hidden="true" />
         <HeroNetwork />
         <div className="hero-noise" aria-hidden="true" />
-        <div className="relative max-w-3xl mx-auto px-6 section-y">
+        <div className="relative container-page section-y measure">
 
           <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
           <div className="mb-6" data-magnetic="1">
