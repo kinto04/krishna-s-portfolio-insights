@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 t-base ${
         scrolled || isOpen
           ? "bg-background/75 backdrop-blur-md border-b border-border"
           : "bg-transparent border-b border-transparent"
@@ -61,9 +61,10 @@ const Navbar = () => {
         </div>
 
         <button
-          className="md:hidden p-2 text-foreground"
+          className="md:hidden -mr-2 p-2 rounded-md text-foreground press focus-ring"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
