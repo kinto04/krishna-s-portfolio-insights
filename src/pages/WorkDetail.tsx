@@ -369,7 +369,7 @@ const WorkDetail = () => {
   if (!study) {
     return (
       <Layout>
-        <div className="max-w-3xl mx-auto px-6 section-y">
+        <div className="container-page section-y measure">
           <p className="text-muted-foreground">Case study not found.</p>
           <Link to="/work" className="text-sm text-foreground underline mt-4 inline-block">
             ← Back to work
@@ -396,7 +396,7 @@ const WorkDetail = () => {
   return (
     <Layout>
       <div style={themeStyle} className={themed ? "w-full" : undefined}>
-        <article className="max-w-5xl mx-auto px-6 section-y-tight">
+        <article className="container-page section-y-tight">
           <Link
             to="/work"
             className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground t-base mb-8"

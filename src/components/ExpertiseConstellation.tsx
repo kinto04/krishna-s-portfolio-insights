@@ -243,7 +243,7 @@ const ExpertiseConstellation = () => {
   return (
     <section className="relative overflow-hidden section-y-tight section-band">
       <div className="hero-noise" aria-hidden="true" />
-      <div className="relative max-w-5xl mx-auto px-6">
+      <div className="relative container-page">
         <Reveal className="mb-6">
           <h2 className="font-serif t-section-title tracking-tight text-foreground">
             A representation of my work

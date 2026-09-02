@@ -18,7 +18,7 @@ const StoryPost = () => {
   if (!post) {
     return (
       <Layout>
-        <div className="max-w-3xl mx-auto px-6 section-y">
+        <div className="container-page section-y measure">
           <p className="text-muted-foreground">Story not found.</p>
           <Link to="/stories" className="text-sm text-foreground underline mt-4 inline-block">
             ← Back to stories
@@ -128,7 +128,7 @@ const StoryPost = () => {
 
   return (
     <Layout>
-      <article className="max-w-3xl mx-auto px-6 section-y">
+      <article className="container-page section-y measure">
         <Link
           to="/stories"
           className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground t-base mb-10"

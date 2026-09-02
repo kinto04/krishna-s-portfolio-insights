@@ -23,7 +23,7 @@ const Work = () => {
 
   return (
     <Layout>
-      <section className="max-w-5xl mx-auto px-6 section-y">
+      <section className="container-page section-y">
         <div className="animate-fade-in-up">
           <p className="label-eyebrow mb-3">Case studies</p>
           <h1 className="font-serif t-page-title tracking-tight text-foreground mb-3">Work</h1>

@@ -38,7 +38,7 @@ const Navbar = () => {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="container-page h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center" aria-label="Krishna Suresh">
           <Logo showMark />
         </Link>

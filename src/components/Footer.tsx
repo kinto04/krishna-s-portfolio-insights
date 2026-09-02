@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="border-t border-border mt-20">
-      <div className="max-w-5xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="container-page py-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div>
           <p className="font-serif text-base text-foreground mb-1">
             Designing with AI, building for humans<span className="text-primary">.</span>
