@@ -2,12 +2,24 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { CaseStudy } from "@/data/caseStudies";
 import { Pill } from "@/components/ui/pill";
+import { tagColor } from "@/lib/tagColors";
+import { cn } from "@/lib/utils";
 
-const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
+type CaseStudyCardProps = {
+  study: CaseStudy;
+  presentation?: "open" | "contained";
+};
+
+const CaseStudyCard = ({ study, presentation = "open" }: CaseStudyCardProps) => {
+  const isContained = presentation === "contained";
+
   return (
     <Link
       to={`/work/${study.slug}`}
-      className="group flex flex-col h-full border-t border-border pt-3 lift-hover t-base hover:border-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className={cn(
+        "group flex h-full flex-col lift-hover t-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        isContained ? "p-4 sm:p-5" : "border-t border-border pt-3 hover:border-foreground/60",
+      )}
     >
       <div className="aspect-[16/10] bg-card rounded-sm mb-5 overflow-hidden border border-border">
 
@@ -45,9 +57,17 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
             {study.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center gap-1.5 border-t border-border px-0 py-1 text-[10px] font-mono uppercase tracking-normal text-muted-foreground"
+                className="inline-flex items-center gap-1.5 border-t px-0 py-1 text-[10px] font-medium uppercase tracking-normal"
+                style={{
+                  borderColor: `color-mix(in srgb, ${tagColor(tag)} 32%, transparent)`,
+                  color: tagColor(tag),
+                }}
               >
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary/70" aria-hidden="true" />
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ backgroundColor: tagColor(tag) }}
+                  aria-hidden="true"
+                />
                 {tag}
               </span>
             ))}

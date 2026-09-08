@@ -38,7 +38,7 @@ A warm, image-led portfolio for an AI-forward product designer and engineer. The
 
 ## Colors
 
-Warm off-white, deep ink, and cool pale-blue surfaces carry the interface. Persian Blue is the only brand accent; related blue and indigo shades may distinguish capability metadata without becoming a multicolor identity.
+Warm off-white, deep ink, and cool pale-blue surfaces carry the interface. Persian Blue is the only brand accent; related blue and indigo shades distinguish capability metadata without becoming a multicolor identity. Project-tag dots, labels, and graph nodes share one canonical tag palette so color always carries the same meaning.
 
 Do not use gradients, blurred glow, or saturated accent fields. Case-study-specific themes may override semantic tokens only inside their detail pages.
 
@@ -64,7 +64,7 @@ Use square to subtly rounded corners. The base radius is the maximum for content
 
 ## Components
 
-Project tiles lead with real imagery, then title, description, and compact metadata. The homepage relationship graph is a functional exception: every node maps to a real project tag and links directly to filtered work using restrained blue and indigo emphasis.
+Project tiles lead with real imagery, then title, description, and compact metadata. Featured homepage tiles sit within one flat, bordered group with internal dividers; the Work index keeps the open tile layout for faster scanning. The homepage relationship graph is a functional exception: every node maps to a real project tag and links directly to filtered work using the same restrained blue and indigo tag palette.
 
 Reveal motion is short, directional, and blur-free. Controls use the shared press and focus treatments.
 
