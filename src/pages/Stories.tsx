@@ -11,10 +11,7 @@ const Stories = () => {
   return (
     <Layout>
       <section className="container-page section-y">
-        <h1 className="t-page-title text-foreground mb-3">Stories</h1>
-        <p className="text-muted-foreground mb-10 max-w-xl">
-          A photo and movie journal from my visit to one of the world's oldest living cities.
-        </p>
+        <h1 className="t-page-title text-foreground mb-10">Stories</h1>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post) => (
