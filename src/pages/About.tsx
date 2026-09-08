@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
-import { usePointerGlow } from "@/hooks/usePointerGlow";
 import coffeePopup from "@/assets/coffee-popup.jpeg.asset.json";
 import soccerTeam from "@/assets/soccer-team.png.asset.json";
 import outdoorPines from "@/assets/outdoor-pines.jpg.asset.json";
@@ -58,8 +57,6 @@ const experience = [
 ];
 
 const About = () => {
-  const { containerRef, glowRef } = usePointerGlow<HTMLDivElement>();
-
   useEffect(() => {
     document.title = "About — Krishna Suresh";
   }, []);
@@ -67,31 +64,19 @@ const About = () => {
   return (
     <Layout>
       <div
-        ref={containerRef}
         className="relative container-page section-y stack-lg overflow-visible measure"
       >
-        {/* cursor-reactive glow behind the hero */}
-        <div
-          ref={glowRef}
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-24 -left-24 h-[28rem] w-[28rem] rounded-full opacity-0 transition-opacity duration-700 data-[active=true]:opacity-100"
-          style={{
-            background:
-              "radial-gradient(circle at var(--mx, 50%) var(--my, 50%), hsl(var(--primary) / 0.14), transparent 65%)",
-          }}
-        />
-
         {/* Hero */}
         <Reveal className="relative flex flex-col sm:flex-row gap-8 items-center">
           <div className="group relative shrink-0">
             <img
               src="/images/headshot.jpeg"
               alt="Portrait of Krishna Suresh"
-              className="w-40 h-40 rounded-lg object-cover object-top border border-border ring-1 ring-primary/20 shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.35)] rotate-[-2deg] transition-transform duration-500 ease-out group-hover:rotate-0"
+              className="w-40 h-40 rounded-sm object-cover object-top border border-border transition-transform duration-300 group-hover:translate-x-1"
             />
           </div>
           <div>
-            <h1 className="font-serif t-page-title tracking-tight text-foreground mb-2">
+            <h1 className="t-page-title text-foreground mb-2">
               Krishna Suresh<span className="text-primary">.</span>
             </h1>
             <p className="text-muted-foreground text-sm">

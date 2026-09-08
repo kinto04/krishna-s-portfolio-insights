@@ -5,7 +5,6 @@ import CaseStudyCard from "@/components/CaseStudyCard";
 import { caseStudies } from "@/data/caseStudies";
 import { ArrowRight, GraduationCap } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import HeroNetwork from "@/components/HeroNetwork";
 import HeroHeadline from "@/components/HeroHeadline";
 import ExpertiseConstellation from "@/components/ExpertiseConstellation";
 
@@ -25,29 +24,31 @@ const Home = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="hero-ambient" aria-hidden="true" />
-        <HeroNetwork />
-        <div className="hero-noise" aria-hidden="true" />
-        <div className="relative container-page section-y measure">
-
-          <p className="text-lg text-muted-foreground mb-2 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
-          <div className="mb-6" data-magnetic="1">
-            <HeroHeadline />
+      <section className="relative overflow-hidden border-b border-border grid-rule">
+        <div className="container-page border-x border-border/50">
+          <div className="signal-stripe" aria-hidden="true"><span /><span /><span /><span /></div>
+          <div className="grid gap-12 py-16 sm:py-24 lg:grid-cols-12 lg:gap-8">
+            <div className="lg:col-span-9">
+              <p className="label-eyebrow mb-6 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
+              <div className="mb-8">
+                <HeroHeadline />
+              </div>
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl animate-fade-in-up-delay-3">
+                {heroVariant.subtitle}
+              </p>
+            </div>
+            <aside className="lg:col-span-3 lg:border-l lg:border-border lg:pl-6 flex flex-col justify-end animate-fade-in-up-delay-3">
+              <p className="label-eyebrow mb-4">Background</p>
+              <div className="flex gap-3 text-sm text-muted-foreground">
+                <GraduationCap size={15} className="mt-1 shrink-0 text-signal-green" aria-hidden="true" />
+                <p>MS Engineering Design Innovation, Northwestern<br />BS Computer Science, Purdue</p>
+              </div>
+            </aside>
           </div>
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-4 animate-fade-in-up-delay-3">
-            {heroVariant.subtitle}
-          </p>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground/70 max-w-xl mb-8 animate-fade-in-up-delay-3">
-            <GraduationCap size={14} className="shrink-0" aria-hidden="true" />
-            <span>MS Engineering Design Innovation, Northwestern</span>
-            <span className="text-muted-foreground/40" aria-hidden="true">·</span>
-            <span>BS Computer Science, Purdue</span>
-          </div>
-          <div className="flex gap-4 animate-fade-in-up-delay-4">
+          <div className="flex flex-wrap gap-3 border-t border-border py-5 animate-fade-in-up-delay-4">
             <Link
               to="/work"
-              className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-md text-sm font-medium lift-hover t-base hover:bg-primary-hover"
+              className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-sm text-sm font-medium press t-base hover:bg-primary-hover focus-ring"
             >
               View My Work
               <ArrowRight
@@ -57,7 +58,7 @@ const Home = () => {
             </Link>
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-md text-sm font-medium text-foreground lift-hover t-base hover:border-primary/60 hover:bg-card"
+              className="inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-sm text-sm font-medium text-foreground press t-base hover:border-foreground hover:bg-card focus-ring"
             >
               About Me
             </Link>
@@ -70,13 +71,13 @@ const Home = () => {
 
 
       {/* Featured Work */}
-      <section className="container-page section-y section-band">
+      <section className="container-page section-y border-x border-border/50">
         <Reveal className="mb-10">
           <p className="label-eyebrow mb-3">Selected work</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground">Case studies</h2>
+          <h2 className="t-section-title text-foreground">Case studies</h2>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-8 items-stretch">
+        <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {featuredStudies.map((study, i) => (
             <Reveal key={study.slug} index={i} className="h-full">
               <CaseStudyCard study={study} />
