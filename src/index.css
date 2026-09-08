@@ -292,10 +292,6 @@
     animation: nodePreviewIn 0.22s var(--ease-out-quint) both;
   }
 
-  .graph-signal {
-    opacity: 0.7;
-  }
-
   @keyframes nodePreviewIn {
     from {
       opacity: 0;

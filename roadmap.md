@@ -10,4 +10,4 @@
 - [x] Validate the Persian Blue system across core desktop and mobile pages
 - [x] Restore the functional homepage relationship graph and project previews
 - [x] Reconnect the hero actions, restore the education icon, and unify heading typography
-- [ ] Validate the revised homepage at desktop/mobile sizes and with reduced motion
+- [x] Validate the revised homepage at desktop/mobile sizes and with reduced motion

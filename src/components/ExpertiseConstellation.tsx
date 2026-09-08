@@ -124,12 +124,20 @@ const ExpertiseConstellation = () => {
                     strokeOpacity={related ? 0.25 : 0.07}
                     className="t-base"
                   />
-                  <circle r="2" fill="hsl(var(--primary))" className="graph-signal">
+                  <circle r="2" fill="hsl(var(--primary))" opacity="0" className="graph-signal">
                     <animateMotion
                       dur={`${7 + index * 0.7}s`}
                       begin={`${index * 0.55}s`}
                       repeatCount="indefinite"
                       path={`M ${start.x} ${start.y} L ${end.x} ${end.y}`}
+                    />
+                    <animate
+                      attributeName="opacity"
+                      values="0;0.7;0.7;0"
+                      keyTimes="0;0.08;0.88;1"
+                      dur={`${7 + index * 0.7}s`}
+                      begin={`${index * 0.55}s`}
+                      repeatCount="indefinite"
                     />
                   </circle>
                 </g>
