@@ -4,4 +4,4 @@
 - [x] Redesign the homepage hero, capability map, and project cards around an asymmetric grid
 - [x] Carry the typography, surfaces, and interaction treatment across supporting pages
 - [x] Update DESIGN.md to document the new system
-- [ ] Validate desktop/mobile presentation, navigation, filtering, links, and reduced motion
+- [x] Validate desktop/mobile presentation, navigation, filtering, links, and reduced motion

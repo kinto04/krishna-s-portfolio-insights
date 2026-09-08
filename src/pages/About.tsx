@@ -64,10 +64,10 @@ const About = () => {
   return (
     <Layout>
       <div
-        className="relative container-page section-y stack-lg overflow-visible measure"
+        className="relative container-page section-y stack-lg overflow-visible"
       >
         {/* Hero */}
-        <Reveal className="relative flex flex-col sm:flex-row gap-8 items-center">
+        <Reveal className="relative grid gap-8 border-b border-border pb-12 sm:grid-cols-[10rem_minmax(0,1fr)] sm:items-end">
           <div className="group relative shrink-0">
             <img
               src="/images/headshot.jpeg"
@@ -75,7 +75,7 @@ const About = () => {
               className="w-40 h-40 rounded-sm object-cover object-top border border-border transition-transform duration-300 group-hover:translate-x-1"
             />
           </div>
-          <div>
+          <div className="max-w-2xl">
             <h1 className="t-page-title text-foreground mb-2">
               Krishna Suresh<span className="text-primary">.</span>
             </h1>
@@ -86,7 +86,7 @@ const About = () => {
         </Reveal>
 
         {/* Bio */}
-        <Reveal className="space-y-6 text-muted-foreground leading-relaxed">
+        <Reveal className="max-w-3xl space-y-6 text-muted-foreground leading-relaxed">
           <p>
             I'm a <strong className="text-foreground">Designer and UX Engineer</strong> who builds at the intersection of research, design, and engineering. CS degree from Purdue. Just graduated with an{" "}
             <strong className="text-foreground">MS in Engineering Design Innovation from Northwestern</strong>.
@@ -107,13 +107,13 @@ const About = () => {
         </Reveal>
 
         {/* Beyond work */}
-        <Reveal>
+        <Reveal className="w-full">
           <p className="label-eyebrow mb-3">Beyond work</p>
           <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
             Street photography and film, specialty coffee, and sport — soccer, running, climbing, trails.
           </p>
 
-          <div className="columns-2 md:columns-3 gap-4 [&>figure]:mb-4">
+          <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:columns-4 [&>figure]:mb-3 sm:[&>figure]:mb-4">
             {[
               { src: "/images/varanasi/flower-market.jpg", alt: "A woman selling flowers at a market in Varanasi", ratio: "aspect-[4/5]" },
               { src: marathonFinish.url, alt: "Finishing the San Francisco half marathon", ratio: "aspect-[3/4]" },
@@ -149,7 +149,7 @@ const About = () => {
         </Reveal>
 
         {/* Experience */}
-        <Reveal>
+        <Reveal className="max-w-4xl border-t border-border pt-12">
           <p className="label-eyebrow mb-3">Where I've worked</p>
           <h2 className="t-section-title text-foreground mb-6">Experience</h2>
           <div className="space-y-5">
@@ -172,7 +172,7 @@ const About = () => {
         </Reveal>
 
         {/* Education */}
-        <Reveal>
+        <Reveal className="max-w-3xl border-t border-border pt-12">
           <p className="label-eyebrow mb-3">Background</p>
           <h2 className="t-section-title text-foreground mb-4">Education</h2>
           <div className="space-y-4">
@@ -188,7 +188,7 @@ const About = () => {
         </Reveal>
 
         {/* Current Focus */}
-        <Reveal>
+        <Reveal className="max-w-3xl border-t border-border pt-12">
           <p className="label-eyebrow mb-3">Right now</p>
           <h2 className="t-section-title text-foreground mb-4">What I'm working on</h2>
 
@@ -201,7 +201,7 @@ const About = () => {
         </Reveal>
 
         {/* A few more things */}
-        <Reveal>
+        <Reveal className="max-w-3xl border-t border-border pt-12">
           <p className="label-eyebrow mb-3">The small print</p>
           <h2 className="t-section-title text-foreground mb-4">A few more things</h2>
           <div className="grid sm:grid-cols-2 gap-4 text-sm">

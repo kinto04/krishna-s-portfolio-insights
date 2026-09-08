@@ -274,7 +274,7 @@
     animation: fadeInUp 0.9s var(--ease-out-expo) 0.36s both;
   }
 
-  /* Scroll reveal: rises, unblurs and settles — one composited transform. */
+  /* Scroll reveal: rises and settles using one composited transform. */
   .scroll-fade-in {
     opacity: 0;
     transform: translate3d(0, 16px, 0);
