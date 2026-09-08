@@ -110,7 +110,7 @@ const About = () => {
         <Reveal className="w-full">
           <p className="label-eyebrow mb-3">Beyond work</p>
           <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-            Street photography and film, specialty coffee, and sport — soccer, running, climbing, trails.
+            Some of the things I enjoy outside of work - street photography, coffee, and sports
           </p>
 
           <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:columns-4 [&>figure]:mb-3 sm:[&>figure]:mb-4">
