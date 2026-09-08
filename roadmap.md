@@ -8,3 +8,6 @@
 - [x] Replace the Google-like four-color system with the selected Persian Blue direction
 - [x] Remove the homepage background rail, registration stripe, and grid wallpaper
 - [x] Validate the Persian Blue system across core desktop and mobile pages
+- [x] Restore the functional homepage relationship graph and project previews
+- [x] Reconnect the hero actions, restore the education icon, and unify heading typography
+- [x] Validate the revised homepage at desktop/mobile sizes and with reduced motion

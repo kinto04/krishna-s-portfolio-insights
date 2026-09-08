@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { caseStudies } from "@/data/caseStudies";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, GraduationCap } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import HeroHeadline from "@/components/HeroHeadline";
 import ExpertiseConstellation from "@/components/ExpertiseConstellation";
@@ -35,28 +35,29 @@ const Home = () => {
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl animate-fade-in-up-delay-3">
                 {heroVariant.subtitle}
               </p>
-              <p className="mt-5 text-sm text-muted-foreground animate-fade-in-up-delay-3">
-                MS Engineering Design Innovation, Northwestern · BS Computer Science, Purdue
-              </p>
+              <div className="mt-5 flex items-start gap-2 text-sm text-muted-foreground animate-fade-in-up-delay-3">
+                <GraduationCap size={16} className="mt-0.5 shrink-0 text-primary" aria-hidden="true" />
+                <p>MS Engineering Design Innovation, Northwestern · BS Computer Science, Purdue</p>
+              </div>
+              <div className="mt-8 flex flex-wrap gap-3 animate-fade-in-up-delay-4">
+                <Link
+                  to="/work"
+                  className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-sm text-sm font-medium press t-base hover:bg-primary-hover focus-ring"
+                >
+                  View My Work
+                  <ArrowRight
+                    size={14}
+                    className="transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:translate-x-1"
+                  />
+                </Link>
+                <Link
+                  to="/about"
+                  className="inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-sm text-sm font-medium text-foreground press t-base hover:border-foreground hover:bg-card focus-ring"
+                >
+                  About Me
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-wrap gap-3 border-t border-border py-5 animate-fade-in-up-delay-4">
-            <Link
-              to="/work"
-              className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-sm text-sm font-medium press t-base hover:bg-primary-hover focus-ring"
-            >
-              View My Work
-              <ArrowRight
-                size={14}
-                className="transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:translate-x-1"
-              />
-            </Link>
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-sm text-sm font-medium text-foreground press t-base hover:border-foreground hover:bg-card focus-ring"
-            >
-              About Me
-            </Link>
           </div>
         </div>
       </section>

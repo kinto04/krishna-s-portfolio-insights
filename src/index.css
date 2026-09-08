@@ -450,6 +450,10 @@
     display: none;
   }
 
+  .graph-signal {
+    display: none;
+  }
+
 
 }
 

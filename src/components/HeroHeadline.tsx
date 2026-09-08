@@ -38,7 +38,7 @@ const HeroHeadline = () => {
   return (
     <h1
       ref={ref}
-      className="text-5xl sm:text-7xl lg:text-[5.5rem] font-semibold tracking-normal leading-[0.98]"
+      className="t-page-title"
     >
       {SEGMENTS.map((segment, si) => (
         <span
