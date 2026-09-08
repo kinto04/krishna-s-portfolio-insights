@@ -7,4 +7,4 @@
 - [x] Validate desktop/mobile presentation, navigation, filtering, links, and reduced motion
 - [x] Replace the Google-like four-color system with the selected Persian Blue direction
 - [x] Remove the homepage background rail, registration stripe, and grid wallpaper
-- [ ] Validate the Persian Blue system across core desktop and mobile pages
+- [x] Validate the Persian Blue system across core desktop and mobile pages
