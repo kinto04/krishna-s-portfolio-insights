@@ -63,7 +63,7 @@ const StoryPost = () => {
       case "lead":
         return (
           <Reveal key={i}>
-            <p className="font-serif text-xl sm:text-2xl leading-relaxed text-foreground mb-10">
+            <p className="text-xl sm:text-2xl font-medium leading-relaxed text-foreground mb-10">
               {block.text}
             </p>
           </Reveal>
@@ -77,7 +77,7 @@ const StoryPost = () => {
       case "heading":
         return (
           <Reveal key={i}>
-            <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground mt-14 mb-6">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-foreground mt-14 mb-6">
               {block.text}
             </h2>
           </Reveal>
@@ -143,7 +143,7 @@ const StoryPost = () => {
           </time>
         </div>
 
-<h1 className="font-serif text-3xl sm:text-5xl tracking-tight text-foreground mb-4">
+        <h1 className="text-3xl sm:text-5xl font-semibold text-foreground mb-4">
           {post.title}
         </h1>
 

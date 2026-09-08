@@ -26,7 +26,7 @@ const Work = () => {
       <section className="container-page section-y">
         <div className="animate-fade-in-up">
           <p className="label-eyebrow mb-3">Case studies</p>
-          <h1 className="font-serif t-page-title tracking-tight text-foreground mb-3">Work</h1>
+          <h1 className="t-page-title text-foreground mb-3">Work</h1>
           <p className="text-muted-foreground mb-6">
             A selection of products I've built, designed, and managed - from AI chatbots to clinical tools.
           </p>
@@ -57,9 +57,9 @@ const Work = () => {
           {!tag && <div className="mb-10" />}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-x-6 gap-y-14">
           {shown.map((study, i) => (
-            <Reveal key={study.slug} index={i}>
+            <Reveal key={study.slug} index={i} className={i % 2 === 1 ? "md:translate-y-12" : undefined}>
               <CaseStudyCard study={study} />
             </Reveal>
           ))}

@@ -151,7 +151,7 @@ const About = () => {
         {/* Experience */}
         <Reveal>
           <p className="label-eyebrow mb-3">Where I've worked</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-6">Experience</h2>
+          <h2 className="t-section-title text-foreground mb-6">Experience</h2>
           <div className="space-y-5">
             {experience.map((job) => (
               <div
@@ -174,7 +174,7 @@ const About = () => {
         {/* Education */}
         <Reveal>
           <p className="label-eyebrow mb-3">Background</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Education</h2>
+          <h2 className="t-section-title text-foreground mb-4">Education</h2>
           <div className="space-y-4">
             <div>
               <p className="text-foreground font-medium">Northwestern University</p>
@@ -190,7 +190,7 @@ const About = () => {
         {/* Current Focus */}
         <Reveal>
           <p className="label-eyebrow mb-3">Right now</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">What I'm working on</h2>
+          <h2 className="t-section-title text-foreground mb-4">What I'm working on</h2>
 
           <ul className="space-y-3 text-muted-foreground">
             <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Building Huelo - AI-powered interior design and shopping for urban renters</li>
@@ -203,7 +203,7 @@ const About = () => {
         {/* A few more things */}
         <Reveal>
           <p className="label-eyebrow mb-3">The small print</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">A few more things</h2>
+          <h2 className="t-section-title text-foreground mb-4">A few more things</h2>
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
             <div className="rounded-lg border border-border p-4">
               <p className="text-foreground font-medium mb-1">Based in</p>
@@ -219,7 +219,7 @@ const About = () => {
         {/* Links */}
         <Reveal className="border-t border-border pt-10">
           <p className="label-eyebrow mb-3">Contact</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Get in Touch</h2>
+          <h2 className="t-section-title text-foreground mb-4">Get in Touch</h2>
           <div className="flex flex-wrap gap-6">
             <a
               href="https://linkedin.com/in/krishna-suresh"

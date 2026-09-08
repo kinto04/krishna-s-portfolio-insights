@@ -15,7 +15,7 @@ const NotFound = () => {
     <Layout>
       <section className="container-page section-y"><div className="measure">
         <p className="label-eyebrow mb-4">Error 404</p>
-        <h1 className="font-serif text-4xl sm:text-5xl tracking-tight text-foreground mb-3">
+        <h1 className="t-page-title text-foreground mb-3">
           This page doesn't exist<span className="text-primary">.</span>
         </h1>
         <p className="text-muted-foreground mb-8 max-w-md">

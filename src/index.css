@@ -400,12 +400,10 @@
   from {
     opacity: 0;
     transform: translate3d(0, 18px, 0);
-    filter: blur(5px);
   }
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    filter: blur(0);
   }
 }
 
@@ -413,12 +411,10 @@
   from {
     opacity: 0;
     transform: translate3d(0, 26px, 0);
-    filter: blur(5px);
   }
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    filter: blur(0);
   }
 }
 
