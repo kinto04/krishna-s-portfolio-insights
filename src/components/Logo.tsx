@@ -18,7 +18,7 @@ export function Logo({ className, showMark = false }: LogoProps) {
         aria-hidden="true"
       >
         <path fill="currentColor" d="M11 7h5v12.1L24.8 10H31l-9.2 9.2L31.5 33h-6.1l-7.1-10.2L16 25.1V33h-5V7Z" />
-        <rect x="31" y="28" width="4" height="5" className="fill-signal-blue" />
+        <rect x="31" y="28" width="4" height="5" className="fill-primary" />
       </svg>
     </span>
   );
