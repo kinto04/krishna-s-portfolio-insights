@@ -1,3 +1,5 @@
+import northwesternMedicineCover from "@/assets/northwestern-medicine-cover.png.asset.json";
+
 export interface Metric {
   value: string;
   label: string;
@@ -56,6 +58,7 @@ export interface CaseStudy {
   featured: boolean;
   coverImage?: string;
   heroImage?: string;
+  imageFit?: "cover" | "contain";
   liveUrl?: string;
   metrics?: Metric[];
   slides?: Slide[];
@@ -434,7 +437,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Going into an existing research project at Northwestern Feinberg School of Medicine, I was tasked with owning research and design for a new digital product aimed at supporting diagnosis and treatment of pediatric patients with disorders of gut-brain interaction.",
     featured: false,
-    coverImage: "/images/northwestern-medicine/cover.jpg",
+    coverImage: northwesternMedicineCover.url,
+    heroImage: northwesternMedicineCover.url,
+    imageFit: "contain",
     facts: {
       timeline: "2025",
       team: "Sole designer and PM inside an existing research project",

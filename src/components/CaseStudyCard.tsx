@@ -15,7 +15,7 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
           <img
             src={study.coverImage}
             alt={study.title}
-            className="w-full h-full object-cover transition-transform duration-[900ms] [transition-timing-function:var(--ease-out-expo)] group-hover:scale-[1.05]"
+            className={`w-full h-full transition-transform duration-[900ms] [transition-timing-function:var(--ease-out-expo)] group-hover:scale-[1.05] ${study.imageFit === "contain" ? "object-contain" : "object-cover"}`}
             loading="lazy"
           />
         ) : (

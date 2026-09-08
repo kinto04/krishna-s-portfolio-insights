@@ -100,7 +100,11 @@ const Hero = ({ study }: { study: CaseStudy }) => (
   <header className="relative">
     {(study.heroImage || study.coverImage) && (
       <div className="relative aspect-[21/9] rounded-sm overflow-hidden bg-card mb-8">
-        <img src={study.heroImage || study.coverImage} alt={study.title} className="w-full h-full object-cover" />
+        <img
+          src={study.heroImage || study.coverImage}
+          alt={study.title}
+          className={`w-full h-full ${study.imageFit === "contain" ? "object-contain" : "object-cover"}`}
+        />
       </div>
     )}
     <div className="animate-fade-in-up max-w-3xl">
