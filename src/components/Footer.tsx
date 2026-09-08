@@ -3,8 +3,8 @@ const Footer = () => {
     <footer className="border-t border-border mt-20">
       <div className="container-page py-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div>
-          <p className="font-serif text-base text-foreground mb-1">
-            Designing with AI, building for humans<span className="text-primary">.</span>
+          <p className="text-base font-medium text-foreground mb-1">
+            Designing with AI, building for humans<span className="text-signal-blue">.</span><span className="text-signal-red">.</span><span className="text-signal-yellow">.</span><span className="text-signal-green">.</span>
           </p>
           <p className="label-eyebrow">
             © {new Date().getFullYear()} Krishna Suresh

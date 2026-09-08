@@ -8,9 +8,9 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
   return (
     <Link
       to={`/work/${study.slug}`}
-      className="group flex flex-col h-full rounded-lg border border-border p-3 lift-hover t-base hover:border-primary/40 hover:accent-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="group flex flex-col h-full border-t border-border pt-3 lift-hover t-base hover:border-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
-      <div className="aspect-[16/10] bg-card rounded-md mb-4 overflow-hidden">
+      <div className="aspect-[16/10] bg-card rounded-sm mb-5 overflow-hidden border border-border">
 
         {study.coverImage ? (
           <img
@@ -26,7 +26,7 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
         )}
       </div>
       <div className="px-1 pb-1 flex flex-col flex-1">
-        <h3 className="font-serif text-xl sm:text-[1.4rem] font-semibold tracking-tight text-foreground group-hover:text-primary t-base mb-1.5 leading-snug line-clamp-2 min-h-[3.5rem] flex items-start gap-2">
+        <h3 className="text-xl sm:text-2xl font-semibold tracking-normal text-foreground group-hover:text-primary t-base mb-1.5 leading-snug line-clamp-2 min-h-[3.5rem] flex items-start gap-2">
           <span className="flex-1">{study.title}</span>
           {study.inProgress && (
             <Pill
@@ -46,7 +46,7 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
             {study.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-secondary/40 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-muted-foreground"
+                className="inline-flex items-center gap-1.5 border-t border-border px-0 py-1 text-[10px] font-mono uppercase tracking-normal text-muted-foreground"
               >
                 <span
                   className="h-1.5 w-1.5 rounded-full"
