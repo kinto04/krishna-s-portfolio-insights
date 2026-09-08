@@ -1,94 +1,80 @@
 ---
 version: alpha
 name: Krishna Suresh Portfolio
-description: Design language for the Krishna Suresh portfolio site.
+description: Design language for a precise, AI-forward product design portfolio.
 colors:
-  background: hsl(252 12% 6%)
-  foreground: hsl(250 12% 97%)
-  card: hsl(252 10% 10%)
-  card-foreground: hsl(250 12% 97%)
-  popover: hsl(252 10% 10%)
-  popover-foreground: hsl(250 12% 97%)
-  primary: hsl(258 88% 68%)
-  primary-foreground: hsl(252 30% 8%)
-  primary-hover: hsl(258 88% 74%)
-  primary-deep: hsl(256 62% 52%)
-  primary-soft: hsl(258 40% 16%)
-  secondary: hsl(252 8% 15%)
-  secondary-foreground: hsl(250 12% 97%)
-  muted: hsl(252 8% 15%)
-  muted-foreground: hsl(252 6% 64%)
-  accent: hsl(258 88% 68%)
-  accent-foreground: hsl(252 30% 8%)
-  destructive: hsl(358 72% 58%)
-  destructive-foreground: hsl(0 0% 100%)
-  border: hsl(252 8% 17%)
-  input: hsl(252 8% 17%)
-  ring: hsl(258 88% 68%)
-  available: hsl(160 55% 48%)
-  status-progress: hsl(38 92% 60%)
-  tag-ai: hsl(258 88% 68%)
-  tag-experience: hsl(174 60% 55%)
-  tag-interaction: hsl(32 92% 62%)
-  tag-conversational: hsl(330 70% 66%)
-  tag-research: hsl(140 48% 56%)
-  tag-healthcare: hsl(205 85% 64%)
+  background: hsl(0 0% 4%)
+  foreground: hsl(60 5% 96%)
+  card: hsl(0 0% 7%)
+  card-foreground: hsl(60 5% 96%)
+  popover: hsl(0 0% 7%)
+  popover-foreground: hsl(60 5% 96%)
+  primary: hsl(217 89% 61%)
+  primary-foreground: hsl(0 0% 100%)
+  primary-hover: hsl(217 89% 67%)
+  secondary: hsl(0 0% 11%)
+  secondary-foreground: hsl(60 5% 96%)
+  muted: hsl(0 0% 11%)
+  muted-foreground: hsl(0 0% 62%)
+  accent: hsl(217 89% 61%)
+  accent-foreground: hsl(0 0% 100%)
+  border: hsl(0 0% 18%)
+  input: hsl(0 0% 18%)
+  ring: hsl(217 89% 61%)
+  signal-blue: hsl(217 89% 61%)
+  signal-red: hsl(4 79% 56%)
+  signal-yellow: hsl(45 97% 50%)
+  signal-green: hsl(136 53% 43%)
 typography:
   sans:
-    fontFamily: Inter
-    fontSize: 17px
-    lineHeight: 1.75
-  serif:
-    fontFamily: Playfair Display
+    fontFamily: Geist Variable
+    fontSize: 16px
+    lineHeight: 1.65
+  mono:
+    fontFamily: Geist Mono Variable
 rounded:
-  base: 0.75rem
+  base: 0.375rem
 ---
 
 ## Overview
 
-A single-page-per-topic portfolio presenting case studies, writing and a personal profile. The interface is dark, editorial and typographic: serif headings over a violet-biased neutral field, with one accent hue carrying all emphasis.
+A grid-led portfolio for an AI-forward product designer and engineer. The interface is neutral, precise, and information-rich; visual character comes from structure, project imagery, and a controlled four-color signal system rather than decorative effects.
 
 ## Colors
 
-Neutrals carry a violet bias so surfaces and accent read as one family; do not introduce grey-neutral or blue-neutral surfaces.
+Black, white, and neutral gray carry the interface. Google blue is the primary interactive color. Red, yellow, and green join blue only for capability coding, registration stripes, and small status signals.
 
-Use `primary` only for interactive and emphasis states: links, hover, focus rings, active navigation and key figures. Use `primary-deep` at low opacity only for ambient depth such as the hero wash and card hover shadow. Use `available` for the availability indicator and `status-progress` for unfinished-work status only.
-
-Tag hues come from the `tag-*` tokens and are shared by case-study cards and the expertise graph; a tag's hue must match in both.
-
-Never write raw color utilities such as `text-white`, `bg-black`, palette classes like `amber-500`, or hex literals in components; reference the tokens above.
+Do not use the four-color system as a full-page gradient, blurred glow, orb, haze, or decorative background. Case-study-specific themes may override semantic tokens only inside their detail pages.
 
 ## Typography
 
-Headings `h1`–`h4` use the serif family; all interface and body copy uses the sans family. Micro-labels use the shared eyebrow style rather than local size and tracking values.
+Geist Sans is the only display and reading face. Geist Mono is reserved for eyebrows, chapter numbers, dates, categories, and compact metadata. Headings use weight and scale—not a second typeface—for hierarchy.
 
-Page titles, section titles and body copy each use the shared type utilities so scale never varies per page.
+Letter spacing remains zero. Avoid oversized display text that crowds out project evidence.
 
 ## Layout
 
-Reading pages use a `max-w-3xl` column; index, grid and case-study body pages use `max-w-5xl`.
+Pages align to a shared wide container and a visible modular grid. Asymmetry is created through column spans, offsets, and image scale while preserving clear alignment.
 
-Vertical rhythm comes from the shared section utilities, not per-page padding. Stacked sections on a shared background use the tight variant. Major landing-page sections are separated by the shared band treatment.
+Major sections are separated by one-pixel rules and surface changes, not gradient bands. Reading copy stays narrower inside the shared shell.
 
 ## Elevation & Depth
 
-Panels use the shared surface treatment: translucent card fill, one-pixel border, base radius. Depth is expressed with the accent shadow at low opacity, never with heavier borders.
+Use flat surfaces and border contrast. Cards do not glow or float. Hover feedback uses a small translation, border change, image crop, or color-channel reveal.
 
 ## Shapes
 
-Corners use only three steps derived from the base radius: small for chips and inputs, medium for buttons, large for cards and media. Pills and status dots are fully round. Do not use arbitrary radius literals.
+Use square to subtly rounded corners. The base radius is the maximum for content panels and media; compact controls may be fully round only when their established meaning requires it.
 
 ## Components
 
-Chips, tags and status labels are all rendered by the shared Pill primitive with its `outline`, `filled` and `subtle` variants; do not hand-roll a chip.
+Project tiles lead with real imagery, then title, description, and compact metadata. Capability cells link directly to filtered work and show the projects behind each capability.
 
-Scroll-in content is wrapped by the shared reveal component so entrance timing is identical across pages.
-
-Custom interactive controls that are not the Pill or link primitives carry both the shared press feedback and the shared focus ring; do not write per-component focus outlines.
+Reveal motion is short, directional, and blur-free. Controls use the shared press and focus treatments.
 
 ## Do's and Don'ts
 
-- Do route every color, shadow and radius through a token.
-- Don't animate with plain `ease-out` or `transition-all`; use the named easing tokens and name the transitioned properties.
-- Don't reintroduce the previous blue or terracotta accents.
-- Don't place a monogram-in-a-shape mark in place of the wordmark.
+- Do make project evidence the dominant visual material.
+- Do use four-color accents as precise signals.
+- Don't use serif typography, violet accents, ambient gradients, backdrop blur, magnetic movement, floating particles, or glow shadows.
+- Don't introduce decorative network diagrams when a functional matrix communicates the relationship more clearly.
