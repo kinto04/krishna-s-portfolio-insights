@@ -6,10 +6,7 @@ interface LogoProps {
 }
 
 /**
- * Name wordmark — no monogram, no container shape.
- * The accent appears exactly once, as the terminal period.
- * When showMark is true, the favicon "k" mark is rendered as a small inline
- * icon ahead of the wordmark (used in the navbar).
+ * Compact typographic mark and full wordmark.
  */
 export function Logo({ className, showMark = false }: LogoProps) {
   const mark = (
@@ -20,13 +17,8 @@ export function Logo({ className, showMark = false }: LogoProps) {
         className="h-full w-full"
         aria-hidden="true"
       >
-        {/* lowercase serif 'k' cut from the wordmark */}
-        <g fill="currentColor">
-          <path d="M12.4 7.5h4.2v18.9h-4.2z" />
-          <path d="M16.2 20.6l6.6-6.9h4.9l-7.4 7.4z" />
-          <path d="M19.3 20.1l3.4-2.2 6.1 8.5h-4.9z" />
-        </g>
-        <circle cx="30.5" cy="25.4" r="2.6" className="fill-primary" />
+        <path fill="currentColor" d="M11 7h5v12.1L24.8 10H31l-9.2 9.2L31.5 33h-6.1l-7.1-10.2L16 25.1V33h-5V7Z" />
+        <rect x="31" y="28" width="4" height="5" className="fill-signal-blue" />
       </svg>
     </span>
   );
@@ -47,7 +39,7 @@ export function Logo({ className, showMark = false }: LogoProps) {
   return (
     <span
       className={cn(
-        "group/logo inline-flex items-center font-serif text-[17px] sm:text-lg leading-none tracking-[-0.015em] text-foreground",
+        "group/logo inline-flex items-center font-medium text-[17px] sm:text-lg leading-none tracking-normal text-foreground",
         className
       )}
     >

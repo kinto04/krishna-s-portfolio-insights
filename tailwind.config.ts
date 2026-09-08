@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["Playfair Display", "Georgia", "serif"],
-        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
+        serif: ["Geist Variable", "system-ui", "sans-serif"],
+        sans: ["Geist Variable", "system-ui", "sans-serif"],
+        mono: ["Geist Mono Variable", "ui-monospace", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -31,6 +32,12 @@ export default {
           hover: "hsl(var(--primary-hover))",
           deep: "hsl(var(--primary-deep))",
           soft: "hsl(var(--primary-soft))",
+        },
+        signal: {
+          blue: "hsl(var(--signal-blue))",
+          red: "hsl(var(--signal-red))",
+          yellow: "hsl(var(--signal-yellow))",
+          green: "hsl(var(--signal-green))",
         },
 
         secondary: {

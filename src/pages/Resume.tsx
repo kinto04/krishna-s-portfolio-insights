@@ -12,7 +12,7 @@ const Resume = () => {
     <Layout>
       <section className="container-page section-y"><div className="measure">
         <div className="flex items-center justify-between mb-12">
-          <h1 className="font-serif text-4xl sm:text-5xl tracking-tight text-foreground">Resume</h1>
+          <h1 className="t-page-title text-foreground">Resume</h1>
           <Button variant="outline" size="sm" asChild>
             <a href="#" download>
               <Download size={14} />

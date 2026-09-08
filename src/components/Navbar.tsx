@@ -34,11 +34,11 @@ const Navbar = () => {
     <nav
       className={`sticky top-0 z-50 t-base ${
         scrolled || isOpen
-          ? "bg-background/75 backdrop-blur-md border-b border-border"
+          ? "bg-background/95 border-b border-border"
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="container-page h-16 flex items-center justify-between">
+      <div className="container-page h-16 flex items-center justify-between border-x border-border/50">
         <Link to="/" className="flex items-center" aria-label="Krishna Suresh">
           <Logo showMark />
         </Link>
@@ -49,7 +49,7 @@ const Navbar = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`text-sm font-sans tracking-wide t-base hover:text-foreground ${
+              className={`text-xs font-mono uppercase tracking-normal t-base hover:text-foreground ${
                 location.pathname.startsWith(link.to)
                   ? "text-foreground font-medium"
                   : "text-muted-foreground"

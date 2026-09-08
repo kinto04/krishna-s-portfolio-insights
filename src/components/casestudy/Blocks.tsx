@@ -8,8 +8,8 @@ export const ChapterHeader = ({ number, label, intro }: { number: string; label:
       Chapter {number}
     </p>
     <div className="flex items-baseline gap-5">
-      <span className="font-serif text-5xl text-primary/70 tabular-nums leading-none">{number}</span>
-      <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">{label}</h2>
+      <span className="text-5xl text-primary/70 tabular-nums leading-none">{number}</span>
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">{label}</h2>
     </div>
     {intro && (
       <p className="text-base text-muted-foreground leading-relaxed mt-4 max-w-2xl pl-0 sm:pl-[4.5rem]">{intro}</p>
@@ -22,7 +22,7 @@ const Statement = ({ text, eyebrow }: { text: string; eyebrow?: string }) => (
     {eyebrow && (
       <p className="label-eyebrow mb-4">{eyebrow}</p>
     )}
-    <p className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.15] tracking-tight">
+    <p className="text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.15] tracking-tight">
       {text}
     </p>
   </Reveal>
@@ -42,7 +42,7 @@ const Methods = ({ items }: { items: { label: string; line: string }[] }) => (
           <p className="label-eyebrow mb-2 tabular-nums">
             {String(i + 1).padStart(2, "0")}
           </p>
-          <p className="font-serif text-xl text-foreground mb-2 leading-snug">{item.label}</p>
+          <p className="text-xl text-foreground mb-2 leading-snug">{item.label}</p>
           <p className="text-sm text-muted-foreground leading-relaxed">{item.line}</p>
         </div>
       ))}
@@ -54,7 +54,7 @@ const QuoteBlock = ({ text, source }: { text: string; source: string }) => (
   <Reveal className="my-14 max-w-3xl">
     <div className="border-l-2 border-primary pl-6 sm:pl-8 relative">
       <Quote className="absolute -top-2 -left-3 text-primary/20 bg-background" size={24} />
-      <p className="font-serif italic text-xl sm:text-2xl text-foreground leading-relaxed mb-4">
+      <p className="italic text-xl sm:text-2xl text-foreground leading-relaxed mb-4">
         "{text}"
       </p>
       <p className="label-eyebrow">{source}</p>
@@ -73,16 +73,16 @@ const NumberedList = ({
 }) => (
   <Reveal className="my-14">
     {title && (
-      <h3 className="font-serif text-2xl sm:text-3xl text-foreground tracking-tight mb-3 max-w-2xl">{title}</h3>
+      <h3 className="text-2xl sm:text-3xl text-foreground mb-3 max-w-2xl">{title}</h3>
     )}
     {intro && <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-2xl">{intro}</p>}
     <div className="grid md:grid-cols-3 gap-6">
       {items.map((item, i) => (
-        <div key={item.title} className="border border-border rounded-lg p-6 bg-card/40">
-          <p className="font-serif text-3xl text-primary/70 tabular-nums leading-none mb-4">
+        <div key={item.title} className="border border-border rounded-sm p-6 bg-card/40">
+          <p className="text-3xl text-primary/70 tabular-nums leading-none mb-4">
             {String(i + 1).padStart(2, "0")}
           </p>
-          <p className="font-serif text-lg text-foreground leading-snug mb-2">{item.title}</p>
+          <p className="text-lg text-foreground leading-snug mb-2">{item.title}</p>
           <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
         </div>
       ))}
@@ -98,14 +98,14 @@ const Archetypes = ({
   <Reveal className="my-12">
     <div className="grid md:grid-cols-3 gap-5">
       {items.map((a) => (
-        <div key={a.name} className="border border-border rounded-lg p-6 bg-card/40 flex flex-col">
+        <div key={a.name} className="border border-border rounded-sm p-6 bg-card/40 flex flex-col">
           <p className="label-eyebrow mb-3 tabular-nums">
             Archetype {a.number}
           </p>
-          <p className="font-serif text-2xl text-foreground leading-tight mb-1">{a.name}</p>
+          <p className="text-2xl text-foreground leading-tight mb-1">{a.name}</p>
           <p className="label-eyebrow text-primary mb-4">{a.role}</p>
           <p className="text-sm text-muted-foreground leading-relaxed mb-5">{a.line}</p>
-          <p className="font-serif italic text-base text-foreground leading-relaxed border-l-2 border-primary/40 pl-4 mt-auto">
+          <p className="italic text-base text-foreground leading-relaxed border-l-2 border-primary/40 pl-4 mt-auto">
             "{a.quote}"
           </p>
         </div>
@@ -130,7 +130,7 @@ const ImageBlock = ({
   return (
     <Reveal className="mb-16">
       <div className={widthClass}>
-        <div className="rounded-lg overflow-hidden bg-card border border-border">
+        <div className="rounded-sm overflow-hidden bg-card border border-border">
           <img src={src} alt={caption ?? ""} className="w-full" loading="lazy" />
         </div>
         {caption && (
@@ -154,7 +154,7 @@ const FeatureGrid = ({
     {intro && <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-2xl">{intro}</p>}
     <div className="grid sm:grid-cols-2 gap-5">
       {items.map((f, i) => (
-        <div key={f.title} className="border border-border rounded-lg overflow-hidden bg-card/40 group">
+        <div key={f.title} className="border border-border rounded-sm overflow-hidden bg-card/40 group">
           <div className="aspect-[16/10] overflow-hidden bg-card">
             <img
               src={f.thumb}
@@ -167,7 +167,7 @@ const FeatureGrid = ({
             <p className="label-eyebrow mb-1 tabular-nums">
               {String(i + 1).padStart(2, "0")}
             </p>
-            <p className="font-serif text-xl text-foreground mb-1.5 leading-snug">{f.title}</p>
+            <p className="text-xl text-foreground mb-1.5 leading-snug">{f.title}</p>
             <p className="text-sm text-muted-foreground leading-relaxed">{f.line}</p>
           </div>
         </div>
@@ -193,14 +193,14 @@ const FeatureRow = ({
   return (
     <Reveal className="my-16">
       <div className="grid md:grid-cols-12 gap-6 md:gap-10 items-center">
-        <div className={`md:col-span-7 rounded-lg overflow-hidden bg-card border border-border ${reverse ? "md:order-2" : ""}`}>
+        <div className={`md:col-span-7 rounded-sm overflow-hidden bg-card border border-border ${reverse ? "md:order-2" : ""}`}>
           <img src={image} alt={title} loading="lazy" className="w-full" />
         </div>
         <div className={`md:col-span-5 ${reverse ? "md:order-1" : ""}`}>
           {eyebrow && (
             <p className="label-eyebrow text-primary mb-3">{eyebrow}</p>
           )}
-          <h3 className="font-serif text-2xl sm:text-3xl text-foreground leading-tight tracking-tight mb-3">
+          <h3 className="text-2xl sm:text-3xl text-foreground leading-tight mb-3">
             {title}
           </h3>
           <p className="text-base text-muted-foreground leading-relaxed">{body}</p>
@@ -224,7 +224,7 @@ const StatBlock = ({
   <Reveal className="my-14">
     <div className="border-y border-border py-12 grid md:grid-cols-12 gap-8 items-center">
       <div className="md:col-span-5">
-        <p className="font-serif text-7xl sm:text-8xl text-foreground leading-none mb-3 tracking-tight">
+        <p className="text-7xl sm:text-8xl text-foreground leading-none mb-3 tracking-tight">
           {value}
         </p>
         <p className="text-sm text-muted-foreground">{label}</p>

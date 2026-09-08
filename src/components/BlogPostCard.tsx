@@ -5,7 +5,7 @@ import { format } from "date-fns";
 const BlogPostCard = ({ post }: { post: BlogPost }) => {
   return (
     <Link to={`/stories/${post.slug}`} className="group block">
-      <div className="aspect-[3/2] bg-card rounded-lg mb-4 overflow-hidden border border-border">
+      <div className="aspect-[3/2] bg-card rounded-sm mb-4 overflow-hidden border border-border">
         {post.cover ? (
           <img
             src={post.cover}
@@ -25,7 +25,7 @@ const BlogPostCard = ({ post }: { post: BlogPost }) => {
           {format(new Date(post.date), "MMM d, yyyy")}
         </time>
       </div>
-      <h3 className="font-serif text-lg font-semibold text-foreground group-hover:text-primary t-base mb-2">
+      <h3 className="text-lg font-semibold text-foreground group-hover:text-primary t-base mb-2">
         {post.title}
       </h3>
       <p className="text-sm text-muted-foreground leading-relaxed">{post.excerpt}</p>

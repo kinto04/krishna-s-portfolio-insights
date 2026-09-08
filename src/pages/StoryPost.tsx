@@ -34,7 +34,7 @@ const StoryPost = () => {
         return (
           <Reveal key={i}>
             <figure className="mb-12">
-              <div className="aspect-video rounded-lg overflow-hidden border border-border bg-card">
+              <div className="aspect-video rounded-sm overflow-hidden border border-border bg-card">
                 {block.youtubeId ? (
                   <iframe
                     src={`https://www.youtube.com/embed/${block.youtubeId}`}
@@ -63,7 +63,7 @@ const StoryPost = () => {
       case "lead":
         return (
           <Reveal key={i}>
-            <p className="font-serif text-xl sm:text-2xl leading-relaxed text-foreground mb-10">
+            <p className="text-xl sm:text-2xl font-medium leading-relaxed text-foreground mb-10">
               {block.text}
             </p>
           </Reveal>
@@ -77,7 +77,7 @@ const StoryPost = () => {
       case "heading":
         return (
           <Reveal key={i}>
-            <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-foreground mt-14 mb-6">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-foreground mt-14 mb-6">
               {block.text}
             </h2>
           </Reveal>
@@ -90,7 +90,7 @@ const StoryPost = () => {
                 src={block.src}
                 alt={block.alt}
                 loading="lazy"
-                className="w-full rounded-lg border border-border"
+                className="w-full rounded-sm border border-border"
               />
               <figcaption className="mt-4 max-w-2xl">
                 {block.title && (
@@ -117,7 +117,7 @@ const StoryPost = () => {
                   src={photo.src}
                   alt={photo.alt}
                   loading="lazy"
-                  className="w-full aspect-[3/2] object-cover rounded-lg border border-border"
+                  className="w-full aspect-[3/2] object-cover rounded-sm border border-border"
                 />
               ))}
             </div>
@@ -143,7 +143,7 @@ const StoryPost = () => {
           </time>
         </div>
 
-<h1 className="font-serif text-3xl sm:text-5xl tracking-tight text-foreground mb-4">
+        <h1 className="text-3xl sm:text-5xl font-semibold text-foreground mb-4">
           {post.title}
         </h1>
 

@@ -38,7 +38,7 @@ const HeroHeadline = () => {
   return (
     <h1
       ref={ref}
-      className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight leading-[1.1]"
+      className="text-5xl sm:text-7xl lg:text-[5.5rem] font-semibold tracking-normal leading-[0.98]"
     >
       {SEGMENTS.map((segment, si) => (
         <span
@@ -49,13 +49,13 @@ const HeroHeadline = () => {
             const globalIndex =
               SEGMENTS.slice(0, si).reduce((acc, s) => acc + s.text.split(" ").length, 0) + wi;
             const staticStyle = reducedMotion
-              ? { opacity: 1, transform: "translateY(0)", filter: "blur(0)" }
+              ? { opacity: 1, transform: "translateY(0)" }
               : undefined;
             const animatedStyle = ready
               ? {
                   animation: `heroWordIn 0.75s var(--ease-out-expo) ${0.22 + globalIndex * 0.07}s both`,
                 }
-              : { opacity: 0, transform: "translateY(18px)", filter: "blur(5px)" };
+              : { opacity: 0, transform: "translateY(18px)" };
             return (
               <span key={`${si}-${wi}`} className="inline-block overflow-hidden align-bottom">
                 <span

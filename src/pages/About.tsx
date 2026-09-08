@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
-import { usePointerGlow } from "@/hooks/usePointerGlow";
 import coffeePopup from "@/assets/coffee-popup.jpeg.asset.json";
 import soccerTeam from "@/assets/soccer-team.png.asset.json";
 import outdoorPines from "@/assets/outdoor-pines.jpg.asset.json";
@@ -58,8 +57,6 @@ const experience = [
 ];
 
 const About = () => {
-  const { containerRef, glowRef } = usePointerGlow<HTMLDivElement>();
-
   useEffect(() => {
     document.title = "About — Krishna Suresh";
   }, []);
@@ -67,31 +64,19 @@ const About = () => {
   return (
     <Layout>
       <div
-        ref={containerRef}
-        className="relative container-page section-y stack-lg overflow-visible measure"
+        className="relative container-page section-y stack-lg overflow-visible"
       >
-        {/* cursor-reactive glow behind the hero */}
-        <div
-          ref={glowRef}
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-24 -left-24 h-[28rem] w-[28rem] rounded-full opacity-0 transition-opacity duration-700 data-[active=true]:opacity-100"
-          style={{
-            background:
-              "radial-gradient(circle at var(--mx, 50%) var(--my, 50%), hsl(var(--primary) / 0.14), transparent 65%)",
-          }}
-        />
-
         {/* Hero */}
-        <Reveal className="relative flex flex-col sm:flex-row gap-8 items-center">
+        <Reveal className="relative grid gap-8 border-b border-border pb-12 sm:grid-cols-[10rem_minmax(0,1fr)] sm:items-end">
           <div className="group relative shrink-0">
             <img
               src="/images/headshot.jpeg"
               alt="Portrait of Krishna Suresh"
-              className="w-40 h-40 rounded-lg object-cover object-top border border-border ring-1 ring-primary/20 shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.35)] rotate-[-2deg] transition-transform duration-500 ease-out group-hover:rotate-0"
+              className="w-40 h-40 rounded-sm object-cover object-top border border-border transition-transform duration-300 group-hover:translate-x-1"
             />
           </div>
-          <div>
-            <h1 className="font-serif t-page-title tracking-tight text-foreground mb-2">
+          <div className="max-w-2xl">
+            <h1 className="t-page-title text-foreground mb-2">
               Krishna Suresh<span className="text-primary">.</span>
             </h1>
             <p className="text-muted-foreground text-sm">
@@ -101,7 +86,7 @@ const About = () => {
         </Reveal>
 
         {/* Bio */}
-        <Reveal className="space-y-6 text-muted-foreground leading-relaxed">
+        <Reveal className="max-w-3xl space-y-6 text-muted-foreground leading-relaxed">
           <p>
             I'm a <strong className="text-foreground">Designer and UX Engineer</strong> who builds at the intersection of research, design, and engineering. CS degree from Purdue. Just graduated with an{" "}
             <strong className="text-foreground">MS in Engineering Design Innovation from Northwestern</strong>.
@@ -122,13 +107,13 @@ const About = () => {
         </Reveal>
 
         {/* Beyond work */}
-        <Reveal>
+        <Reveal className="w-full">
           <p className="label-eyebrow mb-3">Beyond work</p>
           <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
             Street photography and film, specialty coffee, and sport — soccer, running, climbing, trails.
           </p>
 
-          <div className="columns-2 md:columns-3 gap-4 [&>figure]:mb-4">
+          <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:columns-4 [&>figure]:mb-3 sm:[&>figure]:mb-4">
             {[
               { src: "/images/varanasi/flower-market.jpg", alt: "A woman selling flowers at a market in Varanasi", ratio: "aspect-[4/5]" },
               { src: marathonFinish.url, alt: "Finishing the San Francisco half marathon", ratio: "aspect-[3/4]" },
@@ -143,7 +128,7 @@ const About = () => {
             ].map((img) => (
               <figure
                 key={img.src}
-                className="group relative overflow-hidden rounded-lg border border-border break-inside-avoid"
+                className="group relative overflow-hidden rounded-sm border border-border break-inside-avoid"
               >
                 <img
                   src={img.src}
@@ -164,14 +149,14 @@ const About = () => {
         </Reveal>
 
         {/* Experience */}
-        <Reveal>
+        <Reveal className="max-w-4xl border-t border-border pt-12">
           <p className="label-eyebrow mb-3">Where I've worked</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-6">Experience</h2>
+          <h2 className="t-section-title text-foreground mb-6">Experience</h2>
           <div className="space-y-5">
             {experience.map((job) => (
               <div
                 key={job.role}
-                className="group border-l-2 border-border hover:border-primary t-base pl-4 flex gap-4"
+                className="group border-l border-border hover:border-primary t-base pl-4 flex gap-4"
               >
                 <span className="hidden sm:block w-16 shrink-0 pt-0.5 text-xs font-mono text-muted-foreground/80 group-hover:text-primary t-base">
                   {job.period}
@@ -187,9 +172,9 @@ const About = () => {
         </Reveal>
 
         {/* Education */}
-        <Reveal>
+        <Reveal className="max-w-3xl border-t border-border pt-12">
           <p className="label-eyebrow mb-3">Background</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Education</h2>
+          <h2 className="t-section-title text-foreground mb-4">Education</h2>
           <div className="space-y-4">
             <div>
               <p className="text-foreground font-medium">Northwestern University</p>
@@ -203,9 +188,9 @@ const About = () => {
         </Reveal>
 
         {/* Current Focus */}
-        <Reveal>
+        <Reveal className="max-w-3xl border-t border-border pt-12">
           <p className="label-eyebrow mb-3">Right now</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">What I'm working on</h2>
+          <h2 className="t-section-title text-foreground mb-4">What I'm working on</h2>
 
           <ul className="space-y-3 text-muted-foreground">
             <li className="flex gap-3"><span aria-hidden="true" className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-primary" />Building Huelo - AI-powered interior design and shopping for urban renters</li>
@@ -216,15 +201,15 @@ const About = () => {
         </Reveal>
 
         {/* A few more things */}
-        <Reveal>
+        <Reveal className="max-w-3xl border-t border-border pt-12">
           <p className="label-eyebrow mb-3">The small print</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">A few more things</h2>
+          <h2 className="t-section-title text-foreground mb-4">A few more things</h2>
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
-            <div className="rounded-lg border border-border p-4">
+            <div className="rounded-sm border border-border p-4">
               <p className="text-foreground font-medium mb-1">Based in</p>
               <p className="text-muted-foreground">New York, NY</p>
             </div>
-            <div className="rounded-lg border border-border p-4">
+            <div className="rounded-sm border border-border p-4">
               <p className="text-foreground font-medium mb-1">Usually doing</p>
               <p className="text-muted-foreground">Wandering a city with a camera, trying new cuisines, vibe coding solutions to my problems</p>
             </div>
@@ -234,7 +219,7 @@ const About = () => {
         {/* Links */}
         <Reveal className="border-t border-border pt-10">
           <p className="label-eyebrow mb-3">Contact</p>
-          <h2 className="font-serif t-section-title tracking-tight text-foreground mb-4">Get in Touch</h2>
+          <h2 className="t-section-title text-foreground mb-4">Get in Touch</h2>
           <div className="flex flex-wrap gap-6">
             <a
               href="https://linkedin.com/in/krishna-suresh"

@@ -34,7 +34,7 @@ const groupIntoChapters = (slides: Slide[]): Chapter[] => {
 const SlideBlock = ({ slide }: { slide: Slide; index: number; forceFullWidth?: boolean }) => {
   return (
     <Reveal className="mb-12">
-      <div className="rounded-lg overflow-hidden bg-card border border-border">
+      <div className="rounded-sm overflow-hidden bg-card border border-border">
         <img src={slide.image} alt={slide.caption ?? ""} className="w-full" loading="lazy" />
       </div>
       {slide.caption && (
@@ -54,11 +54,11 @@ const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number })
             Chapter {numStr}
           </p>
           <div className="flex items-baseline gap-5">
-            <span className="font-serif text-5xl text-primary/70 tabular-nums leading-none">
+            <span className="text-5xl text-primary/70 tabular-nums leading-none">
               {numStr}
             </span>
             <div className="flex-1">
-              <h2 className="font-serif t-section-title sm:text-4xl text-foreground tracking-tight">
+              <h2 className="t-section-title sm:text-4xl text-foreground tracking-tight">
                 {chapter.label}
               </h2>
             </div>
@@ -81,7 +81,7 @@ const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number })
 
 const InProgressBanner = () => (
   <Reveal>
-    <div className="mb-8 rounded-lg border border-status-progress/20 bg-status-progress/10 px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+    <div className="mb-8 rounded-sm border border-status-progress/20 bg-status-progress/10 px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
       <div className="flex items-center gap-2 text-status-progress">
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-progress opacity-75" />
@@ -99,7 +99,7 @@ const InProgressBanner = () => (
 const Hero = ({ study }: { study: CaseStudy }) => (
   <header className="relative">
     {(study.heroImage || study.coverImage) && (
-      <div className="relative aspect-[21/9] rounded-lg overflow-hidden bg-card mb-8">
+      <div className="relative aspect-[21/9] rounded-sm overflow-hidden bg-card mb-8">
         <img src={study.heroImage || study.coverImage} alt={study.title} className="w-full h-full object-cover" />
       </div>
     )}
@@ -111,7 +111,7 @@ const Hero = ({ study }: { study: CaseStudy }) => (
           </Pill>
         ))}
       </div>
-      <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-foreground mb-3 leading-[1.05]">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl text-foreground mb-3 leading-[1.05]">
         {study.title}
       </h1>
       <p className="text-lg sm:text-xl text-muted-foreground">{study.subtitle}</p>
@@ -200,7 +200,7 @@ const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
             href={`#${c.id}`}
             className="group inline-flex items-baseline gap-2 text-xs text-muted-foreground hover:text-primary t-base"
           >
-            <span className="font-serif tabular-nums text-foreground/60 group-hover:text-primary t-base">
+            <span className="tabular-nums text-foreground/60 group-hover:text-primary t-base">
               {c.number ?? String(i + 1).padStart(2, "0")}
             </span>
             <span className="text-foreground group-hover:text-primary t-base">{c.label}</span>
@@ -231,7 +231,7 @@ const RequestDeck = ({ email }: { email: string }) => {
         <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
           <div className="flex-1">
             <p className="label-eyebrow mb-2">Full deck available</p>
-            <h3 className="font-serif text-2xl text-foreground tracking-tight mb-2">
+            <h3 className="text-2xl text-foreground mb-2">
               Want the detailed case study?
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -261,7 +261,7 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
     // Studies without a full overview: show summary + (if any) Jump-to strip on one section.
     return (
       <Reveal className="mt-12">
-        <div className="border border-border rounded-lg p-6 sm:p-8 bg-card/30">
+        <div className="border border-border rounded-sm p-6 sm:p-8 bg-card/30">
           <p className="text-base text-foreground leading-relaxed">{study.summary}</p>
         </div>
         {anchors.length > 0 && (
@@ -314,7 +314,7 @@ const Closing = ({ study }: { study: CaseStudy }) => {
         <Reveal>
           <div className="border-l-2 border-primary/70 pl-6 max-w-2xl">
             <p className="label-eyebrow mb-3">What I took away</p>
-            <p className="font-serif text-xl text-foreground leading-relaxed">{study.reflection}</p>
+            <p className="text-xl text-foreground leading-relaxed">{study.reflection}</p>
           </div>
         </Reveal>
       )}
@@ -322,12 +322,12 @@ const Closing = ({ study }: { study: CaseStudy }) => {
         <Reveal>
           <Link
             to={`/work/${next.slug}`}
-            className="group block border border-border rounded-lg p-6 sm:p-8 hover:border-primary t-base"
+            className="group block border border-border rounded-sm p-6 sm:p-8 hover:border-primary t-base"
           >
             <p className="label-eyebrow mb-3">Next case study</p>
             <div className="flex items-center justify-between gap-6">
               <div>
-                <h3 className="font-serif text-2xl sm:text-3xl text-foreground group-hover:text-primary t-base mb-1">
+                <h3 className="text-2xl sm:text-3xl text-foreground group-hover:text-primary t-base mb-1">
                   {next.title}
                 </h3>
                 <p className="text-sm text-muted-foreground">{next.subtitle}</p>
@@ -416,7 +416,7 @@ const WorkDetail = () => {
               <div className="border-y border-border py-10 grid grid-cols-3 gap-6 text-center">
                 {study.metrics.map((m) => (
                   <div key={m.label}>
-                    <p className="font-serif text-4xl sm:text-5xl text-foreground mb-1">{m.value}</p>
+                    <p className="text-4xl sm:text-5xl text-foreground mb-1">{m.value}</p>
                     <p className="text-sm font-medium text-foreground mb-0.5">{m.label}</p>
                     {m.sublabel && <p className="text-xs text-muted-foreground">{m.sublabel}</p>}
                   </div>
@@ -448,7 +448,7 @@ const WorkDetail = () => {
               })}
             </div>
           ) : (
-            <div className="mt-10 rounded-lg border border-dashed border-border p-16 text-center">
+            <div className="mt-10 rounded-sm border border-dashed border-border p-16 text-center">
               <p className="text-muted-foreground text-sm">Case study assets coming soon.</p>
             </div>
           )}

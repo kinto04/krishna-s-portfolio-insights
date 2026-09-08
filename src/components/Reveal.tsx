@@ -12,7 +12,7 @@ interface RevealProps {
 /**
  * The single scroll-reveal wrapper for the whole site.
  * Motion comes from the .scroll-fade-in tokens in index.css, so every
- * page reveals with identical easing, distance and blur.
+ * page reveals with identical easing and distance.
  */
 export function Reveal({ children, className, index = 0, as = "div" }: RevealProps) {
   const { ref, isVisible } = useInView();
