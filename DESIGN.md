@@ -64,7 +64,7 @@ Use square to subtly rounded corners. The base radius is the maximum for content
 
 ## Components
 
-Project tiles lead with real imagery, then title, description, and compact metadata. Capability cells link directly to filtered work and show the projects behind each capability using restrained blue emphasis.
+Project tiles lead with real imagery, then title, description, and compact metadata. The homepage relationship graph is a functional exception: every node maps to a real project tag and links directly to filtered work using restrained blue and indigo emphasis.
 
 Reveal motion is short, directional, and blur-free. Controls use the shared press and focus treatments.
 
@@ -73,4 +73,4 @@ Reveal motion is short, directional, and blur-free. Controls use the shared pres
 - Do make project evidence the dominant visual material.
 - Do use Persian Blue as a restrained, consistent interactive signal.
 - Don't use multicolor brand stripes, visible grid wallpaper, serif typography, ambient gradients, backdrop blur, magnetic movement, floating particles, or glow shadows.
-- Don't introduce decorative network diagrams when a functional matrix communicates the relationship more clearly.
+- Don't introduce decorative network diagrams. The single homepage graph is allowed only because its nodes represent real project tags and lead to filtered work.
