@@ -14,9 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["Geist Variable", "system-ui", "sans-serif"],
-        sans: ["Geist Variable", "system-ui", "sans-serif"],
-        mono: ["Geist Mono Variable", "ui-monospace", "monospace"],
+        serif: ["Manrope Variable", "system-ui", "sans-serif"],
+        sans: ["Manrope Variable", "system-ui", "sans-serif"],
+        mono: ["Manrope Variable", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -33,13 +33,6 @@ export default {
           deep: "hsl(var(--primary-deep))",
           soft: "hsl(var(--primary-soft))",
         },
-        signal: {
-          blue: "hsl(var(--signal-blue))",
-          red: "hsl(var(--signal-red))",
-          yellow: "hsl(var(--signal-yellow))",
-          green: "hsl(var(--signal-green))",
-        },
-
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

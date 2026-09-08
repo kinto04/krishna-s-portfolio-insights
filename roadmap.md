@@ -5,3 +5,6 @@
 - [x] Carry the typography, surfaces, and interaction treatment across supporting pages
 - [x] Update DESIGN.md to document the new system
 - [x] Validate desktop/mobile presentation, navigation, filtering, links, and reduced motion
+- [x] Replace the Google-like four-color system with the selected Persian Blue direction
+- [x] Remove the homepage background rail, registration stripe, and grid wallpaper
+- [x] Validate the Persian Blue system across core desktop and mobile pages

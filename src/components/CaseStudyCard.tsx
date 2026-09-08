@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { CaseStudy } from "@/data/caseStudies";
-import { tagColor } from "@/lib/tagColors";
 import { Pill } from "@/components/ui/pill";
 
 const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
@@ -48,11 +47,7 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
                 key={tag}
                 className="inline-flex items-center gap-1.5 border-t border-border px-0 py-1 text-[10px] font-mono uppercase tracking-normal text-muted-foreground"
               >
-                <span
-                  className="h-1.5 w-1.5 rounded-full"
-                  style={{ backgroundColor: tagColor(tag) }}
-                  aria-hidden="true"
-                />
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary/70" aria-hidden="true" />
                 {tag}
               </span>
             ))}
