@@ -34,7 +34,7 @@ const StoryPost = () => {
         return (
           <Reveal key={i}>
             <figure className="mb-12">
-              <div className="aspect-video rounded-lg overflow-hidden border border-border bg-card">
+              <div className="aspect-video rounded-sm overflow-hidden border border-border bg-card">
                 {block.youtubeId ? (
                   <iframe
                     src={`https://www.youtube.com/embed/${block.youtubeId}`}
@@ -90,7 +90,7 @@ const StoryPost = () => {
                 src={block.src}
                 alt={block.alt}
                 loading="lazy"
-                className="w-full rounded-lg border border-border"
+                className="w-full rounded-sm border border-border"
               />
               <figcaption className="mt-4 max-w-2xl">
                 {block.title && (
@@ -117,7 +117,7 @@ const StoryPost = () => {
                   src={photo.src}
                   alt={photo.alt}
                   loading="lazy"
-                  className="w-full aspect-[3/2] object-cover rounded-lg border border-border"
+                  className="w-full aspect-[3/2] object-cover rounded-sm border border-border"
                 />
               ))}
             </div>

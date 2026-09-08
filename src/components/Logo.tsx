@@ -39,7 +39,7 @@ export function Logo({ className, showMark = false }: LogoProps) {
   return (
     <span
       className={cn(
-        "group/logo inline-flex items-center font-serif text-[17px] sm:text-lg leading-none tracking-[-0.015em] text-foreground",
+        "group/logo inline-flex items-center font-medium text-[17px] sm:text-lg leading-none tracking-normal text-foreground",
         className
       )}
     >

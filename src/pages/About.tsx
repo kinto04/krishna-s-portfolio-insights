@@ -128,7 +128,7 @@ const About = () => {
             ].map((img) => (
               <figure
                 key={img.src}
-                className="group relative overflow-hidden rounded-lg border border-border break-inside-avoid"
+                className="group relative overflow-hidden rounded-sm border border-border break-inside-avoid"
               >
                 <img
                   src={img.src}
@@ -156,7 +156,7 @@ const About = () => {
             {experience.map((job) => (
               <div
                 key={job.role}
-                className="group border-l-2 border-border hover:border-primary t-base pl-4 flex gap-4"
+                className="group border-l border-border hover:border-primary t-base pl-4 flex gap-4"
               >
                 <span className="hidden sm:block w-16 shrink-0 pt-0.5 text-xs font-mono text-muted-foreground/80 group-hover:text-primary t-base">
                   {job.period}
@@ -205,11 +205,11 @@ const About = () => {
           <p className="label-eyebrow mb-3">The small print</p>
           <h2 className="t-section-title text-foreground mb-4">A few more things</h2>
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
-            <div className="rounded-lg border border-border p-4">
+            <div className="rounded-sm border border-border p-4">
               <p className="text-foreground font-medium mb-1">Based in</p>
               <p className="text-muted-foreground">New York, NY</p>
             </div>
-            <div className="rounded-lg border border-border p-4">
+            <div className="rounded-sm border border-border p-4">
               <p className="text-foreground font-medium mb-1">Usually doing</p>
               <p className="text-muted-foreground">Wandering a city with a camera, trying new cuisines, vibe coding solutions to my problems</p>
             </div>

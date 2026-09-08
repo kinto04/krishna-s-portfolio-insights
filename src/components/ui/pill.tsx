@@ -33,7 +33,7 @@ export function Pill({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full font-medium t-base",
+        "inline-flex items-center gap-1.5 rounded-sm font-medium t-base",
         size === "default" && "px-4 py-2 text-sm",
         size === "sm" && "px-2.5 py-1 text-xs",
         uppercase && "uppercase tracking-[0.1em]",
