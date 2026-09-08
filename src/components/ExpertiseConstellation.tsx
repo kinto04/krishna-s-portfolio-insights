@@ -107,6 +107,27 @@ const ExpertiseConstellation = () => {
             role="img"
             aria-label="Connected map of capabilities and related case studies"
           >
+            <defs>
+              {EDGES.map(([from, to], index) => {
+                const start = nodeByTag.get(from);
+                const end = nodeByTag.get(to);
+                if (!start || !end) return null;
+                return (
+                  <linearGradient
+                    key={`gradient-${from}-${to}`}
+                    id={`graph-edge-${index}`}
+                    gradientUnits="userSpaceOnUse"
+                    x1={start.x}
+                    y1={start.y}
+                    x2={end.x}
+                    y2={end.y}
+                  >
+                    <stop offset="0%" stopColor={tagColor(from)} />
+                    <stop offset="100%" stopColor={tagColor(to)} />
+                  </linearGradient>
+                );
+              })}
+            </defs>
             {EDGES.map(([from, to], index) => {
               const start = nodeByTag.get(from);
               const end = nodeByTag.get(to);
@@ -119,12 +140,12 @@ const ExpertiseConstellation = () => {
                     id={pathId}
                     d={`M ${start.x} ${start.y} L ${end.x} ${end.y}`}
                     fill="none"
-                    stroke="hsl(var(--primary))"
+                    stroke={`url(#graph-edge-${index})`}
                     strokeWidth={start.tier === "core" && end.tier === "core" ? 1.15 : 0.85}
                     strokeOpacity={related ? 0.25 : 0.07}
                     className="t-base"
                   />
-                  <circle r="2" fill="hsl(var(--primary))" opacity="0" className="graph-signal">
+                  <circle r="2" fill={tagColor(to)} opacity="0" className="graph-signal">
                     <animateMotion
                       dur={`${7 + index * 0.7}s`}
                       begin={`${index * 0.55}s`}
@@ -188,7 +209,7 @@ const ExpertiseConstellation = () => {
                     textAnchor={node.anchor}
                     fontSize={fontSize}
                     fontWeight={node.tier === "core" ? 600 : 500}
-                    fill={active === node.tag ? tagColor(node.tag) : "hsl(var(--foreground))"}
+                    fill={tagColor(node.tag)}
                   >
                     {node.tag}
                   </text>

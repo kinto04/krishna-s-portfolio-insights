@@ -68,15 +68,19 @@ const Home = () => {
 
       {/* Featured Work */}
       <section className="container-page section-y">
-        <Reveal className="mb-10">
+        <Reveal className="mb-7">
           <p className="label-eyebrow mb-3">Selected work</p>
           <h2 className="t-section-title text-foreground">Case studies</h2>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-6 items-stretch">
+        <div className="grid overflow-hidden rounded-md border border-border bg-card md:grid-cols-3">
           {featuredStudies.map((study, i) => (
-            <Reveal key={study.slug} index={i} className="h-full">
-              <CaseStudyCard study={study} />
+            <Reveal
+              key={study.slug}
+              index={i}
+              className="h-full border-b border-border last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
+            >
+              <CaseStudyCard study={study} presentation="contained" />
             </Reveal>
           ))}
         </div>

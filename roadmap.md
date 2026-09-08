@@ -11,3 +11,5 @@
 - [x] Restore the functional homepage relationship graph and project previews
 - [x] Reconnect the hero actions, restore the education icon, and unify heading typography
 - [x] Validate the revised homepage at desktop/mobile sizes and with reduced motion
+- [x] Restore canonical tag colors across project cards and the homepage graph
+- [x] Contain homepage featured work while preserving the open Work index
