@@ -13,7 +13,7 @@ Written against: 4b7f6714592815c83e05ff96345c0b70ac8848d5
 
 ## Design decision
 
-Restore the functional node graph as the homepage’s distinctive visualization, but adapt it to the current Persian Blue/Manrope system rather than restoring obsolete serif, noise, glow, blur, or multicolor styling. Keep the hero actions inside the hero content flow without their own top divider, restore the education icon in the same restrained primary color, and make the hero title use a named shared type utility so the homepage follows one explicit type hierarchy.
+Restore the functional node graph as the homepage’s distinctive visualization, but adapt it to the current Persian Blue/Manrope system rather than restoring obsolete serif, noise, glow, blur, or multicolor styling. Keep the hero actions inside the hero content flow without their own top divider, restore the education icon in the same restrained primary color, and make the hero title use the existing page-title scale so the homepage follows one explicit type hierarchy.
 
 ## Reuse
 
@@ -41,15 +41,13 @@ Restore the functional node graph as the homepage’s distinctive visualization,
    - Preserve: Button labels, destinations, button variants, focus/press states, hero copy, the hero’s outer bottom boundary, and shared container alignment.
    - Verify: The actions read as the conclusion of the hero on desktop and mobile, while the remaining bottom border still separates the hero from the graph section.
 
-3. `src/index.css` and `src/components/HeroHeadline.tsx`
-   - Change: Add one named `.t-hero-title` utility beside `.t-page-title` and `.t-section-title`, using Manrope, weight 600, zero letter spacing, and the current responsive 48px mobile / 72px tablet / 88px large-desktop scale with the existing 0.98 line height.
-   - Change: Replace the raw `text-5xl sm:text-7xl lg:text-[5.5rem] font-semibold tracking-normal leading-[0.98]` list in `HeroHeadline` with `.t-hero-title`.
+3. `src/components/HeroHeadline.tsx`
+   - Change: Replace the raw `text-5xl sm:text-7xl lg:text-[5.5rem] font-semibold tracking-normal leading-[0.98]` list in `HeroHeadline` with the existing `.t-page-title` utility.
    - Change: Remove `font-mono` from any restored graph metadata so labels, counts, previews, hero copy, and headings all follow the single-family contract.
    - Preserve: Word-by-word reveal timing, primary emphasis on “AI products,” reduced-motion behavior, `.label-eyebrow`, `.t-page-title`, and `.t-section-title` sizes.
-   - Verify: Computed font family is Manrope across all homepage text; the hero computes to 48px at 390px, 72px from 640px, and 88px from the large breakpoint; section titles remain 24px mobile and 30px desktop.
+   - Verify: Computed font family is Manrope across all homepage text; the hero computes to 36px below 640px and 48px from 640px upward; section titles remain 24px mobile and 30px desktop.
 
 4. `DESIGN.md`
-   - Change: Document `.t-hero-title` as the homepage display scale.
    - Change: Replace the blanket prohibition on network diagrams with the accepted exception: the homepage may use one functional relationship graph when every node maps to real project tags and filtered work; decorative networks remain prohibited.
    - Preserve: Persian Blue as the only brand accent family, Manrope-only typography, zero letter spacing, flat surfaces, and the prohibitions on gradients, glow, blur, particles, and ornamental diagrams.
    - Verify: Documentation describes the implemented homepage without reintroducing superseded visual treatments.
@@ -65,7 +63,7 @@ Restore the functional node graph as the homepage’s distinctive visualization,
 - Product: From `/`, activate each graph node and confirm the Work page opens with the corresponding tag filter; return and verify desktop preview cards show only matching studies.
 - Interface: Capture `/` at 1280×1800 and 390×844 after animations settle. Confirm the education icon is visible, the CTA has no separating top rule, the graph is fully framed, project previews stay within the viewport, text does not overlap, and there is no horizontal overflow.
 - Interface: Check keyboard focus on every node and both hero actions; check `prefers-reduced-motion: reduce` for a static graph and immediately visible headline.
-- System: Confirm homepage text resolves to Manrope and uses `.t-hero-title`, `.t-section-title`, or established body/metadata styles; confirm graph colors resolve through semantic or `--tag-*` tokens only.
+- System: Confirm homepage text resolves to Manrope and uses `.t-page-title`, `.t-section-title`, or established body/metadata styles; confirm graph colors resolve through semantic or `--tag-*` tokens only.
 - Repository: `bunx tsgo --noEmit && bunx vitest run` → both commands complete successfully.
 
 ## Stop conditions
@@ -74,4 +72,4 @@ Restore the functional node graph as the homepage’s distinctive visualization,
 
 ## Design documentation
 
-- After acceptance and validation: record the shared hero type scale and the functional homepage graph exception in `DESIGN.md` as described above.
+- After acceptance and validation: record the functional homepage graph exception in `DESIGN.md` as described above.
