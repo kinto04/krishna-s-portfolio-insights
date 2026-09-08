@@ -26,13 +26,13 @@ const Home = () => {
       {/* Hero */}
       <section className="border-b border-border">
         <div className="container-page">
-          <div className="py-16 sm:py-24">
-            <div className="max-w-4xl">
+          <div className="grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
+            <div>
               <p className="label-eyebrow mb-6 animate-fade-in-up-delay-1">Hey, I'm Krishna.</p>
               <div className="mb-8">
                 <HeroHeadline />
               </div>
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl animate-fade-in-up-delay-3">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl animate-fade-in-up-delay-3">
                 {heroVariant.subtitle}
               </p>
               <div className="mt-5 flex items-start gap-2 text-sm text-muted-foreground animate-fade-in-up-delay-3">
@@ -58,6 +58,25 @@ const Home = () => {
                 </Link>
               </div>
             </div>
+
+            {/* Portrait */}
+            <Reveal index={2} className="relative mx-auto w-full max-w-sm lg:max-w-none">
+              <div className="absolute -inset-3 -rotate-2 rounded-md border border-primary/20 bg-card" aria-hidden="true" />
+              <img
+                src="/images/headshot.jpeg"
+                alt="Portrait of Krishna Suresh"
+                className="relative aspect-[4/5] w-full rounded-md border border-border object-cover shadow-[0_24px_48px_-24px_hsl(var(--foreground)/0.25)]"
+                loading="eager"
+                decoding="async"
+              />
+              <div className="absolute -bottom-4 left-4 flex items-center gap-2.5 rounded-md border border-border bg-card px-4 py-3 shadow-[0_16px_32px_-16px_hsl(var(--foreground)/0.25)]">
+                <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60 motion-reduce:animate-none" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-success" />
+                </span>
+                <span className="text-sm font-medium text-foreground">Available for work</span>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
