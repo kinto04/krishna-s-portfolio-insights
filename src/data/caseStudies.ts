@@ -217,7 +217,7 @@ export const caseStudies: CaseStudy[] = [
     context: "Ongoing",
     tags: ["AI", "Experience Design", "Product Design"],
     summary:
-      "Huelo is an AI-powered interior-design and shopping platform that turns inspiration and budget constraints into a shoppable room plan. As a founding designer and AI engineer, I'm shaping the product experience, the design-to-purchase flow, and the agent architecture that makes a custom design feel effortless.",
+      "Huelo is a web-based AI interior-design app for urban renters that turns inspiration and budget constraints into a personalized room plan. As a founding designer and AI engineer, I'm shaping the product experience, the design flow, and the agent architecture that makes a custom design feel effortless.",
     featured: false,
     coverImage: "/images/huelo/cover.png",
     heroImage: "/images/huelo/hero.png",
@@ -229,12 +229,12 @@ export const caseStudies: CaseStudy[] = [
       team: "Founding team",
       role: "Founding UX Designer & AI Engineer",
       setting: "New York",
-      platform: "Web",
+      platform: "Web app",
     },
-    toolkit: ["Figma", "Lovable", "OpenAI", "Shopify"],
+    toolkit: ["Figma", "Lovable", "OpenAI"],
     overview: {
       context:
-        "Urban renters want designed spaces but can't renovate, can't visualize changes, and get stuck between inspiration and purchase. Huelo uses AI to generate shoppable room plans from a photo, a few preferences, and a real budget.",
+        "Urban renters want designed spaces but can't renovate, can't visualize changes, and get stuck between inspiration and purchase. Huelo uses AI to generate personalized room plans from a photo, a few preferences, and a real budget.",
       roleDetail: [
         "End-to-end product design and UX for the design-to-purchase experience",
         "AI agent architecture: prompts, parsing, retrieval, and evaluation pipelines",
