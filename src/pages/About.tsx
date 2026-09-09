@@ -2,13 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
-import coffeePopup from "@/assets/coffee-popup.jpeg.asset.json";
-import soccerTeam from "@/assets/soccer-team.png.asset.json";
-import outdoorPines from "@/assets/outdoor-pines.jpg.asset.json";
-import dogSwimming from "@/assets/dog-swimming.jpg.asset.json";
-import marathonFinish from "@/assets/marathon-finish.jpeg.asset.json";
-import bouldering from "@/assets/bouldering.png.asset.json";
-import zionHike from "@/assets/zion-hike.jpeg.asset.json";
+
 
 
 const experience = [
@@ -108,7 +102,7 @@ const About = () => {
         </Reveal>
 
         {/* Bio */}
-        <Reveal className="grid gap-8 md:grid-cols-[1fr_14rem] lg:grid-cols-[1fr_16rem] md:gap-10 lg:gap-12">
+        <Reveal className="grid gap-8 md:grid-cols-[1fr_16rem] lg:grid-cols-[1fr_18rem] md:gap-10 lg:gap-12">
           <div className="space-y-6 text-muted-foreground leading-relaxed">
             <p className="max-w-prose md:max-w-none">
               I'm a <strong className="text-foreground">Designer and UX Engineer</strong> who builds at the intersection of research, design, and engineering. CS degree from Purdue. Just graduated with an{" "}
@@ -129,16 +123,24 @@ const About = () => {
             </p>
           </div>
           <aside className="hidden md:block">
-            <div className="sticky top-24 border-l border-border pl-5 lg:pl-6">
-              <p className="text-[11px] uppercase tracking-wider text-muted-foreground/70 mb-4">Focus areas</p>
-              <ul className="space-y-3 text-sm text-foreground">
-                {["AI products", "E-commerce", "Healthcare", "Travel", "Social impact"].map((area) => (
-                  <li key={area} className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                    {area}
-                  </li>
-                ))}
-              </ul>
+            <div className="sticky top-24 space-y-3">
+              {[
+                { src: "/images/varanasi/flower-market.jpg", alt: "Flower market in Varanasi", ratio: "aspect-[4/5]" },
+                { src: "/images/about/coffee-popup.jpg", alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
+                { src: "/images/about/bouldering.png", alt: "Bouldering across an overhang at a climbing gym", ratio: "aspect-[3/4]" },
+              ].map((img) => (
+                <figure
+                  key={img.src}
+                  className="group relative overflow-hidden rounded-sm border border-border"
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    loading="lazy"
+                    className={`${img.ratio} w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105`}
+                  />
+                </figure>
+              ))}
             </div>
           </aside>
         </Reveal>
@@ -153,14 +155,14 @@ const About = () => {
           <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:columns-4 [&>figure]:mb-3 sm:[&>figure]:mb-4">
             {[
               { src: "/images/varanasi/flower-market.jpg", alt: "A woman selling flowers at a market in Varanasi", ratio: "aspect-[4/5]" },
-              { src: marathonFinish.url, alt: "Finishing the San Francisco half marathon", ratio: "aspect-[3/4]" },
+              { src: "/images/about/marathon-finish.jpg", alt: "Finishing the San Francisco half marathon", ratio: "aspect-[3/4]" },
               { src: "/images/varanasi/alley-bike.jpg", alt: "A man on a bicycle carrying goods through a narrow Varanasi alley", ratio: "aspect-[3/2]" },
-              { src: coffeePopup.url, alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
-              { src: bouldering.url, alt: "Bouldering across an overhang at a climbing gym", ratio: "aspect-[3/4]" },
-              { src: dogSwimming.url, alt: "A dog swimming through turquoise water", ratio: "aspect-[3/2]" },
-              { src: soccerTeam.url, alt: "My intramural soccer team on the field", ratio: "aspect-[4/3]" },
-              { src: zionHike.url, alt: "Hiking with friends at a trailhead in Zion", ratio: "aspect-[3/4]" },
-              { src: outdoorPines.url, alt: "Snowy mountains framed by pine trees", ratio: "aspect-[3/4]" },
+              { src: "/images/about/coffee-popup.jpg", alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
+              { src: "/images/about/bouldering.png", alt: "Bouldering across an overhang at a climbing gym", ratio: "aspect-[3/4]" },
+              { src: "/images/about/dog-swimming.jpg", alt: "A dog swimming through turquoise water", ratio: "aspect-[3/2]" },
+              { src: "/images/about/soccer-team.png", alt: "My intramural soccer team on the field", ratio: "aspect-[4/3]" },
+              { src: "/images/about/zion-hike.jpg", alt: "Hiking with friends at a trailhead in Zion", ratio: "aspect-[3/4]" },
+              { src: "/images/about/outdoor-pines.jpg", alt: "Snowy mountains framed by pine trees", ratio: "aspect-[3/4]" },
               { src: "/images/varanasi/quiet-afternoon.jpg", alt: "A quiet afternoon scene in Varanasi", ratio: "aspect-[3/2]" },
             ].map((img) => (
               <figure
