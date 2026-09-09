@@ -504,6 +504,8 @@
     display: none;
   }
 
-
+  .hero-image-spotlight {
+    display: none;
+  }
 }
 
