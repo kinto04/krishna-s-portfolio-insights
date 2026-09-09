@@ -7,7 +7,7 @@ import { ArrowRight, GraduationCap } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import HeroHeadline from "@/components/HeroHeadline";
 import ExpertiseConstellation from "@/components/ExpertiseConstellation";
-import collaborationPhoto from "@/assets/collaborative-design-session.png.asset.json";
+const heroImage = "/images/hero/collaborative-design-session.png";
 
 
 const heroVariant = {
