@@ -67,7 +67,7 @@ const About = () => {
         className="relative container-page section-y stack-lg overflow-visible"
       >
         {/* Hero */}
-        <Reveal className="relative grid gap-6 sm:gap-10 border-b border-border pb-12 sm:grid-cols-[10rem_1fr] lg:grid-cols-[10rem_1fr_16rem] sm:items-center">
+        <Reveal className="relative grid gap-6 sm:gap-10 border-b border-border pb-12 sm:grid-cols-[10rem_1fr] md:grid-cols-[10rem_1fr_16rem] sm:items-center">
           <div className="group relative shrink-0">
             <img
               src="/images/headshot.jpeg"
