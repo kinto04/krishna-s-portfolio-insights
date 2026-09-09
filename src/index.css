@@ -454,6 +454,23 @@
   transform: scale(1.04);
 }
 
+/* Cursor-reactive spotlight: a soft light that follows the mouse inside the image. */
+.hero-image-spotlight {
+  background: radial-gradient(
+    circle 160px at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 255, 255, 0.06) 40%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 300ms ease;
+  mix-blend-mode: overlay;
+}
+
+.hero-image:hover .hero-image-spotlight {
+  opacity: 1;
+}
+
 /* Nothing moves for people who ask for less motion. */
 @media (prefers-reduced-motion: reduce) {
   *,
