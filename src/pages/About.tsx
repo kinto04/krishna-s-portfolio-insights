@@ -67,7 +67,7 @@ const About = () => {
         className="relative container-page section-y stack-lg overflow-visible"
       >
         {/* Hero */}
-        <Reveal className="relative grid gap-6 sm:gap-10 border-b border-border pb-12 sm:grid-cols-[10rem_minmax(0,1fr)] sm:items-center">
+        <Reveal className="relative grid gap-6 sm:gap-10 border-b border-border pb-12 sm:grid-cols-[10rem_auto] sm:items-center">
           <div className="group relative shrink-0">
             <img
               src="/images/headshot.jpeg"
@@ -75,7 +75,7 @@ const About = () => {
               className="w-40 h-40 rounded-sm object-cover object-top border border-border transition-transform duration-300 group-hover:translate-x-1"
             />
           </div>
-          <div>
+          <div className="max-w-3xl">
             <h1 className="t-page-title text-foreground mb-2">
               Krishna Suresh<span className="text-primary">.</span>
             </h1>
