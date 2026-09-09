@@ -478,10 +478,10 @@
 }
 
 @keyframes aiScan {
-  0% { transform: translateY(0); opacity: 0; }
+  0% { top: 0%; opacity: 0; }
   10% { opacity: 1; }
   90% { opacity: 1; }
-  100% { transform: translateY(calc(var(--layer-height, 400px))); opacity: 0; }
+  100% { top: 100%; opacity: 0; }
 }
 
 .ai-marker {
