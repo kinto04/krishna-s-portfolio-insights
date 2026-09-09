@@ -88,7 +88,6 @@ const Home = () => {
       {/* Featured Work */}
       <section className="container-page section-y">
         <Reveal className="mb-7">
-          <p className="label-eyebrow mb-3">Selected work</p>
           <h2 className="t-section-title text-foreground">Case studies</h2>
         </Reveal>
 
