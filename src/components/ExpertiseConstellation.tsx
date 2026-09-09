@@ -93,10 +93,10 @@ const ExpertiseConstellation = () => {
         <Reveal className="mb-6 grid gap-4 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
             <h2 className="t-section-title text-foreground">A representation of my work</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Select a node to view related case studies.
+            </p>
           </div>
-          <p className="text-sm text-muted-foreground md:col-span-5 md:text-right">
-            Select a node to view related case studies.
-          </p>
         </Reveal>
 
         <Reveal index={1} className="relative">
