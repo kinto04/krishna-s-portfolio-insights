@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import CaseStudyCard from "@/components/CaseStudyCard";
@@ -19,6 +19,20 @@ const Home = () => {
   useEffect(() => {
     document.title = "Krishna Suresh — Product Designer Who Builds with AI";
   }, []);
+
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  const handleHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    setTilt({
+      x: (0.5 - y) * 10,
+      y: (x - 0.5) * 10,
+    });
+  };
+
+  const handleHeroMouseLeave = () => setTilt({ x: 0, y: 0 });
 
   const featuredStudies = caseStudies.filter((s) => s.featured);
 
@@ -62,7 +76,14 @@ const Home = () => {
 
             {/* A single, living view into the work */}
             <Reveal index={2} className="mx-auto w-full max-w-lg lg:max-w-[28rem]">
-              <div className="hero-image group relative overflow-hidden rounded-md border border-border bg-card">
+              <div
+                className="hero-image group relative overflow-hidden rounded-md border border-border bg-card"
+                onMouseMove={handleHeroMouseMove}
+                onMouseLeave={handleHeroMouseLeave}
+                style={{
+                  transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+                }}
+              >
                 <img
                   src={heroImage}
                   alt="A team brainstorming session with colorful sticky notes on a whiteboard"

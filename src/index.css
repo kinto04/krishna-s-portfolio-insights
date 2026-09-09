@@ -436,7 +436,9 @@
 
 .hero-image {
   animation: heroImageIn 0.8s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)) both;
-  transition: border-color 200ms ease;
+  transition: border-color 200ms ease, transform 0.15s var(--ease-out-quint);
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .hero-image:hover {
@@ -486,6 +488,10 @@
 
   .graph-signal {
     display: none;
+  }
+
+  .hero-image {
+    transform: none !important;
   }
 
 }
