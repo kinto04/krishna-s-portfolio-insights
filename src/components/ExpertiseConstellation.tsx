@@ -92,7 +92,6 @@ const ExpertiseConstellation = () => {
       <div className="container-page py-14 sm:py-16">
         <Reveal className="mb-6 grid gap-4 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
-            <p className="label-eyebrow mb-3">Capabilities × projects</p>
             <h2 className="t-section-title text-foreground">A representation of my work</h2>
           </div>
           <p className="text-sm text-muted-foreground md:col-span-5 md:text-right">
