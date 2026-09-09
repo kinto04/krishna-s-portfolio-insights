@@ -67,7 +67,7 @@ const About = () => {
         className="relative container-page section-y stack-lg overflow-visible"
       >
         {/* Hero */}
-        <Reveal className="relative grid gap-8 border-b border-border pb-12 sm:grid-cols-[10rem_minmax(0,1fr)] sm:items-end">
+        <Reveal className="relative grid gap-6 sm:gap-10 border-b border-border pb-12 sm:grid-cols-[10rem_auto] sm:items-center">
           <div className="group relative shrink-0">
             <img
               src="/images/headshot.jpeg"
@@ -75,11 +75,11 @@ const About = () => {
               className="w-40 h-40 rounded-sm object-cover object-top border border-border transition-transform duration-300 group-hover:translate-x-1"
             />
           </div>
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <h1 className="t-page-title text-foreground mb-2">
               Krishna Suresh<span className="text-primary">.</span>
             </h1>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-base text-muted-foreground leading-relaxed">
               Designer · Engineer
             </p>
           </div>
@@ -101,7 +101,7 @@ const About = () => {
           <p>
             Since then I've built products across <strong className="text-foreground">AI, e-commerce, healthcare, and social impact</strong> — from a conversational AI agent that drove measurable e-commerce lifts, to a clinical diagnostic tool co-designed with 12+ healthcare professionals, to a group travel app I launched as my master's thesis.
           </p>
-          <p className="text-sm">
+          <p className="text-base text-muted-foreground leading-relaxed">
             Based in New York, NY. Looking for <strong className="text-foreground">Design roles</strong> in AI, e-commerce, travel, and healthcare.
           </p>
         </Reveal>
@@ -158,7 +158,7 @@ const About = () => {
                 key={job.role}
                 className="group border-l border-border hover:border-primary t-base pl-4 flex gap-4"
               >
-                <span className="hidden sm:block w-16 shrink-0 pt-0.5 text-xs font-mono text-muted-foreground/80 group-hover:text-primary t-base">
+                <span className="hidden sm:block w-16 shrink-0 pt-0.5 text-xs font-medium text-muted-foreground/80 group-hover:text-primary t-base">
                   {job.period}
                 </span>
                 <div>
@@ -206,12 +206,12 @@ const About = () => {
           <h2 className="t-section-title text-foreground mb-4">A few more things</h2>
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
             <div className="rounded-sm border border-border p-4">
-              <p className="text-foreground font-medium mb-1">Based in</p>
-              <p className="text-muted-foreground">New York, NY</p>
+              <p className="text-foreground font-medium mb-1 text-base">Based in</p>
+              <p className="text-muted-foreground leading-relaxed">New York, NY</p>
             </div>
             <div className="rounded-sm border border-border p-4">
-              <p className="text-foreground font-medium mb-1">Usually doing</p>
-              <p className="text-muted-foreground">Wandering a city with a camera, trying new cuisines, vibe coding solutions to my problems</p>
+              <p className="text-foreground font-medium mb-1 text-base">Usually doing</p>
+              <p className="text-muted-foreground leading-relaxed">Wandering a city with a camera, trying new cuisines, vibe coding solutions to my problems</p>
             </div>
           </div>
         </Reveal>
