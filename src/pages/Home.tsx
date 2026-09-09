@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import CaseStudyCard from "@/components/CaseStudyCard";
@@ -19,6 +19,20 @@ const Home = () => {
   useEffect(() => {
     document.title = "Krishna Suresh — Product Designer Who Builds with AI";
   }, []);
+
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  const handleHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    setTilt({
+      x: (0.5 - y) * 10,
+      y: (x - 0.5) * 10,
+    });
+  };
+
+  const handleHeroMouseLeave = () => setTilt({ x: 0, y: 0 });
 
   const featuredStudies = caseStudies.filter((s) => s.featured);
 
