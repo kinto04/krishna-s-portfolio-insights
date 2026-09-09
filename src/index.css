@@ -468,13 +468,15 @@
   background-image:
     linear-gradient(to right, var(--primary) 1px, transparent 1px),
     linear-gradient(to bottom, var(--primary) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black 35%, transparent 95%);
+  opacity: 0.45;
 }
 
 .ai-layer-scan {
   animation: aiScan 4.5s ease-in-out infinite;
-  box-shadow: 0 0 18px 2px rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 22px 3px rgba(255, 255, 255, 0.10);
+  opacity: 0.8;
 }
 
 @keyframes aiScan {
