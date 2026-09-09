@@ -21,7 +21,7 @@ const BlogPostCard = ({ post }: { post: BlogPost }) => {
       </div>
       <div className="flex items-center gap-3 mb-2">
         <span className="label-eyebrow text-primary font-medium">{post.category}</span>
-        <time className="text-xs text-muted-foreground">
+        <time className="text-[13px] text-muted-foreground">
           {format(new Date(post.date), "MMM d, yyyy")}
         </time>
       </div>

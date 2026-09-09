@@ -39,7 +39,7 @@ const SlideBlock = ({ slide }: { slide: Slide; index: number; forceFullWidth?: b
         <img src={slide.image} alt={slide.caption ?? ""} className="w-full" loading="lazy" />
       </div>
       {slide.caption && (
-        <p className="text-xs text-muted-foreground mt-3 max-w-2xl leading-relaxed">{slide.caption}</p>
+        <p className="text-[13px] text-muted-foreground mt-3 max-w-2xl leading-relaxed">{slide.caption}</p>
       )}
     </Reveal>
   );
@@ -150,7 +150,7 @@ const FactCell = ({ label, value, note }: { label: string; value: string; note?:
   <div className="min-w-0">
     <p className="label-eyebrow mb-2">{label}</p>
     <p className="text-[15px] sm:text-base text-foreground leading-snug">{value}</p>
-    {note && <p className="text-xs text-muted-foreground mt-1 leading-snug">{note}</p>}
+    {note && <p className="text-[13px] text-muted-foreground mt-1 leading-snug">{note}</p>}
   </div>
 );
 
@@ -215,7 +215,7 @@ const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
           <a
             key={c.id}
             href={`#${c.id}`}
-            className="group inline-flex items-baseline gap-2 text-xs text-muted-foreground hover:text-primary t-base"
+            className="group inline-flex items-baseline gap-2 text-[13px] text-muted-foreground hover:text-primary t-base"
           >
             <span className="tabular-nums text-foreground/60 group-hover:text-primary t-base">
               {c.number ?? String(i + 1).padStart(2, "0")}
@@ -435,7 +435,7 @@ const WorkDetail = () => {
                   <div key={m.label}>
                     <p className="text-4xl sm:text-5xl text-foreground mb-1">{m.value}</p>
                     <p className="text-sm font-medium text-foreground mb-0.5">{m.label}</p>
-                    {m.sublabel && <p className="text-xs text-muted-foreground">{m.sublabel}</p>}
+                    {m.sublabel && <p className="text-[13px] text-muted-foreground">{m.sublabel}</p>}
                   </div>
                 ))}
               </div>
