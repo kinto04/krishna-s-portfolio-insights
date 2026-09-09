@@ -83,7 +83,7 @@ const About = () => {
               Designer · Engineer
             </p>
           </div>
-          <div className="hidden lg:flex flex-col gap-5">
+          <div className="hidden md:flex flex-col gap-5">
             <div>
               <p className="text-[11px] uppercase tracking-wider text-muted-foreground/70 mb-1">Status</p>
               <p className="flex items-center gap-2 text-sm text-foreground">
