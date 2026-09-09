@@ -255,7 +255,7 @@ const ExpertiseConstellation = () => {
                   )}
                   <span className="min-w-0">
                     <span className="block truncate text-sm font-medium text-foreground">{study.title}</span>
-                    <span className="block truncate text-xs text-muted-foreground">{study.summary}</span>
+                    <span className="block truncate text-[13px] text-muted-foreground">{study.summary}</span>
                   </span>
                 </Link>
               ))}

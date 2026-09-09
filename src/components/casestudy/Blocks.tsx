@@ -134,7 +134,7 @@ const ImageBlock = ({
           <img src={src} alt={caption ?? ""} className="w-full" loading="lazy" />
         </div>
         {caption && (
-          <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
+          <p className="text-[13px] text-muted-foreground mt-3 leading-relaxed">
             {caption}
           </p>
         )}

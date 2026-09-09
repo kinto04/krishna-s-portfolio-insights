@@ -160,7 +160,7 @@ const About = () => {
                 key={job.role}
                 className="group border-l border-border hover:border-primary t-base pl-4 flex gap-4"
               >
-                <span className="hidden sm:block w-16 shrink-0 pt-0.5 text-xs font-medium text-muted-foreground/80 group-hover:text-primary t-base">
+                <span className="hidden sm:block w-16 shrink-0 pt-0.5 text-[13px] font-medium text-muted-foreground group-hover:text-primary t-base">
                   {job.period}
                 </span>
                 <div>

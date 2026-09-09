@@ -49,7 +49,7 @@ const Navbar = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`text-xs font-mono uppercase tracking-normal t-base hover:text-foreground ${
+              className={`text-[13px] font-mono uppercase tracking-normal t-base hover:text-foreground ${
                 location.pathname.startsWith(link.to)
                   ? "text-foreground font-medium"
                   : "text-muted-foreground"
