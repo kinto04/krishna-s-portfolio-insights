@@ -76,7 +76,14 @@ const Home = () => {
 
             {/* A single, living view into the work */}
             <Reveal index={2} className="mx-auto w-full max-w-lg lg:max-w-[28rem]">
-              <div className="hero-image group relative overflow-hidden rounded-md border border-border bg-card">
+              <div
+                className="hero-image group relative overflow-hidden rounded-md border border-border bg-card"
+                onMouseMove={handleHeroMouseMove}
+                onMouseLeave={handleHeroMouseLeave}
+                style={{
+                  transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+                }}
+              >
                 <img
                   src={heroImage}
                   alt="A team brainstorming session with colorful sticky notes on a whiteboard"
