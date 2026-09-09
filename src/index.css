@@ -454,20 +454,20 @@
   transform: scale(1.04);
 }
 
-/* Cursor-reactive spotlight: a soft light that follows the mouse inside the image. */
-.hero-image-spotlight {
-  background: radial-gradient(
-    circle 160px at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
-    rgba(255, 255, 255, 0.14),
-    rgba(255, 255, 255, 0.06) 40%,
-    transparent 70%
-  );
+/* "Process to Product" panel: hidden off-canvas, slides in on hover/focus/tap. */
+.hero-product-panel {
+  transform: translate3d(102%, 0, 0);
   opacity: 0;
-  transition: opacity 300ms ease;
-  mix-blend-mode: overlay;
+  transition:
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 400ms ease;
+  will-change: transform;
 }
 
-.hero-image:hover .hero-image-spotlight {
+.hero-image:hover .hero-product-panel,
+.hero-image:focus-visible .hero-product-panel,
+.hero-image.hero-panel-open .hero-product-panel {
+  transform: translate3d(0, 0, 0);
   opacity: 1;
 }
 
@@ -504,7 +504,7 @@
     display: none;
   }
 
-  .hero-image-spotlight {
+  .hero-product-panel {
     display: none;
   }
 }
