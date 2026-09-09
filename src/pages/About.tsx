@@ -108,7 +108,7 @@ const About = () => {
         </Reveal>
 
         {/* Bio */}
-        <Reveal className="grid gap-8 md:grid-cols-[1fr_14rem] lg:grid-cols-[1fr_16rem] md:gap-10 lg:gap-12">
+        <Reveal className="grid gap-8 md:grid-cols-[1fr_16rem] lg:grid-cols-[1fr_18rem] md:gap-10 lg:gap-12">
           <div className="space-y-6 text-muted-foreground leading-relaxed">
             <p className="max-w-prose md:max-w-none">
               I'm a <strong className="text-foreground">Designer and UX Engineer</strong> who builds at the intersection of research, design, and engineering. CS degree from Purdue. Just graduated with an{" "}
@@ -129,16 +129,24 @@ const About = () => {
             </p>
           </div>
           <aside className="hidden md:block">
-            <div className="sticky top-24 border-l border-border pl-5 lg:pl-6">
-              <p className="text-[11px] uppercase tracking-wider text-muted-foreground/70 mb-4">Focus areas</p>
-              <ul className="space-y-3 text-sm text-foreground">
-                {["AI products", "E-commerce", "Healthcare", "Travel", "Social impact"].map((area) => (
-                  <li key={area} className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                    {area}
-                  </li>
-                ))}
-              </ul>
+            <div className="sticky top-24 space-y-3">
+              {[
+                { src: "/images/varanasi/flower-market.jpg", alt: "Flower market in Varanasi", ratio: "aspect-[4/5]" },
+                { src: coffeePopup.url, alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
+                { src: bouldering.url, alt: "Bouldering across an overhang at a climbing gym", ratio: "aspect-[3/4]" },
+              ].map((img) => (
+                <figure
+                  key={img.src}
+                  className="group relative overflow-hidden rounded-sm border border-border"
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    loading="lazy"
+                    className={`${img.ratio} w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105`}
+                  />
+                </figure>
+              ))}
             </div>
           </aside>
         </Reveal>
