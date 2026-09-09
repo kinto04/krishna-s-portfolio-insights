@@ -61,7 +61,7 @@ const About = () => {
         className="relative container-page section-y stack-lg overflow-visible"
       >
         {/* Hero */}
-        <Reveal className="relative grid gap-6 sm:gap-10 border-b border-border pb-12 sm:grid-cols-[10rem_1fr] md:grid-cols-[10rem_1fr_16rem] sm:items-center">
+        <Reveal className="relative grid gap-6 sm:gap-10 border-b border-border pb-12 sm:grid-cols-[10rem_1fr] sm:items-center">
           <div className="group relative shrink-0">
             <img
               src="/images/headshot.jpeg"
@@ -76,28 +76,6 @@ const About = () => {
             <p className="text-base text-muted-foreground leading-relaxed">
               Designer · Engineer
             </p>
-          </div>
-          <div className="hidden md:flex flex-col gap-5">
-            <div>
-              <p className="text-[11px] uppercase tracking-wider text-muted-foreground/70 mb-1">Status</p>
-              <p className="flex items-center gap-2 text-sm text-foreground">
-                <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-                Open to roles
-              </p>
-            </div>
-            <div>
-              <p className="text-[11px] uppercase tracking-wider text-muted-foreground/70 mb-1">Location</p>
-              <p className="text-sm text-foreground">New York, NY</p>
-            </div>
-            <div>
-              <p className="text-[11px] uppercase tracking-wider text-muted-foreground/70 mb-1">Email</p>
-              <a
-                href="mailto:work.krishnasuresh@gmail.com"
-                className="text-sm text-foreground hover:text-primary underline underline-offset-4 transition-colors"
-              >
-                work.krishnasuresh@gmail.com
-              </a>
-            </div>
           </div>
         </Reveal>
 
@@ -123,23 +101,51 @@ const About = () => {
             </p>
           </div>
           <aside className="hidden md:block">
-            <div className="sticky top-24 space-y-3">
+            <div className="sticky top-24 space-y-4">
+              <p className="label-eyebrow">Selected work</p>
               {[
-                { src: "/images/varanasi/flower-market.jpg", alt: "Flower market in Varanasi", ratio: "aspect-[4/5]" },
-                { src: "/images/about/coffee-popup.jpg", alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
-                { src: "/images/about/bouldering.png", alt: "Bouldering across an overhang at a climbing gym", ratio: "aspect-[3/4]" },
-              ].map((img) => (
-                <figure
-                  key={img.src}
-                  className="group relative overflow-hidden rounded-sm border border-border"
+                {
+                  src: "/images/u6qotkxyhcppqyywjql0qfrlnq.webp",
+                  alt: "Nectar.ai case study cover",
+                  title: "Nectar.ai",
+                  caption: "Conversational AI for e-commerce",
+                  href: "/work/nectar-ai",
+                },
+                {
+                  src: "/images/northwestern-medicine/cover.jpg",
+                  alt: "Northwestern Medicine case study cover",
+                  title: "Healthcare research",
+                  caption: "Clinical tool co-designed with clinicians",
+                  href: "/work/northwestern-medicine",
+                },
+                {
+                  src: "/images/jointly/cover.png",
+                  alt: "Jointly case study cover",
+                  title: "Jointly.",
+                  caption: "Group travel app, MS thesis",
+                  href: "/work/jointly-travel",
+                },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="group block rounded-sm border border-border bg-card/50 p-2 hover:border-primary focus-ring t-base"
                 >
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    loading="lazy"
-                    className={`${img.ratio} w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105`}
-                  />
-                </figure>
+                  <figure className="relative overflow-hidden rounded-sm mb-3">
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      loading="lazy"
+                      className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                    />
+                  </figure>
+                  <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                    {item.title}
+                  </p>
+                  <p className="text-xs text-muted-foreground leading-snug">
+                    {item.caption}
+                  </p>
+                </Link>
               ))}
             </div>
           </aside>
