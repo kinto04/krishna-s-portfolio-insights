@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import CaseStudyCard from "@/components/CaseStudyCard";
@@ -20,24 +20,7 @@ const Home = () => {
     document.title = "Krishna Suresh — Product Designer Who Builds with AI";
   }, []);
 
-  const heroImageRef = useRef<HTMLDivElement>(null);
-
-  const handleHeroImageMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = heroImageRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    el.style.setProperty("--spotlight-x", `${x}%`);
-    el.style.setProperty("--spotlight-y", `${y}%`);
-  };
-
-  const handleHeroImageLeave = () => {
-    const el = heroImageRef.current;
-    if (!el) return;
-    el.style.setProperty("--spotlight-x", "50%");
-    el.style.setProperty("--spotlight-y", "50%");
-  };
+  const [panelOpen, setPanelOpen] = useState(false);
 
   const featuredStudies = caseStudies.filter((s) => s.featured);
 
@@ -82,11 +65,8 @@ const Home = () => {
             {/* A single, living view into the work */}
             <Reveal index={2} className="mx-auto w-full max-w-lg lg:max-w-[28rem]">
               <div
-                ref={heroImageRef}
-                className="hero-image group relative overflow-hidden rounded-md border border-border bg-card"
-                onMouseMove={handleHeroImageMove}
-                onMouseLeave={handleHeroImageLeave}
-                style={{ "--spotlight-x": "50%", "--spotlight-y": "50%" } as React.CSSProperties}
+                className={`hero-image group relative cursor-pointer overflow-hidden rounded-md border border-border bg-card${panelOpen ? " hero-panel-open" : ""}`}
+                onClick={() => setPanelOpen((open) => !open)}
               >
                 <img
                   src={heroImage}
@@ -95,7 +75,38 @@ const Home = () => {
                   loading="eager"
                   decoding="async"
                 />
-                <div className="hero-image-spotlight pointer-events-none absolute inset-0" aria-hidden="true" />
+
+                {/* "Process to Product": hover reveals a polished AI layer over the messy human process */}
+                <div
+                  aria-hidden="true"
+                  className="hero-product-panel absolute inset-y-0 right-0 flex w-[46%] flex-col justify-center border-l border-white/10 bg-background/70 px-4 py-5 backdrop-blur-md sm:px-5"
+                >
+                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-primary">AI synthesis</p>
+                  <ul className="mt-3 space-y-2.5 text-[11px] leading-snug text-foreground sm:text-xs">
+                    <li className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      3 themes clustered
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      Sentiment: positive
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      Journey map drafted
+                    </li>
+                  </ul>
+                  <div className="mt-4 h-px w-full bg-border" />
+                  <div className="mt-3 flex items-end gap-1" aria-hidden="true">
+                    {[35, 55, 40, 70, 60, 85, 75].map((h, i) => (
+                      <span
+                        key={i}
+                        className="w-1.5 rounded-sm bg-primary/70"
+                        style={{ height: `${h * 0.28}px` }}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>
