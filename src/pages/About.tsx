@@ -126,8 +126,8 @@ const About = () => {
             <div className="sticky top-24 space-y-3">
               {[
                 { src: "/images/varanasi/flower-market.jpg", alt: "Flower market in Varanasi", ratio: "aspect-[4/5]" },
-                { src: coffeePopup.url, alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
-                { src: bouldering.url, alt: "Bouldering across an overhang at a climbing gym", ratio: "aspect-[3/4]" },
+                { src: "/images/about/coffee-popup.jpg", alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
+                { src: "/images/about/bouldering.png", alt: "Bouldering across an overhang at a climbing gym", ratio: "aspect-[3/4]" },
               ].map((img) => (
                 <figure
                   key={img.src}
