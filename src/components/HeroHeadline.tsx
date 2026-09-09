@@ -57,7 +57,7 @@ const HeroHeadline = () => {
                 }
               : { opacity: 0, transform: "translateY(18px)" };
             return (
-              <span key={`${si}-${wi}`} className="inline-block overflow-hidden align-bottom">
+              <span key={`${si}-${wi}`} className="inline-block overflow-hidden align-bottom pb-1">
                 <span
                   className="inline-block will-change-transform"
                   style={staticStyle ?? animatedStyle}
