@@ -81,7 +81,13 @@ const Home = () => {
 
             {/* A single, living view into the work */}
             <Reveal index={2} className="mx-auto w-full max-w-lg lg:max-w-[28rem]">
-              <div className="hero-image overflow-hidden rounded-md border border-border bg-card">
+              <div
+                ref={heroImageRef}
+                className="hero-image group relative overflow-hidden rounded-md border border-border bg-card"
+                onMouseMove={handleHeroImageMove}
+                onMouseLeave={handleHeroImageLeave}
+                style={{ "--spotlight-x": "50%", "--spotlight-y": "50%" } as React.CSSProperties}
+              >
                 <img
                   src={heroImage}
                   alt="A team brainstorming session with colorful sticky notes on a whiteboard"
@@ -89,6 +95,7 @@ const Home = () => {
                   loading="eager"
                   decoding="async"
                 />
+                <div className="hero-image-spotlight pointer-events-none absolute inset-0" aria-hidden="true" />
               </div>
             </Reveal>
           </div>
