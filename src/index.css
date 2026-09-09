@@ -490,5 +490,9 @@
     display: none;
   }
 
+  .hero-image {
+    transform: none !important;
+  }
+
 }
 
