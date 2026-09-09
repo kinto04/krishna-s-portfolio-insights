@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import CaseStudyCard from "@/components/CaseStudyCard";
@@ -19,6 +19,25 @@ const Home = () => {
   useEffect(() => {
     document.title = "Krishna Suresh — Product Designer Who Builds with AI";
   }, []);
+
+  const heroImageRef = useRef<HTMLDivElement>(null);
+
+  const handleHeroImageMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = heroImageRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    el.style.setProperty("--spotlight-x", `${x}%`);
+    el.style.setProperty("--spotlight-y", `${y}%`);
+  };
+
+  const handleHeroImageLeave = () => {
+    const el = heroImageRef.current;
+    if (!el) return;
+    el.style.setProperty("--spotlight-x", "50%");
+    el.style.setProperty("--spotlight-y", "50%");
+  };
 
   const featuredStudies = caseStudies.filter((s) => s.featured);
 
@@ -62,7 +81,13 @@ const Home = () => {
 
             {/* A single, living view into the work */}
             <Reveal index={2} className="mx-auto w-full max-w-lg lg:max-w-[28rem]">
-              <div className="hero-image overflow-hidden rounded-md border border-border bg-card">
+              <div
+                ref={heroImageRef}
+                className="hero-image group relative overflow-hidden rounded-md border border-border bg-card"
+                onMouseMove={handleHeroImageMove}
+                onMouseLeave={handleHeroImageLeave}
+                style={{ "--spotlight-x": "50%", "--spotlight-y": "50%" } as React.CSSProperties}
+              >
                 <img
                   src={heroImage}
                   alt="A team brainstorming session with colorful sticky notes on a whiteboard"
@@ -70,6 +95,7 @@ const Home = () => {
                   loading="eager"
                   decoding="async"
                 />
+                <div className="hero-image-spotlight pointer-events-none absolute inset-0" aria-hidden="true" />
               </div>
             </Reveal>
           </div>
