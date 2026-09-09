@@ -86,31 +86,26 @@ const About = () => {
         </Reveal>
 
         {/* Bio */}
-        <Reveal className="grid gap-8 md:grid-cols-[1fr_16rem] lg:grid-cols-[1fr_18rem] md:gap-10 lg:gap-12">
+        <Reveal className="max-w-3xl">
           <div className="space-y-6 text-muted-foreground leading-relaxed">
-            <p className="max-w-prose md:max-w-none">
+            <p>
               I'm a <strong className="text-foreground">Designer and UX Engineer</strong> who builds at the intersection of research, design, and engineering. CS degree from Purdue. Just graduated with an{" "}
               <strong className="text-foreground">MS in Engineering Design Innovation from Northwestern</strong>.
             </p>
-            <p className="max-w-prose md:max-w-none">
+            <p>
               Early in my career as a software engineer, I kept noticing the same pattern: teams building solutions in search of a problem. Tech first, users second. By the time we tried to ship what we'd built, we'd already lost the thread of what people actually needed.
             </p>
-            <p className="max-w-prose md:max-w-none">
+            <p>
               That observation changed how I work. I started with the user, mapped the problem space, and built tight feedback loops with real stakeholders at every stage.{" "}
               <strong className="text-foreground">That shift led me to human-centered design — and eventually to Northwestern.</strong>
             </p>
-            <p className="max-w-prose md:max-w-none">
+            <p>
               Since then I've designed & built products across <strong className="text-foreground">AI, e-commerce, healthcare, and social impact</strong>{'\u00a0'}- from a conversational AI agent that drove measurable outcomes for e-commerce small business, to a clinical diagnostic tool co-designed with 12+ healthcare professionals, to a group travel app I launched as my master's thesis.
             </p>
-            <p className="max-w-prose md:max-w-none text-base text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               Based in New York, NY. Looking for <strong className="text-foreground">Design roles</strong> in AI, e-commerce, travel, and healthcare.
             </p>
           </div>
-          <aside className="hidden md:flex flex-col items-center">
-            <div className="sticky top-24">
-              <AboutVenn />
-            </div>
-          </aside>
         </Reveal>
 
         {/* Beyond work */}
