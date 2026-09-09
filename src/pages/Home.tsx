@@ -67,7 +67,7 @@ const Home = () => {
             {/* A compact view into the work */}
             <Reveal index={2} className="mx-auto w-full max-w-lg lg:max-w-[32rem]">
               <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                <div className="overflow-hidden rounded-md border border-border bg-card">
+                <div className="hero-media-tile overflow-hidden rounded-md border border-border bg-card" style={{ "--tile-index": 0 } as React.CSSProperties}>
                   <video
                     className="aspect-[4/3] w-full object-cover"
                     autoPlay
@@ -81,7 +81,7 @@ const Home = () => {
                     <source src={workshopLoop.url} type="video/mp4" />
                   </video>
                 </div>
-                <div className="overflow-hidden rounded-md border border-border bg-card">
+                <div className="hero-media-tile overflow-hidden rounded-md border border-border bg-card" style={{ "--tile-index": 1 } as React.CSSProperties}>
                   <img
                     src={collaborationPhoto.url}
                     alt="A team brainstorming session on a whiteboard with colorful sticky notes"
@@ -90,7 +90,7 @@ const Home = () => {
                     decoding="async"
                   />
                 </div>
-                <div className="overflow-hidden rounded-md border border-border bg-card">
+                <div className="hero-media-tile overflow-hidden rounded-md border border-border bg-card" style={{ "--tile-index": 2 } as React.CSSProperties}>
                   <img
                     src={presentationPhoto.url}
                     alt="Krishna presenting his graduate design work"
@@ -99,7 +99,7 @@ const Home = () => {
                     decoding="async"
                   />
                 </div>
-                <div className="overflow-hidden rounded-md border border-border bg-card">
+                <div className="hero-media-tile overflow-hidden rounded-md border border-border bg-card" style={{ "--tile-index": 3 } as React.CSSProperties}>
                   <img
                     src={researchPhoto.url}
                     alt="Krishna conducting on-site user research"
