@@ -1,7 +1,14 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AboutVenn } from "@/components/AboutVenn";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+
+
+
+
+
+
 
 
 
@@ -100,53 +107,9 @@ const About = () => {
               Based in New York, NY. Looking for <strong className="text-foreground">Design roles</strong> in AI, e-commerce, travel, and healthcare.
             </p>
           </div>
-          <aside className="hidden md:block">
-            <div className="sticky top-24 space-y-4">
-              <p className="label-eyebrow">Selected work</p>
-              {[
-                {
-                  src: "/images/u6qotkxyhcppqyywjql0qfrlnq.webp",
-                  alt: "Nectar.ai case study cover",
-                  title: "Nectar.ai",
-                  caption: "Conversational AI for e-commerce",
-                  href: "/work/nectar-ai",
-                },
-                {
-                  src: "/images/northwestern-medicine/cover.jpg",
-                  alt: "Northwestern Medicine case study cover",
-                  title: "Healthcare research",
-                  caption: "Clinical tool co-designed with clinicians",
-                  href: "/work/northwestern-medicine",
-                },
-                {
-                  src: "/images/jointly/cover.png",
-                  alt: "Jointly case study cover",
-                  title: "Jointly.",
-                  caption: "Group travel app, MS thesis",
-                  href: "/work/jointly-travel",
-                },
-              ].map((item) => (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  className="group block rounded-sm border border-border bg-card/50 p-2 hover:border-primary focus-ring t-base"
-                >
-                  <figure className="relative overflow-hidden rounded-sm mb-3">
-                    <img
-                      src={item.src}
-                      alt={item.alt}
-                      loading="lazy"
-                      className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                    />
-                  </figure>
-                  <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                    {item.title}
-                  </p>
-                  <p className="text-xs text-muted-foreground leading-snug">
-                    {item.caption}
-                  </p>
-                </Link>
-              ))}
+          <aside className="hidden md:flex flex-col items-center">
+            <div className="sticky top-24">
+              <AboutVenn />
             </div>
           </aside>
         </Reveal>
