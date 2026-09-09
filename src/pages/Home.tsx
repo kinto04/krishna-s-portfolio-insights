@@ -69,13 +69,6 @@ const Home = () => {
                 loading="eager"
                 decoding="async"
               />
-              <div className="absolute -bottom-4 left-4 flex items-center gap-2.5 rounded-md border border-border bg-card px-4 py-3 shadow-[0_16px_32px_-16px_hsl(var(--foreground)/0.25)]">
-                <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-available opacity-60 motion-reduce:animate-none" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-available" />
-                </span>
-                <span className="text-sm font-medium text-foreground">Available for work</span>
-              </div>
             </Reveal>
           </div>
         </div>
