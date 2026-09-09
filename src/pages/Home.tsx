@@ -71,28 +71,6 @@ const Home = () => {
                   decoding="async"
                 />
 
-                {/* "AI Digital Layer": a quiet, always-on analytical overlay above the human process. */}
-                <div
-                  aria-hidden="true"
-                  className="ai-layer absolute inset-0 pointer-events-none"
-                >
-                  {/* Fine grid */}
-                  <div className="ai-layer-grid absolute inset-0 opacity-30" />
-
-                  {/* Slow sweeping scanline */}
-                  <div className="ai-layer-scan absolute inset-x-0 top-0 h-px bg-primary/40" />
-
-                  {/* Insight markers */}
-                  <div className="ai-layer-markers absolute inset-0">
-                    <span className="ai-marker" style={{ left: "22%", top: "28%" }} />
-                    <span className="ai-marker" style={{ left: "62%", top: "36%", animationDelay: "1.4s" }} />
-                    <span className="ai-marker" style={{ left: "74%", top: "64%", animationDelay: "2.6s" }} />
-                    <span className="ai-marker" style={{ left: "38%", top: "74%", animationDelay: "3.8s" }} />
-                  </div>
-
-                  {/* Subtle corner brackets */}
-                  <div className="ai-layer-frame absolute inset-3 border border-primary/20 opacity-60" />
-                </div>
               </div>
             </Reveal>
           </div>
