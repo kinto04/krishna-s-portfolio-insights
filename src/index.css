@@ -421,31 +421,36 @@
   100% { transform: scale(1.9); opacity: 0; }
 }
 
-/* Hero media tiles: staggered entrance + quiet hover zoom.
+/* Hero image: gentle living motion + quiet hover zoom.
    Transform/opacity only — compositor-friendly. */
-@keyframes heroTileIn {
-  from { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.97); }
+@keyframes heroImageIn {
+  from { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.98); }
   to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
 }
 
-.hero-media-tile {
-  animation: heroTileIn 0.7s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)) both;
-  animation-delay: calc(var(--tile-index, 0) * 110ms);
+@keyframes heroImageDrift {
+  0% { transform: scale(1.02) translate3d(-1%, 0.5%, 0); }
+  50% { transform: scale(1.05) translate3d(1%, -0.5%, 0); }
+  100% { transform: scale(1.02) translate3d(-1%, 0.5%, 0); }
+}
+
+.hero-image {
+  animation: heroImageIn 0.8s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)) both;
   transition: border-color 200ms ease;
 }
 
-.hero-media-tile:hover {
+.hero-image:hover {
   border-color: var(--foreground);
 }
 
-.hero-media-tile img,
-.hero-media-tile video {
+.hero-image img {
+  animation: heroImageDrift 20s ease-in-out infinite;
   transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
-.hero-media-tile:hover img,
-.hero-media-tile:hover video {
+.hero-image:hover img {
+  animation-play-state: paused;
   transform: scale(1.04);
 }
 
