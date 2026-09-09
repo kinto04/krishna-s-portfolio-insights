@@ -64,7 +64,7 @@ const Home = () => {
             <Reveal index={2} className="mx-auto w-full max-w-lg lg:max-w-[28rem]">
               <div className="hero-image overflow-hidden rounded-md border border-border bg-card">
                 <img
-                  src={collaborationPhoto.url}
+                  src={heroImage}
                   alt="A team brainstorming session with colorful sticky notes on a whiteboard"
                   className="aspect-[4/3] w-full object-cover"
                   loading="eager"
