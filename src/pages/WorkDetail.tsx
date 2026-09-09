@@ -4,7 +4,7 @@ import Layout from "@/components/Layout";
 import { caseStudies, type CaseStudy, type Slide } from "@/data/caseStudies";
 import { ArrowLeft, ArrowRight, ExternalLink, Copy, Check, Mail } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import { Pill } from "@/components/ui/pill";
+import { tagColor } from "@/lib/tagColors";
 import { RenderBlock, getChapterAnchors } from "@/components/casestudy/Blocks";
 
 // Group consecutive slides by sectionLabel into chapters.
@@ -110,9 +110,21 @@ const Hero = ({ study }: { study: CaseStudy }) => (
     <div className="animate-fade-in-up max-w-3xl">
       <div className="flex flex-wrap gap-2 mb-4">
         {study.tags.map((tag) => (
-          <Pill key={tag} variant="subtle" size="sm" uppercase>
+          <span
+            key={tag}
+            className="inline-flex items-center gap-1.5 border-t px-0 py-1 label-eyebrow"
+            style={{
+              borderColor: `color-mix(in srgb, ${tagColor(tag)} 32%, transparent)`,
+              color: tagColor(tag),
+            }}
+          >
+            <span
+              className="h-1.5 w-1.5 rounded-full"
+              style={{ backgroundColor: tagColor(tag) }}
+              aria-hidden="true"
+            />
             {tag}
-          </Pill>
+          </span>
         ))}
       </div>
       <h1 className="text-4xl sm:text-5xl lg:text-6xl text-foreground mb-3 leading-[1.05]">

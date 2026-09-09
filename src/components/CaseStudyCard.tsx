@@ -57,7 +57,7 @@ const CaseStudyCard = ({ study, presentation = "open" }: CaseStudyCardProps) => 
             {study.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center gap-1.5 border-t px-0 py-1 text-[10px] font-medium uppercase tracking-normal"
+                className="inline-flex items-center gap-1.5 border-t px-0 py-1 label-eyebrow"
                 style={{
                   borderColor: `color-mix(in srgb, ${tagColor(tag)} 32%, transparent)`,
                   color: tagColor(tag),
