@@ -84,7 +84,7 @@ const Home = () => {
                 <div className="overflow-hidden rounded-md border border-border bg-card">
                   <img
                     src={collaborationPhoto.url}
-                    alt="Krishna collaborating with a team during a design workshop"
+                    alt="A team brainstorming session on a whiteboard with colorful sticky notes"
                     className="aspect-[4/3] w-full object-cover"
                     loading="eager"
                     decoding="async"
