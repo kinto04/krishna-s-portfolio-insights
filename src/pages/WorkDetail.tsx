@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import { caseStudies, type CaseStudy, type Slide } from "@/data/caseStudies";
 import { ArrowLeft, ArrowRight, ExternalLink, Copy, Check, Mail } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import { Pill } from "@/components/ui/pill";
 import { tagColor } from "@/lib/tagColors";
 import { RenderBlock, getChapterAnchors } from "@/components/casestudy/Blocks";
 
