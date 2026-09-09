@@ -20,6 +20,25 @@ const Home = () => {
     document.title = "Krishna Suresh — Product Designer Who Builds with AI";
   }, []);
 
+  const heroImageRef = useRef<HTMLDivElement>(null);
+
+  const handleHeroImageMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = heroImageRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    el.style.setProperty("--spotlight-x", `${x}%`);
+    el.style.setProperty("--spotlight-y", `${y}%`);
+  };
+
+  const handleHeroImageLeave = () => {
+    const el = heroImageRef.current;
+    if (!el) return;
+    el.style.setProperty("--spotlight-x", "50%");
+    el.style.setProperty("--spotlight-y", "50%");
+  };
+
   const featuredStudies = caseStudies.filter((s) => s.featured);
 
   return (
