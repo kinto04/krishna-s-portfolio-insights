@@ -11,6 +11,7 @@ import workshopLoop from "@/assets/design-workshop-loop.mp4.asset.json";
 import workshopPoster from "@/assets/design-workshop-poster.jpg.asset.json";
 import collaborationPhoto from "@/assets/collaborative-design-session.png.asset.json";
 import presentationPhoto from "@/assets/krishna-presenting.jpg.asset.json";
+import researchPhoto from "@/assets/onsite-user-research.jpg.asset.json";
 
 
 const heroVariant = {
@@ -65,10 +66,10 @@ const Home = () => {
 
             {/* A compact view into the work */}
             <Reveal index={2} className="mx-auto w-full max-w-lg lg:max-w-[32rem]">
-              <div className="grid grid-cols-5 grid-rows-[minmax(0,1fr)_auto] gap-2 sm:gap-3">
-                <div className="col-span-5 overflow-hidden rounded-md border border-border bg-card">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                <div className="overflow-hidden rounded-md border border-border bg-card">
                   <video
-                    className="aspect-video w-full object-cover"
+                    className="aspect-[4/3] w-full object-cover"
                     autoPlay
                     muted
                     loop
@@ -80,20 +81,29 @@ const Home = () => {
                     <source src={workshopLoop.url} type="video/mp4" />
                   </video>
                 </div>
-                <div className="col-span-3 overflow-hidden rounded-md border border-border bg-card">
+                <div className="overflow-hidden rounded-md border border-border bg-card">
                   <img
                     src={collaborationPhoto.url}
                     alt="Krishna collaborating with a team during a design workshop"
-                    className="aspect-[14/5] w-full object-cover"
+                    className="aspect-[4/3] w-full object-cover"
                     loading="eager"
                     decoding="async"
                   />
                 </div>
-                <div className="col-span-2 overflow-hidden rounded-md border border-border bg-card">
+                <div className="overflow-hidden rounded-md border border-border bg-card">
                   <img
                     src={presentationPhoto.url}
                     alt="Krishna presenting his graduate design work"
-                    className="aspect-[14/5] w-full object-cover object-[40%_42%]"
+                    className="aspect-[4/3] w-full object-cover object-[40%_42%]"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+                <div className="overflow-hidden rounded-md border border-border bg-card">
+                  <img
+                    src={researchPhoto.url}
+                    alt="Krishna conducting on-site user research"
+                    className="aspect-[4/3] w-full object-cover"
                     loading="eager"
                     decoding="async"
                   />
