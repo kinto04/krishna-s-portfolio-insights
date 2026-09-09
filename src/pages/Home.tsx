@@ -7,6 +7,10 @@ import { ArrowRight, GraduationCap } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import HeroHeadline from "@/components/HeroHeadline";
 import ExpertiseConstellation from "@/components/ExpertiseConstellation";
+import workshopLoop from "@/assets/design-workshop-loop.mp4.asset.json";
+import workshopPoster from "@/assets/design-workshop-poster.jpg.asset.json";
+import collaborationPhoto from "@/assets/collaborative-design-session.png.asset.json";
+import presentationPhoto from "@/assets/krishna-presenting.jpg.asset.json";
 
 
 const heroVariant = {
@@ -59,16 +63,42 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Portrait */}
-            <Reveal index={2} className="relative mx-auto w-full max-w-sm lg:max-w-none">
-              <div className="absolute -inset-3 -rotate-2 rounded-md border border-primary/20 bg-card" aria-hidden="true" />
-              <img
-                src="/images/headshot.jpeg"
-                alt="Portrait of Krishna Suresh"
-                className="relative aspect-[4/5] w-full rounded-md border border-border object-cover shadow-[0_24px_48px_-24px_hsl(var(--foreground)/0.25)]"
-                loading="eager"
-                decoding="async"
-              />
+            {/* A compact view into the work */}
+            <Reveal index={2} className="mx-auto w-full max-w-lg lg:max-w-[32rem]">
+              <div className="grid grid-cols-5 grid-rows-[minmax(0,1fr)_auto] gap-2 sm:gap-3">
+                <div className="col-span-5 overflow-hidden rounded-md border border-border bg-card">
+                  <video
+                    className="aspect-video w-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster={workshopPoster.url}
+                    aria-label="Timelapse of a collaborative design workshop"
+                  >
+                    <source src={workshopLoop.url} type="video/mp4" />
+                  </video>
+                </div>
+                <div className="col-span-3 overflow-hidden rounded-md border border-border bg-card">
+                  <img
+                    src={collaborationPhoto.url}
+                    alt="Krishna collaborating with a team during a design workshop"
+                    className="aspect-[14/5] w-full object-cover"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+                <div className="col-span-2 overflow-hidden rounded-md border border-border bg-card">
+                  <img
+                    src={presentationPhoto.url}
+                    alt="Krishna presenting his graduate design work"
+                    className="aspect-[14/5] w-full object-cover object-[40%_42%]"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+              </div>
             </Reveal>
           </div>
         </div>
