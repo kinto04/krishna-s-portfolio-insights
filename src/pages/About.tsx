@@ -99,7 +99,7 @@ const About = () => {
             <strong className="text-foreground">That shift led me to human-centered design — and eventually to Northwestern.</strong>
           </p>
           <p>
-            Since then I've built products across <strong className="text-foreground">AI, e-commerce, healthcare, and social impact</strong> — from a conversational AI agent that drove measurable e-commerce lifts, to a clinical diagnostic tool co-designed with 12+ healthcare professionals, to a group travel app I launched as my master's thesis.
+            Since then I've designed & built products across <strong className="text-foreground">AI, e-commerce, healthcare, and social impact</strong>{'\u00a0'}- from a conversational AI agent that drove measurable outcomes for e-commerce small business, to a clinical diagnostic tool co-designed with 12+ healthcare professionals, to a group travel app I launched as my master's thesis.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed">
             Based in New York, NY. Looking for <strong className="text-foreground">Design roles</strong> in AI, e-commerce, travel, and healthcare.
