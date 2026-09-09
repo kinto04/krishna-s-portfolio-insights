@@ -67,7 +67,7 @@ const About = () => {
         className="relative container-page section-y stack-lg overflow-visible"
       >
         {/* Hero */}
-        <Reveal className="relative grid gap-6 sm:gap-10 border-b border-border pb-12 sm:grid-cols-[10rem_auto] sm:items-center">
+        <Reveal className="relative grid gap-6 sm:gap-10 border-b border-border pb-12 sm:grid-cols-[10rem_1fr] lg:grid-cols-[10rem_1fr_16rem] sm:items-center">
           <div className="group relative shrink-0">
             <img
               src="/images/headshot.jpeg"
@@ -75,7 +75,7 @@ const About = () => {
               className="w-40 h-40 rounded-sm object-cover object-top border border-border transition-transform duration-300 group-hover:translate-x-1"
             />
           </div>
-          <div className="max-w-3xl">
+          <div>
             <h1 className="t-page-title text-foreground mb-2">
               Krishna Suresh<span className="text-primary">.</span>
             </h1>
@@ -83,25 +83,47 @@ const About = () => {
               Designer · Engineer
             </p>
           </div>
+          <div className="hidden lg:flex flex-col gap-5">
+            <div>
+              <p className="text-[11px] uppercase tracking-wider text-muted-foreground/70 mb-1">Status</p>
+              <p className="flex items-center gap-2 text-sm text-foreground">
+                <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+                Open to roles
+              </p>
+            </div>
+            <div>
+              <p className="text-[11px] uppercase tracking-wider text-muted-foreground/70 mb-1">Location</p>
+              <p className="text-sm text-foreground">New York, NY</p>
+            </div>
+            <div>
+              <p className="text-[11px] uppercase tracking-wider text-muted-foreground/70 mb-1">Email</p>
+              <a
+                href="mailto:work.krishnasuresh@gmail.com"
+                className="text-sm text-foreground hover:text-primary underline underline-offset-4 transition-colors"
+              >
+                work.krishnasuresh@gmail.com
+              </a>
+            </div>
+          </div>
         </Reveal>
 
         {/* Bio */}
-        <Reveal className="max-w-3xl space-y-6 text-muted-foreground leading-relaxed">
-          <p>
+        <Reveal className="space-y-6 text-muted-foreground leading-relaxed">
+          <p className="max-w-prose">
             I'm a <strong className="text-foreground">Designer and UX Engineer</strong> who builds at the intersection of research, design, and engineering. CS degree from Purdue. Just graduated with an{" "}
             <strong className="text-foreground">MS in Engineering Design Innovation from Northwestern</strong>.
           </p>
-          <p>
+          <p className="max-w-prose">
             Early in my career as a software engineer, I kept noticing the same pattern: teams building solutions in search of a problem. Tech first, users second. By the time we tried to ship what we'd built, we'd already lost the thread of what people actually needed.
           </p>
-          <p>
+          <p className="max-w-prose">
             That observation changed how I work. I started with the user, mapped the problem space, and built tight feedback loops with real stakeholders at every stage.{" "}
             <strong className="text-foreground">That shift led me to human-centered design — and eventually to Northwestern.</strong>
           </p>
-          <p>
+          <p className="max-w-prose">
             Since then I've designed & built products across <strong className="text-foreground">AI, e-commerce, healthcare, and social impact</strong>{'\u00a0'}- from a conversational AI agent that drove measurable outcomes for e-commerce small business, to a clinical diagnostic tool co-designed with 12+ healthcare professionals, to a group travel app I launched as my master's thesis.
           </p>
-          <p className="text-base text-muted-foreground leading-relaxed">
+          <p className="max-w-prose text-base text-muted-foreground leading-relaxed">
             Based in New York, NY. Looking for <strong className="text-foreground">Design roles</strong> in AI, e-commerce, travel, and healthcare.
           </p>
         </Reveal>
