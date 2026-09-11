@@ -219,73 +219,73 @@
     background: hsl(var(--primary-soft) / 0.42);
   }
 
-  /* Jointly's chapter surfaces mirror the warm-light and near-black deck pages. */
-  .jointly-chapter {
-    position: relative;
-    isolation: isolate;
-    margin-top: 3rem;
-    padding-top: 0.25rem;
-    padding-bottom: 3rem;
-  }
+/* Jointly's chapter surfaces mirror the warm-light and near-black deck pages. */
+.jointly-chapter {
+  position: relative;
+  isolation: isolate;
+  margin-top: 1.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 3rem;
+}
 
-  /* Adjacent chapters share no page-background gap — bands flow into each other. */
+/* Adjacent chapters share no page-background gap — bands flow into each other. */
+.jointly-chapter + .jointly-chapter {
+  margin-top: 0;
+}
+
+.jointly-chapter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: -1;
+  background: hsl(var(--background));
+}
+
+.jointly-chapter-light {
+  --background: 40 20% 96%;
+  --foreground: 30 15% 9%;
+  --muted-foreground: 28 8% 38%;
+  --border: 28 12% 82%;
+  --card: 40 18% 98%;
+  --primary: 20 76% 55%;
+}
+
+.jointly-chapter-dark {
+  --background: 30 22% 9%;
+  --foreground: 40 20% 96%;
+  --muted-foreground: 32 10% 70%;
+  --border: 30 10% 25%;
+  --card: 30 18% 12%;
+  --primary: 20 76% 60%;
+}
+
+.jointly-chapter .case-study-chapter-header {
+  margin-top: 0;
+  padding-top: 1.5rem;
+  border-top: 0;
+}
+
+.jointly-chapter .case-study-image-frame {
+  border-color: transparent;
+  background: transparent;
+}
+
+@media (min-width: 640px) {
+  .jointly-chapter {
+    margin-top: 2rem;
+    padding-bottom: 4rem;
+  }
   .jointly-chapter + .jointly-chapter {
     margin-top: 0;
   }
 
-  .jointly-chapter::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    left: 50%;
-    width: 100vw;
-    transform: translateX(-50%);
-    z-index: -1;
-    background: hsl(var(--background));
-  }
-
-  .jointly-chapter-light {
-    --background: 40 20% 96%;
-    --foreground: 30 15% 9%;
-    --muted-foreground: 28 8% 38%;
-    --border: 28 12% 82%;
-    --card: 40 18% 98%;
-    --primary: 20 76% 55%;
-  }
-
-  .jointly-chapter-dark {
-    --background: 30 22% 9%;
-    --foreground: 40 20% 96%;
-    --muted-foreground: 32 10% 70%;
-    --border: 30 10% 25%;
-    --card: 30 18% 12%;
-    --primary: 20 76% 60%;
-  }
-
   .jointly-chapter .case-study-chapter-header {
-    margin-top: 0;
-    padding-top: 2.5rem;
-    border-top: 0;
+    padding-top: 2rem;
   }
-
-  .jointly-chapter .case-study-image-frame {
-    border-color: transparent;
-    background: transparent;
-  }
-
-  @media (min-width: 640px) {
-    .jointly-chapter {
-      margin-top: 4rem;
-      padding-bottom: 4rem;
-    }
-    .jointly-chapter + .jointly-chapter {
-      margin-top: 0;
-    }
-
-    .jointly-chapter .case-study-chapter-header {
-      padding-top: 3.5rem;
-    }
-  }
+}
 
 
   /* Ambient depth uses primary-deep, never primary. */
