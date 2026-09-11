@@ -276,7 +276,10 @@
   @media (min-width: 640px) {
     .jointly-chapter {
       margin-top: 4rem;
-      padding-bottom: 3.5rem;
+      padding-bottom: 4rem;
+    }
+    .jointly-chapter + .jointly-chapter {
+      margin-top: 0;
     }
 
     .jointly-chapter .case-study-chapter-header {
