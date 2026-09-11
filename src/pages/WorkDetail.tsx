@@ -434,8 +434,8 @@ const WorkDetail = () => {
     : undefined;
 
   return (
-    <Layout>
-      <div style={themeStyle} className={themed ? "w-full" : undefined}>
+    <div style={themeStyle} className={themed ? "w-full min-h-screen bg-background" : undefined}>
+      <Layout>
         <article className="container-page section-y-tight">
           <Link
             to="/work"
