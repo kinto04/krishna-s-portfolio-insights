@@ -116,7 +116,7 @@ export const caseStudies: CaseStudy[] = [
         text: "Group trips are supposed to bring people together, but the planning process can be frustrating.",
       },
 
-      { kind: "chapter", id: "the-research", number: "01", label: "Validating the problem", tone: "light", intro: "I looked beyond stated preferences to understand what actually happens between inspiration and booking—and why the people who care most often end up carrying the group." },
+      { kind: "chapter", id: "the-research", number: "01", label: "Understanding the problem", tone: "light", intro: "I looked beyond stated preferences to understand what actually happens between inspiration and booking—and why the people who care most often end up carrying the group." },
       {
         kind: "researchTracks",
         items: [
