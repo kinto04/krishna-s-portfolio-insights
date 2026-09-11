@@ -5,20 +5,39 @@ import type { Block } from "@/data/caseStudies";
 /** Cap the stagger so long chapters never wait too long. */
 const step = (i?: number) => Math.min(i ?? 0, 3);
 
-export const ChapterHeader = ({ number, label, intro }: { number: string; label: string; intro?: string }) => (
-  <Reveal className="case-study-chapter-header mt-20 mb-8 first:mt-8 pt-8 border-t border-border">
-    <p className="label-eyebrow mb-5">
-      Chapter {number}
-    </p>
-    <div className="flex items-baseline gap-5">
-      <span className="text-5xl text-primary/70 tabular-nums leading-none">{number}</span>
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">{label}</h2>
-    </div>
-    {intro && (
-      <p className="text-base text-muted-foreground leading-relaxed mt-4 max-w-3xl pl-0 sm:pl-[4.5rem]">{intro}</p>
-    )}
-  </Reveal>
-);
+export const ChapterHeader = ({
+  number,
+  label,
+  intro,
+  layout = "default",
+}: {
+  number: string;
+  label: string;
+  intro?: string;
+  layout?: "default" | "split";
+}) => {
+  const isSplit = layout === "split";
+  return (
+    <Reveal
+      className={`case-study-chapter-header ${
+        isSplit ? "" : "mt-20 mb-8 first:mt-8 pt-8 border-t border-border"
+      }`}
+    >
+      <p className="label-eyebrow mb-5">
+        Chapter {number}
+      </p>
+      <div className="flex items-baseline gap-5">
+        <span className="text-5xl text-primary/70 tabular-nums leading-none">{number}</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">{label}</h2>
+      </div>
+      {intro && (
+        <p className={`text-base text-muted-foreground leading-relaxed mt-4 pl-0 sm:pl-[4.5rem] ${isSplit ? "" : "max-w-3xl"}`}>
+          {intro}
+        </p>
+      )}
+    </Reveal>
+  );
+};
 
 const Statement = ({ text, eyebrow, r }: { text: string; eyebrow?: string; r?: number }) => (
   <Reveal index={step(r)} className="my-12 max-w-4xl">
@@ -281,30 +300,31 @@ const ResearchTracks = ({
   items: { icon: keyof typeof trackIcons; title: string; line: string; badge?: string; highlight?: boolean }[];
   r?: number;
 }) => (
-  <div className="my-12 max-w-3xl space-y-5">
+  <div className="my-10 space-y-3">
     {items.map((item, i) => {
       const Icon = trackIcons[item.icon];
       return (
         <Reveal
           key={item.title}
           index={step(r) + i}
-          className={`flex items-start gap-5 rounded-lg border p-6 sm:p-7 ${
-            item.highlight ? "border-primary/40 bg-primary/[0.07]" : "border-border bg-card"
+          className={`flex items-start gap-4 rounded-md border p-4 sm:p-5 ${
+            item.highlight ? "border-primary/40 bg-primary/[0.06]" : "border-border bg-card"
           }`}
         >
           <span
-            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-md ${
-              item.highlight ? "bg-primary/15 text-primary" : "bg-foreground/[0.06] text-foreground"
+            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
+              item.highlight ? "bg-primary/12 text-primary" : "bg-foreground/[0.04] text-foreground/70"
             }`}
             aria-hidden
           >
-            <Icon size={22} strokeWidth={1.75} />
+            <Icon size={18} strokeWidth={1.75} />
           </span>
           <span className="min-w-0">
-            <span className="block text-lg font-semibold text-foreground leading-snug">{item.title}</span>
-            <span className="block text-base text-muted-foreground leading-relaxed mt-1">{item.line}</span>
+            <span className="block text-base font-semibold text-foreground leading-snug">{item.title}</span>
+            <span className="block text-sm text-muted-foreground leading-relaxed mt-0.5">{item.line}</span>
             {item.badge && (
-              <span className="mt-3 inline-flex items-center rounded-full bg-primary/15 px-3 py-1 text-sm font-medium text-primary">
+              <span className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-primary/12 px-2.5 py-0.5 text-xs font-medium text-primary">
+                <span className="h-1 w-1 rounded-full bg-primary" aria-hidden />
                 {item.badge}
               </span>
             )}

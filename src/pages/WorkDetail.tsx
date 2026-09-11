@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { caseStudies, type CaseStudy, type Slide } from "@/data/caseStudies";
+import { caseStudies, type CaseStudy, type Slide, type Block } from "@/data/caseStudies";
 import { ArrowLeft, ArrowRight, ExternalLink, Copy, Check, Mail } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { Pill } from "@/components/ui/pill";
 import { tagColor } from "@/lib/tagColors";
-import { RenderBlock, getChapterAnchors } from "@/components/casestudy/Blocks";
+import { RenderBlock, getChapterAnchors, ChapterHeader } from "@/components/casestudy/Blocks";
 
 // Group consecutive slides by sectionLabel into chapters.
 // Slides before the first sectionLabel become an unlabeled intro chapter.
@@ -521,23 +521,39 @@ const WorkDetail = () => {
                 {narrative.intro.map((block, i) => (
                   <RenderBlock key={`intro-${i}`} block={block} index={i} />
                 ))}
-                {narrative.chapters.map(({ chapter, blocks }, chapterIndex) => (
-                  <section
-                    key={chapter.id}
-                    id={chapter.id}
-                    className={`jointly-chapter ${chapter.tone === "dark" ? "jointly-chapter-dark" : "jointly-chapter-light"} scroll-mt-24`}
-                  >
-                    <RenderBlock block={chapter} index={chapterIndex} />
-                    {blocks.map((block, blockIndex) => (
-                      <RenderBlock
-                        key={`${chapter.id}-${blockIndex}`}
-                        block={block}
-                        index={blockIndex}
-                        revealIndex={blockIndex}
-                      />
-                    ))}
-                  </section>
-                ))}
+                {narrative.chapters.map(({ chapter, blocks }, chapterIndex) => {
+                  const firstBlock = blocks[0];
+                  const useSplit = firstBlock?.kind === "researchTracks";
+                  return (
+                    <section
+                      key={chapter.id}
+                      id={chapter.id}
+                      className={`jointly-chapter ${chapter.tone === "dark" ? "jointly-chapter-dark" : "jointly-chapter-light"} scroll-mt-24`}
+                    >
+                      {useSplit ? (
+                        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
+                          <ChapterHeader
+                            number={chapter.number}
+                            label={chapter.label}
+                            intro={chapter.intro}
+                            layout="split"
+                          />
+                          <RenderBlock block={firstBlock as Block} index={0} revealIndex={0} />
+                        </div>
+                      ) : (
+                        <RenderBlock block={chapter} index={chapterIndex} />
+                      )}
+                      {blocks.slice(useSplit ? 1 : 0).map((block, blockIndex) => (
+                        <RenderBlock
+                          key={`${chapter.id}-${blockIndex}`}
+                          block={block}
+                          index={blockIndex}
+                          revealIndex={blockIndex}
+                        />
+                      ))}
+                    </section>
+                  );
+                })}
               </div>
             ) : (
               <div className="mt-8">
