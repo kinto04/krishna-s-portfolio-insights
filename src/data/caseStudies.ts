@@ -141,7 +141,39 @@ export const caseStudies: CaseStudy[] = [
       { kind: "image", src: "/images/jointly/7.png", fullWidth: true, caption: "The same three sources of friction repeated across the research." },
 
       { kind: "chapter", id: "the-users", number: "02", label: "From evidence to behavior", tone: "light", intro: "I translated the research into journey maps and three behavioral archetypes. The opportunity was not to optimize for one traveler, but to balance three very different levels of effort and agency." },
-      { kind: "image", src: "/images/jointly/9.png", fullWidth: true, caption: "The Planner, the Support, and the Easy-Goer experience the same trip—and carry very different burdens." },
+      {
+        kind: "archetypes",
+        items: [
+          {
+            number: "01",
+            name: "Patrick",
+            role: "Planner",
+            line: "Initiates everything, absorbs all coordination cost & social risk. Most likely to burn out.",
+            quote: "I end up planning the whole thing, and somehow I'm still the one who gets blamed if something goes wrong.",
+            avatar: "/images/jointly/archetype-1.jpg",
+            source: "Patrick · Jointly research",
+            accent: true,
+          },
+          {
+            number: "02",
+            name: "Sam",
+            role: "Supportive",
+            line: "Willing to contribute but has no clear role. Wants to help but no structure to plug into.",
+            quote: "I'd love to help more but I don't want to step on anyone's toes — I'm never sure what's been decided.",
+            avatar: "/images/jointly/archetype-2.jpg",
+            source: "Sam · Jointly research",
+          },
+          {
+            number: "03",
+            name: "Emma",
+            role: "Easy-going*",
+            line: "Flexible, doesn't engage in the planning process. Can become a problem at the end.",
+            quote: "I'm honestly fine with anything — just tell me where to be and when.",
+            avatar: "/images/jointly/archetype-3.jpg",
+            source: "Emma · Jointly research",
+          },
+        ],
+      },
 
       { kind: "chapter", id: "the-opportunity", number: "03", label: "Defining the opportunity", tone: "light" },
       { kind: "lead", text: "Every existing tool is built for one person, or built without intelligence. No product is both group-native and smart." },
