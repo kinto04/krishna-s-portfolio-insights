@@ -69,7 +69,7 @@ const SlideBlock = ({ slide }: { slide: Slide; index: number; forceFullWidth?: b
 const ChapterBlock = ({ chapter, number }: { chapter: Chapter; number: number }) => {
   const numStr = String(number).padStart(2, "0");
   return (
-    <section id={chapter.id} className="scroll-mt-24 mt-28 first:mt-8">
+    <section id={chapter.id} className="scroll-mt-32 mt-28 first:mt-8">
       {chapter.label && (
         <Reveal className="mb-12 pt-10 border-t border-border">
           <p className="label-eyebrow mb-5">
@@ -256,9 +256,9 @@ const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
   const active = useActiveAnchor(anchors);
   if (anchors.length === 0) return null;
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+    <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
       <p className="label-eyebrow shrink-0">Jump to</p>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-x-2 gap-y-1">
         {anchors.map((c, i) => {
           const isActive = active === c.id;
           return (
@@ -266,7 +266,7 @@ const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
               key={c.id}
               href={`#${c.id}`}
               aria-current={isActive ? "true" : undefined}
-              className="group inline-flex items-baseline gap-2 text-[13px] text-muted-foreground hover:text-primary t-base"
+              className="group inline-flex items-baseline gap-2 text-[13px] text-muted-foreground hover:text-primary t-base whitespace-nowrap"
             >
               <span
                 className={`tabular-nums t-base group-hover:text-primary ${
@@ -288,7 +288,7 @@ const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
                   }`}
                 />
               </span>
-              {i < anchors.length - 1 && <span className="text-border ml-2">/</span>}
+              {i < anchors.length - 1 && <span className="text-border ml-2 hidden sm:inline">/</span>}
             </a>
           );
         })}
@@ -341,19 +341,14 @@ const RequestDeck = ({ email }: { email: string }) => {
   );
 };
 
-const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) => {
+const Overview = ({ study }: { study: CaseStudy }) => {
   if (!study.overview) {
-    // Studies without a full overview: show summary + (if any) Jump-to strip on one section.
+    // Studies without a full overview: show summary only.
     return (
       <Reveal className="mt-12">
         <div className="border border-border rounded-sm p-6 sm:p-8 bg-card/30">
           <p className="text-base text-foreground leading-relaxed">{study.summary}</p>
         </div>
-        {anchors.length > 0 && (
-          <div className="mt-8 pt-8 border-t border-border">
-            <JumpTo anchors={anchors} />
-          </div>
-        )}
       </Reveal>
     );
   }
@@ -380,11 +375,6 @@ const Overview = ({ study, anchors }: { study: CaseStudy; anchors: Anchor[] }) =
             <p className="text-sm text-foreground/90 leading-snug">{study.overview.outcome}</p>
           </div>
         </div>
-        {anchors.length > 0 && (
-          <div className="pt-8 border-t border-border">
-            <JumpTo anchors={anchors} />
-          </div>
-        )}
       </div>
     </Reveal>
   );
@@ -497,7 +487,16 @@ const WorkDetail = () => {
 
           <AtAGlance study={study} />
 
-          <Overview study={study} anchors={anchors} />
+          <Overview study={study} />
+
+          {/* Sticky chapter navigation */}
+          {anchors.length > 0 && (
+            <div className="sticky top-16 z-40 bg-background border-b border-border">
+              <div className="container-page py-3">
+                <JumpTo anchors={anchors} />
+              </div>
+            </div>
+          )}
 
           {/* Native metrics */}
           {study.metrics && study.metrics.length > 0 && (
@@ -528,7 +527,7 @@ const WorkDetail = () => {
                     <section
                       key={chapter.id}
                       id={chapter.id}
-                      className={`jointly-chapter ${chapter.tone === "dark" ? "jointly-chapter-dark" : "jointly-chapter-light"} scroll-mt-24`}
+                      className={`jointly-chapter ${chapter.tone === "dark" ? "jointly-chapter-dark" : "jointly-chapter-light"} scroll-mt-32`}
                     >
                       {useSplit ? (
                         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
@@ -559,11 +558,11 @@ const WorkDetail = () => {
               <div className="mt-8">
                 {study.blocks.map((block, i) => {
                   if (block.kind === "chapter") {
-                    return (
-                      <section key={block.id} id={block.id} className="scroll-mt-24">
-                        <RenderBlock block={block} index={i} />
-                      </section>
-                    );
+                  return (
+                    <section key={block.id} id={block.id} className="scroll-mt-32">
+                      <RenderBlock block={block} index={i} />
+                    </section>
+                  );
                   }
                   return <RenderBlock key={i} block={block} index={i} />;
                 })}
