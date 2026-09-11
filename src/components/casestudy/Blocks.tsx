@@ -133,7 +133,7 @@ const Archetypes = ({
   <div className="my-10 grid md:grid-cols-3 gap-8 md:gap-10">
     {items.map((a, i) => (
       <Reveal key={a.name} index={step(r) + i} className="flex flex-col">
-        <div className="flex flex-1 items-start gap-5">
+        <div className="flex items-start gap-5">
           {a.avatar && (
             <img
               src={a.avatar}
