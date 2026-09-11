@@ -225,7 +225,7 @@
   isolation: isolate;
   margin-top: 1.5rem;
   padding-top: 0.25rem;
-  padding-bottom: 3rem;
+  padding-bottom: 1.5rem;
 }
 
 /* Adjacent chapters share no page-background gap — bands flow into each other. */
@@ -276,7 +276,7 @@
 @media (min-width: 640px) {
   .jointly-chapter {
     margin-top: 2rem;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
   }
   .jointly-chapter + .jointly-chapter {
     margin-top: 0;
