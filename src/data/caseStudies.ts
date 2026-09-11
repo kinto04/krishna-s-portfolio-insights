@@ -150,9 +150,9 @@ export const caseStudies: CaseStudy[] = [
       { kind: "statement", text: "Jointly. The collaborative decision-making layer between inspiration and booking." },
       { kind: "image", src: "/images/jointly/27.png", fullWidth: true, caption: "Four features that turn group chaos into a plan." },
       { kind: "image", src: "/images/jointly/12.png", fullWidth: true, caption: "Trip creation: destination, interests, budget priority. Two steps." },
-      { kind: "image", src: "/images/jointly/14.png", fullWidth: true, caption: "Capture ideas in natural language." },
-      { kind: "image", src: "/images/jointly/18.png", fullWidth: true, caption: "Curated itinerary, generated from the group's voted ideas." },
-      { kind: "image", src: "/images/jointly/19.png", fullWidth: true, caption: "Smart budgeting handles the awkward money conversation." },
+      { kind: "image", src: "/images/jointly/14.png", fullWidth: true },
+      { kind: "image", src: "/images/jointly/18.png", fullWidth: true },
+      { kind: "image", src: "/images/jointly/19.png", fullWidth: true },
 
       { kind: "chapter", id: "early-signal", number: "05", label: "Shipping and learning", tone: "dark", intro: "I shipped the beta to 40+ users, then built an automated weekly feedback loop to turn product behavior into focused design priorities." },
       {
