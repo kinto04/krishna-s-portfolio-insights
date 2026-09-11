@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { caseStudies, type CaseStudy, type Slide } from "@/data/caseStudies";
+import { caseStudies, type CaseStudy, type Slide, type Block } from "@/data/caseStudies";
 import { ArrowLeft, ArrowRight, ExternalLink, Copy, Check, Mail } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { Pill } from "@/components/ui/pill";
 import { tagColor } from "@/lib/tagColors";
-import { RenderBlock, getChapterAnchors } from "@/components/casestudy/Blocks";
+import { RenderBlock, getChapterAnchors, ChapterHeader } from "@/components/casestudy/Blocks";
 
 // Group consecutive slides by sectionLabel into chapters.
 // Slides before the first sectionLabel become an unlabeled intro chapter.
