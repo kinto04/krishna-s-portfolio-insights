@@ -116,14 +116,6 @@ export const caseStudies: CaseStudy[] = [
       },
 
       { kind: "chapter", id: "the-research", number: "01", label: "Validating the problem", tone: "light", intro: "I looked beyond stated preferences to understand what actually happens between inspiration and booking—and why the people who care most often end up carrying the group." },
-      {
-        kind: "methods",
-        items: [
-          { label: "User interviews", line: "In-depth conversations uncovered the emotional labor and decision friction hidden inside group planning." },
-          { label: "Secondary research", line: "A market and behavior scan helped separate travel problems from broader group-decision problems." },
-          { label: "Community listening", line: "Direct outreach across Reddit communities reached 60K+ people and tested whether the frustration resonated at scale." },
-        ],
-      },
       { kind: "image", src: "/images/jointly/4.png", fullWidth: true, caption: "Three complementary research tracks connected individual stories with a wider market signal." },
       { kind: "image", src: "/images/jointly/3.png", fullWidth: true, caption: "Online community outreach surfaced candid frustrations people rarely say directly to friends." },
       { kind: "image", src: "/images/jointly/7.png", fullWidth: true, caption: "The same three sources of friction repeated across the research." },
