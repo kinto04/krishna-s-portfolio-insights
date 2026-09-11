@@ -487,7 +487,16 @@ const WorkDetail = () => {
 
           <AtAGlance study={study} />
 
-          <Overview study={study} anchors={anchors} />
+          <Overview study={study} />
+
+          {/* Sticky chapter navigation */}
+          {anchors.length > 0 && (
+            <div className="sticky top-16 z-40 bg-background border-b border-border">
+              <div className="container-page py-3">
+                <JumpTo anchors={anchors} />
+              </div>
+            </div>
+          )}
 
           {/* Native metrics */}
           {study.metrics && study.metrics.length > 0 && (
@@ -518,7 +527,7 @@ const WorkDetail = () => {
                     <section
                       key={chapter.id}
                       id={chapter.id}
-                      className={`jointly-chapter ${chapter.tone === "dark" ? "jointly-chapter-dark" : "jointly-chapter-light"} scroll-mt-24`}
+                      className={`jointly-chapter ${chapter.tone === "dark" ? "jointly-chapter-dark" : "jointly-chapter-light"} scroll-mt-32`}
                     >
                       {useSplit ? (
                         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
@@ -549,11 +558,11 @@ const WorkDetail = () => {
               <div className="mt-8">
                 {study.blocks.map((block, i) => {
                   if (block.kind === "chapter") {
-                    return (
-                      <section key={block.id} id={block.id} className="scroll-mt-24">
-                        <RenderBlock block={block} index={i} />
-                      </section>
-                    );
+                  return (
+                    <section key={block.id} id={block.id} className="scroll-mt-32">
+                      <RenderBlock block={block} index={i} />
+                    </section>
+                  );
                   }
                   return <RenderBlock key={i} block={block} index={i} />;
                 })}
