@@ -129,7 +129,7 @@ export const caseStudies: CaseStudy[] = [
 
       { kind: "chapter", id: "the-product", number: "04", label: "Designing and building the product", tone: "dark", intro: "I used AI-assisted design and development to move from research to a coherent brand, reusable design system, and functioning product—without separating design decisions from implementation." },
       { kind: "image", src: "/images/jointly/27.png", fullWidth: true, caption: "Four features that turn group chaos into a plan." },
-      { kind: "image", src: "/images/jointly/12.png", fullWidth: true, caption: "Trip creation: destination, interests, budget priority. Two steps." },
+      { kind: "image", src: "/images/jointly/12.png", fullWidth: true, caption: "Trip creation: destination, interests, budget priority." },
       { kind: "image", src: "/images/jointly/14.png", fullWidth: true },
       { kind: "image", src: "/images/jointly/18.png", fullWidth: true },
       { kind: "image", src: "/images/jointly/19.png", fullWidth: true },
