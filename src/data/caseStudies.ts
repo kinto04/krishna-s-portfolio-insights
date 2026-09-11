@@ -128,7 +128,6 @@ export const caseStudies: CaseStudy[] = [
       { kind: "image", src: "/images/jointly/10.png", fullWidth: true, caption: "Jointly sits in the smart + group-native quadrant." },
 
       { kind: "chapter", id: "the-product", number: "04", label: "Designing and building the product", tone: "dark", intro: "I used AI-assisted design and development to move from research to a coherent brand, reusable design system, and functioning product—without separating design decisions from implementation." },
-      { kind: "statement", text: "Jointly. The collaborative decision-making layer between inspiration and booking." },
       { kind: "image", src: "/images/jointly/27.png", fullWidth: true, caption: "Four features that turn group chaos into a plan." },
       { kind: "image", src: "/images/jointly/12.png", fullWidth: true, caption: "Trip creation: destination, interests, budget priority. Two steps." },
       { kind: "image", src: "/images/jointly/14.png", fullWidth: true },
