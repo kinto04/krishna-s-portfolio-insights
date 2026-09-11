@@ -519,8 +519,8 @@ const WorkDetail = () => {
 
           <Closing study={study} />
         </article>
-      </div>
-    </Layout>
+      </Layout>
+    </div>
   );
 };
 
