@@ -34,7 +34,7 @@ export interface Facts {
 // Narrative blocks — composable units that mix native typography and selective imagery.
 // When a CaseStudy provides `blocks`, WorkDetail renders blocks instead of slides.
 export type Block =
-  | { kind: "chapter"; id: string; number: string; label: string; intro?: string }
+  | { kind: "chapter"; id: string; number: string; label: string; intro?: string; tone?: "light" | "dark" }
   | { kind: "statement"; text: string; eyebrow?: string }
   | { kind: "lead"; text: string }
   | { kind: "methods"; items: { label: string; line: string }[] }
@@ -94,28 +94,28 @@ export const caseStudies: CaseStudy[] = [
     context: "Master's Thesis · Northwestern University",
     tags: ["AI", "Experience Design", "Interaction Design"],
     summary:
-      "Group trips are supposed to bring people together — but the planning process often does real damage. Jointly. is a collaborative decision-making layer between inspiration and booking, designed to absorb the social friction of coordination. Built end-to-end as a master's thesis at Northwestern's EDI program.",
+      "Group trips are supposed to bring people together, but planning often creates decision fatigue and social friction. Jointly is an AI travel app that helps friend groups move from scattered ideas to a plan everyone can shape together.",
     featured: true,
     coverImage: "/images/jointly/cover.png",
     heroImage: "/images/jointly/hero.png",
     liveUrl: "https://planjointly.com",
     facts: {
-      timeline: "9 months",
-      timelineNote: "2025–2026",
-      team: "Solo founder",
-      role: "Research, product strategy, UX, build",
+      timeline: "Two quarters",
+      timelineNote: "September 2025–March 2026",
+      team: "Independent thesis project",
+      role: "Founder and Designer",
       setting: "Master's thesis · Northwestern EDI",
       platform: "Mobile + Web",
     },
     overview: {
-      context: "Designed, built and launched end to end — from first interview to live beta.",
+      context: "Validated the problem through interviews, secondary research, and direct participation in online travel communities reaching 60K+ people.",
 
       roleDetail: [
-        "End-to-end product strategy and research across 60+ users and 21 interviews",
-        "UX and visual design across 40+ screens",
-        "Built and launched the live product at planjointly.com",
+        "Translated research into journey maps, behavioral archetypes, and product priorities",
+        "Used AI-assisted design and development to create the brand, design system, and working product",
+        "Built a weekly learning loop across activation, engagement, and retention",
       ],
-      outcome: "Live in beta. 40+ signups during the initial testing period without paid acquisition.",
+      outcome: "Shipped a functioning beta to 40+ users and established a repeatable, data-informed iteration process.",
     },
     reflection:
       "Meeting the functional needs of the group was bare minimum - but the most important piece to design for was the emotional and social needs of the group. The most useful thing the product does is take the awkward conversations off the group's plate - giving them a great starting point to take the trip forward.",
@@ -126,19 +126,27 @@ export const caseStudies: CaseStudy[] = [
         text: "Group trips are supposed to bring people together, but the planning process can be frustrating.",
       },
 
-      { kind: "chapter", id: "the-research", number: "01", label: "The Research", intro: "I went looking for what actually happens between inspiration and booking, and why the people who care most end up resenting it." },
-      { kind: "image", src: "/images/jointly/4.png", fullWidth: true, caption: "Three research tracks: 21 interviews, market scan, and 60k+ Reddit views." },
-      { kind: "image", src: "/images/jointly/3.png", fullWidth: true, caption: "One Reddit thread surfaced what people won't say to friends." },
-      { kind: "image", src: "/images/jointly/7.png", fullWidth: true, caption: "Three frustrations showed up in every conversation." },
+      { kind: "chapter", id: "the-research", number: "01", label: "Validating the problem", tone: "light", intro: "I looked beyond stated preferences to understand what actually happens between inspiration and booking—and why the people who care most often end up carrying the group." },
+      {
+        kind: "methods",
+        items: [
+          { label: "User interviews", line: "In-depth conversations uncovered the emotional labor and decision friction hidden inside group planning." },
+          { label: "Secondary research", line: "A market and behavior scan helped separate travel problems from broader group-decision problems." },
+          { label: "Community listening", line: "Direct outreach across Reddit communities reached 60K+ people and tested whether the frustration resonated at scale." },
+        ],
+      },
+      { kind: "image", src: "/images/jointly/4.png", fullWidth: true, caption: "Three complementary research tracks connected individual stories with a wider market signal." },
+      { kind: "image", src: "/images/jointly/3.png", fullWidth: true, caption: "Online community outreach surfaced candid frustrations people rarely say directly to friends." },
+      { kind: "image", src: "/images/jointly/7.png", fullWidth: true, caption: "The same three sources of friction repeated across the research." },
 
-      { kind: "chapter", id: "the-users", number: "02", label: "The Users", intro: "Three behavioral archetypes ran through every group I studied. Designing for all three at once was the real challenge." },
-      { kind: "image", src: "/images/jointly/9.png", fullWidth: true, caption: "Three archetypes. Same trip, three very different burdens." },
+      { kind: "chapter", id: "the-users", number: "02", label: "From evidence to behavior", tone: "light", intro: "I translated the research into journey maps and three behavioral archetypes. The opportunity was not to optimize for one traveler, but to balance three very different levels of effort and agency." },
+      { kind: "image", src: "/images/jointly/9.png", fullWidth: true, caption: "The Planner, the Support, and the Easy-Goer experience the same trip—and carry very different burdens." },
 
-      { kind: "chapter", id: "the-opportunity", number: "03", label: "The Opportunity" },
+      { kind: "chapter", id: "the-opportunity", number: "03", label: "Defining the opportunity", tone: "light" },
       { kind: "lead", text: "Every existing tool is built for one person, or built without intelligence. No product is both group-native and smart." },
       { kind: "image", src: "/images/jointly/10.png", fullWidth: true, caption: "Jointly sits in the smart + group-native quadrant." },
 
-      { kind: "chapter", id: "the-product", number: "04", label: "The Product" },
+      { kind: "chapter", id: "the-product", number: "04", label: "Designing and building the product", tone: "dark", intro: "I used AI-assisted design and development to move from research to a coherent brand, reusable design system, and functioning product—without separating design decisions from implementation." },
       { kind: "statement", text: "Jointly. The collaborative decision-making layer between inspiration and booking." },
       { kind: "image", src: "/images/jointly/27.png", fullWidth: true, caption: "Four features that turn group chaos into a plan." },
       { kind: "image", src: "/images/jointly/12.png", fullWidth: true, caption: "Trip creation: destination, interests, budget priority. Two steps." },
@@ -146,67 +154,27 @@ export const caseStudies: CaseStudy[] = [
       { kind: "image", src: "/images/jointly/18.png", fullWidth: true, caption: "Curated itinerary, generated from the group's voted ideas." },
       { kind: "image", src: "/images/jointly/19.png", fullWidth: true, caption: "Smart budgeting handles the awkward money conversation." },
 
-      { kind: "chapter", id: "early-signal", number: "05", label: "Early Signal", intro: "Built, launched, and learning in public." },
+      { kind: "chapter", id: "early-signal", number: "05", label: "Shipping and learning", tone: "dark", intro: "I shipped the beta to 40+ users, then built an automated weekly feedback loop to turn product behavior into focused design priorities." },
       {
         kind: "stat",
         value: "40+",
-        label: "signups during initial testing",
+        label: "beta users",
         bullets: [
-          "No paid acquisition",
-          "Value lands immediately: people get what it is in one read",
-          "Suggestions and budget flexibility are the most-cited reasons",
+          "Tracked activation, engagement, and retention",
+          "Automated the collection of recurring behavioral patterns",
+          "Turned those signals into prioritized recommendations each week",
         ],
         href: "https://planjointly.com",
       },
     ],
-    slides: [
-      { image: "/images/jointly/1.png", fullWidth: true },
-      { image: "/images/jointly/2.png", fullWidth: true },
-      {
-        sectionLabel: "The Research",
-        sectionIntro:
-          "Before designing anything, I went looking for the real friction. The signal was loud — and consistent across every source.",
-        image: "/images/jointly/3.png",
-        caption: "60k+ views on a single Reddit thread surfaced unfiltered user frustration with group travel planning.",
-      },
-      { image: "/images/jointly/4.png", caption: "User interviews, secondary research, and community listening across travel communities." },
-      { image: "/images/jointly/7.png", caption: "Three core frustrations emerged consistently across every research source." },
-      {
-        sectionLabel: "The Users",
-        sectionIntro:
-          "Three behavioral archetypes ran through every group I studied. Designing for all three at once was the real challenge.",
-        image: "/images/jointly/9.png",
-        caption: "The Planner, The Support, and The Easy-Goer — each with different needs, motivations, and breaking points.",
-      },
-      {
-        sectionLabel: "The Opportunity",
-        sectionIntro:
-          "Mapping the competitive landscape made the gap obvious.",
-        image: "/images/jointly/10.png",
-        caption: "Every existing tool is either built for one person, or built without intelligence. No product is both group-native and smart.",
-      },
-      {
-        sectionLabel: "The Product",
-        sectionIntro:
-          "Jointly absorbs the social friction of coordination so the group can focus on the trip, not the logistics.",
-        image: "/images/jointly/11.png",
-        caption: "Jointly. The collaborative decision-making layer between inspiration and booking.",
-        fullWidth: true,
-      },
-      { image: "/images/jointly/27.png", caption: "Four features that turn group chaos into a plan everyone's excited about." },
-      { image: "/images/jointly/12.png", caption: "Trip creation: set a destination, select interests, and indicate budget priority in two steps." },
-      { image: "/images/jointly/14.png", caption: "Describe your idea in natural language — Jointly makes sense of it and surfaces structured suggestions." },
-      { image: "/images/jointly/18.png", caption: "Curated itinerary and map view, generated from the group's voted ideas." },
-      { image: "/images/jointly/19.png", caption: "Smart budgeting prevents awkward conversations — the tool handles the social dynamics, not the users." },
-      {
-        sectionLabel: "Early Signal",
-        sectionIntro:
-          "Built, launched, and learning in public.",
-        image: "/images/jointly/21.png",
-        caption: "40+ early signups during initial testing at planjointly.com — no paid acquisition, just the right message.",
-      },
-      { image: "/images/jointly/22.png", fullWidth: true },
-    ],
+    theme: {
+      background: "40 20% 96%",
+      foreground: "30 15% 9%",
+      mutedForeground: "28 8% 38%",
+      border: "28 12% 82%",
+      card: "40 18% 98%",
+      primary: "20 76% 55%",
+    },
   },
   {
     slug: "huelo",
