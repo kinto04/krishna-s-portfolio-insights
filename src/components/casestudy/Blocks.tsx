@@ -365,6 +365,8 @@ export const RenderBlock = ({
       );
     case "stat":
       return <StatBlock value={block.value} label={block.label} bullets={block.bullets} href={block.href} r={revealIndex} />;
+    case "researchTracks":
+      return <ResearchTracks items={block.items} r={revealIndex} />;
     default:
       return null;
   }
