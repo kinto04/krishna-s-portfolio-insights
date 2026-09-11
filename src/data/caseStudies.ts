@@ -177,7 +177,7 @@ export const caseStudies: CaseStudy[] = [
 
       { kind: "chapter", id: "the-opportunity", number: "03", label: "Defining the opportunity", tone: "light" },
       { kind: "lead", text: "Every existing tool is built for one person, or built without intelligence. No product is both group-native and smart." },
-      { kind: "image", src: "/images/jointly/competitive-matrix.png", fullWidth: true, caption: "Jointly sits in the smart + group-native quadrant." },
+      { kind: "image", src: "/images/jointly/competitive-matrix.png", maxWidth: "lg" },
 
       { kind: "chapter", id: "the-product", number: "04", label: "Designing and building the product", tone: "dark", intro: "I used AI-assisted design and development to move from research to a coherent brand, reusable design system, and functioning product—without separating design decisions from implementation." },
       { kind: "image", src: "/images/jointly/27.png", fullWidth: true, caption: "Four features that turn group chaos into a plan." },
