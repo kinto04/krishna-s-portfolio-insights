@@ -355,6 +355,28 @@
     will-change: auto;
   }
 
+  /* Case-study chapters get a longer, more cinematic travel so the
+     staggered sequence inside a chapter actually reads. */
+  .jointly-chapter .scroll-fade-in {
+    transform: translate3d(0, 44px, 0) scale(0.985);
+    transition:
+      opacity 0.9s var(--ease-out-quint),
+      transform 0.9s var(--ease-out-expo);
+  }
+
+  .jointly-chapter .scroll-fade-in.is-visible {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  /* Product mockups cascade with a touch more depth. */
+  .jointly-chapter .grid > .scroll-fade-in {
+    transform: translate3d(0, 64px, 0) scale(0.96);
+  }
+
+  .jointly-chapter .grid > .scroll-fade-in.is-visible {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
   /* Graph node hover preview — fades in without touching its positioning transform. */
   .node-preview {
     animation: nodePreviewIn 0.22s var(--ease-out-quint) both;
