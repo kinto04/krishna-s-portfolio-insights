@@ -44,7 +44,8 @@ export type Block =
   | { kind: "image"; src: string; caption?: string; fullWidth?: boolean; maxWidth?: "md" | "lg" | "full" }
   | { kind: "featureGrid"; intro?: string; items: { title: string; line: string; thumb: string }[] }
   | { kind: "featureRow"; image: string; eyebrow?: string; title: string; body: string }
-  | { kind: "stat"; value: string; label: string; bullets?: string[]; href?: string };
+  | { kind: "stat"; value: string; label: string; bullets?: string[]; href?: string }
+  | { kind: "researchTracks"; items: { icon: "users" | "book" | "globe"; title: string; line: string; badge?: string; highlight?: boolean }[] };
 
 export interface CaseStudy {
   slug: string;
@@ -116,7 +117,14 @@ export const caseStudies: CaseStudy[] = [
       },
 
       { kind: "chapter", id: "the-research", number: "01", label: "Validating the problem", tone: "light", intro: "I looked beyond stated preferences to understand what actually happens between inspiration and booking—and why the people who care most often end up carrying the group." },
-      { kind: "image", src: "/images/jointly/4.png", fullWidth: true, caption: "Three complementary research tracks connected individual stories with a wider market signal." },
+      {
+        kind: "researchTracks",
+        items: [
+          { icon: "users", title: "User interviews", line: "Deep-dives with lead planners, contributors, and easy-going members." },
+          { icon: "book", title: "Secondary & market research", line: "Group dynamics, travel behavior, and the competitive landscape." },
+          { icon: "globe", title: "Travel community", line: "Unfiltered experiences from the travel community.", badge: "60k+ views · 50+ responses", highlight: true },
+        ],
+      },
       { kind: "image", src: "/images/jointly/3.png", fullWidth: true, caption: "Online community outreach surfaced candid frustrations people rarely say directly to friends." },
       { kind: "image", src: "/images/jointly/7.png", fullWidth: true, caption: "The same three sources of friction repeated across the research." },
 

@@ -1,4 +1,4 @@
-import { ExternalLink, Quote } from "lucide-react";
+import { BookOpen, ExternalLink, Globe, Quote, Users } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import type { Block } from "@/data/caseStudies";
 
@@ -272,6 +272,49 @@ const StatBlock = ({
   </Reveal>
 );
 
+const trackIcons = { users: Users, book: BookOpen, globe: Globe } as const;
+
+const ResearchTracks = ({
+  items,
+  r,
+}: {
+  items: { icon: keyof typeof trackIcons; title: string; line: string; badge?: string; highlight?: boolean }[];
+  r?: number;
+}) => (
+  <div className="my-12 max-w-3xl space-y-5">
+    {items.map((item, i) => {
+      const Icon = trackIcons[item.icon];
+      return (
+        <Reveal
+          key={item.title}
+          index={step(r) + i}
+          className={`flex items-start gap-5 rounded-lg border p-6 sm:p-7 ${
+            item.highlight ? "border-primary/40 bg-primary/[0.07]" : "border-border bg-card"
+          }`}
+        >
+          <span
+            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-md ${
+              item.highlight ? "bg-primary/15 text-primary" : "bg-foreground/[0.06] text-foreground"
+            }`}
+            aria-hidden
+          >
+            <Icon size={22} strokeWidth={1.75} />
+          </span>
+          <span className="min-w-0">
+            <span className="block text-lg font-semibold text-foreground leading-snug">{item.title}</span>
+            <span className="block text-base text-muted-foreground leading-relaxed mt-1">{item.line}</span>
+            {item.badge && (
+              <span className="mt-3 inline-flex items-center rounded-full bg-primary/15 px-3 py-1 text-sm font-medium text-primary">
+                {item.badge}
+              </span>
+            )}
+          </span>
+        </Reveal>
+      );
+    })}
+  </div>
+);
+
 export const RenderBlock = ({
   block,
   index,
@@ -322,6 +365,8 @@ export const RenderBlock = ({
       );
     case "stat":
       return <StatBlock value={block.value} label={block.label} bullets={block.bullets} href={block.href} r={revealIndex} />;
+    case "researchTracks":
+      return <ResearchTracks items={block.items} r={revealIndex} />;
     default:
       return null;
   }
