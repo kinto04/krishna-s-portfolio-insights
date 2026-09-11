@@ -40,7 +40,19 @@ export type Block =
   | { kind: "methods"; items: { label: string; line: string }[] }
   | { kind: "quote"; text: string; source: string }
   | { kind: "numberedList"; title?: string; intro?: string; items: { title: string; body: string }[] }
-  | { kind: "archetypes"; items: { number: string; name: string; role: string; line: string; quote: string }[] }
+  | {
+      kind: "archetypes";
+      items: {
+        number: string;
+        name: string;
+        role: string;
+        line: string;
+        quote: string;
+        avatar?: string;
+        source?: string;
+        accent?: boolean;
+      }[];
+    }
   | { kind: "image"; src: string; caption?: string; fullWidth?: boolean; maxWidth?: "md" | "lg" | "full" }
   | { kind: "featureGrid"; intro?: string; items: { title: string; line: string; thumb: string }[] }
   | { kind: "featureRow"; image: string; eyebrow?: string; title: string; body: string }
