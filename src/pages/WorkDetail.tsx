@@ -258,7 +258,7 @@ const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
       <p className="label-eyebrow shrink-0">Jump to</p>
-      <div className="flex flex-wrap sm:flex-nowrap gap-x-2 gap-y-1 sm:overflow-x-auto sm:-mr-6 sm:pr-6 no-scrollbar">
+      <div className="flex flex-wrap gap-x-2 gap-y-1">
         {anchors.map((c, i) => {
           const isActive = active === c.id;
           return (
