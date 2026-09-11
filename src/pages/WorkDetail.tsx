@@ -478,7 +478,7 @@ const WorkDetail = () => {
                   <section
                     key={chapter.id}
                     id={chapter.id}
-                    className={`jointly-chapter jointly-chapter-${chapter.tone ?? "light"} scroll-mt-24`}
+                    className={`jointly-chapter ${chapter.tone === "dark" ? "jointly-chapter-dark" : "jointly-chapter-light"} scroll-mt-24`}
                   >
                     <RenderBlock block={chapter} index={chapterIndex} />
                     {blocks.map((block, blockIndex) => (
