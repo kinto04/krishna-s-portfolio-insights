@@ -105,7 +105,6 @@ export const caseStudies: CaseStudy[] = [
       team: "Independent thesis project",
       role: "Founder and Designer",
       setting: "Master's thesis · Northwestern EDI",
-      platform: "Mobile + Web",
     },
     reflection:
       "Meeting the functional needs of the group was bare minimum - but the most important piece to design for was the emotional and social needs of the group. The most useful thing the product does is take the awkward conversations off the group's plate - giving them a great starting point to take the trip forward.",
