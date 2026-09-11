@@ -226,25 +226,72 @@ const AtAGlance = ({ study }: { study: CaseStudy }) => {
 
 type Anchor = { id: string; label: string; number?: string };
 
+const useActiveAnchor = (anchors: Anchor[]) => {
+  const [active, setActive] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (anchors.length === 0) return;
+    const sections = anchors
+      .map((a) => document.getElementById(a.id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.1, 0.5] }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, [anchors]);
+
+  return active;
+};
+
 const JumpTo = ({ anchors }: { anchors: Anchor[] }) => {
+  const active = useActiveAnchor(anchors);
   if (anchors.length === 0) return null;
   return (
     <div className="flex flex-col sm:flex-row sm:items-center gap-4">
       <p className="label-eyebrow shrink-0">Jump to</p>
       <div className="flex flex-wrap gap-2">
-        {anchors.map((c, i) => (
-          <a
-            key={c.id}
-            href={`#${c.id}`}
-            className="group inline-flex items-baseline gap-2 text-[13px] text-muted-foreground hover:text-primary t-base"
-          >
-            <span className="tabular-nums text-foreground/60 group-hover:text-primary t-base">
-              {c.number ?? String(i + 1).padStart(2, "0")}
-            </span>
-            <span className="text-foreground group-hover:text-primary t-base">{c.label}</span>
-            {i < anchors.length - 1 && <span className="text-border ml-2">/</span>}
-          </a>
-        ))}
+        {anchors.map((c, i) => {
+          const isActive = active === c.id;
+          return (
+            <a
+              key={c.id}
+              href={`#${c.id}`}
+              aria-current={isActive ? "true" : undefined}
+              className="group inline-flex items-baseline gap-2 text-[13px] text-muted-foreground hover:text-primary t-base"
+            >
+              <span
+                className={`tabular-nums t-base group-hover:text-primary ${
+                  isActive ? "text-primary" : "text-foreground/60"
+                }`}
+              >
+                {c.number ?? String(i + 1).padStart(2, "0")}
+              </span>
+              <span
+                className={`t-base group-hover:text-primary relative ${
+                  isActive ? "text-primary" : "text-foreground"
+                }`}
+              >
+                {c.label}
+                <span
+                  aria-hidden
+                  className={`absolute left-0 -bottom-0.5 h-px bg-primary origin-left transition-transform duration-500 w-full ${
+                    isActive ? "scale-x-100" : "scale-x-0"
+                  }`}
+                />
+              </span>
+              {i < anchors.length - 1 && <span className="text-border ml-2">/</span>}
+            </a>
+          );
+        })}
       </div>
     </div>
   );
