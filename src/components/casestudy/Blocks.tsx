@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 import type { Block } from "@/data/caseStudies";
 
 export const ChapterHeader = ({ number, label, intro }: { number: string; label: string; intro?: string }) => (
-  <Reveal className="case-study-chapter-header mt-28 mb-12 first:mt-8 pt-10 border-t border-border">
+  <Reveal className="case-study-chapter-header mt-20 mb-8 first:mt-8 pt-8 border-t border-border">
     <p className="label-eyebrow mb-5">
       Chapter {number}
     </p>
@@ -12,13 +12,13 @@ export const ChapterHeader = ({ number, label, intro }: { number: string; label:
       <h2 className="text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">{label}</h2>
     </div>
     {intro && (
-      <p className="text-base text-muted-foreground leading-relaxed mt-4 max-w-2xl pl-0 sm:pl-[4.5rem]">{intro}</p>
+      <p className="text-base text-muted-foreground leading-relaxed mt-4 max-w-3xl pl-0 sm:pl-[4.5rem]">{intro}</p>
     )}
   </Reveal>
 );
 
 const Statement = ({ text, eyebrow }: { text: string; eyebrow?: string }) => (
-  <Reveal className="my-16 max-w-3xl">
+  <Reveal className="my-12 max-w-4xl">
     {eyebrow && (
       <p className="label-eyebrow mb-4">{eyebrow}</p>
     )}
@@ -29,13 +29,13 @@ const Statement = ({ text, eyebrow }: { text: string; eyebrow?: string }) => (
 );
 
 const Lead = ({ text }: { text: string }) => (
-  <Reveal className="my-8 max-w-2xl">
+  <Reveal className="my-8 max-w-3xl">
     <p className="text-lg text-foreground leading-relaxed">{text}</p>
   </Reveal>
 );
 
 const Methods = ({ items }: { items: { label: string; line: string }[] }) => (
-  <Reveal className="my-12">
+  <Reveal className="my-10">
     <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
       {items.map((item, i) => (
         <div key={item.label} className="border-t border-border pt-5">
@@ -51,7 +51,7 @@ const Methods = ({ items }: { items: { label: string; line: string }[] }) => (
 );
 
 const QuoteBlock = ({ text, source }: { text: string; source: string }) => (
-  <Reveal className="my-14 max-w-3xl">
+  <Reveal className="my-12 max-w-3xl">
     <div className="border-l-2 border-primary pl-6 sm:pl-8 relative">
       <Quote className="absolute -top-2 -left-3 text-primary/20 bg-background" size={24} />
       <p className="italic text-xl sm:text-2xl text-foreground leading-relaxed mb-4">
@@ -71,11 +71,11 @@ const NumberedList = ({
   intro?: string;
   items: { title: string; body: string }[];
 }) => (
-  <Reveal className="my-14">
+  <Reveal className="my-12">
     {title && (
-      <h3 className="text-2xl sm:text-3xl text-foreground mb-3 max-w-2xl">{title}</h3>
+      <h3 className="text-2xl sm:text-3xl text-foreground mb-3 max-w-3xl">{title}</h3>
     )}
-    {intro && <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-2xl">{intro}</p>}
+    {intro && <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-3xl">{intro}</p>}
     <div className="grid md:grid-cols-3 gap-6">
       {items.map((item, i) => (
         <div key={item.title} className="border border-border rounded-sm p-6 bg-card/40">
@@ -95,7 +95,7 @@ const Archetypes = ({
 }: {
   items: { number: string; name: string; role: string; line: string; quote: string }[];
 }) => (
-  <Reveal className="my-12">
+  <Reveal className="my-10">
     <div className="grid md:grid-cols-3 gap-5">
       {items.map((a) => (
         <div key={a.name} className="border border-border rounded-sm p-6 bg-card/40 flex flex-col">
@@ -128,7 +128,7 @@ const ImageBlock = ({
   const widthClass =
     maxWidth === "md" ? "max-w-2xl mx-auto" : maxWidth === "lg" ? "max-w-4xl mx-auto" : fullWidth ? "" : "max-w-3xl mx-auto";
   return (
-    <Reveal className="mb-16">
+    <Reveal className="mb-12">
       <div className={widthClass}>
         <div className="case-study-image-frame rounded-sm overflow-hidden bg-card border border-border">
           <img src={src} alt={caption ?? ""} className="w-full" loading="lazy" />
@@ -150,8 +150,8 @@ const FeatureGrid = ({
   intro?: string;
   items: { title: string; line: string; thumb: string }[];
 }) => (
-  <Reveal className="my-14">
-    {intro && <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-2xl">{intro}</p>}
+  <Reveal className="my-12">
+    {intro && <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-3xl">{intro}</p>}
     <div className="grid sm:grid-cols-2 gap-5">
       {items.map((f, i) => (
         <div key={f.title} className="border border-border rounded-sm overflow-hidden bg-card/40 group">
@@ -191,7 +191,7 @@ const FeatureRow = ({
 }) => {
   const reverse = index % 2 === 1;
   return (
-    <Reveal className="my-16">
+    <Reveal className="my-12">
       <div className="grid md:grid-cols-12 gap-6 md:gap-10 items-center">
         <div className={`md:col-span-7 rounded-sm overflow-hidden bg-card border border-border ${reverse ? "md:order-2" : ""}`}>
           <img src={image} alt={title} loading="lazy" className="w-full" />
@@ -221,8 +221,8 @@ const StatBlock = ({
   bullets?: string[];
   href?: string;
 }) => (
-  <Reveal className="my-14">
-    <div className="border-y border-border py-12 grid md:grid-cols-12 gap-8 items-center">
+  <Reveal className="my-12">
+    <div className="border-y border-border py-10 grid md:grid-cols-12 gap-8 items-center">
       <div className="md:col-span-5">
         <p className="text-7xl sm:text-8xl text-foreground leading-none mb-3 tracking-tight">
           {value}
