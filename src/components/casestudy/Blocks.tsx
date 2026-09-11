@@ -281,7 +281,7 @@ const ResearchTracks = ({
   items: { icon: keyof typeof trackIcons; title: string; line: string; badge?: string; highlight?: boolean }[];
   r?: number;
 }) => (
-  <div className="my-10 max-w-4xl space-y-3">
+  <div className="my-10 space-y-3">
     {items.map((item, i) => {
       const Icon = trackIcons[item.icon];
       return (
