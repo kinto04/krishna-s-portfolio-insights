@@ -11,6 +11,10 @@ import { RenderBlock, getChapterAnchors } from "@/components/casestudy/Blocks";
 // Group consecutive slides by sectionLabel into chapters.
 // Slides before the first sectionLabel become an unlabeled intro chapter.
 type Chapter = { label?: string; intro?: string; slides: Slide[]; id: string };
+type NarrativeChapter = {
+  chapter: Extract<NonNullable<CaseStudy["blocks"]>[number], { kind: "chapter" }>;
+  blocks: NonNullable<CaseStudy["blocks"]>;
+};
 
 const groupIntoChapters = (slides: Slide[]): Chapter[] => {
   const chapters: Chapter[] = [];
@@ -30,6 +34,23 @@ const groupIntoChapters = (slides: Slide[]): Chapter[] => {
     current!.slides.push(slide);
   });
   return chapters;
+};
+
+const groupNarrativeChapters = (blocks: NonNullable<CaseStudy["blocks"]>) => {
+  const intro: NonNullable<CaseStudy["blocks"]> = [];
+  const chapters: NarrativeChapter[] = [];
+
+  blocks.forEach((block) => {
+    if (block.kind === "chapter") {
+      chapters.push({ chapter: block, blocks: [] });
+      return;
+    }
+    const current = chapters[chapters.length - 1];
+    if (current) current.blocks.push(block);
+    else intro.push(block);
+  });
+
+  return { intro, chapters };
 };
 
 const SlideBlock = ({ slide }: { slide: Slide; index: number; forceFullWidth?: boolean }) => {
@@ -161,7 +182,7 @@ const AtAGlance = ({ study }: { study: CaseStudy }) => {
   const cells = [
     { label: "Timeline", value: facts.timeline, note: facts.timelineNote },
     { label: "Team", value: facts.team },
-    ...(study.overview?.roleDetail?.length ? [] : [{ label: "My Role", value: facts.role }]),
+    { label: "My Role", value: facts.role },
     { label: "Setting", value: facts.setting },
     ...(facts.platform ? [{ label: "Platform", value: facts.platform }] : []),
   ];
@@ -380,6 +401,10 @@ const WorkDetail = () => {
     [chapters]
   );
   const anchors = study?.blocks ? blockAnchors : slideAnchors;
+  const narrative = useMemo(
+    () => (study?.blocks ? groupNarrativeChapters(study.blocks) : null),
+    [study]
+  );
 
   if (!study) {
     return (
@@ -444,18 +469,38 @@ const WorkDetail = () => {
 
           {/* Body: blocks (preferred) or chapters fallback */}
           {study.blocks && study.blocks.length > 0 ? (
-            <div className="mt-8">
-              {study.blocks.map((block, i) => {
-                if (block.kind === "chapter") {
-                  return (
-                    <section key={block.id} id={block.id} className="scroll-mt-24">
-                      <RenderBlock block={block} index={i} />
-                    </section>
-                  );
-                }
-                return <RenderBlock key={i} block={block} index={i} />;
-              })}
-            </div>
+            study.slug === "jointly-travel" && narrative ? (
+              <div className="mt-8">
+                {narrative.intro.map((block, i) => (
+                  <RenderBlock key={`intro-${i}`} block={block} index={i} />
+                ))}
+                {narrative.chapters.map(({ chapter, blocks }, chapterIndex) => (
+                  <section
+                    key={chapter.id}
+                    id={chapter.id}
+                    className={`jointly-chapter ${chapter.tone === "dark" ? "jointly-chapter-dark" : "jointly-chapter-light"} scroll-mt-24`}
+                  >
+                    <RenderBlock block={chapter} index={chapterIndex} />
+                    {blocks.map((block, blockIndex) => (
+                      <RenderBlock key={`${chapter.id}-${blockIndex}`} block={block} index={blockIndex} />
+                    ))}
+                  </section>
+                ))}
+              </div>
+            ) : (
+              <div className="mt-8">
+                {study.blocks.map((block, i) => {
+                  if (block.kind === "chapter") {
+                    return (
+                      <section key={block.id} id={block.id} className="scroll-mt-24">
+                        <RenderBlock block={block} index={i} />
+                      </section>
+                    );
+                  }
+                  return <RenderBlock key={i} block={block} index={i} />;
+                })}
+              </div>
+            )
           ) : chapters.length > 0 ? (
             <div className="mt-8">
               {chapters.map((chapter, i) => {

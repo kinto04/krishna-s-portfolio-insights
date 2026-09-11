@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 import type { Block } from "@/data/caseStudies";
 
 export const ChapterHeader = ({ number, label, intro }: { number: string; label: string; intro?: string }) => (
-  <Reveal className="mt-28 mb-12 first:mt-8 pt-10 border-t border-border">
+  <Reveal className="case-study-chapter-header mt-28 mb-12 first:mt-8 pt-10 border-t border-border">
     <p className="label-eyebrow mb-5">
       Chapter {number}
     </p>
@@ -130,7 +130,7 @@ const ImageBlock = ({
   return (
     <Reveal className="mb-16">
       <div className={widthClass}>
-        <div className="rounded-sm overflow-hidden bg-card border border-border">
+        <div className="case-study-image-frame rounded-sm overflow-hidden bg-card border border-border">
           <img src={src} alt={caption ?? ""} className="w-full" loading="lazy" />
         </div>
         {caption && (

@@ -13,3 +13,4 @@
 - [x] Validate the revised homepage at desktop/mobile sizes and with reduced motion
 - [x] Restore canonical tag colors across project cards and the homepage graph
 - [x] Contain homepage featured work while preserving the open Work index
+- [x] Audit and rebuild Jointly around accurate outcomes and deck-matched chapter bands
