@@ -5,20 +5,39 @@ import type { Block } from "@/data/caseStudies";
 /** Cap the stagger so long chapters never wait too long. */
 const step = (i?: number) => Math.min(i ?? 0, 3);
 
-export const ChapterHeader = ({ number, label, intro }: { number: string; label: string; intro?: string }) => (
-  <Reveal className="case-study-chapter-header mt-20 mb-8 first:mt-8 pt-8 border-t border-border">
-    <p className="label-eyebrow mb-5">
-      Chapter {number}
-    </p>
-    <div className="flex items-baseline gap-5">
-      <span className="text-5xl text-primary/70 tabular-nums leading-none">{number}</span>
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">{label}</h2>
-    </div>
-    {intro && (
-      <p className="text-base text-muted-foreground leading-relaxed mt-4 max-w-3xl pl-0 sm:pl-[4.5rem]">{intro}</p>
-    )}
-  </Reveal>
-);
+export const ChapterHeader = ({
+  number,
+  label,
+  intro,
+  layout = "default",
+}: {
+  number: string;
+  label: string;
+  intro?: string;
+  layout?: "default" | "split";
+}) => {
+  const isSplit = layout === "split";
+  return (
+    <Reveal
+      className={`case-study-chapter-header ${
+        isSplit ? "" : "mt-20 mb-8 first:mt-8 pt-8 border-t border-border"
+      }`}
+    >
+      <p className="label-eyebrow mb-5">
+        Chapter {number}
+      </p>
+      <div className="flex items-baseline gap-5">
+        <span className="text-5xl text-primary/70 tabular-nums leading-none">{number}</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight">{label}</h2>
+      </div>
+      {intro && (
+        <p className={`text-base text-muted-foreground leading-relaxed mt-4 pl-0 sm:pl-[4.5rem] ${isSplit ? "" : "max-w-3xl"}`}>
+          {intro}
+        </p>
+      )}
+    </Reveal>
+  );
+};
 
 const Statement = ({ text, eyebrow, r }: { text: string; eyebrow?: string; r?: number }) => (
   <Reveal index={step(r)} className="my-12 max-w-4xl">
