@@ -182,7 +182,7 @@ const AtAGlance = ({ study }: { study: CaseStudy }) => {
   const cells = [
     { label: "Timeline", value: facts.timeline, note: facts.timelineNote },
     { label: "Team", value: facts.team },
-    ...(study.overview?.roleDetail?.length ? [] : [{ label: "My Role", value: facts.role }]),
+    { label: "My Role", value: facts.role },
     { label: "Setting", value: facts.setting },
     ...(facts.platform ? [{ label: "Platform", value: facts.platform }] : []),
   ];
