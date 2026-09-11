@@ -529,7 +529,12 @@ const WorkDetail = () => {
                   >
                     <RenderBlock block={chapter} index={chapterIndex} />
                     {blocks.map((block, blockIndex) => (
-                      <RenderBlock key={`${chapter.id}-${blockIndex}`} block={block} index={blockIndex} />
+                      <RenderBlock
+                        key={`${chapter.id}-${blockIndex}`}
+                        block={block}
+                        index={blockIndex}
+                        revealIndex={blockIndex}
+                      />
                     ))}
                   </section>
                 ))}
