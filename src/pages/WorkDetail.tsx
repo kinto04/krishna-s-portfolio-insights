@@ -12,7 +12,7 @@ import { RenderBlock, getChapterAnchors } from "@/components/casestudy/Blocks";
 // Slides before the first sectionLabel become an unlabeled intro chapter.
 type Chapter = { label?: string; intro?: string; slides: Slide[]; id: string };
 type NarrativeChapter = {
-  chapter: Extract<CaseStudy["blocks"][number], { kind: "chapter" }>;
+  chapter: Extract<NonNullable<CaseStudy["blocks"]>[number], { kind: "chapter" }>;
   blocks: NonNullable<CaseStudy["blocks"]>;
 };
 
