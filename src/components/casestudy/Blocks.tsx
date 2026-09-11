@@ -118,26 +118,53 @@ const Archetypes = ({
   items,
   r,
 }: {
-  items: { number: string; name: string; role: string; line: string; quote: string }[];
+  items: {
+    number: string;
+    name: string;
+    role: string;
+    line: string;
+    quote: string;
+    avatar?: string;
+    source?: string;
+    accent?: boolean;
+  }[];
   r?: number;
 }) => (
-  <Reveal index={step(r)} className="my-10">
-    <div className="grid md:grid-cols-3 gap-5">
-      {items.map((a, i) => (
-        <Reveal key={a.name} index={i} className="border border-border rounded-sm p-6 bg-card/40 flex flex-col">
-          <p className="label-eyebrow mb-3 tabular-nums">
-            Archetype {a.number}
-          </p>
-          <p className="text-2xl text-foreground leading-tight mb-1">{a.name}</p>
-          <p className="label-eyebrow text-primary mb-4">{a.role}</p>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-5">{a.line}</p>
-          <p className="italic text-base text-foreground leading-relaxed border-l-2 border-primary/40 pl-4 mt-auto">
-            "{a.quote}"
-          </p>
-        </Reveal>
-      ))}
-    </div>
-  </Reveal>
+  <div className="my-10 grid md:grid-cols-3 gap-8 md:gap-10">
+    {items.map((a, i) => (
+      <Reveal key={a.name} index={step(r) + i} className="flex flex-col">
+        <div className="flex items-start gap-5">
+          {a.avatar && (
+            <img
+              src={a.avatar}
+              alt=""
+              loading="lazy"
+              aria-hidden
+              className="h-20 w-20 shrink-0 rounded-full object-cover"
+            />
+          )}
+          <div className="min-w-0">
+            <p className={`label-eyebrow mb-1.5 tabular-nums ${a.accent ? "text-primary" : "text-muted-foreground"}`}>
+              Archetype {a.number}
+            </p>
+            <p className="text-xl font-semibold text-foreground leading-tight mb-2">
+              {a.name} [{a.role}]
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed">{a.line}</p>
+          </div>
+        </div>
+        <div className="mt-6 rounded-md border border-primary/20 border-l-[3px] border-l-primary bg-primary/[0.06] p-4 sm:p-5">
+          <p className="italic text-sm text-foreground/80 leading-relaxed">"{a.quote}"</p>
+          {a.source && (
+            <p className="label-eyebrow text-primary mt-3 flex items-center gap-1.5">
+              <span className="h-1 w-1 rounded-full bg-primary" aria-hidden />
+              {a.source}
+            </p>
+          )}
+        </div>
+      </Reveal>
+    ))}
+  </div>
 );
 
 const ImageBlock = ({
