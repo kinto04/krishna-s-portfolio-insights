@@ -107,16 +107,6 @@ export const caseStudies: CaseStudy[] = [
       setting: "Master's thesis · Northwestern EDI",
       platform: "Mobile + Web",
     },
-    overview: {
-      context: "Validated the problem through interviews, secondary research, and direct participation in online travel communities reaching 60K+ people.",
-
-      roleDetail: [
-        "Translated research into journey maps, behavioral archetypes, and product priorities",
-        "Used AI-assisted design and development to create the brand, design system, and working product",
-        "Built a weekly learning loop across activation, engagement, and retention",
-      ],
-      outcome: "Shipped a functioning beta to 40+ users and established a repeatable, data-informed iteration process.",
-    },
     reflection:
       "Meeting the functional needs of the group was bare minimum - but the most important piece to design for was the emotional and social needs of the group. The most useful thing the product does is take the awkward conversations off the group's plate - giving them a great starting point to take the trip forward.",
     blocks: [
