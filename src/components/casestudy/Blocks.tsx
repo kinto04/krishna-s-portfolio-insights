@@ -2,6 +2,9 @@ import { ExternalLink, Quote } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import type { Block } from "@/data/caseStudies";
 
+/** Cap the stagger so long chapters never wait too long. */
+const step = (i?: number) => Math.min(i ?? 0, 3);
+
 export const ChapterHeader = ({ number, label, intro }: { number: string; label: string; intro?: string }) => (
   <Reveal className="case-study-chapter-header mt-20 mb-8 first:mt-8 pt-8 border-t border-border">
     <p className="label-eyebrow mb-5">
@@ -17,8 +20,8 @@ export const ChapterHeader = ({ number, label, intro }: { number: string; label:
   </Reveal>
 );
 
-const Statement = ({ text, eyebrow }: { text: string; eyebrow?: string }) => (
-  <Reveal className="my-12 max-w-4xl">
+const Statement = ({ text, eyebrow, r }: { text: string; eyebrow?: string; r?: number }) => (
+  <Reveal index={step(r)} className="my-12 max-w-4xl">
     {eyebrow && (
       <p className="label-eyebrow mb-4">{eyebrow}</p>
     )}
@@ -28,30 +31,30 @@ const Statement = ({ text, eyebrow }: { text: string; eyebrow?: string }) => (
   </Reveal>
 );
 
-const Lead = ({ text }: { text: string }) => (
-  <Reveal className="my-8 max-w-3xl">
+const Lead = ({ text, r }: { text: string; r?: number }) => (
+  <Reveal index={step(r)} className="my-8 max-w-3xl">
     <p className="text-lg text-foreground leading-relaxed">{text}</p>
   </Reveal>
 );
 
-const Methods = ({ items }: { items: { label: string; line: string }[] }) => (
-  <Reveal className="my-10">
+const Methods = ({ items, r }: { items: { label: string; line: string }[]; r?: number }) => (
+  <Reveal index={step(r)} className="my-10">
     <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
       {items.map((item, i) => (
-        <div key={item.label} className="border-t border-border pt-5">
+        <Reveal key={item.label} index={i} className="border-t border-border pt-5">
           <p className="label-eyebrow mb-2 tabular-nums">
             {String(i + 1).padStart(2, "0")}
           </p>
           <p className="text-xl text-foreground mb-2 leading-snug">{item.label}</p>
           <p className="text-sm text-muted-foreground leading-relaxed">{item.line}</p>
-        </div>
+        </Reveal>
       ))}
     </div>
   </Reveal>
 );
 
-const QuoteBlock = ({ text, source }: { text: string; source: string }) => (
-  <Reveal className="my-12 max-w-3xl">
+const QuoteBlock = ({ text, source, r }: { text: string; source: string; r?: number }) => (
+  <Reveal index={step(r)} className="my-12 max-w-3xl">
     <div className="border-l-2 border-primary pl-6 sm:pl-8 relative">
       <Quote className="absolute -top-2 -left-3 text-primary/20 bg-background" size={24} />
       <p className="italic text-xl sm:text-2xl text-foreground leading-relaxed mb-4">
@@ -66,25 +69,27 @@ const NumberedList = ({
   title,
   intro,
   items,
+  r,
 }: {
   title?: string;
   intro?: string;
   items: { title: string; body: string }[];
+  r?: number;
 }) => (
-  <Reveal className="my-12">
+  <Reveal index={step(r)} className="my-12">
     {title && (
       <h3 className="text-2xl sm:text-3xl text-foreground mb-3 max-w-3xl">{title}</h3>
     )}
     {intro && <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-3xl">{intro}</p>}
     <div className="grid md:grid-cols-3 gap-6">
       {items.map((item, i) => (
-        <div key={item.title} className="border border-border rounded-sm p-6 bg-card/40">
+        <Reveal key={item.title} index={i} className="border border-border rounded-sm p-6 bg-card/40">
           <p className="text-3xl text-primary/70 tabular-nums leading-none mb-4">
             {String(i + 1).padStart(2, "0")}
           </p>
           <p className="text-lg text-foreground leading-snug mb-2">{item.title}</p>
           <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
-        </div>
+        </Reveal>
       ))}
     </div>
   </Reveal>
@@ -92,13 +97,15 @@ const NumberedList = ({
 
 const Archetypes = ({
   items,
+  r,
 }: {
   items: { number: string; name: string; role: string; line: string; quote: string }[];
+  r?: number;
 }) => (
-  <Reveal className="my-10">
+  <Reveal index={step(r)} className="my-10">
     <div className="grid md:grid-cols-3 gap-5">
-      {items.map((a) => (
-        <div key={a.name} className="border border-border rounded-sm p-6 bg-card/40 flex flex-col">
+      {items.map((a, i) => (
+        <Reveal key={a.name} index={i} className="border border-border rounded-sm p-6 bg-card/40 flex flex-col">
           <p className="label-eyebrow mb-3 tabular-nums">
             Archetype {a.number}
           </p>
@@ -108,7 +115,7 @@ const Archetypes = ({
           <p className="italic text-base text-foreground leading-relaxed border-l-2 border-primary/40 pl-4 mt-auto">
             "{a.quote}"
           </p>
-        </div>
+        </Reveal>
       ))}
     </div>
   </Reveal>
@@ -119,16 +126,18 @@ const ImageBlock = ({
   caption,
   fullWidth,
   maxWidth,
+  r,
 }: {
   src: string;
   caption?: string;
   fullWidth?: boolean;
   maxWidth?: "md" | "lg" | "full";
+  r?: number;
 }) => {
   const widthClass =
     maxWidth === "md" ? "max-w-2xl mx-auto" : maxWidth === "lg" ? "max-w-4xl mx-auto" : fullWidth ? "" : "max-w-3xl mx-auto";
   return (
-    <Reveal className="mb-12">
+    <Reveal index={step(r)} className="mb-12">
       <div className={widthClass}>
         <div className="case-study-image-frame rounded-sm overflow-hidden bg-card border border-border">
           <img src={src} alt={caption ?? ""} className="w-full" loading="lazy" />
@@ -146,15 +155,21 @@ const ImageBlock = ({
 const FeatureGrid = ({
   intro,
   items,
+  r,
 }: {
   intro?: string;
   items: { title: string; line: string; thumb: string }[];
+  r?: number;
 }) => (
-  <Reveal className="my-12">
+  <Reveal index={step(r)} className="my-12">
     {intro && <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-3xl">{intro}</p>}
     <div className="grid sm:grid-cols-2 gap-5">
       {items.map((f, i) => (
-        <div key={f.title} className="border border-border rounded-sm overflow-hidden bg-card/40 group">
+        <Reveal
+          key={f.title}
+          index={i}
+          className="border border-border rounded-sm overflow-hidden bg-card/40 group"
+        >
           <div className="aspect-[16/10] overflow-hidden bg-card">
             <img
               src={f.thumb}
@@ -170,7 +185,7 @@ const FeatureGrid = ({
             <p className="text-xl text-foreground mb-1.5 leading-snug">{f.title}</p>
             <p className="text-sm text-muted-foreground leading-relaxed">{f.line}</p>
           </div>
-        </div>
+        </Reveal>
       ))}
     </div>
   </Reveal>
@@ -182,16 +197,18 @@ const FeatureRow = ({
   title,
   body,
   index,
+  r,
 }: {
   image: string;
   eyebrow?: string;
   title: string;
   body: string;
   index: number;
+  r?: number;
 }) => {
   const reverse = index % 2 === 1;
   return (
-    <Reveal className="my-12">
+    <Reveal index={step(r)} className="my-12">
       <div className="grid md:grid-cols-12 gap-6 md:gap-10 items-center">
         <div className={`md:col-span-7 rounded-sm overflow-hidden bg-card border border-border ${reverse ? "md:order-2" : ""}`}>
           <img src={image} alt={title} loading="lazy" className="w-full" />
@@ -215,13 +232,15 @@ const StatBlock = ({
   label,
   bullets,
   href,
+  r,
 }: {
   value: string;
   label: string;
   bullets?: string[];
   href?: string;
+  r?: number;
 }) => (
-  <Reveal className="my-12">
+  <Reveal index={step(r)} className="my-12">
     <div className="border-y border-border py-10 grid md:grid-cols-12 gap-8 items-center">
       <div className="md:col-span-5">
         <p className="text-7xl sm:text-8xl text-foreground leading-none mb-3 tracking-tight">
@@ -253,30 +272,56 @@ const StatBlock = ({
   </Reveal>
 );
 
-export const RenderBlock = ({ block, index }: { block: Block; index: number }) => {
+export const RenderBlock = ({
+  block,
+  index,
+  revealIndex,
+}: {
+  block: Block;
+  index: number;
+  /** Position within its chapter — drives the staggered reveal. */
+  revealIndex?: number;
+}) => {
   switch (block.kind) {
     case "chapter":
       return <ChapterHeader number={block.number} label={block.label} intro={block.intro} />;
     case "statement":
-      return <Statement text={block.text} eyebrow={block.eyebrow} />;
+      return <Statement text={block.text} eyebrow={block.eyebrow} r={revealIndex} />;
     case "lead":
-      return <Lead text={block.text} />;
+      return <Lead text={block.text} r={revealIndex} />;
     case "methods":
-      return <Methods items={block.items} />;
+      return <Methods items={block.items} r={revealIndex} />;
     case "quote":
-      return <QuoteBlock text={block.text} source={block.source} />;
+      return <QuoteBlock text={block.text} source={block.source} r={revealIndex} />;
     case "numberedList":
-      return <NumberedList title={block.title} intro={block.intro} items={block.items} />;
+      return <NumberedList title={block.title} intro={block.intro} items={block.items} r={revealIndex} />;
     case "archetypes":
-      return <Archetypes items={block.items} />;
+      return <Archetypes items={block.items} r={revealIndex} />;
     case "image":
-      return <ImageBlock src={block.src} caption={block.caption} fullWidth={block.fullWidth} maxWidth={block.maxWidth} />;
+      return (
+        <ImageBlock
+          src={block.src}
+          caption={block.caption}
+          fullWidth={block.fullWidth}
+          maxWidth={block.maxWidth}
+          r={revealIndex}
+        />
+      );
     case "featureGrid":
-      return <FeatureGrid intro={block.intro} items={block.items} />;
+      return <FeatureGrid intro={block.intro} items={block.items} r={revealIndex} />;
     case "featureRow":
-      return <FeatureRow image={block.image} eyebrow={block.eyebrow} title={block.title} body={block.body} index={index} />;
+      return (
+        <FeatureRow
+          image={block.image}
+          eyebrow={block.eyebrow}
+          title={block.title}
+          body={block.body}
+          index={index}
+          r={revealIndex}
+        />
+      );
     case "stat":
-      return <StatBlock value={block.value} label={block.label} bullets={block.bullets} href={block.href} />;
+      return <StatBlock value={block.value} label={block.label} bullets={block.bullets} href={block.href} r={revealIndex} />;
     default:
       return null;
   }
