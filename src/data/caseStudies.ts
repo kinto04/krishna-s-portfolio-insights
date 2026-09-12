@@ -109,8 +109,8 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Group trips are supposed to bring people together, but planning often creates decision fatigue and social friction. Jointly is an AI travel app that helps friend groups move from scattered ideas to a plan everyone can shape together.",
     featured: true,
-    coverImage: "/images/jointly/cover.png",
-    heroImage: "/images/jointly/hero.png",
+    coverImage: "/images/jointly/cover.webp",
+    heroImage: "/images/jointly/hero.webp",
     liveUrl: "https://planjointly.com",
     facts: {
       timeline: "Two quarters",
@@ -137,8 +137,8 @@ export const caseStudies: CaseStudy[] = [
           { icon: "globe", title: "Travel community", line: "Unfiltered experiences from the travel community.", badge: "60k+ views · 50+ responses", highlight: true },
         ],
       },
-      { kind: "image", src: "/images/jointly/3.png", fullWidth: true, caption: "Online community outreach surfaced candid frustrations people rarely say directly to friends." },
-      { kind: "image", src: "/images/jointly/7.png", fullWidth: true, caption: "The same three sources of friction repeated across the research." },
+      { kind: "image", src: "/images/jointly/3.webp", fullWidth: true, caption: "Online community outreach surfaced candid frustrations people rarely say directly to friends." },
+      { kind: "image", src: "/images/jointly/7.webp", fullWidth: true, caption: "The same three sources of friction repeated across the research." },
 
       { kind: "chapter", id: "the-users", number: "02", label: "From evidence to behavior", tone: "light", intro: "I translated the research into journey maps and three behavioral archetypes. The opportunity was not to optimize for one traveler, but to balance three very different levels of effort and agency." },
       {
@@ -150,7 +150,7 @@ export const caseStudies: CaseStudy[] = [
             role: "Planner",
             line: "Initiates everything, absorbs all coordination cost & social risk. Most likely to burn out.",
             quote: "I end up planning the whole thing, and somehow I'm still the one who gets blamed if something goes wrong.",
-            avatar: "/images/jointly/archetype-1.jpg",
+            avatar: "/images/jointly/archetype-1.webp",
             source: "Patrick · Jointly research",
             accent: true,
           },
@@ -160,7 +160,7 @@ export const caseStudies: CaseStudy[] = [
             role: "Supportive",
             line: "Willing to contribute but has no clear role. Wants to help but no structure to plug into.",
             quote: "I'd love to help more but I don't want to step on anyone's toes — I'm never sure what's been decided.",
-            avatar: "/images/jointly/archetype-2.jpg",
+            avatar: "/images/jointly/archetype-2.webp",
             source: "Sam · Jointly research",
           },
           {
@@ -169,7 +169,7 @@ export const caseStudies: CaseStudy[] = [
             role: "Easy-going*",
             line: "Flexible, doesn't engage in the planning process. Can become a problem at the end.",
             quote: "I'm honestly fine with anything — just tell me where to be and when.",
-            avatar: "/images/jointly/archetype-3.jpg",
+            avatar: "/images/jointly/archetype-3.webp",
             source: "Emma · Jointly research",
           },
         ],
@@ -177,14 +177,14 @@ export const caseStudies: CaseStudy[] = [
 
       { kind: "chapter", id: "the-opportunity", number: "03", label: "Defining the opportunity", tone: "light" },
       { kind: "lead", text: "Every existing tool is built for one person, or built without intelligence. No product is both group-native and smart." },
-      { kind: "image", src: "/images/jointly/competitive-matrix.png", maxWidth: "lg" },
+      { kind: "image", src: "/images/jointly/competitive-matrix.webp", maxWidth: "lg" },
 
       { kind: "chapter", id: "the-product", number: "04", label: "Designing and building the product", tone: "dark", intro: "I used AI-assisted design and development to move from research to a coherent brand, reusable design system, and functioning product—without separating design decisions from implementation." },
-      { kind: "image", src: "/images/jointly/27.png", fullWidth: true, caption: "Four features that turn group chaos into a plan." },
-      { kind: "image", src: "/images/jointly/12.png", fullWidth: true, caption: "Trip creation: destination, interests, budget priority." },
-      { kind: "image", src: "/images/jointly/14.png", fullWidth: true },
-      { kind: "image", src: "/images/jointly/18.png", fullWidth: true },
-      { kind: "image", src: "/images/jointly/19.png", fullWidth: true },
+      { kind: "image", src: "/images/jointly/27.webp", fullWidth: true, caption: "Four features that turn group chaos into a plan." },
+      { kind: "image", src: "/images/jointly/12.webp", fullWidth: true, caption: "Trip creation: destination, interests, budget priority." },
+      { kind: "image", src: "/images/jointly/14.webp", fullWidth: true },
+      { kind: "image", src: "/images/jointly/18.webp", fullWidth: true },
+      { kind: "image", src: "/images/jointly/19.webp", fullWidth: true },
 
       { kind: "chapter", id: "early-signal", number: "05", label: "Shipping and learning", tone: "dark", intro: "I shipped the beta to 40+ users, then built an automated weekly feedback loop to turn product behavior into focused design priorities." },
       {
@@ -219,8 +219,8 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Huelo is a web-based AI interior-design app for urban renters that turns inspiration and budget constraints into a personalized room plan. As a founding designer and AI engineer, I'm shaping the product experience, the design flow, and the agent architecture that makes a custom design feel effortless.",
     featured: false,
-    coverImage: "/images/huelo/cover.png",
-    heroImage: "/images/huelo/hero.png",
+    coverImage: "/images/huelo/cover.webp",
+    heroImage: "/images/huelo/hero.webp",
     liveUrl: "https://huelo.co/",
     inProgress: true,
     deckEmail: "work.krishnasuresh@gmail.com",
@@ -330,7 +330,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         kind: "image",
-        src: "/images/huelo/hero.png",
+        src: "/images/huelo/hero.webp",
         caption: "The Huelo landing page at huelo.co — an AI interior designer built for real rooms, real budgets, and real life.",
         fullWidth: true,
       },
@@ -369,8 +369,8 @@ export const caseStudies: CaseStudy[] = [
       "Airy is a digital platform designed to help clinical therapists better support their clients - with AI-powered note-taking, between-session check-ins, nudges, and progress tracking. Our research surfaced a core tension: therapy tools are built for sessions, not the 167 hours in between. I led product strategy, conducted research, designed high-fidelity prototypes, and authored the BRD.",
 
     featured: true,
-    coverImage: "/images/airy/cover.png",
-    heroImage: "/images/airy/hero.png",
+    coverImage: "/images/airy/cover.webp",
+    heroImage: "/images/airy/hero.webp",
     theme: {
       background: "36 31% 94%",
       foreground: "253 26% 14%",
@@ -380,50 +380,50 @@ export const caseStudies: CaseStudy[] = [
       primary: "255 30% 55%",
     },
     slides: [
-      { image: "/images/airy/40.png", caption: "10 weeks of research, 3 rounds and 21 sessions of user interviews." },
-      { image: "/images/airy/41.png", caption: "52.9M Americans are in therapy — and 55% moved online post-pandemic. The market is growing fast, but the tools haven't kept up." },
+      { image: "/images/airy/40.webp", caption: "10 weeks of research, 3 rounds and 21 sessions of user interviews." },
+      { image: "/images/airy/41.webp", caption: "52.9M Americans are in therapy — and 55% moved online post-pandemic. The market is growing fast, but the tools haven't kept up." },
       {
         sectionLabel: "The Problem",
         sectionIntro:
           "Most current tools are built for sessions - but real change happens in the hours between them.",
-        image: "/images/airy/43.png",
+        image: "/images/airy/43.webp",
         caption: "Current tools are narrow, limiting, time-consuming, and built for a single user — not the therapist-client relationship.",
       },
-      { image: "/images/airy/44.png", caption: "Therapists drown in manual notes and can't track progress. Clients feel therapy ends when the session does." },
+      { image: "/images/airy/44.webp", caption: "Therapists drown in manual notes and can't track progress. Clients feel therapy ends when the session does." },
       {
         sectionLabel: "The Solution",
         sectionIntro:
           "One platform that supports the therapist's workflow and keeps the client engaged between sessions.",
-        image: "/images/airy/46.png",
+        image: "/images/airy/46.webp",
         caption: "Airy: a unified platform built around Notes & Trends, Client Engagement, and Trust & Security.",
       },
       {
         sectionLabel: "The Product",
         sectionIntro:
           "What we built: a therapist dashboard, AI-assisted notes, client check-ins, nudges, and shared progress tracking.",
-        image: "/images/airy/47.png",
+        image: "/images/airy/47.webp",
         caption: "The therapist dashboard — a daily overview of client schedule, alerts, and pending tasks in one place.",
       },
-      { image: "/images/airy/48.png", caption: "AI-generated SOAP notes cut documentation time. One note takes 30 minutes -this adds up fast across 20 clients every week." },
-      { image: "/images/airy/49.png", caption: "AI Notes: all-session summaries, pattern detection, and treatment plan tracking without the manual review." },
-      { image: "/images/airy/51.png", caption: "Check-ins surface client journal entries between sessions, with AI-detected emotional themes flagged for the therapist." },
-      { image: "/images/airy/54.png", caption: "The client Nudges view: daily affirmations, journal prompts, and mini-sessions that keep progress alive between appointments." },
-      { image: "/images/airy/57.png", caption: "Progress tracking: therapist and client views of the same data, with AI highlight summaries sent directly to clients." },
+      { image: "/images/airy/48.webp", caption: "AI-generated SOAP notes cut documentation time. One note takes 30 minutes -this adds up fast across 20 clients every week." },
+      { image: "/images/airy/49.webp", caption: "AI Notes: all-session summaries, pattern detection, and treatment plan tracking without the manual review." },
+      { image: "/images/airy/51.webp", caption: "Check-ins surface client journal entries between sessions, with AI-detected emotional themes flagged for the therapist." },
+      { image: "/images/airy/54.webp", caption: "The client Nudges view: daily affirmations, journal prompts, and mini-sessions that keep progress alive between appointments." },
+      { image: "/images/airy/57.webp", caption: "Progress tracking: therapist and client views of the same data, with AI highlight summaries sent directly to clients." },
       {
         sectionLabel: "Validation",
         sectionIntro:
           "We tested with therapists and clients actively in online therapy. The value landed.",
-        image: "/images/airy/59.png",
+        image: "/images/airy/59.webp",
         caption: "Real feedback from therapists and clients after testing.",
       },
       {
         sectionLabel: "Process & Artifacts",
         sectionIntro:
           "How we got here: research, usability testing, and a full design handoff.",
-        image: "/images/airy/53.png",
+        image: "/images/airy/53.webp",
         caption: "Usability testing through Dscout with 4 participants actively in online therapy — real-world feedback, not assumptions.",
       },
-      { image: "/images/airy/61.png", caption: "Full design handoff: annotated prototypes, functional requirements, BRD, and a Figma prototype." },
+      { image: "/images/airy/61.webp", caption: "Full design handoff: annotated prototypes, functional requirements, BRD, and a Figma prototype." },
     ],
   },
   {
@@ -628,34 +628,34 @@ export const caseStudies: CaseStudy[] = [
       { value: "+18%", label: "Checkout Rate", sublabel: "% of sessions that checked out" },
     ],
     slides: [
-      { image: "/images/nectar-ai/27.png" },
+      { image: "/images/nectar-ai/27.webp" },
       {
         sectionLabel: "The Problem",
-        image: "/images/nectar-ai/28.png",
+        image: "/images/nectar-ai/28.webp",
         caption: "The existing chatbot couldn't handle real customer questions — flooding the owner's inbox and leaving customers frustrated.",
       },
-      { image: "/images/nectar-ai/29.png", caption: "Before: robotic pre-set responses that forwarded everything to email instead of answering product questions." },
+      { image: "/images/nectar-ai/29.webp", caption: "Before: robotic pre-set responses that forwarded everything to email instead of answering product questions." },
       {
         sectionLabel: "My Role",
-        image: "/images/nectar-ai/30.png",
+        image: "/images/nectar-ai/30.webp",
       },
       {
         sectionLabel: "The Process",
-        image: "/images/nectar-ai/31.png",
+        image: "/images/nectar-ai/31.webp",
         caption: "Research → Prototyping → Validation → Pivot. The process wasn't linear — an early fine-tuning approach failed and required a full rethink.",
       },
       {
-        image: "/images/nectar-ai/32.png",
+        image: "/images/nectar-ai/32.webp",
         caption: "The initial GPT-3 fine-tuning approach failed on three fronts: invalid links, hallucinations, and inconsistent responses.",
       },
       {
         sectionLabel: "The Architecture",
-        image: "/images/nectar-ai/33.png",
+        image: "/images/nectar-ai/33.webp",
         caption: "Final system: GPT-3 embeddings + Google Dialogflow front-end + Shopify/MailChimp for customer data persistence.",
       },
       {
         sectionLabel: "The Result",
-        image: "/images/nectar-ai/34.png",
+        image: "/images/nectar-ai/34.webp",
         caption: "The chatbot guides customers through support, captures their name, email, and interests, and funnels that enriched data into Shopify and MailChimp for marketing.",
       },
     ],

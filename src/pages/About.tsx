@@ -70,7 +70,7 @@ const About = () => {
         <Reveal className="relative grid gap-6 sm:gap-10 border-b border-border pb-12 sm:grid-cols-[10rem_1fr] sm:items-center">
           <div className="group relative shrink-0">
             <img
-              src="/images/headshot.jpeg"
+              src="/images/headshot.webp"
               alt="Portrait of Krishna Suresh"
               className="w-40 h-40 rounded-sm object-cover object-top border border-border transition-transform duration-300 group-hover:translate-x-1"
             />
@@ -117,16 +117,16 @@ const About = () => {
 
           <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:columns-4 [&>figure]:mb-3 sm:[&>figure]:mb-4">
             {[
-              { src: "/images/varanasi/flower-market.jpg", alt: "A woman selling flowers at a market in Varanasi", ratio: "aspect-[4/5]" },
-              { src: "/images/about/marathon-finish.jpg", alt: "Finishing the San Francisco half marathon", ratio: "aspect-[3/4]" },
-              { src: "/images/varanasi/alley-bike.jpg", alt: "A man on a bicycle carrying goods through a narrow Varanasi alley", ratio: "aspect-[3/2]" },
-              { src: "/images/about/coffee-popup.jpg", alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
-              { src: "/images/about/bouldering.png", alt: "Bouldering across an overhang at a climbing gym", ratio: "aspect-[3/4]" },
-              { src: "/images/about/dog-swimming.jpg", alt: "A dog swimming through turquoise water", ratio: "aspect-[3/2]" },
-              { src: "/images/about/soccer-team.png", alt: "My intramural soccer team on the field", ratio: "aspect-[4/3]" },
-              { src: "/images/about/zion-hike.jpg", alt: "Hiking with friends at a trailhead in Zion", ratio: "aspect-[3/4]" },
-              { src: "/images/about/outdoor-pines.jpg", alt: "Snowy mountains framed by pine trees", ratio: "aspect-[3/4]" },
-              { src: "/images/varanasi/quiet-afternoon.jpg", alt: "A quiet afternoon scene in Varanasi", ratio: "aspect-[3/2]" },
+              { src: "/images/varanasi/flower-market.webp", alt: "A woman selling flowers at a market in Varanasi", ratio: "aspect-[4/5]" },
+              { src: "/images/about/marathon-finish.webp", alt: "Finishing the San Francisco half marathon", ratio: "aspect-[3/4]" },
+              { src: "/images/varanasi/alley-bike.webp", alt: "A man on a bicycle carrying goods through a narrow Varanasi alley", ratio: "aspect-[3/2]" },
+              { src: "/images/about/coffee-popup.webp", alt: "Making pourovers at a coffee pop-up I hosted", ratio: "aspect-[4/3]" },
+              { src: "/images/about/bouldering.webp", alt: "Bouldering across an overhang at a climbing gym", ratio: "aspect-[3/4]" },
+              { src: "/images/about/dog-swimming.webp", alt: "A dog swimming through turquoise water", ratio: "aspect-[3/2]" },
+              { src: "/images/about/soccer-team.webp", alt: "My intramural soccer team on the field", ratio: "aspect-[4/3]" },
+              { src: "/images/about/zion-hike.webp", alt: "Hiking with friends at a trailhead in Zion", ratio: "aspect-[3/4]" },
+              { src: "/images/about/outdoor-pines.webp", alt: "Snowy mountains framed by pine trees", ratio: "aspect-[3/4]" },
+              { src: "/images/varanasi/quiet-afternoon.webp", alt: "A quiet afternoon scene in Varanasi", ratio: "aspect-[3/2]" },
             ].map((img) => (
               <figure
                 key={img.src}
