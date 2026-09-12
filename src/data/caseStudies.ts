@@ -638,12 +638,6 @@ export const caseStudies: CaseStudy[] = [
     ],
     blocks: [
       {
-        kind: "statement",
-        eyebrow: "The premise",
-        text: "A support chatbot that can't answer questions doesn't save the owner time — it just moves the work to their inbox.",
-      },
-
-      {
         kind: "chapter",
         id: "the-problem",
         number: "01",
