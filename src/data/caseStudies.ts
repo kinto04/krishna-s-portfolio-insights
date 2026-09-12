@@ -166,7 +166,7 @@ export const caseStudies: CaseStudy[] = [
           {
             number: "03",
             name: "Emma",
-            role: "Easy-going*",
+            role: "Easy-going",
             line: "Flexible, doesn't engage in the planning process. Can become a problem at the end.",
             quote: "I'm honestly fine with anything — just tell me where to be and when.",
             avatar: "/images/jointly/archetype-3.webp",
@@ -182,9 +182,9 @@ export const caseStudies: CaseStudy[] = [
       { kind: "chapter", id: "the-product", number: "04", label: "Designing and building the product", tone: "dark", intro: "I used AI-assisted design and development to move from research to a coherent brand, reusable design system, and functioning product—without separating design decisions from implementation." },
       { kind: "image", src: "/images/jointly/27.webp", fullWidth: true, caption: "Four features that turn group chaos into a plan." },
       { kind: "image", src: "/images/jointly/12.webp", fullWidth: true, caption: "Trip creation: destination, interests, budget priority." },
-      { kind: "image", src: "/images/jointly/14.webp", fullWidth: true },
-      { kind: "image", src: "/images/jointly/18.webp", fullWidth: true },
-      { kind: "image", src: "/images/jointly/19.webp", fullWidth: true },
+      { kind: "image", src: "/images/jointly/14.webp", fullWidth: true, caption: "Members describe an idea in plain language; the app resolves it into real, priced options the group can vote on." },
+      { kind: "image", src: "/images/jointly/18.webp", fullWidth: true, caption: "The itinerary doubles as a map view — testing showed people mainly wanted to know where they would physically be each day." },
+      { kind: "image", src: "/images/jointly/19.webp", fullWidth: true, caption: "Budgets are estimated and shared up front, so the group never has to negotiate money out loud." },
 
       { kind: "chapter", id: "early-signal", number: "05", label: "Shipping and learning", tone: "dark", intro: "I shipped the beta to 40+ users, then built an automated weekly feedback loop to turn product behavior into focused design priorities." },
       {
@@ -218,7 +218,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ["AI", "Experience Design", "Product Design"],
     summary:
       "Huelo is a web-based AI interior-design app for urban renters that turns inspiration and budget constraints into a personalized room plan. As a founding designer and AI engineer, I'm shaping the product experience, the design flow, and the agent architecture that makes a custom design feel effortless.",
-    featured: false,
+    featured: true,
     coverImage: "/images/huelo/cover.webp",
     heroImage: "/images/huelo/hero.webp",
     liveUrl: "https://huelo.co/",
@@ -231,7 +231,12 @@ export const caseStudies: CaseStudy[] = [
       setting: "New York",
       platform: "Web app",
     },
-    toolkit: ["Figma", "Lovable", "OpenAI"],
+    toolkit: ["Figma", "Gemini API", "Google Antigravity", "Lovable"],
+    metrics: [
+      { value: "1,000+", label: "Users", sublabel: "since launch" },
+      { value: "+20%", label: "Activation", sublabel: "after research-led changes" },
+      { value: "+21%", label: "Engagement", sublabel: "after research-led changes" },
+    ],
     overview: {
       context:
         "Urban renters want designed spaces but can't renovate, can't visualize changes, and get stuck between inspiration and purchase. Huelo uses AI to generate personalized room plans from a photo, a few preferences, and a real budget.",
@@ -312,7 +317,7 @@ export const caseStudies: CaseStudy[] = [
         items: [
           {
             title: "Vision + language understanding",
-            body: "The agent reads room photos, inspiration images, and natural-language preferences together.",
+            body: "Built on the Gemini API, the agent reads room photos, inspiration images, and natural-language preferences together.",
           },
           {
             title: "Structured product retrieval",
@@ -323,8 +328,12 @@ export const caseStudies: CaseStudy[] = [
             body: "Generated previews help users see the design in their actual space before buying.",
           },
           {
-            title: "Continuous evaluation",
-            body: "We run evals on output quality, relevance, and coherence to keep the AI honest as the catalog grows.",
+            title: "Evals on every change",
+            body: "I built evaluation pipelines for output quality, relevance, and coherence, so we can tell whether a prompt or model change actually improved the design and not just moved it.",
+          },
+          {
+            title: "Cost as a design constraint",
+            body: "Optimizing token usage keeps the experience fast and the unit economics viable — a design decision as much as an engineering one.",
           },
         ],
       },
@@ -368,7 +377,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Airy is a digital platform designed to help clinical therapists better support their clients - with AI-powered note-taking, between-session check-ins, nudges, and progress tracking. Our research surfaced a core tension: therapy tools are built for sessions, not the 167 hours in between. I led product strategy, conducted research, designed high-fidelity prototypes, and authored the BRD.",
 
-    featured: true,
+    featured: false,
     coverImage: "/images/airy/cover.webp",
     heroImage: "/images/airy/hero.webp",
     theme: {
@@ -638,6 +647,7 @@ export const caseStudies: CaseStudy[] = [
       {
         sectionLabel: "My Role",
         image: "/images/nectar-ai/30.webp",
+        caption: "I owned all three phases as the sole designer and developer on the project.",
       },
       {
         sectionLabel: "The Process",
