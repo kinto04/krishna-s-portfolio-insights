@@ -231,7 +231,7 @@ export const caseStudies: CaseStudy[] = [
       setting: "New York",
       platform: "Web app",
     },
-    toolkit: ["Figma", "Gemini API", "Google Antigravity", "Lovable"],
+    toolkit: ["Figma", "Gemini API", "Lovable"],
     metrics: [
       { value: "1,000+", label: "Users", sublabel: "since launch" },
       { value: "+20%", label: "Activation", sublabel: "after research-led changes" },
@@ -636,38 +636,96 @@ export const caseStudies: CaseStudy[] = [
       { value: "+30%", label: "Add-to-Cart Rate", sublabel: "% of sessions that added to cart" },
       { value: "+18%", label: "Checkout Rate", sublabel: "% of sessions that checked out" },
     ],
-    slides: [
-      { image: "/images/nectar-ai/27.webp" },
+    blocks: [
       {
-        sectionLabel: "The Problem",
-        image: "/images/nectar-ai/28.webp",
+        kind: "statement",
+        eyebrow: "The premise",
+        text: "A support chatbot that can't answer questions doesn't save the owner time — it just moves the work to their inbox.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-problem",
+        number: "01",
+        label: "The problem",
+        intro: "The client sold wellness products and had a chatbot in name only. I started by reading a year of their real support conversations to find out what customers were actually asking.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/28.webp",
+        fullWidth: true,
         caption: "The existing chatbot couldn't handle real customer questions — flooding the owner's inbox and leaving customers frustrated.",
       },
-      { image: "/images/nectar-ai/29.webp", caption: "Before: robotic pre-set responses that forwarded everything to email instead of answering product questions." },
       {
-        sectionLabel: "My Role",
-        image: "/images/nectar-ai/30.webp",
+        kind: "image",
+        src: "/images/nectar-ai/29.webp",
+        fullWidth: true,
+        caption: "Before: robotic pre-set responses that forwarded everything to email instead of answering product questions.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-approach",
+        number: "02",
+        label: "How I worked",
+        intro: "Sole designer and developer, working directly with the CEO and the client. Research fed the conversation design, and the conversation design fed the build.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/30.webp",
+        fullWidth: true,
         caption: "I owned all three phases as the sole designer and developer on the project.",
       },
       {
-        sectionLabel: "The Process",
-        image: "/images/nectar-ai/31.webp",
-        caption: "Research → Prototyping → Validation → Pivot. The process wasn't linear — an early fine-tuning approach failed and required a full rethink.",
+        kind: "image",
+        src: "/images/nectar-ai/31.webp",
+        fullWidth: true,
+        caption: "Research → Prototyping → Validation → Pivot.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-pivot",
+        number: "03",
+        label: "The approach that failed",
+        intro: "My first approach was to fine-tune GPT-3 on the client's catalog. It didn't work, and it took a round of validation to see how badly. Fine-tuning taught the model the client's tone but not their facts — so it invented product links and answered the same question differently each time. I threw it out and rebuilt around retrieval instead.",
       },
       {
-        image: "/images/nectar-ai/32.webp",
-        caption: "The initial GPT-3 fine-tuning approach failed on three fronts: invalid links, hallucinations, and inconsistent responses.",
+        kind: "image",
+        src: "/images/nectar-ai/32.webp",
+        fullWidth: true,
+        caption: "The fine-tuning approach failed on three fronts: invalid links, hallucinations, and inconsistent responses.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-architecture",
+        number: "04",
+        label: "The architecture",
+        intro: "Retrieval over embeddings meant answers were grounded in the client's real catalog, so the model could stop guessing at product details.",
       },
       {
-        sectionLabel: "The Architecture",
-        image: "/images/nectar-ai/33.webp",
+        kind: "image",
+        src: "/images/nectar-ai/33.webp",
+        fullWidth: true,
         caption: "Final system: GPT-3 embeddings + Google Dialogflow front-end + Shopify/MailChimp for customer data persistence.",
       },
+
       {
-        sectionLabel: "The Result",
-        image: "/images/nectar-ai/34.webp",
+        kind: "chapter",
+        id: "the-result",
+        number: "05",
+        label: "The result",
+        intro: "The chatbot went from deflecting customers to email to carrying them through to checkout — and turned each conversation into data the client could market against.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/34.webp",
+        fullWidth: true,
         caption: "The chatbot guides customers through support, captures their name, email, and interests, and funnels that enriched data into Shopify and MailChimp for marketing.",
       },
     ],
+    reflection:
+      "The fine-tuning detour was the most useful part of this project. It taught me that with an LLM the interesting design question usually isn't how it talks, it's where its answers come from — and that's a decision you have to make before you write a single line of conversation copy.",
   },
 ];
