@@ -402,7 +402,6 @@ export const caseStudies: CaseStudy[] = [
         kind: "image",
         src: "/images/nectar-ai/28.webp",
         fullWidth: true,
-        caption: "The existing chatbot couldn't handle real customer questions — flooding the owner's inbox and leaving customers frustrated.",
       },
       {
         kind: "image",
