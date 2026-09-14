@@ -219,8 +219,10 @@
     background: hsl(var(--primary-soft) / 0.42);
   }
 
-/* Jointly's chapter surfaces mirror the warm-light and near-black deck pages. */
-.jointly-chapter {
+/* Full-bleed chapter surfaces. A study opts in by giving its chapters a `tone`;
+   band colours default to the values below and can be overridden per study via
+   the --band-light-* / --band-dark-* custom properties set in WorkDetail. */
+.case-chapter {
   position: relative;
   isolation: isolate;
   margin-top: 1.5rem;
@@ -229,11 +231,11 @@
 }
 
 /* Adjacent chapters share no page-background gap — bands flow into each other. */
-.jointly-chapter + .jointly-chapter {
+.case-chapter + .case-chapter {
   margin-top: 0;
 }
 
-.jointly-chapter::before {
+.case-chapter::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -244,45 +246,45 @@
   background: hsl(var(--background));
 }
 
-.jointly-chapter-light {
-  --background: 40 20% 96%;
-  --foreground: 30 15% 9%;
-  --muted-foreground: 28 8% 38%;
-  --border: 28 12% 82%;
-  --card: 40 18% 98%;
-  --primary: 20 76% 55%;
+.case-chapter-light {
+  --background: var(--band-light-background, 40 20% 96%);
+  --foreground: var(--band-light-foreground, 30 15% 9%);
+  --muted-foreground: var(--band-light-muted-foreground, 28 8% 38%);
+  --border: var(--band-light-border, 28 12% 82%);
+  --card: var(--band-light-card, 40 18% 98%);
+  --primary: var(--band-light-primary, 20 76% 55%);
 }
 
-.jointly-chapter-dark {
-  --background: 30 22% 9%;
-  --foreground: 40 20% 96%;
-  --muted-foreground: 32 10% 70%;
-  --border: 30 10% 25%;
-  --card: 30 18% 12%;
-  --primary: 20 76% 60%;
+.case-chapter-dark {
+  --background: var(--band-dark-background, 30 22% 9%);
+  --foreground: var(--band-dark-foreground, 40 20% 96%);
+  --muted-foreground: var(--band-dark-muted-foreground, 32 10% 70%);
+  --border: var(--band-dark-border, 30 10% 25%);
+  --card: var(--band-dark-card, 30 18% 12%);
+  --primary: var(--band-dark-primary, 20 76% 60%);
 }
 
-.jointly-chapter .case-study-chapter-header {
+.case-chapter .case-study-chapter-header {
   margin-top: 0;
   padding-top: 1.5rem;
   border-top: 0;
 }
 
-.jointly-chapter .case-study-image-frame {
+.case-chapter .case-study-image-frame {
   border-color: transparent;
   background: transparent;
 }
 
 @media (min-width: 640px) {
-  .jointly-chapter {
+  .case-chapter {
     margin-top: 2rem;
     padding-bottom: 2rem;
   }
-  .jointly-chapter + .jointly-chapter {
+  .case-chapter + .case-chapter {
     margin-top: 0;
   }
 
-  .jointly-chapter .case-study-chapter-header {
+  .case-chapter .case-study-chapter-header {
     padding-top: 2rem;
   }
 }
@@ -357,23 +359,23 @@
 
   /* Case-study chapters get a longer, more cinematic travel so the
      staggered sequence inside a chapter actually reads. */
-  .jointly-chapter .scroll-fade-in {
+  .case-chapter .scroll-fade-in {
     transform: translate3d(0, 44px, 0) scale(0.985);
     transition:
       opacity 0.9s var(--ease-out-quint),
       transform 0.9s var(--ease-out-expo);
   }
 
-  .jointly-chapter .scroll-fade-in.is-visible {
+  .case-chapter .scroll-fade-in.is-visible {
     transform: translate3d(0, 0, 0) scale(1);
   }
 
   /* Product mockups cascade with a touch more depth. */
-  .jointly-chapter .grid > .scroll-fade-in {
+  .case-chapter .grid > .scroll-fade-in {
     transform: translate3d(0, 64px, 0) scale(0.96);
   }
 
-  .jointly-chapter .grid > .scroll-fade-in.is-visible {
+  .case-chapter .grid > .scroll-fade-in.is-visible {
     transform: translate3d(0, 0, 0) scale(1);
   }
 

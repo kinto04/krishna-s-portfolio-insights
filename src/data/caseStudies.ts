@@ -91,6 +91,14 @@ export interface CaseStudy {
     card: string;
     primary: string;
   };
+  /** Optional full-bleed chapter band palettes, sampled from the study's own deck so
+   *  slide artwork sits on a matching surface instead of floating on the page colour.
+   *  Only applies to chapters that declare a `tone`; studies without tones render flat.
+   *  Any key left out falls back to the defaults in `.case-chapter-light/dark`. */
+  bands?: {
+    light?: Partial<CaseStudy["theme"]>;
+    dark?: Partial<CaseStudy["theme"]>;
+  };
   /** Marks a study that is still in progress and not fully public. */
   inProgress?: boolean;
   /** Email address visitors can copy to request the full deck. */
@@ -344,6 +352,136 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    slug: "nectar-ai",
+    title: "Nectar.ai",
+    subtitle: "AI-powered customer support for e-commerce.",
+    role: "Product Manager · Software Developer",
+    year: "2023",
+    context: "One of the products I lead during my time at NectarOM",
+    tags: ["AI", "Experience Design", "Conversational UI"],
+    summary:
+      "A small business selling wellness products needed to overhaul their underperforming customer support chatbot. I researched a year of historical support conversations, designed the conversation flows, and built a GPT-powered chatbot that guides customers from landing page through checkout.",
+    featured: true,
+    coverImage: "/images/u6qotkxyhcppqyywjql0qfrlnq.webp",
+    facts: {
+      timeline: "~3 months",
+      timelineNote: "2023, alongside other client work",
+      team: "Sole designer and developer, with the CEO and clients",
+      role: "Product management and development",
+      setting: "NectarOM · Client product",
+      platform: "Web · Shopify storefront",
+    },
+    toolkit: ["Python", "Node.js", "APIs", "OpenAI", "Shopify", "Mailchimp"],
+    // Every Nectar slide is pure black at the edges, so the dark band matches them
+    // exactly and the slide frames disappear into the page.
+    bands: {
+      dark: {
+        background: "0 0% 0%",
+        foreground: "0 0% 98%",
+        mutedForeground: "0 0% 68%",
+        border: "0 0% 18%",
+        card: "0 0% 7%",
+        primary: "228 85% 68%",
+      },
+    },
+
+    metrics: [
+      { value: "+99%", label: "Response Rate", sublabel: "% of customer chats answered" },
+      { value: "+30%", label: "Add-to-Cart Rate", sublabel: "% of sessions that added to cart" },
+      { value: "+18%", label: "Checkout Rate", sublabel: "% of sessions that checked out" },
+    ],
+    blocks: [
+      {
+        kind: "chapter",
+        id: "the-problem",
+        number: "01",
+        label: "The problem",
+        tone: "dark",
+        intro: "The client sold wellness products and had a chatbot in name only. I started by reading a year of their real support conversations to find out what customers were actually asking.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/28.webp",
+        fullWidth: true,
+        caption: "The existing chatbot couldn't handle real customer questions — flooding the owner's inbox and leaving customers frustrated.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/29.webp",
+        fullWidth: true,
+        caption: "Before: robotic pre-set responses that forwarded everything to email instead of answering product questions.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-approach",
+        number: "02",
+        label: "How I worked",
+        tone: "dark",
+        intro: "Sole designer and developer, working directly with the CEO and the client. Research fed the conversation design, and the conversation design fed the build.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/30.webp",
+        fullWidth: true,
+        caption: "I owned all three phases as the sole designer and developer on the project.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/31.webp",
+        fullWidth: true,
+        caption: "Research → Prototyping → Validation → Pivot.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-pivot",
+        number: "03",
+        label: "The approach that failed",
+        tone: "dark",
+        intro: "My first approach was to fine-tune GPT-3 on the client's catalog. It didn't work, and it took a round of validation to see how badly. Fine-tuning taught the model the client's tone but not their facts — so it invented product links and answered the same question differently each time. I threw it out and rebuilt around retrieval instead.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/32.webp",
+        fullWidth: true,
+        caption: "The fine-tuning approach failed on three fronts: invalid links, hallucinations, and inconsistent responses.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-architecture",
+        number: "04",
+        label: "The architecture",
+        tone: "dark",
+        intro: "Retrieval over embeddings meant answers were grounded in the client's real catalog, so the model could stop guessing at product details.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/33.webp",
+        fullWidth: true,
+        caption: "Final system: GPT-3 embeddings + Google Dialogflow front-end + Shopify/MailChimp for customer data persistence.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-result",
+        number: "05",
+        label: "The result",
+        tone: "dark",
+        intro: "The chatbot went from deflecting customers to email to carrying them through to checkout — and turned each conversation into data the client could market against.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/34.webp",
+        fullWidth: true,
+        caption: "The chatbot guides customers through support, captures their name, email, and interests, and funnels that enriched data into Shopify and MailChimp for marketing.",
+      },
+    ],
+    reflection:
+      "The fine-tuning detour was the most useful part of this project. It taught me that with an LLM the interesting design question usually isn't how it talks, it's where its answers come from — and that's a decision you have to make before you write a single line of conversation copy.",
+  },
+  {
     slug: "airy",
     title: "Airy",
     subtitle: "A smart tool for clinical therapists.",
@@ -374,51 +512,78 @@ export const caseStudies: CaseStudy[] = [
       card: "36 28% 90%",
       primary: "255 30% 55%",
     },
-    slides: [
-      { image: "/images/airy/40.webp", caption: "10 weeks of research, 3 rounds and 21 sessions of user interviews." },
-      { image: "/images/airy/41.webp", caption: "52.9M Americans are in therapy — and 55% moved online post-pandemic. The market is growing fast, but the tools haven't kept up." },
-      {
-        sectionLabel: "The Problem",
-        sectionIntro:
-          "Most current tools are built for sessions - but real change happens in the hours between them.",
-        image: "/images/airy/43.webp",
-        caption: "Current tools are narrow, limiting, time-consuming, and built for a single user — not the therapist-client relationship.",
+    // Every Airy slide is pure white at the edges, so the light band is white rather
+    // than the page's cream — the slide frames disappear into the band.
+    bands: {
+      light: {
+        background: "0 0% 100%",
+        foreground: "253 26% 14%",
+        mutedForeground: "260 8% 43%",
+        border: "0 0% 92%",
+        card: "0 0% 98%",
+        primary: "255 30% 55%",
       },
-      { image: "/images/airy/44.webp", caption: "Therapists drown in manual notes and can't track progress. Clients feel therapy ends when the session does." },
+    },
+    blocks: [
+      { kind: "image", src: "/images/airy/40.webp", fullWidth: true, caption: "10 weeks of research, 3 rounds and 21 sessions of user interviews." },
+      { kind: "image", src: "/images/airy/41.webp", fullWidth: true, caption: "52.9M Americans are in therapy — and 55% moved online post-pandemic. The market is growing fast, but the tools haven't kept up." },
+
       {
-        sectionLabel: "The Solution",
-        sectionIntro:
-          "One platform that supports the therapist's workflow and keeps the client engaged between sessions.",
-        image: "/images/airy/46.webp",
-        caption: "Airy: a unified platform built around Notes & Trends, Client Engagement, and Trust & Security.",
+        kind: "chapter",
+        id: "the-problem",
+        number: "01",
+        label: "The Problem",
+        tone: "light",
+        intro: "Most current tools are built for sessions - but real change happens in the hours between them.",
       },
+      { kind: "image", src: "/images/airy/43.webp", fullWidth: true, caption: "Current tools are narrow, limiting, time-consuming, and built for a single user — not the therapist-client relationship." },
+      { kind: "image", src: "/images/airy/44.webp", fullWidth: true, caption: "Therapists drown in manual notes and can't track progress. Clients feel therapy ends when the session does." },
+
       {
-        sectionLabel: "The Product",
-        sectionIntro:
-          "What we built: a therapist dashboard, AI-assisted notes, client check-ins, nudges, and shared progress tracking.",
-        image: "/images/airy/47.webp",
-        caption: "The therapist dashboard — a daily overview of client schedule, alerts, and pending tasks in one place.",
+        kind: "chapter",
+        id: "the-solution",
+        number: "02",
+        label: "The Solution",
+        tone: "light",
+        intro: "One platform that supports the therapist's workflow and keeps the client engaged between sessions.",
       },
-      { image: "/images/airy/48.webp", caption: "AI-generated SOAP notes cut documentation time. One note takes 30 minutes -this adds up fast across 20 clients every week." },
-      { image: "/images/airy/49.webp", caption: "AI Notes: all-session summaries, pattern detection, and treatment plan tracking without the manual review." },
-      { image: "/images/airy/51.webp", caption: "Check-ins surface client journal entries between sessions, with AI-detected emotional themes flagged for the therapist." },
-      { image: "/images/airy/54.webp", caption: "The client Nudges view: daily affirmations, journal prompts, and mini-sessions that keep progress alive between appointments." },
-      { image: "/images/airy/57.webp", caption: "Progress tracking: therapist and client views of the same data, with AI highlight summaries sent directly to clients." },
+      { kind: "image", src: "/images/airy/46.webp", fullWidth: true, caption: "Airy: a unified platform built around Notes & Trends, Client Engagement, and Trust & Security." },
+
       {
-        sectionLabel: "Validation",
-        sectionIntro:
-          "We tested with therapists and clients actively in online therapy. The value landed.",
-        image: "/images/airy/59.webp",
-        caption: "Real feedback from therapists and clients after testing.",
+        kind: "chapter",
+        id: "the-product",
+        number: "03",
+        label: "The Product",
+        tone: "light",
+        intro: "What we built: a therapist dashboard, AI-assisted notes, client check-ins, nudges, and shared progress tracking.",
       },
+      { kind: "image", src: "/images/airy/47.webp", fullWidth: true, caption: "The therapist dashboard — a daily overview of client schedule, alerts, and pending tasks in one place." },
+      { kind: "image", src: "/images/airy/48.webp", fullWidth: true, caption: "AI-generated SOAP notes cut documentation time. One note takes 30 minutes -this adds up fast across 20 clients every week." },
+      { kind: "image", src: "/images/airy/49.webp", fullWidth: true, caption: "AI Notes: all-session summaries, pattern detection, and treatment plan tracking without the manual review." },
+      { kind: "image", src: "/images/airy/51.webp", fullWidth: true, caption: "Check-ins surface client journal entries between sessions, with AI-detected emotional themes flagged for the therapist." },
+      { kind: "image", src: "/images/airy/54.webp", fullWidth: true, caption: "The client Nudges view: daily affirmations, journal prompts, and mini-sessions that keep progress alive between appointments." },
+      { kind: "image", src: "/images/airy/57.webp", fullWidth: true, caption: "Progress tracking: therapist and client views of the same data, with AI highlight summaries sent directly to clients." },
+
       {
-        sectionLabel: "Process & Artifacts",
-        sectionIntro:
-          "How we got here: research, usability testing, and a full design handoff.",
-        image: "/images/airy/53.webp",
-        caption: "Usability testing through Dscout with 4 participants actively in online therapy — real-world feedback, not assumptions.",
+        kind: "chapter",
+        id: "validation",
+        number: "04",
+        label: "Validation",
+        tone: "light",
+        intro: "We tested with therapists and clients actively in online therapy. The value landed.",
       },
-      { image: "/images/airy/61.webp", caption: "Full design handoff: annotated prototypes, functional requirements, BRD, and a Figma prototype." },
+      { kind: "image", src: "/images/airy/59.webp", fullWidth: true, caption: "Real feedback from therapists and clients after testing." },
+
+      {
+        kind: "chapter",
+        id: "process-artifacts",
+        number: "05",
+        label: "Process & Artifacts",
+        tone: "light",
+        intro: "How we got here: research, usability testing, and a full design handoff.",
+      },
+      { kind: "image", src: "/images/airy/53.webp", fullWidth: true, caption: "Usability testing through Dscout with 4 participants actively in online therapy — real-world feedback, not assumptions." },
+      { kind: "image", src: "/images/airy/61.webp", fullWidth: true, caption: "Full design handoff: annotated prototypes, functional requirements, BRD, and a Figma prototype." },
     ],
   },
   {
@@ -594,118 +759,5 @@ export const caseStudies: CaseStudy[] = [
     ],
     reflection:
       "Research in a clinical setting runs on other people's calendars. The skill wasn't running the perfect study — it was staying prepared enough to learn something real from whatever fifteen minutes I could get, and turning newcomer questions into a shared understanding of the problem.",
-  },
-  {
-    slug: "nectar-ai",
-    title: "Nectar.ai",
-    subtitle: "AI-powered customer support for e-commerce.",
-    role: "Product Manager · Software Developer",
-    year: "2023",
-    context: "One of the products I lead during my time at NectarOM",
-    tags: ["AI", "Experience Design", "Conversational UI"],
-    summary:
-      "A small business selling wellness products needed to overhaul their underperforming customer support chatbot. I researched a year of historical support conversations, designed the conversation flows, and built a GPT-powered chatbot that guides customers from landing page through checkout.",
-    featured: true,
-    coverImage: "/images/u6qotkxyhcppqyywjql0qfrlnq.webp",
-    facts: {
-      timeline: "~3 months",
-      timelineNote: "2023, alongside other client work",
-      team: "Sole designer and developer, with the CEO and clients",
-      role: "Product management and development",
-      setting: "NectarOM · Client product",
-      platform: "Web · Shopify storefront",
-    },
-    toolkit: ["Python", "Node.js", "APIs", "OpenAI", "Shopify", "Mailchimp"],
-
-    metrics: [
-      { value: "+99%", label: "Response Rate", sublabel: "% of customer chats answered" },
-      { value: "+30%", label: "Add-to-Cart Rate", sublabel: "% of sessions that added to cart" },
-      { value: "+18%", label: "Checkout Rate", sublabel: "% of sessions that checked out" },
-    ],
-    blocks: [
-      {
-        kind: "chapter",
-        id: "the-problem",
-        number: "01",
-        label: "The problem",
-        intro: "The client sold wellness products and had a chatbot in name only. I started by reading a year of their real support conversations to find out what customers were actually asking.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/28.webp",
-        fullWidth: true,
-        caption: "The existing chatbot couldn't handle real customer questions — flooding the owner's inbox and leaving customers frustrated.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/29.webp",
-        fullWidth: true,
-        caption: "Before: robotic pre-set responses that forwarded everything to email instead of answering product questions.",
-      },
-
-      {
-        kind: "chapter",
-        id: "the-approach",
-        number: "02",
-        label: "How I worked",
-        intro: "Sole designer and developer, working directly with the CEO and the client. Research fed the conversation design, and the conversation design fed the build.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/30.webp",
-        fullWidth: true,
-        caption: "I owned all three phases as the sole designer and developer on the project.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/31.webp",
-        fullWidth: true,
-        caption: "Research → Prototyping → Validation → Pivot.",
-      },
-
-      {
-        kind: "chapter",
-        id: "the-pivot",
-        number: "03",
-        label: "The approach that failed",
-        intro: "My first approach was to fine-tune GPT-3 on the client's catalog. It didn't work, and it took a round of validation to see how badly. Fine-tuning taught the model the client's tone but not their facts — so it invented product links and answered the same question differently each time. I threw it out and rebuilt around retrieval instead.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/32.webp",
-        fullWidth: true,
-        caption: "The fine-tuning approach failed on three fronts: invalid links, hallucinations, and inconsistent responses.",
-      },
-
-      {
-        kind: "chapter",
-        id: "the-architecture",
-        number: "04",
-        label: "The architecture",
-        intro: "Retrieval over embeddings meant answers were grounded in the client's real catalog, so the model could stop guessing at product details.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/33.webp",
-        fullWidth: true,
-        caption: "Final system: GPT-3 embeddings + Google Dialogflow front-end + Shopify/MailChimp for customer data persistence.",
-      },
-
-      {
-        kind: "chapter",
-        id: "the-result",
-        number: "05",
-        label: "The result",
-        intro: "The chatbot went from deflecting customers to email to carrying them through to checkout — and turned each conversation into data the client could market against.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/34.webp",
-        fullWidth: true,
-        caption: "The chatbot guides customers through support, captures their name, email, and interests, and funnels that enriched data into Shopify and MailChimp for marketing.",
-      },
-    ],
-    reflection:
-      "The fine-tuning detour was the most useful part of this project. It taught me that with an LLM the interesting design question usually isn't how it talks, it's where its answers come from — and that's a decision you have to make before you write a single line of conversation copy.",
   },
 ];

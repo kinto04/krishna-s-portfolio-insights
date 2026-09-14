@@ -457,18 +457,43 @@ const WorkDetail = () => {
   }
 
   const themed = !!study.theme;
-  const themeStyle = study.theme
-    ? ({
-        ["--background" as any]: study.theme.background,
-        ["--foreground" as any]: study.theme.foreground,
-        ["--muted-foreground" as any]: study.theme.mutedForeground,
-        ["--border" as any]: study.theme.border,
-        ["--card" as any]: study.theme.card,
-        ["--primary" as any]: study.theme.primary,
-        backgroundColor: `hsl(${study.theme.background})`,
-        color: `hsl(${study.theme.foreground})`,
-      } as React.CSSProperties)
-    : undefined;
+
+  // Per-study chapter band palettes, consumed by .case-chapter-light/dark.
+  const bandVars: Record<string, string> = {};
+  (["light", "dark"] as const).forEach((tone) => {
+    const palette = study.bands?.[tone];
+    if (!palette) return;
+    const map: Record<string, string | undefined> = {
+      background: palette.background,
+      foreground: palette.foreground,
+      "muted-foreground": palette.mutedForeground,
+      border: palette.border,
+      card: palette.card,
+      primary: palette.primary,
+    };
+    Object.entries(map).forEach(([token, value]) => {
+      if (value) bandVars[`--band-${tone}-${token}`] = value;
+    });
+  });
+
+  const themeStyle =
+    study.theme || Object.keys(bandVars).length
+      ? ({
+          ...(study.theme
+            ? {
+                ["--background" as any]: study.theme.background,
+                ["--foreground" as any]: study.theme.foreground,
+                ["--muted-foreground" as any]: study.theme.mutedForeground,
+                ["--border" as any]: study.theme.border,
+                ["--card" as any]: study.theme.card,
+                ["--primary" as any]: study.theme.primary,
+                backgroundColor: `hsl(${study.theme.background})`,
+                color: `hsl(${study.theme.foreground})`,
+              }
+            : {}),
+          ...bandVars,
+        } as React.CSSProperties)
+      : undefined;
 
   return (
     <div style={themeStyle} className={themed ? "w-full min-h-screen bg-background" : undefined}>
@@ -515,7 +540,7 @@ const WorkDetail = () => {
 
           {/* Body: blocks (preferred) or chapters fallback */}
           {study.blocks && study.blocks.length > 0 ? (
-            study.slug === "jointly-travel" && narrative ? (
+            narrative && narrative.chapters.some(({ chapter }) => chapter.tone) ? (
               <div className="mt-8">
                 {narrative.intro.map((block, i) => (
                   <RenderBlock key={`intro-${i}`} block={block} index={i} />
@@ -527,7 +552,7 @@ const WorkDetail = () => {
                     <section
                       key={chapter.id}
                       id={chapter.id}
-                      className={`jointly-chapter ${chapter.tone === "dark" ? "jointly-chapter-dark" : "jointly-chapter-light"} scroll-mt-32`}
+                      className={`case-chapter ${chapter.tone === "dark" ? "case-chapter-dark" : "case-chapter-light"} scroll-mt-32`}
                     >
                       {useSplit ? (
                         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
