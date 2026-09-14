@@ -372,17 +372,15 @@ export const caseStudies: CaseStudy[] = [
       platform: "Web · Shopify storefront",
     },
     toolkit: ["Python", "Node.js", "APIs", "OpenAI", "Shopify", "Mailchimp"],
-    // Every Nectar slide is pure black at the edges, so the dark band matches them
-    // exactly and the slide frames disappear into the page.
-    bands: {
-      dark: {
-        background: "0 0% 0%",
-        foreground: "0 0% 98%",
-        mutedForeground: "0 0% 68%",
-        border: "0 0% 18%",
-        card: "0 0% 7%",
-        primary: "228 85% 68%",
-      },
+    // Nectar's deck is uniformly black, so rather than banding individual chapters
+    // the whole page is black and the slides sit on it with no frame or seam.
+    theme: {
+      background: "0 0% 0%",
+      foreground: "0 0% 98%",
+      mutedForeground: "0 0% 68%",
+      border: "0 0% 18%",
+      card: "0 0% 8%",
+      primary: "228 85% 68%",
     },
 
     metrics: [
@@ -396,7 +394,6 @@ export const caseStudies: CaseStudy[] = [
         id: "the-problem",
         number: "01",
         label: "The problem",
-        tone: "dark",
         intro: "The client sold wellness products and had a chatbot in name only. I started by reading a year of their real support conversations to find out what customers were actually asking.",
       },
       {
@@ -417,7 +414,6 @@ export const caseStudies: CaseStudy[] = [
         id: "the-approach",
         number: "02",
         label: "How I worked",
-        tone: "dark",
         intro: "Sole designer and developer, working directly with the CEO and the client. Research fed the conversation design, and the conversation design fed the build.",
       },
       {
@@ -438,7 +434,6 @@ export const caseStudies: CaseStudy[] = [
         id: "the-pivot",
         number: "03",
         label: "The approach that failed",
-        tone: "dark",
         intro: "My first approach was to fine-tune GPT-3 on the client's catalog. It didn't work, and it took a round of validation to see how badly. Fine-tuning taught the model the client's tone but not their facts — so it invented product links and answered the same question differently each time. I threw it out and rebuilt around retrieval instead.",
       },
       {
@@ -453,7 +448,6 @@ export const caseStudies: CaseStudy[] = [
         id: "the-architecture",
         number: "04",
         label: "The architecture",
-        tone: "dark",
         intro: "Retrieval over embeddings meant answers were grounded in the client's real catalog, so the model could stop guessing at product details.",
       },
       {
@@ -468,7 +462,6 @@ export const caseStudies: CaseStudy[] = [
         id: "the-result",
         number: "05",
         label: "The result",
-        tone: "dark",
         intro: "The chatbot went from deflecting customers to email to carrying them through to checkout — and turned each conversation into data the client could market against.",
       },
       {
@@ -504,25 +497,15 @@ export const caseStudies: CaseStudy[] = [
     featured: false,
     coverImage: "/images/airy/cover.webp",
     heroImage: "/images/airy/hero.webp",
+    // Airy's deck is uniformly white, so the page is white end to end rather than
+    // cream — the slides sit on it with no frame or seam.
     theme: {
-      background: "36 31% 94%",
+      background: "0 0% 100%",
       foreground: "253 26% 14%",
       mutedForeground: "260 8% 43%",
-      border: "38 22% 85%",
-      card: "36 28% 90%",
+      border: "255 12% 90%",
+      card: "260 20% 98%",
       primary: "255 30% 55%",
-    },
-    // Every Airy slide is pure white at the edges, so the light band is white rather
-    // than the page's cream — the slide frames disappear into the band.
-    bands: {
-      light: {
-        background: "0 0% 100%",
-        foreground: "253 26% 14%",
-        mutedForeground: "260 8% 43%",
-        border: "0 0% 92%",
-        card: "0 0% 98%",
-        primary: "255 30% 55%",
-      },
     },
     blocks: [
       { kind: "image", src: "/images/airy/40.webp", fullWidth: true, caption: "10 weeks of research, 3 rounds and 21 sessions of user interviews." },
@@ -533,7 +516,6 @@ export const caseStudies: CaseStudy[] = [
         id: "the-problem",
         number: "01",
         label: "The Problem",
-        tone: "light",
         intro: "Most current tools are built for sessions - but real change happens in the hours between them.",
       },
       { kind: "image", src: "/images/airy/43.webp", fullWidth: true, caption: "Current tools are narrow, limiting, time-consuming, and built for a single user — not the therapist-client relationship." },
@@ -544,7 +526,6 @@ export const caseStudies: CaseStudy[] = [
         id: "the-solution",
         number: "02",
         label: "The Solution",
-        tone: "light",
         intro: "One platform that supports the therapist's workflow and keeps the client engaged between sessions.",
       },
       { kind: "image", src: "/images/airy/46.webp", fullWidth: true, caption: "Airy: a unified platform built around Notes & Trends, Client Engagement, and Trust & Security." },
@@ -554,7 +535,6 @@ export const caseStudies: CaseStudy[] = [
         id: "the-product",
         number: "03",
         label: "The Product",
-        tone: "light",
         intro: "What we built: a therapist dashboard, AI-assisted notes, client check-ins, nudges, and shared progress tracking.",
       },
       { kind: "image", src: "/images/airy/47.webp", fullWidth: true, caption: "The therapist dashboard — a daily overview of client schedule, alerts, and pending tasks in one place." },
@@ -569,7 +549,6 @@ export const caseStudies: CaseStudy[] = [
         id: "validation",
         number: "04",
         label: "Validation",
-        tone: "light",
         intro: "We tested with therapists and clients actively in online therapy. The value landed.",
       },
       { kind: "image", src: "/images/airy/59.webp", fullWidth: true, caption: "Real feedback from therapists and clients after testing." },
@@ -579,7 +558,6 @@ export const caseStudies: CaseStudy[] = [
         id: "process-artifacts",
         number: "05",
         label: "Process & Artifacts",
-        tone: "light",
         intro: "How we got here: research, usability testing, and a full design handoff.",
       },
       { kind: "image", src: "/images/airy/53.webp", fullWidth: true, caption: "Usability testing through Dscout with 4 participants actively in online therapy — real-world feedback, not assumptions." },

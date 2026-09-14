@@ -458,6 +458,11 @@ const WorkDetail = () => {
 
   const themed = !!study.theme;
 
+  // Tag hues are tuned for light surfaces; a study themed dark needs the lighter
+  // variants. Derive it from the theme's own lightness rather than a manual flag.
+  const themeLightness = Number(study.theme?.background.trim().split(/\s+/)[2]?.replace("%", ""));
+  const darkSurface = Number.isFinite(themeLightness) && themeLightness < 50;
+
   // Per-study chapter band palettes, consumed by .case-chapter-light/dark.
   const bandVars: Record<string, string> = {};
   (["light", "dark"] as const).forEach((tone) => {
@@ -496,7 +501,11 @@ const WorkDetail = () => {
       : undefined;
 
   return (
-    <div style={themeStyle} className={themed ? "w-full min-h-screen bg-background" : undefined}>
+    <div
+      style={themeStyle}
+      data-surface={darkSurface ? "dark" : undefined}
+      className={themed ? "w-full min-h-screen bg-background" : undefined}
+    >
       <Layout>
         <article className="container-page section-y-tight">
           <Link

@@ -52,11 +52,24 @@
 
 
     --tag-ai: 228 73% 49%;
-    --tag-experience: 225 61% 57%;
+    /* 57% lightness measured 4.20:1 on Jointly's ivory page, under the 4.5:1 floor
+       for 12px tag labels; 51% clears it while staying the same hue. */
+    --tag-experience: 225 61% 51%;
     --tag-interaction: 220 68% 46%;
     --tag-conversational: 235 54% 55%;
     --tag-research: 213 64% 45%;
     --tag-healthcare: 204 58% 39%;
+  }
+
+  /* The tag hues above are tuned against light surfaces and drop below 4.5:1 on a
+     dark one. A case study themed dark gets lifted variants of the same hues. */
+  [data-surface="dark"] {
+    --tag-ai: 228 90% 74%;
+    --tag-experience: 225 80% 78%;
+    --tag-interaction: 220 85% 74%;
+    --tag-conversational: 235 78% 78%;
+    --tag-research: 213 82% 72%;
+    --tag-healthcare: 204 78% 68%;
   }
 }
 
