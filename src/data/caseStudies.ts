@@ -415,7 +415,7 @@ export const caseStudies: CaseStudy[] = [
         id: "the-approach",
         number: "02",
         label: "How I worked",
-        intro: "Sole designer and developer, working directly with the CEO and the client. Research fed the conversation design, and the conversation design fed the build.",
+        intro: "Sole designer and developer, working directly with the CEO and the client. Data from months of customer support chats fed the conversation design - the goal was to prototype, test and fail quick.",
       },
       {
         kind: "image",
