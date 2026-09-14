@@ -183,7 +183,7 @@ const AtAGlance = ({ study }: { study: CaseStudy }) => {
     { label: "Timeline", value: facts.timeline, note: facts.timelineNote },
     { label: "Team", value: facts.team },
     { label: "My Role", value: facts.role },
-    { label: "Setting", value: facts.setting },
+    ...(facts.setting ? [{ label: "Setting", value: facts.setting }] : []),
     ...(facts.platform ? [{ label: "Platform", value: facts.platform }] : []),
   ];
   const chips = study.toolkit ?? [];
