@@ -26,7 +26,7 @@ export interface Facts {
   timelineNote?: string;
   team: string;
   role: string;
-  setting: string;
+  setting?: string;
   platform?: string;
 }
 
