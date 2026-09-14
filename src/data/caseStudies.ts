@@ -339,7 +339,6 @@ export const caseStudies: CaseStudy[] = [
       {
         kind: "image",
         src: "/images/huelo/hero.webp",
-        caption: "The Huelo landing page at huelo.co — an AI interior designer built for real rooms, real budgets, and real life.",
         fullWidth: true,
       },
     ],
