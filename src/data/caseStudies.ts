@@ -332,7 +332,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             title: "Cost as a design constraint",
-            body: "Optimizing token usage keeps the experience fast and the unit economics viable — a design decision as much as an engineering one.",
+            body: "Optimizing token usage keeps the experience fast and the unit economics viable",
           },
         ],
       },
