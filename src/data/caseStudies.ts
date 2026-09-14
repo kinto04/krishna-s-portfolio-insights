@@ -80,6 +80,8 @@ export interface CaseStudy {
   facts?: Facts;
 
   reflection?: string;
+  /** Takeaways as discrete points. Rendered in place of `reflection` when present. */
+  takeaways?: { title: string; body: string }[];
   toolkit?: string[];
   /** Optional per-study color theme. Values are HSL triplets ("H S% L%") that override
    *  semantic Tailwind tokens (--background, --foreground, etc.) for the detail page only. */
@@ -471,8 +473,20 @@ export const caseStudies: CaseStudy[] = [
         caption: "The chatbot guides customers through support, captures their name, email, and interests, and funnels that enriched data into Shopify and MailChimp for marketing.",
       },
     ],
-    reflection:
-      "The fine-tuning detour was the most useful part of this project. It taught me that with an LLM the interesting design question usually isn't how it talks, it's where its answers come from — and that's a decision you have to make before you write a single line of conversation copy.",
+    takeaways: [
+      {
+        title: "Build and validate quick",
+        body: "Rapid prototyping and testing to identify issues early.",
+      },
+      {
+        title: "Early mover challenges",
+        body: "Navigating uncharted territory without established models to follow.",
+      },
+      {
+        title: "Data driven design",
+        body: "Using insights to align with customer goals and business growth.",
+      },
+    ],
   },
   {
     slug: "airy",

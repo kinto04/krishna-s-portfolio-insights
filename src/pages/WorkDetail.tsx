@@ -385,13 +385,29 @@ const Closing = ({ study }: { study: CaseStudy }) => {
   const next = caseStudies[(idx + 1) % caseStudies.length];
   return (
     <div className="mt-24 space-y-12">
-      {study.reflection && (
+      {study.takeaways && study.takeaways.length > 0 ? (
         <Reveal>
-          <div className="border-l-2 border-primary/70 pl-6 max-w-2xl">
-            <p className="label-eyebrow mb-3">What I took away</p>
-            <p className="text-xl text-foreground leading-relaxed">{study.reflection}</p>
+          <div className="border-l-2 border-primary/70 pl-6">
+            <p className="label-eyebrow mb-5">What I took away</p>
+            <div className="grid sm:grid-cols-3 gap-8 sm:gap-10">
+              {study.takeaways.map((t) => (
+                <div key={t.title}>
+                  <p className="text-lg text-foreground font-medium mb-2 leading-snug">{t.title}</p>
+                  <p className="text-[15px] text-muted-foreground leading-relaxed">{t.body}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </Reveal>
+      ) : (
+        study.reflection && (
+          <Reveal>
+            <div className="border-l-2 border-primary/70 pl-6 max-w-2xl">
+              <p className="label-eyebrow mb-3">What I took away</p>
+              <p className="text-xl text-foreground leading-relaxed">{study.reflection}</p>
+            </div>
+          </Reveal>
+        )
       )}
       {next && next.slug !== study.slug && (
         <Reveal>
