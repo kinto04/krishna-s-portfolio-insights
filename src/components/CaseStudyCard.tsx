@@ -37,18 +37,22 @@ const CaseStudyCard = ({ study, presentation = "open" }: CaseStudyCardProps) => 
         )}
       </div>
       <div className="px-1 pb-1 flex flex-col flex-1">
-        <h3 className="text-xl sm:text-2xl font-semibold tracking-normal text-foreground group-hover:text-primary t-base mb-1.5 leading-snug line-clamp-2 min-h-[3.5rem] flex items-start gap-2">
-          <span className="flex-1">{study.title}</span>
+        {/* Flex lives on the wrapper: `line-clamp` sets its own display value, so a
+            flex container on the <h3> itself would be overridden and the gap ignored. */}
+        <div className="flex items-start gap-2.5 mb-1.5 min-h-[3.5rem]">
+          <h3 className="min-w-0 text-xl sm:text-2xl font-semibold tracking-normal text-foreground group-hover:text-primary t-base leading-snug line-clamp-2">
+            {study.title}
+          </h3>
           {study.inProgress && (
             <Pill
               variant="filled"
               size="sm"
-              className="shrink-0 !bg-status-progress/10 !text-status-progress border-status-progress/20 hover:!bg-status-progress/15"
+              className="shrink-0 mt-1 !bg-status-progress/10 !text-status-progress border-status-progress/20 hover:!bg-status-progress/15"
             >
               In progress
             </Pill>
           )}
-        </h3>
+        </div>
         <p className="text-sm text-muted-foreground/80 mb-3 leading-relaxed line-clamp-2 min-h-[2.6rem]">
           {study.subtitle}
         </p>
