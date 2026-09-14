@@ -219,6 +219,140 @@ export const caseStudies: CaseStudy[] = [
     },
   },
   {
+    slug: "nectar-ai",
+    title: "Nectar.ai",
+    subtitle: "AI-powered customer support for e-commerce.",
+    role: "Product Manager · Software Developer",
+    year: "2023",
+    context: "One of the products I lead during my time at NectarOM",
+    tags: ["AI", "Experience Design", "Conversational UI"],
+    summary:
+      "A small business selling wellness products needed to overhaul their underperforming customer support chatbot. I researched a year of historical support conversations, designed the conversation flows, and built a GPT-powered chatbot that guides customers from landing page through checkout.",
+    featured: true,
+    coverImage: "/images/u6qotkxyhcppqyywjql0qfrlnq.webp",
+    facts: {
+      timeline: "~3 months",
+      timelineNote: "2023, alongside other client work",
+      team: "Sole designer and developer, with the CEO and clients",
+      role: "Product management and development",
+      setting: "NectarOM · Client product",
+      platform: "Web · Shopify storefront",
+    },
+    toolkit: ["Python", "Node.js", "APIs", "OpenAI", "Shopify", "Mailchimp"],
+    // Nectar's deck is uniformly black, so rather than banding individual chapters
+    // the whole page is black and the slides sit on it with no frame or seam.
+    theme: {
+      background: "0 0% 0%",
+      foreground: "0 0% 98%",
+      mutedForeground: "0 0% 68%",
+      border: "0 0% 18%",
+      card: "0 0% 8%",
+      primary: "228 85% 68%",
+    },
+
+    metrics: [
+      { value: "+99%", label: "Response Rate", sublabel: "% of customer chats answered" },
+      { value: "+30%", label: "Add-to-Cart Rate", sublabel: "% of sessions that added to cart" },
+      { value: "+18%", label: "Checkout Rate", sublabel: "% of sessions that checked out" },
+    ],
+    blocks: [
+      {
+        kind: "chapter",
+        id: "the-problem",
+        number: "01",
+        label: "The problem",
+        intro: "The client sold wellness products and had a chatbot in name only. I started by reading a year of their real support conversations to find out what customers were actually asking.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/28.webp",
+        fullWidth: true,
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/29.webp",
+        fullWidth: true,
+        caption: "Before: robotic pre-set responses that forwarded everything to email instead of answering product questions.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-approach",
+        number: "02",
+        label: "How I worked",
+        intro: "Sole designer and developer, working directly with the CEO and the client. Data from months of customer support chats fed the conversation design - the goal was to prototype, test and fail quick.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/30.webp",
+        fullWidth: true,
+        caption: "I owned all three phases as the sole designer and developer on the project.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/31.webp",
+        fullWidth: true,
+        caption: "Research → Prototyping → Validation → Pivot.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-pivot",
+        number: "03",
+        label: "The approach that failed",
+        intro: "My first approach was to fine-tune GPT-3 on the client's catalog. After initial exploration and testing a quick prototype, this approach turned out to be the wrong path for our use case.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/32.webp",
+        fullWidth: true,
+        caption: "The fine-tuning approach failed on three fronts: invalid links, hallucinations, and inconsistent responses.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-architecture",
+        number: "04",
+        label: "The architecture",
+        intro: "Retrieval over embeddings meant answers were grounded in the client's real catalog, so the model could stop guessing at product details.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/33.webp",
+        fullWidth: true,
+        caption: "Final system: GPT-3 embeddings + Google Dialogflow front-end + Shopify/MailChimp for customer data persistence.",
+      },
+
+      {
+        kind: "chapter",
+        id: "the-result",
+        number: "05",
+        label: "The result",
+        intro: "The chatbot went from deflecting customers to email to carrying them through to checkout — and turned each conversation into data the client could market against.",
+      },
+      {
+        kind: "image",
+        src: "/images/nectar-ai/34.webp",
+        fullWidth: true,
+        caption: "The chatbot guides customers through support, captures their name, email, and interests, and funnels that enriched data into Shopify and MailChimp for marketing.",
+      },
+    ],
+    takeaways: [
+      {
+        title: "Build and validate quick",
+        body: "Rapid prototyping and testing to identify issues early.",
+      },
+      {
+        title: "Early mover challenges",
+        body: "Navigating uncharted territory without established models to follow.",
+      },
+      {
+        title: "Data driven design",
+        body: "Using insights to align with customer goals and business growth.",
+      },
+    ],
+  },
+  {
     slug: "huelo",
     title: "Huelo",
     subtitle: "AI-powered interior design and shopping for urban renters.",
@@ -350,140 +484,6 @@ export const caseStudies: CaseStudy[] = [
         kind: "image",
         src: "/images/huelo/hero.webp",
         fullWidth: true,
-      },
-    ],
-  },
-  {
-    slug: "nectar-ai",
-    title: "Nectar.ai",
-    subtitle: "AI-powered customer support for e-commerce.",
-    role: "Product Manager · Software Developer",
-    year: "2023",
-    context: "One of the products I lead during my time at NectarOM",
-    tags: ["AI", "Experience Design", "Conversational UI"],
-    summary:
-      "A small business selling wellness products needed to overhaul their underperforming customer support chatbot. I researched a year of historical support conversations, designed the conversation flows, and built a GPT-powered chatbot that guides customers from landing page through checkout.",
-    featured: true,
-    coverImage: "/images/u6qotkxyhcppqyywjql0qfrlnq.webp",
-    facts: {
-      timeline: "~3 months",
-      timelineNote: "2023, alongside other client work",
-      team: "Sole designer and developer, with the CEO and clients",
-      role: "Product management and development",
-      setting: "NectarOM · Client product",
-      platform: "Web · Shopify storefront",
-    },
-    toolkit: ["Python", "Node.js", "APIs", "OpenAI", "Shopify", "Mailchimp"],
-    // Nectar's deck is uniformly black, so rather than banding individual chapters
-    // the whole page is black and the slides sit on it with no frame or seam.
-    theme: {
-      background: "0 0% 0%",
-      foreground: "0 0% 98%",
-      mutedForeground: "0 0% 68%",
-      border: "0 0% 18%",
-      card: "0 0% 8%",
-      primary: "228 85% 68%",
-    },
-
-    metrics: [
-      { value: "+99%", label: "Response Rate", sublabel: "% of customer chats answered" },
-      { value: "+30%", label: "Add-to-Cart Rate", sublabel: "% of sessions that added to cart" },
-      { value: "+18%", label: "Checkout Rate", sublabel: "% of sessions that checked out" },
-    ],
-    blocks: [
-      {
-        kind: "chapter",
-        id: "the-problem",
-        number: "01",
-        label: "The problem",
-        intro: "The client sold wellness products and had a chatbot in name only. I started by reading a year of their real support conversations to find out what customers were actually asking.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/28.webp",
-        fullWidth: true,
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/29.webp",
-        fullWidth: true,
-        caption: "Before: robotic pre-set responses that forwarded everything to email instead of answering product questions.",
-      },
-
-      {
-        kind: "chapter",
-        id: "the-approach",
-        number: "02",
-        label: "How I worked",
-        intro: "Sole designer and developer, working directly with the CEO and the client. Data from months of customer support chats fed the conversation design - the goal was to prototype, test and fail quick.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/30.webp",
-        fullWidth: true,
-        caption: "I owned all three phases as the sole designer and developer on the project.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/31.webp",
-        fullWidth: true,
-        caption: "Research → Prototyping → Validation → Pivot.",
-      },
-
-      {
-        kind: "chapter",
-        id: "the-pivot",
-        number: "03",
-        label: "The approach that failed",
-        intro: "My first approach was to fine-tune GPT-3 on the client's catalog. After initial exploration and testing a quick prototype, this approach turned out to be the wrong path for our use case.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/32.webp",
-        fullWidth: true,
-        caption: "The fine-tuning approach failed on three fronts: invalid links, hallucinations, and inconsistent responses.",
-      },
-
-      {
-        kind: "chapter",
-        id: "the-architecture",
-        number: "04",
-        label: "The architecture",
-        intro: "Retrieval over embeddings meant answers were grounded in the client's real catalog, so the model could stop guessing at product details.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/33.webp",
-        fullWidth: true,
-        caption: "Final system: GPT-3 embeddings + Google Dialogflow front-end + Shopify/MailChimp for customer data persistence.",
-      },
-
-      {
-        kind: "chapter",
-        id: "the-result",
-        number: "05",
-        label: "The result",
-        intro: "The chatbot went from deflecting customers to email to carrying them through to checkout — and turned each conversation into data the client could market against.",
-      },
-      {
-        kind: "image",
-        src: "/images/nectar-ai/34.webp",
-        fullWidth: true,
-        caption: "The chatbot guides customers through support, captures their name, email, and interests, and funnels that enriched data into Shopify and MailChimp for marketing.",
-      },
-    ],
-    takeaways: [
-      {
-        title: "Build and validate quick",
-        body: "Rapid prototyping and testing to identify issues early.",
-      },
-      {
-        title: "Early mover challenges",
-        body: "Navigating uncharted territory without established models to follow.",
-      },
-      {
-        title: "Data driven design",
-        body: "Using insights to align with customer goals and business growth.",
       },
     ],
   },
