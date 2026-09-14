@@ -283,7 +283,10 @@
   border-top: 0;
 }
 
-.case-chapter .case-study-image-frame {
+/* Inside a chapter band, and on a study themed to its own deck, the frame would
+   draw an edge around artwork that already shares the surface colour. */
+.case-chapter .case-study-image-frame,
+[data-seamless] .case-study-image-frame {
   border-color: transparent;
   background: transparent;
 }

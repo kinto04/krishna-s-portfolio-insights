@@ -479,6 +479,11 @@ const WorkDetail = () => {
   const themeLightness = Number(study.theme?.background.trim().split(/\s+/)[2]?.replace("%", ""));
   const darkSurface = Number.isFinite(themeLightness) && themeLightness < 50;
 
+  // A study themed to match its own deck (rather than banding individual chapters)
+  // needs no frame around its slides — the border and card fill would draw an edge
+  // around artwork that already shares the page colour.
+  const seamless = themed && !narrative?.chapters.some(({ chapter }) => chapter.tone);
+
   // Per-study chapter band palettes, consumed by .case-chapter-light/dark.
   const bandVars: Record<string, string> = {};
   (["light", "dark"] as const).forEach((tone) => {
@@ -520,6 +525,7 @@ const WorkDetail = () => {
     <div
       style={themeStyle}
       data-surface={darkSurface ? "dark" : undefined}
+      data-seamless={seamless ? "true" : undefined}
       className={themed ? "w-full min-h-screen bg-background" : undefined}
     >
       <Layout>
