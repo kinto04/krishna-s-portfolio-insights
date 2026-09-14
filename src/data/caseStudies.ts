@@ -586,9 +586,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Going into an existing research project at Northwestern Feinberg School of Medicine, I was tasked with owning research and design for a new digital product aimed at supporting diagnosis and treatment of pediatric patients with disorders of gut-brain interaction.",
     featured: false,
+    inProgress: true,
     coverImage: northwesternMedicineCover.url,
     heroImage: northwesternMedicineCover.url,
-    imageFit: "contain",
     facts: {
       timeline: "2025",
       team: "Sole designer and PM inside an existing research project",
