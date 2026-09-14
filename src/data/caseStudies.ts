@@ -435,7 +435,7 @@ export const caseStudies: CaseStudy[] = [
         id: "the-pivot",
         number: "03",
         label: "The approach that failed",
-        intro: "My first approach was to fine-tune GPT-3 on the client's catalog. It didn't work, and it took a round of validation to see how badly. Fine-tuning taught the model the client's tone but not their facts — so it invented product links and answered the same question differently each time. I threw it out and rebuilt around retrieval instead.",
+        intro: "My first approach was to fine-tune GPT-3 on the client's catalog. After initial exploration and testing a quick prototype, this approach turned out to be the wrong path for our use case.",
       },
       {
         kind: "image",
