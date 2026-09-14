@@ -328,7 +328,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             title: "Evals on every change",
-            body: "I built evaluation pipelines for output quality, relevance, and coherence, so we can tell whether a prompt or model change actually improved the design and not just moved it.",
+            body: "We built evaluation pipelines for output quality, relevance, and coherence, so we can track how prompt and model changes impact AI output",
           },
           {
             title: "Cost as a design constraint",
