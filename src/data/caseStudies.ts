@@ -228,7 +228,6 @@ export const caseStudies: CaseStudy[] = [
       timeline: "Ongoing",
       team: "Founding team",
       role: "Founding UX Designer & AI Engineer",
-      setting: "New York",
       platform: "Web app",
     },
     toolkit: ["Figma", "Gemini API", "Lovable"],
