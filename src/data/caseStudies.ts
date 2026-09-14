@@ -342,19 +342,7 @@ export const caseStudies: CaseStudy[] = [
         caption: "The Huelo landing page at huelo.co — an AI interior designer built for real rooms, real budgets, and real life.",
         fullWidth: true,
       },
-      {
-        kind: "chapter",
-        id: "reflection",
-        number: "04",
-        label: "Reflection",
-      },
-      {
-        kind: "statement",
-        text: "Building an AI-native design tool has sharpened my thesis: the best AI products don't replace the designer — they remove the tedious parts so humans can make confident decisions.",
-      },
     ],
-    reflection:
-      "Huelo sits at the intersection of two things I care about: design craft and AI systems. The hard problem isn't generating a pretty room — it's generating one the user believes will work in their actual home, with their actual constraints, and then helping them buy it without second-guessing every choice.",
   },
   {
     slug: "airy",
